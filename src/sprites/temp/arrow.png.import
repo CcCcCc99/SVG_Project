@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pbianco1.png-6c3ebc8c5984a3a22e35c57e12c66c79.stex"
+path="res://.import/arrow.png-2ef62a10035582df3fdb93fc5d04858c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/pbianco1.png"
-dest_files=[ "res://.import/pbianco1.png-6c3ebc8c5984a3a22e35c57e12c66c79.stex" ]
+source_file="res://sprites/temp/arrow.png"
+dest_files=[ "res://.import/arrow.png-2ef62a10035582df3fdb93fc5d04858c.stex" ]
 
 [params]
 

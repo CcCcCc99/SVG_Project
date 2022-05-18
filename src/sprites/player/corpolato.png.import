@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pbianco2.png-b5a4b9ab1c67e0aae4cefb5cba1aa131.stex"
+path="res://.import/corpolato.png-cd2d8bc6927a91f8bb9ca6853fb77674.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/pbianco2.png"
-dest_files=[ "res://.import/pbianco2.png-b5a4b9ab1c67e0aae4cefb5cba1aa131.stex" ]
+source_file="res://sprites/player/corpolato.png"
+dest_files=[ "res://.import/corpolato.png-cd2d8bc6927a91f8bb9ca6853fb77674.stex" ]
 
 [params]
 

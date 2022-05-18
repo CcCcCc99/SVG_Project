@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grunge-circle-frame-6.png-b9f7ee80a2f06712590005edd1839e5a.stex"
+path="res://.import/pbianco2.png-8c68e1fb4d5e818121acddc4ea441df8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/grunge-circle-frame-6.png"
-dest_files=[ "res://.import/grunge-circle-frame-6.png-b9f7ee80a2f06712590005edd1839e5a.stex" ]
+source_file="res://sprites/prop/pbianco2.png"
+dest_files=[ "res://.import/pbianco2.png-8c68e1fb4d5e818121acddc4ea441df8.stex" ]
 
 [params]
 
