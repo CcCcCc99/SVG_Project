@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gambe1.png-7b5cdf8179129a16d7aeb123ed7216f1.stex"
+path="res://.import/gambe2_versoDx.png-387fd5751e3a9845f3947e4c0ad25a6b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/player/gambe1.png"
-dest_files=[ "res://.import/gambe1.png-7b5cdf8179129a16d7aeb123ed7216f1.stex" ]
+source_file="res://sprites/player/gambe2_versoDx.png"
+dest_files=[ "res://.import/gambe2_versoDx.png-387fd5751e3a9845f3947e4c0ad25a6b.stex" ]
 
 [params]
 

@@ -10,3 +10,4 @@ func _process(delta):
 	var velocity = Vector2(horizontal,vertcal).normalized()*speed
 	# warning-ignore:return_value_discarded
 	move_and_slide(velocity * delta)
+	$Animator.animate(velocity)
