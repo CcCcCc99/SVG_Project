@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://sprites/pglato.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://sprites/arrow.png" type="Texture" id=3]
-[ext_resource path="res://scenes/prefabs/Portal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/Portalgun.gd" type="Script" id=4]
+[ext_resource path="res://scenes/prefabs/Portal.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 63.125 )
@@ -11,8 +12,6 @@ extents = Vector2( 30, 63.125 )
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 speed = 12000
-distance = 90
-portal = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -33.5 )
@@ -23,13 +22,16 @@ texture = ExtResource( 1 )
 position = Vector2( 3, -37 )
 shape = SubResource( 1 )
 
-[node name="Arrow" type="Node2D" parent="."]
+[node name="Portalgun" type="Node2D" parent="."]
 position = Vector2( 0, -5 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
 }
+distance = 85
+portal = ExtResource( 5 )
 
-[node name="Sprite" type="Sprite" parent="Arrow"]
+[node name="Sprite" type="Sprite" parent="Portalgun"]
 position = Vector2( 28.2737, 5.36442e-07 )
 scale = Vector2( 0.104399, 0.142857 )
 texture = ExtResource( 3 )
