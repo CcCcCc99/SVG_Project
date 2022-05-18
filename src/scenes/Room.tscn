@@ -1,0 +1,18 @@
+[gd_scene format=2]
+
+[node name="Room" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="Objects" type="TileMap" parent="."]
+format = 1
+
+[node name="Entrance" type="Node2D" parent="."]
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="EnemyPositions" type="Node2D" parent="."]
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+
+[node name="Collisions" type="Node2D" parent="."]
