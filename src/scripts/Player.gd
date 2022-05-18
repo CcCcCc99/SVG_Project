@@ -10,4 +10,6 @@ func _process(delta):
 	var velocity = Vector2(horizontal,vertcal).normalized()*speed
 	# warning-ignore:return_value_discarded
 	move_and_slide(velocity * delta)
+	if Input.is_action_just_pressed("summon"):
+		print("summon ", get_viewport().get_mouse_position())
 	$Animator.animate(velocity)
