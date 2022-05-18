@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gambe1_versoDx.png-6b38943450641152d366e46a2ec34557.stex"
+path="res://.import/arrow.png-e14f5e887d38686945d9da977a25c972.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/player/gambe1_versoDx.png"
-dest_files=[ "res://.import/gambe1_versoDx.png-6b38943450641152d366e46a2ec34557.stex" ]
+source_file="res://assets/sprites/temp/arrow.png"
+dest_files=[ "res://.import/arrow.png-e14f5e887d38686945d9da977a25c972.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/testadietro.png-b6b9cb5be6cc36300a36d66b2201235b.stex"
+path="res://.import/gambeidle.png-356b66c2075520450d1c0b4adf7fbb35.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/player/testadietro.png"
-dest_files=[ "res://.import/testadietro.png-b6b9cb5be6cc36300a36d66b2201235b.stex" ]
+source_file="res://assets/sprites/player/gambeidle.png"
+dest_files=[ "res://.import/gambeidle.png-356b66c2075520450d1c0b4adf7fbb35.stex" ]
 
 [params]
 

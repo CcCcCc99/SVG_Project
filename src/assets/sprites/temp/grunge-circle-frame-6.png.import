@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mappatrue.png-4f2fc11eb7cd42bd85638a82d61c4300.stex"
+path="res://.import/grunge-circle-frame-6.png-c04a3ae8800e0e358065578ce157d54a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mappatrue.png"
-dest_files=[ "res://.import/mappatrue.png-4f2fc11eb7cd42bd85638a82d61c4300.stex" ]
+source_file="res://assets/sprites/temp/grunge-circle-frame-6.png"
+dest_files=[ "res://.import/grunge-circle-frame-6.png-c04a3ae8800e0e358065578ce157d54a.stex" ]
 
 [params]
 

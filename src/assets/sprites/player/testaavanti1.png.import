@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/corpoavanti.png-26d84bd5fb641d769805006ea840eda5.stex"
+path="res://.import/testaavanti1.png-6f4f44bd01cefc1312f72b2e74a6b496.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/player/corpoavanti.png"
-dest_files=[ "res://.import/corpoavanti.png-26d84bd5fb641d769805006ea840eda5.stex" ]
+source_file="res://assets/sprites/player/testaavanti1.png"
+dest_files=[ "res://.import/testaavanti1.png-6f4f44bd01cefc1312f72b2e74a6b496.stex" ]
 
 [params]
 

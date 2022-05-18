@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gambeidle.png-7ff41315015809cc21952bd950524bff.stex"
+path="res://.import/gambe3.png-7343032601fffbe2007673371c52016d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/player/gambeidle.png"
-dest_files=[ "res://.import/gambeidle.png-7ff41315015809cc21952bd950524bff.stex" ]
+source_file="res://assets/sprites/player/gambe3.png"
+dest_files=[ "res://.import/gambe3.png-7343032601fffbe2007673371c52016d.stex" ]
 
 [params]
 

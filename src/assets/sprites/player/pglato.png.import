@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pbianco1.png-01c662e14d7f88e6f96849d926e80f39.stex"
+path="res://.import/pglato.png-b07812dbf972dde8591d7d491499e737.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/prop/pbianco1.png"
-dest_files=[ "res://.import/pbianco1.png-01c662e14d7f88e6f96849d926e80f39.stex" ]
+source_file="res://assets/sprites/player/pglato.png"
+dest_files=[ "res://.import/pglato.png-b07812dbf972dde8591d7d491499e737.stex" ]
 
 [params]
 

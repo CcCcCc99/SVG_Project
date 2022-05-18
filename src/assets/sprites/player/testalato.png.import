@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pglato.png-91bcb16bc6484c098c4c44529274c516.stex"
+path="res://.import/testalato.png-e374c11c8a55dad88c7bd1dda6d359e9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/player/pglato.png"
-dest_files=[ "res://.import/pglato.png-91bcb16bc6484c098c4c44529274c516.stex" ]
+source_file="res://assets/sprites/player/testalato.png"
+dest_files=[ "res://.import/testalato.png-e374c11c8a55dad88c7bd1dda6d359e9.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/arrow.png-2ef62a10035582df3fdb93fc5d04858c.stex"
+path="res://.import/corpoavanti.png-84b96fffaeb4d61add2e5c4b5dddfef9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/temp/arrow.png"
-dest_files=[ "res://.import/arrow.png-2ef62a10035582df3fdb93fc5d04858c.stex" ]
+source_file="res://assets/sprites/player/corpoavanti.png"
+dest_files=[ "res://.import/corpoavanti.png-84b96fffaeb4d61add2e5c4b5dddfef9.stex" ]
 
 [params]
 
