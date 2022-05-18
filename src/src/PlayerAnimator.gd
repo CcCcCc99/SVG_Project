@@ -1,5 +1,9 @@
 extends Node2D
 
+onready var head = $Head
+onready var body = $Body
+onready var legs = $Legs
+
 func animate(velocity):
 	if velocity == Vector2.ZERO:
 		_set_idle()
@@ -12,27 +16,27 @@ func animate(velocity):
 		pass
 
 func _set_idle():
-	$Head.flip_h = false
-	$Head.animation = "front"
-	$Body.animation = "front"
-	$Legs.animation = "idle"
+	head.flip_h = false
+	head.animation = "front"
+	body.animation = "front"
+	legs.animation = "idle"
 
 func _set_horizontal(direction):
-	$Head.animation = "side"
-	$Body.animation = "back"
+	head.animation = "side"
+	body.animation = "back"
 	if direction < 0:
-		$Head.flip_h = true
-		$Legs.animation = "left"
+		head.flip_h = true
+		legs.animation = "left"
 	else:
-		$Head.flip_h = false
-		$Legs.animation = "right"
+		head.flip_h = false
+		legs.animation = "right"
 
 func _set_vertical(direction):
-	$Head.flip_h = false
+	head.flip_h = false
 	if direction < 0:
-		$Head.animation = "back"
-		$Body.animation = "back"
+		head.animation = "back"
+		body.animation = "back"
 	else:
-		$Head.animation = "front"
-		$Body.animation = "front"
-	$Legs.animation = "vertical"
+		head.animation = "front"
+		body.animation = "front"
+	legs.animation = "vertical"
