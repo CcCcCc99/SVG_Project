@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://mappatrue.png" type="Texture" id=1]
+[ext_resource path="res://scenes/prefabs/Player.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 242.921, 221 )
+
+[node name="Mappatrue" type="Sprite" parent="."]
+position = Vector2( 511.5, 301 )
+scale = Vector2( 0.532813, 0.553704 )
+z_index = -2
+texture = ExtResource( 1 )

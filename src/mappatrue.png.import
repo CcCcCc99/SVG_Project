@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/arrow.png-9a52328c9c8f79a188b7fabb13b1f3fc.stex"
+path="res://.import/mappatrue.png-4f2fc11eb7cd42bd85638a82d61c4300.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arrow.png"
-dest_files=[ "res://.import/arrow.png-9a52328c9c8f79a188b7fabb13b1f3fc.stex" ]
+source_file="res://mappatrue.png"
+dest_files=[ "res://.import/mappatrue.png-4f2fc11eb7cd42bd85638a82d61c4300.stex" ]
 
 [params]
 
