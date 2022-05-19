@@ -7,13 +7,10 @@ onready var legs = $Legs
 func animate(velocity):
 	if velocity == Vector2.ZERO:
 		_set_idle()
-		pass
 	elif velocity.x != 0:
 		_set_horizontal(velocity.x)
-		pass
 	else:
 		_set_vertical(velocity.y)
-		pass
 
 func _set_idle():
 	head.flip_h = false
