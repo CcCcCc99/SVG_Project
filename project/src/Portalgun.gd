@@ -1,0 +1,41 @@
+extends Node2D
+
+export var distance = 50
+export(PackedScene) var portal
+
+var last_portal = null
+var previous_portal = null
+var portal_number = 0
+
+
+# warning-ignore:unused_argument
+func _process(delta):
+	# pointer rotation
+	look_at(get_global_mouse_position())
+	var angle = transform.get_rotation()
+	if angle < 0:
+		z_index = -1
+	else:
+		z_index = 0
+	
+	# spawn pointer
+	var direction = Vector2(cos(angle), sin(angle))
+	if Input.is_action_just_pressed("portal"):
+		_spawn_portal(direction)
+
+func _spawn_portal(direction: Vector2):
+	var p = portal.instance()
+	p.set_color(portal_number)
+	p.position = direction*distance + global_position
+	get_parent().get_parent().add_child(p)
+	
+	if previous_portal != null:
+		previous_portal.queue_free()
+	previous_portal = last_portal
+	#previous_portal.set_destination(p)
+
+	portal_number = (portal_number+1) % 2
+	#p.set_destination(previous_portal)
+	#if previous_portal != null:
+	#	previous_portal.
+	last_portal = p
