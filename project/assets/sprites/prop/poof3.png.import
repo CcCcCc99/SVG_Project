@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mappatrue.png-08629563b3e4491e0726c9b475e92353.stex"
+path="res://.import/poof3.png-e46ec6b2e323e0879e69a5a1c1a50f38.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://temp/mappatrue.png"
-dest_files=[ "res://.import/mappatrue.png-08629563b3e4491e0726c9b475e92353.stex" ]
+source_file="res://assets/sprites/prop/poof3.png"
+dest_files=[ "res://.import/poof3.png-e46ec6b2e323e0879e69a5a1c1a50f38.stex" ]
 
 [params]
 
