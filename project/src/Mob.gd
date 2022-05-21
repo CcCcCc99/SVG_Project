@@ -7,7 +7,9 @@ var path: PoolVector2Array
 onready var navigation: Navigation2D = get_tree().current_scene.get_node("Tutorial")
 onready var player: KinematicBody2D = get_tree().current_scene.get_node("Player")
 onready var path_timer: Timer = get_node("PathTimer")
+onready var animated_sprite: AnimatedSprite = get_node("AnimatedSprite")
 
+var mov_direction: Vector2 = Vector2.ZERO
 
 #func _ready() -> void:
 	#var __ = connect("tree_exited", get_parent(), "_on_enemy_killed")
@@ -24,12 +26,12 @@ func chase() -> void:
 			if not path:
 				return
 		
-		position = vector_to_next_point
+		mov_direction = vector_to_next_point
 		
-		#if vector_to_next_point.x > 0 and animated_sprite.flip_h:
-			#animated_sprite.flip_h = false
-		#elif vector_to_next_point.x < 0 and not animated_sprite.flip_h:
-			#animated_sprite.flip_h = true
+		if vector_to_next_point.x > 0 and animated_sprite.flip_h:
+			 animated_sprite.flip_h = false
+		elif vector_to_next_point.x < 0 and not animated_sprite.flip_h:
+			animated_sprite.flip_h = true
 
 
 func _on_PathTimer_timeout() -> void:
@@ -38,8 +40,9 @@ func _on_PathTimer_timeout() -> void:
 	else:
 		path_timer.stop()
 		path = []
-		position = Vector2.ZERO
+		mov_direction = Vector2.ZERO
 		
 		
 func _get_path_to_player() -> void:
+	# calculation of the minimum path between the enemy and the player
 	path = navigation.get_simple_path(global_position, player.position)
