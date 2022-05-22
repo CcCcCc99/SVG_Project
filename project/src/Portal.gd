@@ -1,15 +1,19 @@
 extends Area2D
-#class_name MyPortal
+class_name Protal2D
 
 export(Array, Color) var colors
 var destination = null
+var is_reciving = false
 
 func set_color(i: int):
 	modulate = colors[i]
 
-#func set_destination(portal: MyPortal):
-#	destination = portal
+func set_destination(portal: Protal2D):
+	destination = portal
 
-#func _on_Portal_body_entered(body:Node):
-#	body.position = destination.position
-#	pass # Replace with function body.
+func _on_Portal_body_entered(body: Node):
+	if is_reciving:
+		is_reciving = false
+	elif destination != null:
+		destination.is_reciving = true
+		body.position = destination.position

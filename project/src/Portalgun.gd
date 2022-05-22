@@ -31,11 +31,11 @@ func _spawn_portal(direction: Vector2):
 	
 	if previous_portal != null:
 		previous_portal.queue_free()
+		previous_portal.set_destination(p)
 	previous_portal = last_portal
-	#previous_portal.set_destination(p)
 
 	portal_number = (portal_number+1) % 2
-	#p.set_destination(previous_portal)
-	#if previous_portal != null:
-	#	previous_portal.
+	p.set_destination(previous_portal)
+	if previous_portal != null:
+		previous_portal.set_destination(p)
 	last_portal = p
