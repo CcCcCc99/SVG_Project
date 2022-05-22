@@ -20,27 +20,27 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 11 ) ],
-"loop": true,
-"name": "front",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "back",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "front",
 "speed": 1.0
 } ]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 10 ) ],
-"loop": true,
-"name": "front",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "back",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "front",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 13 ) ],
@@ -51,20 +51,20 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 17 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 12 ) ],
 "loop": true,
-"name": "left",
-"speed": 5.0
+"name": "idle",
+"speed": 1.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ) ],
+"frames": [ ExtResource( 17 ), ExtResource( 16 ) ],
 "loop": true,
-"name": "idle",
-"speed": 1.0
+"name": "left",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 6 ) ],
 "loop": true,
@@ -76,10 +76,11 @@ animations = [ {
 radius = 27.0185
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 12.625, 17.1406 )
+extents = Vector2( 11, 15.5 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
+speed = 8000
 
 [node name="Animator" type="Node2D" parent="."]
 position = Vector2( 3.78, 0 )
