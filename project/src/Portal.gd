@@ -13,7 +13,15 @@ func set_destination(portal: Protal2D):
 
 func _on_Portal_body_entered(body: Node):
 	if is_reciving:
-		is_reciving = false
+		_recive(body)
 	elif destination != null:
-		destination.is_reciving = true
-		body.position = destination.position
+		body.start_scaling_down()
+		body.connect("scaled_down", self, "_send", [body])
+
+func _send(body):
+	destination.is_reciving = true
+	body.position = destination.position
+
+func _recive(body):
+	is_reciving = false
+	body.start_scaling_up()
