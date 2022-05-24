@@ -20,6 +20,7 @@ signal scaled_up
 func _ready():
 	effect = POOF.instance()
 	effect.connect("animation_finished", self, "_end_effect")
+	self.connect("scaled_down", self, "_teleport")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -51,7 +52,20 @@ func _spawn_death_effect():
 func _end_effect():
 	effect.queue_free()
 
+############################################
+
+# Manage teleport
+
 var i = 0
+var destination = null
+
+func teleport_to(dest: Protal2D):
+	if dest != null:
+		destination = dest.position
+		start_scaling_down()
+
+func _teleport():
+	position = destination
 
 func _scale_up():
 	if scale < Vector2(1,1):
