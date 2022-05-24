@@ -19,19 +19,21 @@ animations = [ {
 extents = Vector2( 187, 36.5 )
 
 [node name="Tortoise" instance=ExtResource( 1 )]
-position = Vector2( 8, -16 )
+position = Vector2( 0, -21 )
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2( -41.5, -48.5 )
+position = Vector2( -43, -43 )
 shape = SubResource( 2 )
 
 [node name="AnimatedSprite" parent="." index="1"]
+position = Vector2( 1, 1 )
 frames = SubResource( 1 )
 animation = "walk"
 frame = 1
 
 [node name="HitBox" type="Area2D" parent="." index="4"]
+position = Vector2( -16, 233 )
 
 [node name="Legs" type="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2( 29, 189.5 )
+position = Vector2( 48, -39 )
 shape = SubResource( 3 )
