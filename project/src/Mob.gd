@@ -9,8 +9,6 @@ onready var player: KinematicBody2D = get_tree().current_scene.get_node("Player"
 onready var path_timer: Timer = get_node("PathTimer")
 onready var animated_sprite: AnimatedSprite = get_node("AnimatedSprite")
 
-var mov_direction: Vector2 = Vector2.ZERO
-
 #func _ready() -> void:
 	#var __ = connect("tree_exited", get_parent(), "_on_enemy_killed")
 
@@ -26,7 +24,7 @@ func chase() -> void:
 			if not path:
 				return
 		
-		mov_direction = vector_to_next_point
+		velocity = vector_to_next_point
 		
 		if vector_to_next_point.x > 0 and animated_sprite.flip_h:
 			 animated_sprite.flip_h = false
@@ -40,7 +38,7 @@ func _on_PathTimer_timeout() -> void:
 	else:
 		path_timer.stop()
 		path = []
-		mov_direction = Vector2.ZERO
+		velocity = Vector2.ZERO
 		
 		
 func _get_path_to_player() -> void:

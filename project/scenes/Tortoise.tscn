@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Mob.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/tortoise/cammina1.png" type="Texture" id=2]
@@ -15,8 +15,62 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "walk" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "walk"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 187, 36.5 )
+extents = Vector2( 193.5, 36.5 )
 
 [node name="Tortoise" instance=ExtResource( 1 )]
 position = Vector2( 0, -21 )
@@ -31,9 +85,13 @@ frames = SubResource( 1 )
 animation = "walk"
 frame = 1
 
+[node name="AnimationPlayer" parent="." index="2"]
+anims/RESET = SubResource( 4 )
+anims/walk = SubResource( 5 )
+
 [node name="HitBox" type="Area2D" parent="." index="4"]
 position = Vector2( -16, 233 )
 
 [node name="Legs" type="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2( 48, -39 )
+position = Vector2( 41.5, -39 )
 shape = SubResource( 3 )
