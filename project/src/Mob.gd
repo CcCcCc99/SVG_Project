@@ -9,6 +9,8 @@ onready var player: KinematicBody2D = get_tree().current_scene.get_node("Player"
 onready var path_timer: Timer = get_node("PathTimer")
 onready var animated_sprite: AnimatedSprite = get_node("AnimatedSprite")
 
+var vector_to_next_point: Vector2 = Vector2.ZERO
+
 #func _ready() -> void:
 	#var __ = connect("tree_exited", get_parent(), "_on_enemy_killed")
 
@@ -16,7 +18,7 @@ onready var animated_sprite: AnimatedSprite = get_node("AnimatedSprite")
 func chase() -> void:
 	# if the path is not empty
 	if path:
-		var vector_to_next_point: Vector2 = path[0] - global_position
+		vector_to_next_point = path[0] - global_position
 		var distance_to_next_point: float = vector_to_next_point.length()
 		# change the number for changing the velocity of the enemy
 		if distance_to_next_point < 1:
@@ -24,13 +26,13 @@ func chase() -> void:
 			if not path:
 				return
 		
-		velocity = vector_to_next_point
-		
 		if vector_to_next_point.x > 0 and animated_sprite.flip_h:
 			 animated_sprite.flip_h = false
 		elif vector_to_next_point.x < 0 and not animated_sprite.flip_h:
 			animated_sprite.flip_h = true
 
+func get_direction() -> Vector2:
+	return vector_to_next_point
 
 func _on_PathTimer_timeout() -> void:
 	if is_instance_valid(player):
@@ -38,7 +40,7 @@ func _on_PathTimer_timeout() -> void:
 	else:
 		path_timer.stop()
 		path = []
-		velocity = Vector2.ZERO
+		vector_to_next_point = Vector2.ZERO
 		
 		
 func _get_path_to_player() -> void:
