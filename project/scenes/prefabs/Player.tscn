@@ -1,8 +1,8 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/sprites/player/corpolato.png" type="Texture" id=1]
 [ext_resource path="res://src/Player.gd" type="Script" id=2]
-[ext_resource path="res://assets/sprites/temp/arrow.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/player/bracciale.png" type="Texture" id=3]
 [ext_resource path="res://src/Portalgun.gd" type="Script" id=4]
 [ext_resource path="res://scenes/prefabs/Portal.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/sprites/player/gambe4.png" type="Texture" id=6]
@@ -17,30 +17,31 @@
 [ext_resource path="res://src/PlayerAnimator.gd" type="Script" id=15]
 [ext_resource path="res://assets/sprites/player/gambe2_versoSx.png" type="Texture" id=16]
 [ext_resource path="res://assets/sprites/player/gambe1_versoSx.png" type="Texture" id=17]
+[ext_resource path="res://assets/sprites/player/guanto.png" type="Texture" id=18]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "back",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 11 ) ],
 "loop": true,
 "name": "front",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "back",
 "speed": 1.0
 } ]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 14 ) ],
-"loop": true,
-"name": "back",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 10 ) ],
 "loop": true,
 "name": "front",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "back",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 13 ) ],
@@ -51,20 +52,20 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 12 ) ],
+"frames": [ ExtResource( 17 ), ExtResource( 16 ) ],
 "loop": true,
-"name": "idle",
-"speed": 1.0
+"name": "left",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 17 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 12 ) ],
 "loop": true,
-"name": "left",
-"speed": 5.0
+"name": "idle",
+"speed": 1.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 6 ) ],
 "loop": true,
@@ -119,6 +120,7 @@ position = Vector2( -1, -10 )
 shape = SubResource( 5 )
 
 [node name="Portalgun" type="Node2D" parent="."]
+position = Vector2( -1.28644, -53.8502 )
 scale = Vector2( 1, 0.92 )
 script = ExtResource( 4 )
 __meta__ = {
@@ -126,8 +128,16 @@ __meta__ = {
 }
 distance = 95
 portal = ExtResource( 5 )
+colors = [ Color( 0.937255, 0.596078, 0.984314, 1 ), Color( 0.364706, 0.913725, 0.811765, 1 ) ]
 
-[node name="Sprite" type="Sprite" parent="Portalgun"]
-position = Vector2( 28.2737, 5.36442e-07 )
-scale = Vector2( 0.104399, 0.142857 )
+[node name="glove" type="Sprite" parent="Portalgun"]
+position = Vector2( 44.6063, 0.456653 )
+rotation = 1.52367
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 18 )
+
+[node name="bracelet" type="Sprite" parent="Portalgun"]
+position = Vector2( 47.2855, 1.16061 )
+rotation = 1.52367
+scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 3 )

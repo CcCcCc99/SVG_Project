@@ -15,13 +15,13 @@ _global_script_classes=[ {
 "path": "res://src/Character.gd"
 }, {
 "base": "Area2D",
-"class": "Protal2D",
+"class": "Portal2D",
 "language": "GDScript",
 "path": "res://src/Portal.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
-"Protal2D": ""
+"Portal2D": ""
 }
 
 [application]

@@ -59,7 +59,7 @@ func _end_effect():
 var i = 0
 var destination = null
 
-func teleport_to(dest: Protal2D):
+func teleport_to(dest: Portal2D):
 	if dest != null:
 		destination = dest.position
 		start_scaling_down()
