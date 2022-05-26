@@ -6,7 +6,7 @@ var effect
 
 export(Array, Color) var colors
 var destination: Portal2D = null
-var is_reciving: bool = false
+var is_receiving: bool = false
 
 func _ready():
 	effect = POOF.instance()
@@ -25,11 +25,11 @@ func set_destination(portal: Portal2D):
 	destination = portal
 
 func _on_Portal_body_entered(body: Node):
-	if is_reciving:
-		is_reciving = false
+	if is_receiving:
+		is_receiving = false
 		body.start_scaling_up()
 	elif destination != null:
-		destination.is_reciving = true
+		destination.is_receiving = true
 		body.teleport_to(destination)
 
 
