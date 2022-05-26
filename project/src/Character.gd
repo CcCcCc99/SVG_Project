@@ -42,6 +42,9 @@ func get_direction() -> Vector2:
 func set_hp(new_hp: int):
 	hp = clamp(new_hp, 0, max_hp)
 
+func is_normal() -> bool:
+	return state == NORMAL
+
 func take_damage():
 	pass
 

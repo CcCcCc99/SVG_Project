@@ -15,6 +15,7 @@ func _ready():
 func _physics_process(delta):
 	var areas = get_overlapping_areas()
 	if areas.has(destination):
+		destination = null
 		_spawn_death_effect()
 
 func set_color(c: Color):

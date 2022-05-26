@@ -16,6 +16,8 @@ func _update_bracelet():
 
 # warning-ignore:unused_argument
 func _process(delta):
+	if not get_parent().is_normal():
+		return
 	# pointer rotation
 	look_at(get_global_mouse_position())
 	var angle = transform.get_rotation()
