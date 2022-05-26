@@ -52,6 +52,7 @@ func _spawn_death_effect():
 func _end_effect():
 	effect.queue_free()
 
+
 ############################################
 
 # Manage teleport
@@ -91,4 +92,3 @@ func start_scaling_down():
 
 func start_scaling_up():
 	state = SCALEUP
-
