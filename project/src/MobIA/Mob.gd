@@ -1,6 +1,13 @@
 extends Character
 class_name Mob
 
+func get_direction() -> Vector2:
+	#return vector_to_next_point
+	return Vector2(1,0)
+
+
+
+"""		
 # Array of points to the player
 var path: PoolVector2Array
 
@@ -30,10 +37,10 @@ func chase() -> void:
 			 animated_sprite.flip_h = false
 		elif vector_to_next_point.x < 0 and not animated_sprite.flip_h:
 			animated_sprite.flip_h = true
+"""		
 
-func get_direction() -> Vector2:
-	return vector_to_next_point
 
+"""		
 func _on_PathTimer_timeout() -> void:
 	if is_instance_valid(player):
 		_get_path_to_player()
@@ -42,7 +49,8 @@ func _on_PathTimer_timeout() -> void:
 		path = []
 		vector_to_next_point = Vector2.ZERO
 		
-		
+
 func _get_path_to_player() -> void:
 	# calculation of the minimum path between the enemy and the player
 	path = navigation.get_simple_path(global_position, player.position)
+"""

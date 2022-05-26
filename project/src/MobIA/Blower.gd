@@ -1,9 +1,9 @@
 extends Mob
 
+enum {IDLE, WALK, ATTACK}
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var ia_state = WALK
+export(PackedScene) var blow
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,8 +11,16 @@ func _ready():
 	pass # Replace with function body.
 
 func get_direction():
-	return Vector2(1,0)
+	match ia_state:
+		WALK:
+			$AnimatedSprite.animation = "walk"
+		ATTACK:
+			$AnimatedSprite.animation = "attack"
+	return Vector2.UP
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
+func _on_TriggerAttack(body):
+	print("Visto")
+	var b = blow.instance()
+	b.position = $TriggerAttack.global_position
+	get_parent().add_child(b)

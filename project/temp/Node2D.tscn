@@ -28,7 +28,7 @@ b = Vector2( 532, 545 )
 [node name="Node2D" type="StaticBody2D"]
 
 [node name="Mappatrue" type="Sprite" parent="."]
-position = Vector2( 512.13, 291.356 )
+position = Vector2( 513.074, 293.244 )
 scale = Vector2( 0.532813, 0.537814 )
 z_index = -2
 texture = ExtResource( 1 )
@@ -38,12 +38,8 @@ position = Vector2( -11.7866, -499.223 )
 scale = Vector2( 2.29032, 4.1377 )
 texture = ExtResource( 3 )
 
-[node name="Blower" parent="." instance=ExtResource( 4 )]
-position = Vector2( 205.166, 256.923 )
-scale = Vector2( 0.2, 0.2 )
-
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 749.781, 237.046 )
+position = Vector2( 217.434, 309.725 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -59,3 +55,6 @@ shape = SubResource( 4 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
 shape = SubResource( 5 )
+
+[node name="Blower" parent="." instance=ExtResource( 4 )]
+position = Vector2( 793.8, 311.536 )

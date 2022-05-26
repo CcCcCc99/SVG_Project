@@ -1,7 +1,7 @@
 extends Area2D
 class_name Portal2D
 
-const POOF: PackedScene = preload("res://scenes/Poof.tscn")
+export(PackedScene) var POOF
 var effect
 
 export(Array, Color) var colors

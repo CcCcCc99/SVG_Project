@@ -1,7 +1,7 @@
 extends KinematicBody2D
 class_name Character
 
-const POOF: PackedScene = preload("res://scenes/Poof.tscn")
+export(PackedScene) var POOF
 var effect
 enum {NORMAL, SCALEUP, SCALEDOWN}
 
