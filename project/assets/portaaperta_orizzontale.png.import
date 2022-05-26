@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/door_closed.png-1f2623e0acb7de3e4c25613003d35c10.stex"
+path="res://.import/portaaperta_orizzontale.png-75f1996f09940537990758241228ca23.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/door_closed.png"
-dest_files=[ "res://.import/door_closed.png-1f2623e0acb7de3e4c25613003d35c10.stex" ]
+source_file="res://assets/portaaperta_orizzontale.png"
+dest_files=[ "res://.import/portaaperta_orizzontale.png-75f1996f09940537990758241228ca23.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
