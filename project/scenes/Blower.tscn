@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/Mob.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/blower/walk1.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/MobIA/Blower.gd" type="Script" id=4]
 [ext_resource path="res://assets/sprites/blower/attack2.png" type="Texture" id=5]
 [ext_resource path="res://scenes/prefabs/prop/Blow.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Hitbox.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20.3032, 6.22005 )
@@ -47,14 +48,18 @@ animation = "attack"
 playing = true
 
 [node name="HitBox" type="Area2D" parent="." index="3"]
+collision_layer = 62
+collision_mask = 63
+script = ExtResource( 7 )
 
 [node name="Body" type="CollisionShape2D" parent="HitBox" index="0"]
 position = Vector2( 4.22809, -21.0988 )
 shape = SubResource( 3 )
 
 [node name="TriggerAttack" type="Area2D" parent="." index="4"]
-position = Vector2( -28.4449, -14.9601 )
+position = Vector2( -33.3448, -18.5237 )
 rotation = 1.5708
+collision_mask = 2
 __meta__ = {
 "_edit_group_": true
 }

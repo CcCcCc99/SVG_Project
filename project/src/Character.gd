@@ -45,8 +45,9 @@ func set_hp(new_hp: int):
 func is_normal() -> bool:
 	return state == NORMAL
 
-func take_damage():
-	pass
+func take_damage(damage: int):
+	set_hp(hp-damage)
+	print(hp)
 
 func _spawn_death_effect():
 	add_child(effect)

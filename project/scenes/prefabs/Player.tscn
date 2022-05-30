@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/sprites/player/corpolato.png" type="Texture" id=1]
 [ext_resource path="res://src/Player.gd" type="Script" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://assets/sprites/player/gambe1_versoSx.png" type="Texture" id=17]
 [ext_resource path="res://assets/sprites/player/guanto.png" type="Texture" id=18]
 [ext_resource path="res://scenes/prefabs/prop/Poof.tscn" type="PackedScene" id=19]
+[ext_resource path="res://src/Hitbox.gd" type="Script" id=20]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -81,6 +82,7 @@ radius = 27.0185
 extents = Vector2( 11, 15.5 )
 
 [node name="Player" type="KinematicBody2D"]
+collision_layer = 62
 script = ExtResource( 2 )
 POOF = ExtResource( 19 )
 speed = 8000
@@ -109,6 +111,7 @@ playing = true
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2( 0, -72 )
+script = ExtResource( 20 )
 
 [node name="CollisionShapeHead" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2( 2, -57 )

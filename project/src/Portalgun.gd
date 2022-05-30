@@ -37,14 +37,13 @@ func _spawn_portal(direction: Vector2):
 	p.position = direction*distance + global_position
 	get_parent().get_parent().add_child(p)
 	
-	if previous_portal != null:
+	if is_instance_valid(previous_portal):
 		previous_portal.queue_free()
-		previous_portal.set_destination(p)
 	previous_portal = last_portal
 
 	portal_number = (portal_number+1) % 2
 	p.set_destination(previous_portal)
-	if previous_portal != null:
+	if is_instance_valid(previous_portal):
 		previous_portal.set_destination(p)
 	last_portal = p
 

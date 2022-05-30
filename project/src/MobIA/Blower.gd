@@ -14,13 +14,16 @@ func get_direction():
 	match ia_state:
 		WALK:
 			$AnimatedSprite.animation = "walk"
+			return Vector2.UP
 		ATTACK:
 			$AnimatedSprite.animation = "attack"
-	return Vector2.UP
+			return Vector2.ZERO	
 
 
 func _on_TriggerAttack(body):
-	print("Visto")
-	var b = blow.instance()
-	b.position = $TriggerAttack.global_position
-	get_parent().add_child(b)
+	if ia_state != ATTACK:
+		ia_state = ATTACK
+		var b = blow.instance()
+		b.set_direction(-1)
+		b.position = $TriggerAttack.global_position - Vector2(30,15)
+		get_parent().add_child(b)
