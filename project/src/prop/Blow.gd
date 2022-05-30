@@ -15,7 +15,8 @@ func set_direction(dir):
 
 func _on_hit(body):
 	if body.get_collision_layer() == 4:
+		print("Env: ",body)
 		queue_free()
 	elif body.get_collision_layer() == 1:
 		print(body)
-		#body.take_damage(damage)
+		body.take_damage(damage)

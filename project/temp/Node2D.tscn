@@ -29,7 +29,7 @@ a = Vector2( 902, 527 )
 b = Vector2( 532, 545 )
 
 [node name="Node2D" type="StaticBody2D"]
-collision_layer = 8
+collision_layer = 2147483656
 collision_mask = 63
 
 [node name="Mappatrue" type="Sprite" parent="."]
