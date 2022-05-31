@@ -66,5 +66,9 @@ __meta__ = {
 
 [node name="Raycast" type="CollisionShape2D" parent="TriggerAttack" index="0"]
 shape = SubResource( 4 )
+
+[node name="InvincibilityTimer" parent="." index="5"]
+wait_time = 1.0
+[connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
 [connection signal="area_entered" from="TriggerAttack" to="." method="_on_TriggerAttack"]
 [connection signal="body_entered" from="TriggerAttack" to="." method="_on_TriggerAttack"]

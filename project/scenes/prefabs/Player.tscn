@@ -81,7 +81,9 @@ radius = 27.0185
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 11, 15.5 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"Player",
+]]
 collision_mask = 63
 script = ExtResource( 2 )
 POOF = ExtResource( 19 )
@@ -110,6 +112,7 @@ animation = "idle"
 playing = true
 
 [node name="Hitbox" type="Area2D" parent="."]
+visible = false
 position = Vector2( 0, -72 )
 script = ExtResource( 20 )
 
@@ -121,6 +124,7 @@ shape = SubResource( 4 )
 polygon = PoolVector2Array( 1, -29, 16, 56, -18, 56, -2, -28 )
 
 [node name="CollisionShapeLegs" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -1, -10 )
 shape = SubResource( 5 )
 
@@ -146,3 +150,6 @@ position = Vector2( 47.2855, 1.16061 )
 rotation = 1.52367
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 3 )
+
+[node name="InvincibilityTimer" type="Timer" parent="."]
+wait_time = 0.7

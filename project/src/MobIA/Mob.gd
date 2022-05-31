@@ -1,11 +1,27 @@
 extends Character
 class_name Mob
 
-func get_direction() -> Vector2:
-	#return vector_to_next_point
-	return Vector2(1,0)
+enum {IDLE, WALK, ATTACK}
 
+var ia_state = WALK
+export(bool) var flip = false
 
+func _ready():
+	if flip:
+		scale.x = -1
+
+func _physics_process(delta):
+	._physics_process(delta)
+	_check_collision()
+
+func _check_collision():
+	for index in get_slide_count():
+		var collision = get_slide_collision(index)
+		if collision.collider.is_in_group("Environment"):
+			_on_collision_environment()
+
+func _on_collision_environment():
+	pass
 
 """		
 # Array of points to the player
