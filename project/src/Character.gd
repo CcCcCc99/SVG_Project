@@ -1,7 +1,7 @@
 extends KinematicBody2D
 class_name Character
 
-const POOF: PackedScene = preload("res://scenes/Poof.tscn")
+export(PackedScene) var POOF
 var effect
 enum {NORMAL, SCALEUP, SCALEDOWN}
 
@@ -11,16 +11,21 @@ var hp = 2 setget set_hp
 export(int) var speed
 var velocity = Vector2.ZERO
 
+var i = 0 # for animations
+
 var is_dead: bool = false
+var is_taking_damage = false
 var state = NORMAL
 
 signal scaled_down
 signal scaled_up
 
 func _ready():
+	set_hp(max_hp)
 	effect = POOF.instance()
 	effect.connect("animation_finished", self, "_end_effect")
 	self.connect("scaled_down", self, "_teleport")
+	$InvincibilityTimer.connect("timeout", self, "_on_invincibility_timeout")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -35,6 +40,8 @@ func _physics_process(delta):
 		_scale_down()
 	elif state == SCALEUP:
 		_scale_up()
+	if is_taking_damage:
+		_animate_damage()
 
 func get_direction() -> Vector2:
 	return Vector2.ZERO
@@ -45,8 +52,31 @@ func set_hp(new_hp: int):
 func is_normal() -> bool:
 	return state == NORMAL
 
-func take_damage():
-	pass
+func _reset_aniations():
+	scale = Vector2(1,1)
+	visible = true
+	rotation = 0
+
+
+############################################
+
+# Manage damage
+
+func take_damage(damage: int):
+	if $InvincibilityTimer.is_stopped():
+		$InvincibilityTimer.start()
+		is_taking_damage = true
+		set_hp(hp-damage)
+		print(hp)
+
+func _animate_damage():
+	scale = Vector2(clamp(abs(sin(i)), 0.5, 1), clamp(abs(cos(i)), 0.5, 1))
+	visible = int(i+100) % 2 == 0
+	i+=0.1
+
+func _on_invincibility_timeout():
+	is_taking_damage = false
+	_reset_aniations()
 
 func _spawn_death_effect():
 	add_child(effect)
@@ -60,7 +90,6 @@ func _end_effect():
 
 # Manage teleport
 
-var i = 0
 var destination = null
 
 func teleport_to(dest: Portal2D):
@@ -78,8 +107,7 @@ func _scale_up():
 		i += 0.5
 	else:
 		emit_signal("scaled_up")
-		scale = Vector2(1,1)
-		rotation = 0
+		_reset_aniations()
 		state = NORMAL
 
 func _scale_down():
