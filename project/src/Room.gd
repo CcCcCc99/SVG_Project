@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Node2D
 
 var num_enemies: int
 
@@ -11,7 +11,6 @@ func _ready() -> void:
 	if num_enemies == 0:
 		_open_doors()
 
-#remember to connect the signal from the mob "tree exited" to activate this
 func _on_enemy_killed() -> void:
 	num_enemies -= 1
 	if num_enemies == 0:
@@ -25,7 +24,7 @@ func _close_doors() -> void:
 	for door in door_container.get_children():
 		door.close()
 
-#func _on_PlayerDetector_body_entered(_body: KinematicBody2D) -> void:
-	#player_detector.queue_free()
-	#_close_doors()
-	#spawn enemies
+func _on_PlayerDetector_body_entered(_body: KinematicBody2D) -> void:
+	player_detector.queue_free()
+	_close_doors()
+	#_spawn_enemies()
