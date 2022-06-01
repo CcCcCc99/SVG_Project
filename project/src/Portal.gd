@@ -26,10 +26,10 @@ func set_destination(portal: Portal2D):
 	destination = portal
 
 func _on_Portal_body_entered(body: Node):
-	if is_instance_valid(destination):
-		if body.is_in_group("Environment"):
-			self.queue_free()
-		elif body.is_in_group("Shot"):
+	if body.is_in_group("Environment"):
+		self.queue_free()
+	elif is_instance_valid(destination):
+		if body.is_in_group("Shot"):
 			if body.is_in_portal:
 				body.position.x = destination.position.x
 				body.is_in_portal = false
