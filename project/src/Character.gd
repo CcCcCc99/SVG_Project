@@ -52,7 +52,7 @@ func set_hp(new_hp: int):
 func is_normal() -> bool:
 	return state == NORMAL
 
-func _reset_aniations():
+func _reset_animations():
 	scale = Vector2(1,1)
 	visible = true
 	rotation = 0
@@ -67,7 +67,6 @@ func take_damage(damage: int):
 		$InvincibilityTimer.start()
 		is_taking_damage = true
 		set_hp(hp-damage)
-		print(hp)
 
 func _animate_damage():
 	scale = Vector2(clamp(abs(sin(i)), 0.5, 1), clamp(abs(cos(i)), 0.5, 1))
@@ -76,7 +75,8 @@ func _animate_damage():
 
 func _on_invincibility_timeout():
 	is_taking_damage = false
-	_reset_aniations()
+	_reset_animations()
+	$InvincibilityTimer.stop()
 
 func _spawn_death_effect():
 	add_child(effect)
@@ -84,6 +84,7 @@ func _spawn_death_effect():
 
 func _end_effect():
 	effect.queue_free()
+	
 
 
 ############################################
@@ -107,7 +108,7 @@ func _scale_up():
 		i += 0.5
 	else:
 		emit_signal("scaled_up")
-		_reset_aniations()
+		_reset_animations()
 		state = NORMAL
 
 func _scale_down():
