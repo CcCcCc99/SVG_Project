@@ -1,12 +1,13 @@
 extends Area2D
 class_name Portal2D
 
-const POOF: PackedScene = preload("res://scenes/Poof.tscn")
+export(PackedScene) var POOF
 var effect
 
 export(Array, Color) var colors
 var destination: Portal2D = null
 var is_receiving: bool = false
+var is_sending: bool = false
 
 func _ready():
 	effect = POOF.instance()
@@ -26,9 +27,11 @@ func set_destination(portal: Portal2D):
 
 func _on_Portal_body_entered(body: Node):
 	if is_receiving:
+		destination.is_sending = false
 		is_receiving = false
 		body.start_scaling_up()
 	elif destination != null:
+		is_sending = true
 		destination.is_receiving = true
 		body.teleport_to(destination)
 
