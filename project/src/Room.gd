@@ -9,10 +9,14 @@ onready var player_detector: Area2D = get_node("PlayerDetector")
 
 export var closed: bool = false
 
-export var left_door_enabled: bool = false setget enable_left
-export var right_door_enabled: bool = false setget enable_right
-export var top_door_enabled: bool = false setget enable_top
-export var bottom_door_enabled: bool = false setget enable_bottom
+export var left_door_enabled: bool = false
+export var left_room: PackedScene
+export var right_door_enabled: bool = false
+export var right_door: PackedScene
+export var top_door_enabled: bool = false
+export var top_door: PackedScene
+export var bottom_door_enabled: bool = false
+export var bottom_door: PackedScene
 
 var doors
 

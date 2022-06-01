@@ -1,5 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/Rooms/RoomGenericTutorial.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Rooms/TestRooms/Room0Test.tscn" type="PackedScene" id=2]
 
 [node name="Room2Test" instance=ExtResource( 1 )]
+left_door_enabled = true
+left_room = ExtResource( 2 )
