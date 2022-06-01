@@ -9,14 +9,10 @@ onready var player_detector: Area2D = get_node("PlayerDetector")
 
 export var closed: bool = false
 
-export var left_door_enabled: bool = false
-export var left_room: PackedScene
-export var right_door_enabled: bool = false
-export var right_door: PackedScene
-export var top_door_enabled: bool = false
-export var top_door: PackedScene
-export var bottom_door_enabled: bool = false
-export var bottom_door: PackedScene
+export var left_room: int = -1
+export var right_room: int = -1
+export var top_room: int = -1
+export var bottom_room: int = -1
 
 var doors
 
@@ -29,13 +25,13 @@ func _ready() -> void:
 			_open_doors()
 
 func _enable_doors():
-	if left_door_enabled:
+	if _is_valid_room(left_room):
 		doors[0].enable()
-	if right_door_enabled:
+	if _is_valid_room(right_room):
 		doors[1].enable()
-	if top_door_enabled:
+	if _is_valid_room(top_room):
 		doors[2].enable()
-	if bottom_door_enabled:
+	if _is_valid_room(bottom_room):
 		doors[3].enable()
 
 func _on_enemy_killed() -> void:
@@ -56,18 +52,5 @@ func _on_PlayerDetector_body_entered(_body: KinematicBody2D) -> void:
 	_close_doors()
 	#_spawn_enemies()
 
-func enable_left():
-	doors[0].enable()
-	left_door_enabled = true
-
-func enable_right():
-	doors[1].enable()
-	right_door_enabled = true
-
-func enable_top():
-	doors[2].enable()
-	top_door_enabled = true
-
-func enable_bottom():
-	doors[3].enable()
-	bottom_door_enabled = true
+func _is_valid_room(room: int) -> bool:
+	return room > -1
