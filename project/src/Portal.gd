@@ -28,6 +28,11 @@ func set_destination(portal: Portal2D):
 func _on_Portal_body_entered(body: Node):
 	if body.is_in_group("Environment"):
 		self.queue_free()
+		var pg = get_parent().get_node("Player").get_node("Portalgun")
+		pg.portal_number = (pg.portal_number - 1) % 2
+		pg.get_node("bracelet").modulate = colors[pg.portal_number]
+		if is_instance_valid(destination):
+			destination.queue_free()
 	elif is_instance_valid(destination):
 		if body.is_in_group("Shot"):
 			if body.is_in_portal:
