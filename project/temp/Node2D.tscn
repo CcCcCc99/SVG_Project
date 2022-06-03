@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://scenes/prefabs/traps/Plant.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/prefabs/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
-[ext_resource path="res://scenes/Blower.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SegmentShape2D" id=1]
 
@@ -17,17 +17,10 @@ collision_mask = 63
 position = Vector2( 370, 358 )
 max_hp = 10
 
-[node name="Blower" parent="." instance=ExtResource( 4 )]
-position = Vector2( 782, 328 )
-scale = Vector2( 1, 0.991689 )
-collision_mask = 2147483711
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="FacciaDIGodot" type="StaticBody2D" parent="." groups=[
-"Environment",
-]]
+[node name="FacciaDIGodot" type="StaticBody2D" parent="." groups=["Environment"]]
 position = Vector2( 230, 186 )
 z_index = -1
 collision_layer = 8
@@ -42,9 +35,7 @@ texture = ExtResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FacciaDIGodot"]
 shape = SubResource( 2 )
 
-[node name="FacciaDIGodot2" type="StaticBody2D" parent="." groups=[
-"Environment",
-]]
+[node name="FacciaDIGodot2" type="StaticBody2D" parent="." groups=["Environment"]]
 position = Vector2( 234, 356 )
 z_index = -1
 collision_layer = 8
@@ -58,3 +49,7 @@ texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FacciaDIGodot2"]
 shape = SubResource( 2 )
+
+[node name="Plant" parent="." instance=ExtResource( 1 )]
+position = Vector2( 76, 172 )
+scale = Vector2( 0.3, 0.3 )
