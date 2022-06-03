@@ -6,14 +6,19 @@ onready var collision_area: CollisionShape2D = get_node("Area2D/CollisionShape2D
 
 export var is_vertical: bool = false
 export var is_enabled: bool = false
+export var offset: float = 150
+
+var next: int
+signal entered(next_room)
 
 func _ready() -> void:
 	if not is_enabled:
 		animated_sprite.hide()
 
-func enable() -> void:
+func enable(n: int) -> void:
 	animated_sprite.show()
 	is_enabled = true
+	next = n
 
 func open() -> void:
 	if is_enabled:
@@ -24,15 +29,9 @@ func close() -> void:
 	animated_sprite.play("close")
 	collision_shape.disabled = false
 
+func set_player_position(player: Character):
+	player.position = $SpawnPoint.global_position
+
 func _on_Area2D_body_entered(_body: KinematicBody2D) -> void:
 	if is_instance_valid(_body):
-		if is_vertical == false:
-			if scale.x > 0:
-				_body.position.x -= ((collision_area.shape.extents.x * 2) + (collision_shape.shape.extents.x * 2) + 20)
-			else:
-				_body.position.x += ((collision_area.shape.extents.x * 2) + (collision_shape.shape.extents.x * 2) + 20)
-		else:
-			if scale.y > 0:
-				_body.position.y -= ((collision_area.shape.extents.y * 2) + (collision_shape.shape.extents.y * 2) + 20)
-			else:
-				_body.position.y += ((collision_area.shape.extents.y * 2) + (collision_shape.shape.extents.y * 2) + 20)
+		emit_signal("entered", next)

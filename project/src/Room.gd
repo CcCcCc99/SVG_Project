@@ -4,7 +4,7 @@ class_name Room
 var num_enemies: int
 
 onready var door_container: Node2D = get_node("Doors")
-onready var enemy_positions_container: Node2D = get_node("EnemyPositions")
+#onready var enemy_positions_container: Node2D = get_node("EnemyPositions")
 onready var player_detector: Area2D = get_node("PlayerDetector")
 
 export var closed: bool = false
@@ -16,23 +16,31 @@ export var bottom_room: int = -1
 
 var doors
 
+enum {LEFT = 0, RIGHT = 1, TOP = 2, BOTTOM = 3}
+
+signal exited_room(next_room, door_used)
+
 func _ready() -> void:
 	doors = door_container.get_children()
 	_enable_doors()
 	if not closed:
-		num_enemies = enemy_positions_container.get_child_count()
+		num_enemies = 0#enemy_positions_container.get_child_count()
 		if num_enemies == 0:
 			_open_doors()
 
 func _enable_doors():
-	if _is_valid_room(left_room):
-		doors[0].enable()
-	if _is_valid_room(right_room):
-		doors[1].enable()
-	if _is_valid_room(top_room):
-		doors[2].enable()
-	if _is_valid_room(bottom_room):
-		doors[3].enable()
+	_enable_door(LEFT, left_room)
+	_enable_door(RIGHT, right_room)
+	_enable_door(TOP, top_room)
+	_enable_door(BOTTOM, bottom_room)
+
+func _enable_door(i: int, room):
+	if _is_valid_room(room):
+		doors[i].enable(room)
+		doors[i].connect("entered", self, "_on_player_exit", [i])
+
+func _on_player_exit(next_room: int, door_used: int):
+	emit_signal("exited_room", next_room, door_used)
 
 func _on_enemy_killed() -> void:
 	num_enemies -= 1
@@ -54,3 +62,14 @@ func _on_PlayerDetector_body_entered(_body: KinematicBody2D) -> void:
 
 func _is_valid_room(room: int) -> bool:
 	return room > -1
+
+func set_player_position(player: Character, door_used: int):
+	match door_used:
+		LEFT:
+			doors[RIGHT].set_player_position(player);
+		RIGHT:
+			doors[LEFT].set_player_position(player);
+		TOP:
+			doors[BOTTOM].set_player_position(player);
+		BOTTOM:
+			doors[TOP].set_player_position(player);
