@@ -18,12 +18,9 @@ func set_direction(dir):
 
 func _on_hit(body):
 	if body.is_in_group("Environment"):
-		#print("Env: ",body)
-		speed = 0
 		queue_free()
 		
 	elif body.is_in_group("Player"):
-		#print("Player: ", body)
 		body.take_damage(damage)
 		
 	elif body.is_in_group("Portal"):
