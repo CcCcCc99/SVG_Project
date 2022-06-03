@@ -82,6 +82,7 @@ radius = 27.0185
 extents = Vector2( 11, 15.5 )
 
 [node name="Player" type="KinematicBody2D" groups=[
+"Character",
 "Player",
 ]]
 collision_mask = 63
@@ -112,6 +113,7 @@ animation = "idle"
 playing = true
 
 [node name="Hitbox" type="Area2D" parent="." groups=[
+"Character",
 "Player",
 ]]
 position = Vector2( 0, -72 )

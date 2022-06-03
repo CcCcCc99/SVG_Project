@@ -3,4 +3,5 @@ extends Shot
 func _on_hit(body):
 	._on_hit(body)
 	# push player
-	# TODO scrivere qui il codice che spinge il giocatore
+	if body.is_in_group("Character"):
+		print("Spingi")
