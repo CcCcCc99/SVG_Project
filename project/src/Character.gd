@@ -94,7 +94,7 @@ func _end_effect():
 var destination = null
 
 func teleport_to(dest: Portal2D):
-	if dest != null:
+	if is_instance_valid(dest):
 		destination = dest.position
 		start_scaling_down()
 
