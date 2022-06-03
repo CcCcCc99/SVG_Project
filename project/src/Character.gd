@@ -3,13 +3,13 @@ class_name Character
 
 export(PackedScene) var POOF
 var effect
-enum {NORMAL, SCALEUP, SCALEDOWN}
+enum {NORMAL, INCAPACITATED, SCALEUP, SCALEDOWN}
 
 export(int) var max_hp
 var hp = 2 setget set_hp
 
 export(int) var speed
-var velocity = Vector2.ZERO
+var alt_velocity = Vector2.ZERO
 
 var i = 0 # for animations
 
@@ -29,10 +29,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	velocity = get_direction() * speed
+	var velocity
 	# warning-ignore:return_value_discarded
 	if state == NORMAL:
-		move_and_slide(velocity*delta)
+		velocity = get_direction() * speed
+	else:
+		velocity = alt_velocity
+	move_and_slide(velocity*delta)
 
 # warning-ignore:unused_argument
 func _physics_process(delta):
@@ -124,3 +127,9 @@ func start_scaling_down():
 
 func start_scaling_up():
 	state = SCALEUP
+
+func incapacitate():
+	state = INCAPACITATED
+
+func back_to_normal():
+	state = NORMAL

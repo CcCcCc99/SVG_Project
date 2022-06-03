@@ -49,6 +49,7 @@ playing = true
 
 [node name="HitBox" type="Area2D" parent="." index="3" groups=[
 "Character",
+"Hitbox",
 "Mob",
 ]]
 collision_layer = 2

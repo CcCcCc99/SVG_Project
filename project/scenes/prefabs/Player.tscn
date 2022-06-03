@@ -114,6 +114,7 @@ playing = true
 
 [node name="Hitbox" type="Area2D" parent="." groups=[
 "Character",
+"Hitbox",
 "Player",
 ]]
 position = Vector2( 0, -72 )
