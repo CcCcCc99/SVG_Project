@@ -111,8 +111,9 @@ frames = SubResource( 3 )
 animation = "idle"
 playing = true
 
-[node name="Hitbox" type="Area2D" parent="."]
-visible = false
+[node name="Hitbox" type="Area2D" parent="." groups=[
+"Player",
+]]
 position = Vector2( 0, -72 )
 script = ExtResource( 20 )
 
@@ -124,7 +125,6 @@ shape = SubResource( 4 )
 polygon = PoolVector2Array( 1, -29, 16, 56, -18, 56, -2, -28 )
 
 [node name="CollisionShapeLegs" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( -1, -10 )
 shape = SubResource( 5 )
 
