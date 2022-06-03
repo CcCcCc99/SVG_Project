@@ -1,27 +1,6 @@
-extends Area2D
-
-export var speed = 10000
-export var damage = 3
-
-var direction = -1
-
-var is_in_portal: bool = true
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.s
-func _process(delta):
-	position.x += direction * speed * delta
-
-func set_direction(dir):
-	direction = dir
-	if dir > 0:
-		$AnimatedSprite.flip_h = true
+extends Shot
 
 func _on_hit(body):
-	if body.is_in_group("Environment"):
-		queue_free()
-		
-	elif body.is_in_group("Player"):
-		body.take_damage(damage)
-		
-	elif body.is_in_group("Portal"):
-		body._on_Portal_body_entered(self)
+	_on_hit(body)
+	# push player
+	# TODO scrivere qui il codice che spinge il giocatore
