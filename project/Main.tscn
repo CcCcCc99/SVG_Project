@@ -1,5 +1,12 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/GameManager.gd" type="Script" id=1]
+[ext_resource path="res://scenes/prefabs/Player.tscn" type="PackedScene" id=2]
 
 [node name="Main" type="Node"]
+script = ExtResource( 1 )
+player_scene = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 1.872, 1.808 )
