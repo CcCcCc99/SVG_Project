@@ -26,7 +26,7 @@ func _load_room(r: int, d: int):
 	rooms[r].get_node("Objects").add_child(player)
 	rooms[r].connect("exited_room", self, "_switch_to_room")
 	add_child(rooms[r])
-	rooms[r].set_player_position(player, r)
+	rooms[r].set_player_position(player, d)
 
 func _unload_room():
 	rooms[current_room].get_node("Objects").remove_child(player)
