@@ -25,7 +25,9 @@ collision_mask = 2147483711
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="FacciaDIGodot" type="StaticBody2D" parent="." groups=["Environment"]]
+[node name="FacciaDIGodot" type="StaticBody2D" parent="." groups=[
+"Environment",
+]]
 position = Vector2( 230, 186 )
 z_index = -1
 collision_layer = 8
@@ -40,7 +42,9 @@ texture = ExtResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FacciaDIGodot"]
 shape = SubResource( 2 )
 
-[node name="FacciaDIGodot2" type="StaticBody2D" parent="." groups=["Environment"]]
+[node name="FacciaDIGodot2" type="StaticBody2D" parent="." groups=[
+"Environment",
+]]
 position = Vector2( 234, 356 )
 z_index = -1
 collision_layer = 8
