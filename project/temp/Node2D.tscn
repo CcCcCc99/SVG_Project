@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scenes/prefabs/traps/Plant.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/prefabs/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://scenes/prefabs/traps/BatSpawner.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SegmentShape2D" id=1]
 
@@ -21,7 +21,7 @@ max_hp = 10
 shape = SubResource( 1 )
 
 [node name="FacciaDIGodot" type="StaticBody2D" parent="." groups=["Environment"]]
-position = Vector2( 230, 186 )
+position = Vector2( -294, 92 )
 z_index = -1
 collision_layer = 8
 collision_mask = 2147483711
@@ -36,7 +36,7 @@ texture = ExtResource( 3 )
 shape = SubResource( 2 )
 
 [node name="FacciaDIGodot2" type="StaticBody2D" parent="." groups=["Environment"]]
-position = Vector2( 234, 356 )
+position = Vector2( -168, 529 )
 z_index = -1
 collision_layer = 8
 collision_mask = 2147483711
@@ -50,6 +50,18 @@ texture = ExtResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FacciaDIGodot2"]
 shape = SubResource( 2 )
 
-[node name="Plant" parent="." instance=ExtResource( 1 )]
-position = Vector2( 76, 172 )
-scale = Vector2( 0.3, 0.3 )
+[node name="BatSpawner" parent="." instance=ExtResource( 4 )]
+position = Vector2( 943, -75 )
+
+[node name="BatSpawner2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1103, 528 )
+flipy = false
+
+[node name="BatSpawner3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 76, 679 )
+flipx = false
+flipy = false
+
+[node name="BatSpawner4" parent="." instance=ExtResource( 4 )]
+position = Vector2( -68, 63 )
+flipx = false
