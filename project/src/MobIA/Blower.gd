@@ -27,7 +27,7 @@ func _on_TriggerAttack(body):
 		else:
 			b.set_direction(-1)
 		b.position = $TriggerAttack.global_position - Vector2(30,15)
-		get_parent().add_child(b)
+		get_parent().call_deferred("add_child",b)
 
 func _on_Cooldown_timeout():
 	ia_state = WALK

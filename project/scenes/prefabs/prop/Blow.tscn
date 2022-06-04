@@ -14,7 +14,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 23.0671, 31.3479 )
+extents = Vector2( 23.0671, 14.7081 )
 
 [node name="Blow" type="Area2D" groups=[
 "Shot",
@@ -28,6 +28,7 @@ speed = 500
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 1 )
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
