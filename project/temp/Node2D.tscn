@@ -14,8 +14,12 @@ collision_layer = 2147483656
 collision_mask = 63
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 370, 358 )
+position = Vector2( 391.342, 351.572 )
 max_hp = 10
+
+[node name="Blower" parent="." instance=ExtResource( 4 )]
+position = Vector2( 782, 328 )
+collision_mask = 2147483711
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -49,6 +53,7 @@ texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FacciaDIGodot2"]
 shape = SubResource( 2 )
+
 
 [node name="BatSpawner" parent="." instance=ExtResource( 4 )]
 position = Vector2( 943, -75 )

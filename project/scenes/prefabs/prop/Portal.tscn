@@ -18,7 +18,9 @@ animations = [ {
 radius = 26.9999
 height = 38.0001
 
-[node name="Portal" type="Area2D" groups=["Portal"]]
+[node name="Portal" type="Area2D" groups=[
+"Portal",
+]]
 scale = Vector2( 0.975863, 1 )
 z_index = -2
 collision_layer = 4
@@ -36,5 +38,4 @@ playing = true
 position = Vector2( -4, 2 )
 rotation = 1.5708
 shape = SubResource( 2 )
-
 [connection signal="body_entered" from="." to="." method="_on_Portal_body_entered"]

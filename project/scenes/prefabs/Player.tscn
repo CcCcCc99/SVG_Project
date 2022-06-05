@@ -82,12 +82,13 @@ radius = 27.0185
 extents = Vector2( 11, 15.5 )
 
 [node name="Player" type="KinematicBody2D" groups=[
+"Character",
 "Player",
 ]]
 collision_mask = 63
 script = ExtResource( 2 )
 POOF = ExtResource( 19 )
-speed = 8000
+speed = 15000
 
 [node name="Animator" type="Node2D" parent="."]
 position = Vector2( 3.78, -72 )
@@ -111,8 +112,11 @@ frames = SubResource( 3 )
 animation = "idle"
 playing = true
 
-[node name="Hitbox" type="Area2D" parent="."]
-visible = false
+[node name="Hitbox" type="Area2D" parent="." groups=[
+"Character",
+"Hitbox",
+"Player",
+]]
 position = Vector2( 0, -72 )
 script = ExtResource( 20 )
 
@@ -124,7 +128,6 @@ shape = SubResource( 4 )
 polygon = PoolVector2Array( 1, -29, 16, 56, -18, 56, -2, -28 )
 
 [node name="CollisionShapeLegs" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( -1, -10 )
 shape = SubResource( 5 )
 

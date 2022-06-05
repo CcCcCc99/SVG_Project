@@ -31,19 +31,14 @@ func _on_Portal_body_entered(body: Node):
 		if is_instance_valid(destination):
 			destination._spawn_death_effect()
 	elif is_instance_valid(destination):
-		if body.is_in_group("Shot"):
-			if body.is_in_portal:
-				body.position.x = destination.position.x
-				body.is_in_portal = false
+		if is_receiving:
+			destination.is_sending = false
+			is_receiving = false
+			body.start_scaling_up()
 		else:
-			if is_receiving:
-				destination.is_sending = false
-				is_receiving = false
-				body.start_scaling_up()
-			else:
-				is_sending = true
-				destination.is_receiving = true
-				body.teleport_to(destination)
+			is_sending = true
+			destination.is_receiving = true
+			body.teleport_to(destination)
 
 func _spawn_death_effect():
 	add_child(effect)

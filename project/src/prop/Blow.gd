@@ -1,6 +1,33 @@
 extends Shot
 
+export var push_distance = 8000
+
+var pushed_objs: Dictionary = {}
+
 func _on_hit(body):
 	._on_hit(body)
 	# push player
-	# TODO scrivere qui il codice che spinge il giocatore
+	if body.is_in_group("Character"):
+		if body.is_in_group("Hitbox"):
+			body = body.get_character()
+		_push_character(body)
+
+func _push_character(c: Character):
+	if not pushed_objs.has(c):
+		pushed_objs[c] = 0
+		c.incapacitate()
+
+func _release_character(c: Character):
+	pushed_objs.erase(c)
+	c.back_to_normal()
+	c.alt_velocity = Vector2.ZERO
+
+func _process(delta):
+	if not pushed_objs.empty():
+		var characters = pushed_objs.keys()
+		for c in characters:
+			c.alt_velocity = Vector2(direction * speed * 20, 0)
+			pushed_objs[c] += direction * speed * 20 * delta
+			if abs(pushed_objs[c]) >= push_distance:
+				_release_character(c)
+	
