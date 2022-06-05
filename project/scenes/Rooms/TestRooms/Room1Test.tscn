@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/Rooms/RoomGenericTutorial.tscn" type="PackedScene" id=1]
+
+[node name="Room1Test" instance=ExtResource( 1 )]
+left_room = 0
+top_room = 2
+
+[node name="Collisions" parent="." index="1"]
+collision_layer = 1
+collision_mask = 1

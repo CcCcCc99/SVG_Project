@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Rooms/RoomGenericTutorial.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Blower.tscn" type="PackedScene" id=2]
+
+[node name="Room0Test" instance=ExtResource( 1 )]
+right_room = 1
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 8, -10 )
+
+[node name="Collisions" parent="." index="1"]
+collision_layer = 1
+collision_mask = 1
+
+[node name="CollisionShape2D2" parent="Collisions" index="1"]
+position = Vector2( 2, 0 )
+
+[node name="Blower" parent="Objects" index="0" instance=ExtResource( 2 )]
+position = Vector2( 427.149, -185.878 )

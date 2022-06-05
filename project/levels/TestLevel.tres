@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://src/Level.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Rooms/TestRooms/Room1Test.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Rooms/TestRooms/Room0Test.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Rooms/TestRooms/Room2Test.tscn" type="PackedScene" id=4]
+
+[resource]
+script = ExtResource( 1 )
+start_room = 0
+boss_room = 2
+rooms = [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ]
