@@ -14,24 +14,24 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 101.885, 137.888 )
+extents = Vector2( 23.0671, 14.7081 )
 
-[node name="Blow" type="Area2D" groups=[
-"Shot",
-]]
+[node name="Blow" type="Area2D" groups=["Shot"]]
 position = Vector2( -67.959, -10.9519 )
-scale = Vector2( 0.2, 0.2 )
 collision_layer = 63
 collision_mask = 2147483711
 script = ExtResource( 4 )
 speed = 500
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 1 )
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 84.6354, 38.9768 )
+position = Vector2( 16.9271, 9.57714 )
 shape = SubResource( 2 )
+
 [connection signal="area_entered" from="." to="." method="_on_hit"]
 [connection signal="body_exited" from="." to="." method="_on_hit"]

@@ -1,6 +1,5 @@
 extends Mob
 
-
 export(PackedScene) var blow
 
 var direction = Vector2.UP
@@ -23,11 +22,11 @@ func _on_TriggerAttack(body):
 		$Cooldown.start()
 		var b = blow.instance()
 		if flip:
-			b.set_direction(1)
+			b.set_direction(Vector2(1,0))
 		else:
-			b.set_direction(-1)
+			b.set_direction(Vector2(-1,0))
 		b.position = $TriggerAttack.global_position - Vector2(30,15)
-		get_parent().add_child(b)
+		get_parent().call_deferred("add_child",b)
 
 func _on_Cooldown_timeout():
 	ia_state = WALK
