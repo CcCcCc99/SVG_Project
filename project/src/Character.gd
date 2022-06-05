@@ -3,13 +3,13 @@ class_name Character
 
 export(PackedScene) var POOF
 var effect
-enum {NORMAL, SCALEUP, SCALEDOWN}
+enum {NORMAL, INCAPACITATED, SCALEUP, SCALEDOWN}
 
 export(int) var max_hp
 var hp = 2 setget set_hp
 
 export(int) var speed
-var velocity = Vector2.ZERO
+var alt_velocity = Vector2.ZERO
 
 var i = 0 # for animations
 
@@ -29,10 +29,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	velocity = get_direction() * speed
+	var velocity
 	# warning-ignore:return_value_discarded
 	if state == NORMAL:
-		move_and_slide(velocity*delta)
+		velocity = get_direction() * speed
+	else:
+		velocity = alt_velocity
+	move_and_slide(velocity*delta)
 
 # warning-ignore:unused_argument
 func _physics_process(delta):
@@ -52,7 +55,7 @@ func set_hp(new_hp: int):
 func is_normal() -> bool:
 	return state == NORMAL
 
-func _reset_aniations():
+func _reset_animations():
 	scale = Vector2(1,1)
 	visible = true
 	rotation = 0
@@ -67,7 +70,6 @@ func take_damage(damage: int):
 		$InvincibilityTimer.start()
 		is_taking_damage = true
 		set_hp(hp-damage)
-		print(hp)
 
 func _animate_damage():
 	scale = Vector2(clamp(abs(sin(i)), 0.5, 1), clamp(abs(cos(i)), 0.5, 1))
@@ -76,7 +78,8 @@ func _animate_damage():
 
 func _on_invincibility_timeout():
 	is_taking_damage = false
-	_reset_aniations()
+	_reset_animations()
+	$InvincibilityTimer.stop()
 
 func _spawn_death_effect():
 	add_child(effect)
@@ -84,6 +87,7 @@ func _spawn_death_effect():
 
 func _end_effect():
 	effect.queue_free()
+	
 
 
 ############################################
@@ -93,7 +97,7 @@ func _end_effect():
 var destination = null
 
 func teleport_to(dest: Portal2D):
-	if dest != null:
+	if is_instance_valid(dest):
 		destination = dest.position
 		start_scaling_down()
 
@@ -107,7 +111,7 @@ func _scale_up():
 		i += 0.5
 	else:
 		emit_signal("scaled_up")
-		_reset_aniations()
+		_reset_animations()
 		state = NORMAL
 
 func _scale_down():
@@ -123,3 +127,9 @@ func start_scaling_down():
 
 func start_scaling_up():
 	state = SCALEUP
+
+func incapacitate():
+	state = INCAPACITATED
+
+func back_to_normal():
+	state = NORMAL

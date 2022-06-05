@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "Portal2D",
 "language": "GDScript",
 "path": "res://src/Portal.gd"
+}, {
+"base": "Area2D",
+"class": "Shot",
+"language": "GDScript",
+"path": "res://src/Shot.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
 "FiniteStateMachine": "",
 "Mob": "",
-"Portal2D": ""
+"Portal2D": "",
+"Shot": ""
 }
 
 [application]
