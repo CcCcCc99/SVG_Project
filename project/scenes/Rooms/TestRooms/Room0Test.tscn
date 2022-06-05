@@ -9,12 +9,5 @@ right_room = 1
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 8, -10 )
 
-[node name="Collisions" parent="." index="1"]
-collision_layer = 1
-collision_mask = 1
-
-[node name="CollisionShape2D2" parent="Collisions" index="1"]
-position = Vector2( 2, 0 )
-
 [node name="Blower" parent="Objects" index="0" instance=ExtResource( 2 )]
 position = Vector2( 427.149, -185.878 )

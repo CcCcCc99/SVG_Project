@@ -24,6 +24,7 @@ extents = Vector2( 107, 116 )
 extents = Vector2( 132, 119 )
 
 [node name="Door0V" instance=ExtResource( 3 )]
+is_vertical = true
 
 [node name="AnimatedSprite" parent="." index="0"]
 frames = SubResource( 1 )
