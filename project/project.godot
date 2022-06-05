@@ -38,6 +38,11 @@ _global_script_classes=[ {
 "class": "Room",
 "language": "GDScript",
 "path": "res://src/Room.gd"
+}, {
+"base": "Area2D",
+"class": "Shot",
+"language": "GDScript",
+"path": "res://src/Shot.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
@@ -45,7 +50,8 @@ _global_script_class_icons={
 "Level": "",
 "Mob": "",
 "Portal2D": "",
-"Room": ""
+"Room": "",
+"Shot": ""
 }
 
 [application]
