@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cammina1.png-6ad8bf33fd0db5752b4a64eebfe45cb1.stex"
+path="res://.import/cadavere.png-37f967ee000812238072ee31f92c1847.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/tortoise/cammina1.png"
-dest_files=[ "res://.import/cammina1.png-6ad8bf33fd0db5752b4a64eebfe45cb1.stex" ]
+source_file="res://assets/sprites/tortoise/cadavere.png"
+dest_files=[ "res://.import/cadavere.png-37f967ee000812238072ee31f92c1847.stex" ]
 
 [params]
 
