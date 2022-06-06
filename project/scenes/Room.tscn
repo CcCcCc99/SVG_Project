@@ -10,6 +10,6 @@ z_index = -3
 
 [node name="Doors" type="Node2D" parent="."]
 
-[node name="Collisions" type="StaticBody2D" parent="."]
+[node name="Collisions" type="StaticBody2D" parent="." groups=["Environment"]]
 
 [node name="Objects" type="YSort" parent="."]

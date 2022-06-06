@@ -26,8 +26,8 @@ func _process(delta):
 	if not pushed_objs.empty():
 		var characters = pushed_objs.keys()
 		for c in characters:
-			c.alt_velocity = Vector2(direction * speed * 20, 0)
-			pushed_objs[c] += direction * speed * 20 * delta
+			c.alt_velocity = Vector2(direction.x * speed * 20, 0)
+			pushed_objs[c] += direction.x * speed * 20 * delta
 			if abs(pushed_objs[c]) >= push_distance:
 				_release_character(c)
 	
