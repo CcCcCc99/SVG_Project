@@ -3,6 +3,8 @@ class_name Mob
 
 enum {IDLE, WALK, ATTACK}
 
+export(int) var hp setget set_hp
+
 var ia_state = WALK
 export(bool) var flip = false
 
@@ -13,6 +15,15 @@ func _ready():
 func _physics_process(delta):
 	._physics_process(delta)
 	_check_collision()
+
+func set_hp(new_hp: int):
+	hp = clamp(new_hp, 0, hp)
+
+func take_damage(damage: int):
+	if $InvincibilityTimer.is_stopped():
+		$InvincibilityTimer.start()
+		is_taking_damage = true
+		set_hp(hp - damage)
 
 func _check_collision():
 	for index in get_slide_count():

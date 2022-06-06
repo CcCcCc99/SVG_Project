@@ -2,6 +2,13 @@ extends Character
 
 onready var anim = $Animator
 
+export(int) var hp: int = 6 setget set_hp
+var max_hp: int
+signal hp_changed(old_hp, new_hp)
+
+func _ready():
+	max_hp = hp
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	._process(delta)
@@ -9,6 +16,16 @@ func _process(delta):
 		print("summon ", get_viewport().get_mouse_position())
 	# TODO sistemare questo scempio
 	anim.animate(get_direction() * speed * delta)
+
+func set_hp(new_hp: int):
+	emit_signal("hp_changed", hp, new_hp)
+	hp = new_hp
+
+func take_damage(damage: int):
+	if $InvincibilityTimer.is_stopped():
+		$InvincibilityTimer.start()
+		is_taking_damage = true
+		set_hp(hp - damage)
 
 func get_direction() -> Vector2:
 	# movement

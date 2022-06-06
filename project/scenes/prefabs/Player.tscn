@@ -23,27 +23,27 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 11 ) ],
-"loop": true,
-"name": "front",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "back",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "front",
 "speed": 1.0
 } ]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 10 ) ],
-"loop": true,
-"name": "front",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "back",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "front",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 13 ) ],
@@ -81,10 +81,7 @@ radius = 27.0185
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 11, 15.5 )
 
-[node name="Player" type="KinematicBody2D" groups=[
-"Character",
-"Player",
-]]
+[node name="Player" type="KinematicBody2D" groups=["Character", "Player"]]
 collision_mask = 63
 script = ExtResource( 2 )
 POOF = ExtResource( 19 )
@@ -112,11 +109,7 @@ frames = SubResource( 3 )
 animation = "idle"
 playing = true
 
-[node name="Hitbox" type="Area2D" parent="." groups=[
-"Character",
-"Hitbox",
-"Player",
-]]
+[node name="Hitbox" type="Area2D" parent="." groups=["Character", "Hitbox", "Player"]]
 position = Vector2( 0, -72 )
 script = ExtResource( 20 )
 

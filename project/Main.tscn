@@ -10,3 +10,14 @@ player_scene = ExtResource( 2 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 1.872, 1.808 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+margin_left = -945.0
+margin_top = -525.0
+margin_right = -845.0
+margin_bottom = -425.0
+custom_constants/separation = 5
