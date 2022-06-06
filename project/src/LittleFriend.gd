@@ -15,7 +15,7 @@ func get_direction():
 			return Vector2.ZERO
 
 func _on_collision_environment():
-	direction.x *= -1
+	direction *= -1
 
 func _on_Cooldown_timeout():
 	ia_state = IDLE
