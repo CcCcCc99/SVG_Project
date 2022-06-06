@@ -17,3 +17,11 @@ func _enter_state(_previous_state: int, new_state: int) -> void:
 	match new_state:
 		states.chase:
 			animation_player.play("walk")
+
+
+func _on_Cooldown_timeout():
+	pass # Replace with function body.
+
+
+func _on_TriggerAttack(body):
+	pass # Replace with function body.
