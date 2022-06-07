@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/Mob.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/tortoise/cammina1.png" type="Texture" id=2]
@@ -14,9 +14,6 @@
 [ext_resource path="res://src/LittleFriend.gd" type="Script" id=12]
 [ext_resource path="res://scenes/prefabs/prop/Poof.tscn" type="PackedScene" id=13]
 
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 34.75, 6.75 )
-
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 5 ) ],
@@ -30,13 +27,16 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=9]
-radius = 50.2494
+[sub_resource type="CircleShape2D" id=3]
+radius = 30.4037
 
-[sub_resource type="RayShape2D" id=11]
+[sub_resource type="CapsuleShape2D" id=7]
+height = 11.9674
+
+[sub_resource type="RayShape2D" id=4]
 length = 111.0
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
@@ -49,39 +49,48 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=10]
+[sub_resource type="CircleShape2D" id=6]
 radius = 13.0
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 34.75, 14.3491 )
 
 [node name="Tortoise" instance=ExtResource( 1 )]
 position = Vector2( 0, -21 )
 script = ExtResource( 4 )
 speed = 1000
 
-[node name="CollisionShape2D" parent="." index="0"]
-position = Vector2( 1.75, 37.75 )
-shape = SubResource( 8 )
-
-[node name="AnimatedSprite" parent="." index="1"]
+[node name="AnimatedSprite" parent="." index="0"]
+position = Vector2( 0.374573, 0 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
 animation = "walk"
+frame = 1
 playing = true
 
-[node name="Cooldown" parent="." index="2"]
+[node name="Cooldown" parent="." index="1"]
 wait_time = 30.0
 
-[node name="HitBox" type="Area2D" parent="." index="3" groups=["Character", "Hitbox", "Mob"]]
-position = Vector2( -16, 233 )
+[node name="HitBox" type="Area2D" parent="." index="2" groups=[
+"Character",
+"Hitbox",
+"Mob",
+]]
 script = ExtResource( 10 )
 
 [node name="Body" type="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2( 8, -242 )
-shape = SubResource( 9 )
+position = Vector2( -3.5845, 11.5037 )
+shape = SubResource( 3 )
 
-[node name="InvincibilityTimer" parent="." index="4"]
+[node name="Head" type="CollisionShape2D" parent="HitBox" index="1"]
+position = Vector2( -39.4775, -34.7114 )
+rotation = 0.469494
+shape = SubResource( 7 )
+
+[node name="InvincibilityTimer" parent="." index="3"]
 wait_time = 1.0
 
-[node name="TriggerAttack" type="Area2D" parent="." index="5"]
+[node name="TriggerAttack" type="Area2D" parent="." index="4"]
 position = Vector2( -62, 6 )
 rotation = 1.5708
 script = ExtResource( 11 )
@@ -90,9 +99,13 @@ __meta__ = {
 }
 
 [node name="Raycast" type="CollisionShape2D" parent="TriggerAttack" index="0"]
-shape = SubResource( 11 )
+shape = SubResource( 4 )
 
-[node name="LittleFriend" type="KinematicBody2D" parent="." index="6" groups=["Character", "Mob"]]
+[node name="LittleFriend" type="KinematicBody2D" parent="." index="5" groups=[
+"Character",
+"Mob",
+]]
+position = Vector2( -2.12109, -27.9787 )
 script = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true
@@ -101,21 +114,26 @@ POOF = ExtResource( 13 )
 speed = 10000
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="LittleFriend" index="0"]
+position = Vector2( -0.707092, 26.5165 )
 scale = Vector2( 0.2, 0.2 )
-frames = SubResource( 7 )
+frames = SubResource( 5 )
 animation = "attack"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LittleFriend" index="1"]
-position = Vector2( 2, -28 )
-shape = SubResource( 10 )
+position = Vector2( -0.121338, 0.991379 )
+shape = SubResource( 6 )
 
 [node name="Cooldown" type="Timer" parent="LittleFriend" index="2"]
-wait_time = 30.0
+wait_time = 3.0
 
 [node name="InvincibilityTimer" type="Timer" parent="LittleFriend" index="3"]
 one_shot = true
 
+[node name="CollisionShape2D" parent="." index="6"]
+position = Vector2( -0.0179901, 32.3895 )
+shape = SubResource( 1 )
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
 [connection signal="area_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
 [connection signal="body_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
