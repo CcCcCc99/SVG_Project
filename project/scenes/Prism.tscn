@@ -16,14 +16,11 @@ height = 150.0
 [sub_resource type="RayShape2D" id=3]
 length = 594.0
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[node name="Prism" type="KinematicBody2D"]
 position = Vector2( 1, 1 )
 collision_layer = 2
 collision_mask = 63
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 POOF = ExtResource( 3 )
 speed = 4000
 jolt = ExtResource( 4 )
@@ -33,7 +30,7 @@ position = Vector2( -90, -31 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -10, 153 )
+position = Vector2( -1.01013, 227.915 )
 shape = SubResource( 1 )
 
 [node name="Cooldown" type="Timer" parent="."]
@@ -55,7 +52,6 @@ __meta__ = {
 [node name="Raycast" type="CollisionShape2D" parent="TriggerAttack"]
 rotation = 1.5708
 shape = SubResource( 3 )
-
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
 [connection signal="area_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
 [connection signal="body_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]

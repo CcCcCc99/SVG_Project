@@ -20,7 +20,9 @@ max_hp = 10
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="FacciaDIGodot" type="StaticBody2D" parent="." groups=["Environment"]]
+[node name="FacciaDIGodot" type="StaticBody2D" parent="." groups=[
+"Environment",
+]]
 position = Vector2( 281, 142 )
 z_index = -1
 collision_layer = 8
@@ -35,7 +37,9 @@ texture = ExtResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FacciaDIGodot"]
 shape = SubResource( 2 )
 
-[node name="FacciaDIGodot2" type="StaticBody2D" parent="." groups=["Environment"]]
+[node name="FacciaDIGodot2" type="StaticBody2D" parent="." groups=[
+"Environment",
+]]
 position = Vector2( 903, 148 )
 z_index = -1
 collision_layer = 8

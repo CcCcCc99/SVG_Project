@@ -14,10 +14,7 @@ func get_direction():
 
 func _on_collision_environment():
 	direction.x *= -1
-	if direction.x == -1:
-		$Sprite.flip_h = false
-	else:
-		$Sprite.flip_h = true
+	scale.x *= -1
 
 func _walk():
 	i += 0.08
