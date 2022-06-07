@@ -37,3 +37,9 @@ func prev():
 	active_slot = i if i >= 0 else enabled_slots - 1
 	slots[active_slot].activate()
 	return slots[active_slot]
+
+func select(s: int):
+	if s < enabled_slots:
+		slots[active_slot].deactivate()
+		active_slot = s
+		slots[active_slot].activate()

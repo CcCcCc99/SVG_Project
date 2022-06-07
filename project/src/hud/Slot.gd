@@ -14,6 +14,7 @@ func enable():
 
 func disable():
 	is_enabled = false
+	#_free_summon()
 	hide()
 
 func activate():
@@ -23,6 +24,15 @@ func activate():
 func deactivate():
 	is_active = false
 	_set_color()
+
+func set_content(summon: Panel):
+	#_free_summon()
+	print(summon)
+	add_child(summon)
+
+func _free_summon():
+	for i in get_children():
+		i.queue_free()
 
 func _set_color():
 	var col
