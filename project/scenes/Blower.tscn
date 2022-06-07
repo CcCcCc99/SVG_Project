@@ -14,14 +14,14 @@ extents = Vector2( 20.3032, 13.8181 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "attack",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "attack",
 "speed": 5.0
 } ]
 
@@ -48,7 +48,11 @@ frames = SubResource( 2 )
 animation = "attack"
 playing = true
 
-[node name="HitBox" type="Area2D" parent="." index="3" groups=["Character", "Hitbox", "Mob"]]
+[node name="HitBox" type="Area2D" parent="." index="3" groups=[
+"Character",
+"Hitbox",
+"Mob",
+]]
 collision_layer = 2
 collision_mask = 63
 script = ExtResource( 7 )
@@ -72,7 +76,6 @@ shape = SubResource( 4 )
 
 [node name="InvincibilityTimer" parent="." index="5"]
 wait_time = 1.0
-
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
 [connection signal="area_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
 [connection signal="body_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]

@@ -56,4 +56,3 @@ shape = SubResource( 2 )
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
 position = Vector2( 470, 90 )
-scale = Vector2( 0.3, 0.3 )
