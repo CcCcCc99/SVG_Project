@@ -5,6 +5,9 @@ export(PackedScene) var POOF
 var effect
 enum {NORMAL, INCAPACITATED, SCALEUP, SCALEDOWN}
 
+export(int) var max_hp: int
+var hp: int setget set_hp, get_hp
+
 export(int) var speed
 var alt_velocity = Vector2.ZERO
 
@@ -18,6 +21,7 @@ signal scaled_down
 signal scaled_up
 
 func _ready():
+	set_hp(max_hp)
 	effect = POOF.instance()
 	effect.connect("animation_finished", self, "_end_effect")
 	self.connect("scaled_down", self, "_teleport")
@@ -45,6 +49,12 @@ func _physics_process(delta):
 func get_direction() -> Vector2:
 	return Vector2.ZERO
 
+func set_hp(new_hp: int):
+	hp = clamp(new_hp, 0, max_hp)
+
+func get_hp() -> int:
+	return hp
+
 func is_normal() -> bool:
 	return state == NORMAL
 
@@ -57,6 +67,12 @@ func _reset_animations():
 ############################################
 
 # Manage damage
+
+func take_damage(damage: int):
+	if $InvincibilityTimer.is_stopped():
+		$InvincibilityTimer.start()
+		is_taking_damage = true
+		set_hp(hp - damage)
 
 func _animate_damage():
 	scale = Vector2(clamp(abs(sin(i)), 0.5, 1), clamp(abs(cos(i)), 0.5, 1))

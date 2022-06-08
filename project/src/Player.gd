@@ -2,12 +2,7 @@ extends Character
 
 onready var anim = $Animator
 
-export(int) var hp: int = 6 setget set_hp
-var max_hp: int
 signal hp_changed(old_hp, new_hp)
-
-func _ready():
-	max_hp = hp
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -18,14 +13,14 @@ func _process(delta):
 	anim.animate(get_direction() * speed * delta)
 
 func set_hp(new_hp: int):
-	emit_signal("hp_changed", hp, new_hp)
-	hp = new_hp
+	var old_hp = get_hp()
+	if old_hp != new_hp:
+		.set_hp(new_hp)
+		emit_signal("hp_changed", old_hp, get_hp())
 
-func take_damage(damage: int):
-	if $InvincibilityTimer.is_stopped():
-		$InvincibilityTimer.start()
-		is_taking_damage = true
-		set_hp(hp - damage)
+func set_max_hp(new_max_hp: int):
+	max_hp = new_max_hp
+	set_hp(new_max_hp)
 
 func get_direction() -> Vector2:
 	# movement

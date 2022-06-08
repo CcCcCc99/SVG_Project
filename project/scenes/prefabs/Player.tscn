@@ -23,27 +23,27 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "back",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 11 ) ],
 "loop": true,
 "name": "front",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "back",
 "speed": 1.0
 } ]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 14 ) ],
-"loop": true,
-"name": "back",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 10 ) ],
 "loop": true,
 "name": "front",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "back",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 13 ) ],
@@ -54,14 +54,14 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 17 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "left",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 9 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 12 ) ],
@@ -85,6 +85,7 @@ extents = Vector2( 11, 15.5 )
 collision_mask = 63
 script = ExtResource( 2 )
 POOF = ExtResource( 19 )
+max_hp = 6
 speed = 15000
 
 [node name="Animator" type="Node2D" parent="."]

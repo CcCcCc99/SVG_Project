@@ -34,6 +34,7 @@ length = 250.0
 [node name="Blower" instance=ExtResource( 1 )]
 position = Vector2( 0, 1 )
 script = ExtResource( 4 )
+max_hp = 3
 speed = 1000
 blow = ExtResource( 6 )
 
@@ -48,11 +49,7 @@ frames = SubResource( 2 )
 animation = "attack"
 playing = true
 
-[node name="HitBox" type="Area2D" parent="." index="3" groups=[
-"Character",
-"Hitbox",
-"Mob",
-]]
+[node name="HitBox" type="Area2D" parent="." index="3" groups=["Character", "Hitbox", "Mob"]]
 collision_layer = 2
 collision_mask = 63
 script = ExtResource( 7 )
