@@ -56,7 +56,6 @@ animations = [ {
 radius = 13.0
 
 [node name="Tortoise" instance=ExtResource( 1 )]
-position = Vector2( 0, -21 )
 script = ExtResource( 4 )
 speed = 1000
 
@@ -65,7 +64,6 @@ position = Vector2( -0.0179901, 32.3895 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" parent="." index="1"]
-position = Vector2( 0.374573, 0 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
 animation = "walk"
@@ -85,7 +83,7 @@ rotation = 0.469494
 shape = SubResource( 7 )
 
 [node name="Cooldown" parent="." index="3"]
-wait_time = 10.0
+wait_time = 5.0
 
 [node name="TriggerAttack" type="Area2D" parent="." index="4"]
 position = Vector2( -62, 6 )
@@ -99,7 +97,6 @@ __meta__ = {
 shape = SubResource( 4 )
 
 [node name="LittleFriend" type="KinematicBody2D" parent="." index="5" groups=["Character", "Mob"]]
-position = Vector2( -2.12109, -27.9787 )
 script = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true
@@ -108,7 +105,6 @@ POOF = ExtResource( 13 )
 speed = 10000
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="LittleFriend" index="0"]
-position = Vector2( -0.707092, 26.5165 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 5 )
 animation = "attack"
@@ -116,11 +112,11 @@ frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LittleFriend" index="1"]
-position = Vector2( -0.121338, 0.991379 )
+position = Vector2( 1, -27 )
 shape = SubResource( 6 )
 
 [node name="Cooldown" type="Timer" parent="LittleFriend" index="2"]
-wait_time = 10.0
+wait_time = 5.0
 
 [node name="InvincibilityTimer" type="Timer" parent="LittleFriend" index="3"]
 one_shot = true
