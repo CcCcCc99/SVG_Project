@@ -1,6 +1,7 @@
 extends Mob
 
 var direction = Vector2.UP
+var is_returned: bool = true
 
 func get_direction():
 	match ia_state:
@@ -9,6 +10,10 @@ func get_direction():
 			return direction
 		IDLE:
 			$AnimatedSprite.animation = "idle"
+			if is_returned:
+				ia_state = WALK
+				$LittleFriend.ia_state = IDLE
+				print("lello")
 			return Vector2.ZERO
 
 func _on_collision_environment():
@@ -19,6 +24,7 @@ func _on_TriggerAttack(body):
 		ia_state = IDLE
 		$Cooldown.start()
 		$LittleFriend.ia_state = ATTACK
+		is_returned = false
 
 func _on_Cooldown_timeout():
-	ia_state = WALK
+	$LittleFriend.is_returning = true
