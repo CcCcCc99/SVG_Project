@@ -2,6 +2,7 @@ extends Mob
 
 var direction = Vector2(-1,-1)
 var is_returning: bool = false
+var last_position: Vector2 = position
 
 func _ready():
 	ia_state = IDLE
@@ -31,9 +32,12 @@ func get_direction():
 			return Vector2.ZERO
 
 func _on_collision_environment():
-	if (not is_returning):
+	if (get_parent().is_returned):
 		get_parent().direction.y *= -1
 	else:
+		if (position.x > last_position.x - 10 and position.x < last_position.x + 10):
+			direction.x *= -1
+		last_position = position
 		direction.y *= -1
 
 func _on_Cooldown_timeout():

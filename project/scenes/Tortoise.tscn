@@ -67,7 +67,6 @@ shape = SubResource( 1 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
 animation = "walk"
-frame = 1
 playing = true
 
 [node name="HitBox" type="Area2D" parent="." index="2" groups=["Character", "Hitbox", "Mob"]]
@@ -83,7 +82,7 @@ rotation = 0.469494
 shape = SubResource( 7 )
 
 [node name="Cooldown" parent="." index="3"]
-wait_time = 5.0
+wait_time = 20.0
 
 [node name="TriggerAttack" type="Area2D" parent="." index="4"]
 position = Vector2( -62, 6 )
@@ -108,7 +107,6 @@ speed = 10000
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 5 )
 animation = "attack"
-frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LittleFriend" index="1"]
@@ -116,7 +114,7 @@ position = Vector2( 1, -27 )
 shape = SubResource( 6 )
 
 [node name="Cooldown" type="Timer" parent="LittleFriend" index="2"]
-wait_time = 5.0
+wait_time = 20.0
 
 [node name="InvincibilityTimer" type="Timer" parent="LittleFriend" index="3"]
 one_shot = true

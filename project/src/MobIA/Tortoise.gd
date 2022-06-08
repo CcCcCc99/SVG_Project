@@ -13,7 +13,6 @@ func get_direction():
 			if is_returned:
 				ia_state = WALK
 				$LittleFriend.ia_state = IDLE
-				print("lello")
 			return Vector2.ZERO
 
 func _on_collision_environment():
