@@ -1,18 +1,18 @@
 extends HBoxContainer
 
-var mana_full = preload("res://icon.png")
-var mana_empty = preload("res://assets/portaaperta_orizzontale.png")
+var mana_full = preload("res://assets/mana_pieno.png")
+var mana_empty = preload("res://assets/mana_vuoto.png")
 var current_point_of_mana: int = 0
 
 var player
 
-func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		player.set_mana(player.get_mana() - 1)
-	if Input.is_action_just_pressed("ui_down"):
-		player.set_mana(player.get_mana() + 1)
-	if Input.is_action_just_pressed("ui_page_down"):
-		player.set_max_mana(player.max_mana + 1)
+#func _process(delta):
+	#if Input.is_action_just_pressed("ui_accept"):
+		#player.set_mana(player.get_mana() - 1)
+	#if Input.is_action_just_pressed("ui_down"):
+		#player.set_mana(player.get_mana() + 1)
+	#if Input.is_action_just_pressed("ui_page_down"):
+		#player.set_max_mana(player.max_mana + 1)
 
 func set_player(p: Character) -> void:
 	player = p
