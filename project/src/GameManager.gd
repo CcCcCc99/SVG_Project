@@ -8,7 +8,6 @@ var testlLevel = preload("res://levels/TestLevel.tres")
 var rooms: Array
 var current_room: int
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	player = player_scene.instance()
 	_load_level()
