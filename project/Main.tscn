@@ -15,6 +15,7 @@ zoom = Vector2( 1.872, 1.808 )
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="ManaBar" type="HBoxContainer" parent="HUD"]
+margin_top = 70.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = 110.0
 script = ExtResource( 3 )

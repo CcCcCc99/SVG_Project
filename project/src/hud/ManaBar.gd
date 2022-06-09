@@ -6,6 +6,14 @@ var current_point_of_mana: int = 0
 
 var player
 
+func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		player.set_mana(player.get_mana() - 1)
+	if Input.is_action_just_pressed("ui_down"):
+		player.set_mana(player.get_mana() + 1)
+	if Input.is_action_just_pressed("ui_page_down"):
+		player.set_max_mana(player.max_mana + 1)
+
 func set_player(p: Character) -> void:
 	player = p
 	player.connect("mana_changed", self, "_change_mana_bar")
@@ -24,13 +32,22 @@ func _add_mana() -> void:
 func _change_mana_bar(old_mana: int, new_mana: int) -> void:
 	if get_child_count() != 0:
 		if new_mana > old_mana:
-			#_gain_mana()
-			pass
+			_gain_mana(old_mana, new_mana)
 		else:
-			#_lose_mana(old_mana, new_mana)
-			pass
+			_lose_mana(old_mana, new_mana)
 	else:
 		_add_mana()
+
+func _gain_mana(old_mana: int, new_mana: int) -> void:
+	while(new_mana > old_mana):
+		current_point_of_mana += 1
+		if current_point_of_mana == get_child_count():
+			_add_mana()
+			old_mana = new_mana
+		else:
+			var magic = get_child(current_point_of_mana)
+			magic.texture = mana_full
+		old_mana += 1
 
 func _lose_mana(old_mana: int, new_mana: int) -> void:
 	while(old_mana > new_mana):
