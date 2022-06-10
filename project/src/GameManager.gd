@@ -3,8 +3,8 @@ extends Node
 export(PackedScene) var player_scene
 var player
 
-onready var mana_bar = get_node("HUD/ManaBar")
 onready var health_bar = get_node("HUD/HealthBar")
+onready var mana_bar = get_node("HUD/ManaBar")
 
 var testlLevel = preload("res://levels/TestLevel.tres")
 
@@ -13,8 +13,8 @@ var current_room: int
 
 func _ready():
 	player = player_scene.instance()
-	mana_bar.set_player(player)
 	health_bar.set_player(player)
+	mana_bar.set_player(player)
 	_load_level()
 
 func _load_level():

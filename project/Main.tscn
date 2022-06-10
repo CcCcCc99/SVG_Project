@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/GameManager.gd" type="Script" id=1]
 [ext_resource path="res://scenes/prefabs/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/hud/ActionBar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/hud/HealthBar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/hud/ManaBar.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -16,5 +17,7 @@ zoom = Vector2( 1.872, 1.808 )
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="HealthBar" parent="HUD" instance=ExtResource( 4 )]
+
+[node name="ManaBar" parent="HUD" instance=ExtResource( 5 )]
 
 [node name="ActionBar" parent="HUD" instance=ExtResource( 3 )]
