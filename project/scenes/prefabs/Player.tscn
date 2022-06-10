@@ -55,6 +55,11 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "idle",
+"speed": 1.0
+}, {
 "frames": [ ExtResource( 9 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "right",
@@ -65,10 +70,10 @@ animations = [ {
 "name": "left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ) ],
+"frames": [ ExtResource( 17 ), ExtResource( 16 ) ],
 "loop": true,
-"name": "idle",
-"speed": 1.0
+"name": "left",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 6 ) ],
 "loop": true,
@@ -88,6 +93,7 @@ script = ExtResource( 2 )
 POOF = ExtResource( 19 )
 max_hp = 6
 speed = 15000
+max_mana = 5
 
 [node name="Animator" type="Node2D" parent="."]
 position = Vector2( 7.908, -112.982 )
