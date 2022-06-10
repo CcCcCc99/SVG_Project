@@ -34,6 +34,5 @@ playing = true
 visible = false
 position = Vector2( -17, -17.5 )
 shape = SubResource( 2 )
-
 [connection signal="area_entered" from="." to="." method="_on_Bat_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Bat_body_entered"]
