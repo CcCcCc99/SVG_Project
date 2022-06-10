@@ -48,7 +48,6 @@ frames = SubResource( 2 )
 animation = "attack"
 playing = true
 
-
 [node name="HitBox" type="Area2D" parent="." index="2" groups=[
 "Character",
 "Hitbox",
