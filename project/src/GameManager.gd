@@ -3,6 +3,9 @@ extends Node
 export(PackedScene) var player_scene
 var player
 
+onready var health_bar = get_node("HUD/HealthBar")
+
+
 var testlLevel = preload("res://levels/TestLevel.tres")
 
 var rooms: Array
@@ -11,6 +14,7 @@ var current_room: int
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = player_scene.instance()
+	health_bar.set_player(player)
 	_load_level()
 
 func _load_level():
