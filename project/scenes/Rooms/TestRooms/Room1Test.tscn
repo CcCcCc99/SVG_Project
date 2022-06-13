@@ -2,8 +2,11 @@
 
 [ext_resource path="res://scenes/Rooms/RoomGenericTutorial.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/prefabs/traps/Plant.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Tortoise.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/prefabs/mob/Tortoise.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/prefabs/prop/Poof.tscn" type="PackedScene" id=4]
+
+
+
 
 [node name="Room1Test" instance=ExtResource( 1 )]
 left_room = 0

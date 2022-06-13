@@ -1,14 +1,18 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/animations/PlayerOldLegs.tres" type="SpriteFrames" id=1]
-[ext_resource path="res://src/Player.gd" type="Script" id=2]
+[ext_resource path="res://src/player/Player.gd" type="Script" id=2]
 [ext_resource path="res://scenes/prefabs/prop/Portalgun.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/animations/PlayerOldBody.tres" type="SpriteFrames" id=4]
 [ext_resource path="res://assets/animations/PlayerOldHead.tres" type="SpriteFrames" id=5]
-[ext_resource path="res://src/PlayerAnimator.gd" type="Script" id=15]
+[ext_resource path="res://src/player/PlayerAnimator.gd" type="Script" id=15]
 [ext_resource path="res://scenes/prefabs/prop/Poof.tscn" type="PackedScene" id=19]
-[ext_resource path="res://src/Hitbox.gd" type="Script" id=20]
-[ext_resource path="res://src/Assistant.gd" type="Script" id=21]
+[ext_resource path="res://src/utility/Hitbox.gd" type="Script" id=20]
+[ext_resource path="res://src/player/Assistant.gd" type="Script" id=21]
+
+
+
+
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 42.337

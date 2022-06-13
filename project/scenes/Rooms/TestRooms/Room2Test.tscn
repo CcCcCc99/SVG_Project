@@ -8,5 +8,3 @@ bottom_room = 1
 
 [node name="BatSpawner" parent="Objects" index="0" instance=ExtResource( 2 )]
 position = Vector2( -1.53998, -0.709015 )
-flipx = false
-flipy = false

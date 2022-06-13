@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Character.gd"
 }, {
-"base": "Node",
-"class": "FiniteStateMachine",
-"language": "GDScript",
-"path": "res://src/FiniteStateMachine.gd"
-}, {
 "base": "Resource",
 "class": "Level",
 "language": "GDScript",
@@ -32,7 +27,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Portal2D",
 "language": "GDScript",
-"path": "res://src/Portal.gd"
+"path": "res://src/prop/Portal.gd"
 }, {
 "base": "Node2D",
 "class": "Room2D",
@@ -46,7 +41,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Character": "",
-"FiniteStateMachine": "",
 "Level": "",
 "Mob": "",
 "Portal2D": "",

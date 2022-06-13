@@ -1,26 +1,26 @@
 [gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/Mob.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/sprites/tortoise/cammina1.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/tortoise/cammina2.png" type="Texture" id=3]
-[ext_resource path="res://src/MobIA/Tortoise.gd" type="Script" id=4]
+[ext_resource path="res://scenes/prefabs/prop/Poof.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/sprites/tortoise/cammina1.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/tortoise/cammina2.png" type="Texture" id=4]
 [ext_resource path="res://assets/sprites/tortoise/idle.png" type="Texture" id=5]
-[ext_resource path="res://assets/sprites/tortoise/cutie.png" type="Texture" id=6]
-[ext_resource path="res://assets/sprites/tortoise/cutie2.png" type="Texture" id=7]
-[ext_resource path="res://assets/sprites/tortoise/cutie3.png" type="Texture" id=8]
-[ext_resource path="res://assets/sprites/tortoise/cutie4.png" type="Texture" id=9]
-[ext_resource path="res://src/Hitbox.gd" type="Script" id=10]
-[ext_resource path="res://src/TriggerAttack.gd" type="Script" id=11]
-[ext_resource path="res://src/LittleFriend.gd" type="Script" id=12]
-[ext_resource path="res://scenes/prefabs/prop/Poof.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/sprites/tortoise/cutie3.png" type="Texture" id=6]
+[ext_resource path="res://src/MobIA/Tortoise.gd" type="Script" id=7]
+[ext_resource path="res://assets/sprites/tortoise/cutie.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/tortoise/cutie2.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/tortoise/cutie4.png" type="Texture" id=10]
+[ext_resource path="res://src/utility/Hitbox.gd" type="Script" id=11]
+[ext_resource path="res://src/utility/TriggerAttack.gd" type="Script" id=12]
+[ext_resource path="res://src/prop/LittleFriend.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 76.896, 39.8492 )
 
-[sub_resource type="RayShape2D" id=5]
+[sub_resource type="RayShape2D" id=2]
 length = 800.0
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 83.3938, 43.713 )
 
 [sub_resource type="SpriteFrames" id=4]
@@ -30,40 +30,40 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "attack",
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=6]
 radius = 29.6198
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="CircleShape2D" id=7]
 radius = 41.5202
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=8]
 radius = 73.2186
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=9]
 radius = 16.6954
 height = 28.8621
 
 [node name="Tortoise" instance=ExtResource( 1 )]
-script = ExtResource( 4 )
+script = ExtResource( 7 )
 speed = 1000
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -73,17 +73,17 @@ shape = SubResource( 1 )
 [node name="TriggerAttack" type="Area2D" parent="." index="1"]
 position = Vector2( -112.634, -210.308 )
 rotation = 1.5708
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Raycast" type="CollisionShape2D" parent="TriggerAttack" index="0"]
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyChecker" index="0"]
 position = Vector2( 4.83035, -61.8575 )
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="AnimatedSprite" parent="." index="3"]
 position = Vector2( 7, -129 )
@@ -97,23 +97,23 @@ playing = true
 "Mob",
 ]]
 position = Vector2( 6.81036, -175.387 )
-script = ExtResource( 12 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_group_": true
 }
-POOF = ExtResource( 13 )
+POOF = ExtResource( 2 )
 speed = 10000
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="LittleFriend" index="0"]
 position = Vector2( 1.33484, 49.3891 )
 scale = Vector2( 0.45, 0.45 )
-frames = SubResource( 6 )
+frames = SubResource( 5 )
 animation = "attack"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LittleFriend" index="1"]
 position = Vector2( 5.00452, -16.9887 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="Cooldown" type="Timer" parent="LittleFriend" index="2"]
 wait_time = 20.0
@@ -125,7 +125,7 @@ one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LittleFriend/BodyChecker" index="0"]
 position = Vector2( 6, -14.9802 )
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 
 [node name="Cooldown" parent="." index="5"]
 wait_time = 20.0
@@ -135,16 +135,16 @@ wait_time = 20.0
 "Hitbox",
 "Mob",
 ]]
-script = ExtResource( 10 )
+script = ExtResource( 11 )
 
 [node name="Body" type="CollisionShape2D" parent="HitBox" index="0"]
 position = Vector2( 1.70722, -94.3368 )
-shape = SubResource( 2 )
+shape = SubResource( 8 )
 
 [node name="Head" type="CollisionShape2D" parent="HitBox" index="1"]
 position = Vector2( -84.4459, -208.515 )
 rotation = 0.469494
-shape = SubResource( 3 )
+shape = SubResource( 9 )
 
 [node name="InvincibilityTimer" parent="." index="7"]
 wait_time = 1.0
