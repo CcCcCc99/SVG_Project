@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/ombra.png" type="Texture" id=1]
+
+[node name="Shadow" type="Sprite"]
+modulate = Color( 1, 1, 1, 0.392157 )
+scale = Vector2( 0.6, 0.6 )
+z_index = -1
+texture = ExtResource( 1 )

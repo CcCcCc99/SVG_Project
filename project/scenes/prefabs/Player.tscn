@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/player/Player.gd" type="Script" id=2]
@@ -6,25 +6,31 @@
 [ext_resource path="res://assets/animations/PlayerOldBody.tres" type="SpriteFrames" id=4]
 [ext_resource path="res://assets/animations/PlayerOldHead.tres" type="SpriteFrames" id=5]
 [ext_resource path="res://assets/animations/PlayerOldLegs.tres" type="SpriteFrames" id=6]
+[ext_resource path="res://scenes/corps/BlowerCorpse.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/player/PlayerAnimator.gd" type="Script" id=15]
 [ext_resource path="res://src/utility/Hitbox.gd" type="Script" id=20]
 [ext_resource path="res://src/player/Assistant.gd" type="Script" id=21]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 43.5115
-
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 18.2024, 26.3791 )
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 43.5115
 
 [node name="Player" groups=[
 "Player",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+CORPSE = ExtResource( 7 )
 max_hp = 6
 speed = 15000
 max_mana = 5
 
-[node name="Animator" type="Node2D" parent="." index="0"]
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2( -0.445465, -20.9907 )
+shape = SubResource( 2 )
+
+[node name="Animator" type="Node2D" parent="." index="2"]
 position = Vector2( 7.51965, -114.984 )
 scale = Vector2( 0.6, 0.6 )
 script = ExtResource( 15 )
@@ -44,7 +50,7 @@ animation = "front"
 frames = ExtResource( 6 )
 animation = "idle"
 
-[node name="Hitbox" type="Area2D" parent="." index="1" groups=[
+[node name="Hitbox" type="Area2D" parent="." index="3" groups=[
 "Character",
 "Hitbox",
 "Player",
@@ -58,14 +64,13 @@ polygon = PoolVector2Array( 1.5, -158.5, -26, -29, 25.5, -27.5 )
 position = Vector2( 5, -204 )
 shape = SubResource( 1 )
 
-[node name="Portalgun" parent="." index="2" instance=ExtResource( 3 )]
-
-[node name="CollisionShape2D" parent="." index="3"]
-position = Vector2( -0.445465, -20.9907 )
-shape = SubResource( 2 )
+[node name="Portalgun" parent="." index="4" instance=ExtResource( 3 )]
 
 [node name="InvincibilityTimer" parent="." index="5"]
 wait_time = 1.2
 
-[node name="AssistantDummySystem" type="Node" parent="." index="6"]
+[node name="Shadow" parent="." index="6"]
+scale = Vector2( 0.2, 0.2 )
+
+[node name="AssistantDummySystem" type="Node" parent="." index="7"]
 script = ExtResource( 21 )

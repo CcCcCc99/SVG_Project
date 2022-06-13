@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Character.gd" type="Script" id=1]
 [ext_resource path="res://scenes/prefabs/prop/Poof.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/prop/Shadow.tscn" type="PackedScene" id=3]
 
 [node name="Character" type="KinematicBody2D" groups=[
 "Character",
@@ -16,3 +17,5 @@ POOF = ExtResource( 2 )
 [node name="InvincibilityTimer" type="Timer" parent="."]
 wait_time = 0.7
 one_shot = true
+
+[node name="Shadow" parent="." instance=ExtResource( 3 )]

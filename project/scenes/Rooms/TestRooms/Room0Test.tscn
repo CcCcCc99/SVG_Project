@@ -16,4 +16,4 @@ rotation = -4.61465
 scale = Vector2( 0.8, 0.8 )
 
 [node name="Blower" parent="Objects" index="1" instance=ExtResource( 2 )]
-position = Vector2( -415.907, 140.072 )
+position = Vector2( 321.929, 342.344 )

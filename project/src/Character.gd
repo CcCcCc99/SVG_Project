@@ -2,7 +2,9 @@ extends KinematicBody2D
 class_name Character
 
 export(PackedScene) var POOF
+export(PackedScene) var CORPSE
 var effect
+var corpse
 enum {NORMAL, INCAPACITATED, SCALEUP, SCALEDOWN}
 
 export(int) var max_hp: int
@@ -23,6 +25,7 @@ signal scaled_up
 func _ready():
 	set_hp(max_hp)
 	effect = POOF.instance()
+	corpse = CORPSE.instance()
 	effect.connect("animation_finished", self, "_end_effect")
 	self.connect("scaled_down", self, "_teleport")
 	$InvincibilityTimer.connect("timeout", self, "_on_invincibility_timeout")
@@ -93,6 +96,8 @@ func _spawn_death_effect():
 
 func _end_effect():
 	effect.queue_free()
+	corpse.position = position
+	get_parent().add_child(corpse)
 	self.queue_free()
 	
 
