@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/player/Player.gd" type="Script" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://scenes/corps/BlowerCorpse.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/player/PlayerAnimator.gd" type="Script" id=15]
 [ext_resource path="res://src/utility/Hitbox.gd" type="Script" id=20]
-[ext_resource path="res://src/player/Assistant.gd" type="Script" id=21]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 18.2024, 26.3791 )
@@ -71,6 +70,3 @@ wait_time = 1.2
 
 [node name="Shadow" parent="." index="6"]
 scale = Vector2( 0.2, 0.2 )
-
-[node name="AssistantDummySystem" type="Node" parent="." index="7"]
-script = ExtResource( 21 )

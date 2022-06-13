@@ -1,7 +1,9 @@
 extends Node
 
 export(PackedScene) var player_scene
+export(PackedScene) var assistant_scene
 var player
+var assistant
 
 onready var health_bar = get_node("HUD/HealthBar")
 onready var mana_bar = get_node("HUD/ManaBar")
@@ -13,6 +15,8 @@ var current_room: int
 
 func _ready():
 	player = player_scene.instance()
+	assistant = assistant_scene.instance()
+	add_child(assistant)
 	health_bar.set_player(player)
 	mana_bar.set_player(player)
 	_load_level()
