@@ -36,8 +36,6 @@ func _change_health_bar(old_hp: int, new_hp: int) -> void:
 			_gain_hp(old_hp, new_hp)
 		else:
 			_lose_hp(old_hp, new_hp)
-		if new_hp <= 0:
-			pass #GAMEOVER
 	else:
 		_add_hearts()
 

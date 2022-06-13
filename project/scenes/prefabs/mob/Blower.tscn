@@ -71,20 +71,21 @@ tracks/1/keys = {
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "attack",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 5 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "attack",
 "speed": 5.0
 } ]
 
 [node name="Blower" instance=ExtResource( 1 )]
 position = Vector2( 0, 1 )
 script = ExtResource( 2 )
+max_hp = 3
 speed = 5000
 blow = ExtResource( 8 )
 

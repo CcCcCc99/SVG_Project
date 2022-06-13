@@ -73,6 +73,9 @@ func take_damage(damage: int):
 		$InvincibilityTimer.start()
 		is_taking_damage = true
 		set_hp(hp - damage)
+		print(hp)
+		if hp <= 0:
+			 _spawn_death_effect()
 
 func _animate_damage():
 	scale = Vector2(clamp(abs(sin(i)), 0.5, 1), clamp(abs(cos(i)), 0.5, 1))
@@ -90,6 +93,7 @@ func _spawn_death_effect():
 
 func _end_effect():
 	effect.queue_free()
+	self.queue_free()
 	
 
 

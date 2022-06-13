@@ -37,7 +37,7 @@ func _on_hit(body):
 	if body.is_in_group("Environment"):
 		queue_free()
 		
-	elif body.is_in_group("Player"):
+	elif body.is_in_group("Character"):
 		body.take_damage(damage)
 		
 	elif body.is_in_group("Portal"):
