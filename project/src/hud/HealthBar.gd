@@ -32,13 +32,12 @@ func _add_hearts() -> void:
 
 func _change_health_bar(old_hp: int, new_hp: int) -> void:
 	if get_child_count() != 0:
-		if new_hp > 0:
-			if new_hp > old_hp:
-				_gain_hp(old_hp, new_hp)
-			else:
-				_lose_hp(old_hp, new_hp)
+		if new_hp > old_hp:
+			_gain_hp(old_hp, new_hp)
 		else:
-			pass # GAME OVER
+			_lose_hp(old_hp, new_hp)
+		if new_hp <= 0:
+			pass #GAMEOVER
 	else:
 		_add_hearts()
 
