@@ -84,13 +84,12 @@ animations = [ {
 
 [node name="Blower" instance=ExtResource( 1 )]
 position = Vector2( 0, 1 )
-scale = Vector2( 1, 1 )
 script = ExtResource( 4 )
 speed = 5000
 blow = ExtResource( 6 )
 
 [node name="TriggerAttack" type="Area2D" parent="." index="0"]
-position = Vector2( -164.037, -1.04259 )
+position = Vector2( -133.083, -40.7276 )
 rotation = 1.5708
 collision_layer = 2
 collision_mask = 3

@@ -6,7 +6,6 @@
 [node name="Character" type="KinematicBody2D" groups=[
 "Character",
 ]]
-scale = Vector2( 0.1, 0.1 )
 script = ExtResource( 1 )
 POOF = ExtResource( 2 )
 

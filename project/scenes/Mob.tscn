@@ -11,7 +11,6 @@ collision_mask = 63
 script = ExtResource( 2 )
 
 [node name="BodyChecker" type="Area2D" parent="." index="1"]
-scale = Vector2( 1, 1 )
 
 [node name="Cooldown" type="Timer" parent="." index="3"]
 [connection signal="body_entered" from="BodyChecker" to="." method="_on_BodyChecker_body_entered"]
