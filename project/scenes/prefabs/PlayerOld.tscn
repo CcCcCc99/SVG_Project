@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/animations/PlayerOldLegs.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://src/Player.gd" type="Script" id=2]
+[ext_resource path="res://scenes/prefabs/prop/Portalgun.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/animations/PlayerOldBody.tres" type="SpriteFrames" id=4]
+[ext_resource path="res://assets/animations/PlayerOldHead.tres" type="SpriteFrames" id=5]
+[ext_resource path="res://src/PlayerAnimator.gd" type="Script" id=15]
+[ext_resource path="res://scenes/prefabs/prop/Poof.tscn" type="PackedScene" id=19]
+[ext_resource path="res://src/Hitbox.gd" type="Script" id=20]
+[ext_resource path="res://src/Assistant.gd" type="Script" id=21]
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 42.337
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 18.3289, 25.5579 )
+
+[node name="Player" type="KinematicBody2D" groups=[
+"Character",
+"Player",
+]]
+collision_mask = 63
+script = ExtResource( 2 )
+POOF = ExtResource( 19 )
+max_hp = 6
+speed = 15000
+max_mana = 5
+
+[node name="Animator" type="Node2D" parent="."]
+position = Vector2( 7.908, -112.982 )
+scale = Vector2( 0.6, 0.6 )
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Body" type="AnimatedSprite" parent="Animator"]
+frames = ExtResource( 4 )
+animation = "front"
+playing = true
+
+[node name="Head" type="AnimatedSprite" parent="Animator"]
+frames = ExtResource( 5 )
+animation = "front"
+
+[node name="Legs" type="AnimatedSprite" parent="Animator"]
+frames = ExtResource( 1 )
+animation = "idle"
+playing = true
+
+[node name="Hitbox" type="Area2D" parent="." groups=[
+"Character",
+"Hitbox",
+"Player",
+]]
+position = Vector2( 0, -72 )
+script = ExtResource( 20 )
+
+[node name="CollisionShapeHead" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 5.13495, -130.279 )
+shape = SubResource( 4 )
+
+[node name="CollisionPolygonBody" type="CollisionPolygon2D" parent="Hitbox"]
+position = Vector2( 1.33743, -41.3288 )
+scale = Vector2( 1.5836, 1.54859 )
+polygon = PoolVector2Array( 1, -29, 16, 56, -18, 56, -2, -28 )
+
+[node name="CollisionShapeLegs" type="CollisionShape2D" parent="."]
+position = Vector2( 0.547516, -18.0994 )
+shape = SubResource( 5 )
+
+[node name="Portalgun" parent="." instance=ExtResource( 3 )]
+
+[node name="InvincibilityTimer" type="Timer" parent="."]
+wait_time = 0.7
+
+[node name="AssistantDummySystem" type="Node" parent="."]
+script = ExtResource( 21 )

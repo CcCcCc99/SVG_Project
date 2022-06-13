@@ -11,3 +11,4 @@ position = Vector2( 8, -10 )
 
 [node name="Blower" parent="Objects" index="0" instance=ExtResource( 2 )]
 position = Vector2( 578.719, -257.361 )
+flip = true
