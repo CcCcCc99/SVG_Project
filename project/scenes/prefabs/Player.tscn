@@ -63,5 +63,5 @@ shape = SubResource( 1 )
 position = Vector2( -0.445465, -20.9907 )
 shape = SubResource( 2 )
 
-[node name="AssistantDummySystem" type="Node" parent="." index="7"]
+[node name="AssistantDummySystem" type="Node" parent="." index="6"]
 script = ExtResource( 21 )

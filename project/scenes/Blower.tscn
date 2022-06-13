@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/Mob.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/blower/walk1.png" type="Texture" id=2]
@@ -9,27 +9,17 @@
 [ext_resource path="res://src/Hitbox.gd" type="Script" id=7]
 [ext_resource path="res://src/TriggerAttack.gd" type="Script" id=8]
 
+[sub_resource type="RayShape2D" id=4]
+length = 400.0
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 38.97, 19.8218 )
-
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "walk",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "attack",
-"speed": 5.0
-} ]
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 45.0666
 
-[sub_resource type="RayShape2D" id=4]
-length = 400.0
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 41.5052, 21.9084 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "scale_down"
@@ -79,6 +69,19 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5 )
 }
 
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "attack",
+"speed": 5.0
+} ]
+
 [node name="Blower" instance=ExtResource( 1 )]
 position = Vector2( 0, 1 )
 scale = Vector2( 1, 1 )
@@ -86,31 +89,7 @@ script = ExtResource( 4 )
 speed = 5000
 blow = ExtResource( 6 )
 
-[node name="CollisionShape2D" parent="." index="0"]
-position = Vector2( -6.11927, 18.1488 )
-shape = SubResource( 1 )
-
-[node name="AnimatedSprite" parent="." index="1"]
-position = Vector2( 17.6713, -33.3197 )
-scale = Vector2( 0.34, 0.34 )
-frames = SubResource( 2 )
-animation = "attack"
-playing = true
-
-[node name="HitBox" type="Area2D" parent="." index="2" groups=[
-"Character",
-"Hitbox",
-"Mob",
-]]
-collision_layer = 2
-collision_mask = 63
-script = ExtResource( 7 )
-
-[node name="Body" type="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2( -0.539488, -13.1528 )
-shape = SubResource( 3 )
-
-[node name="TriggerAttack" type="Area2D" parent="." index="3"]
+[node name="TriggerAttack" type="Area2D" parent="." index="0"]
 position = Vector2( -164.037, -1.04259 )
 rotation = 1.5708
 collision_layer = 2
@@ -123,12 +102,40 @@ __meta__ = {
 [node name="Raycast" type="CollisionShape2D" parent="TriggerAttack" index="0"]
 shape = SubResource( 4 )
 
-[node name="InvincibilityTimer" parent="." index="5"]
-wait_time = 1.0
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( -0.500618, -14.814 )
+shape = SubResource( 1 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+[node name="HitBox" type="Area2D" parent="." index="2" groups=[
+"Character",
+"Hitbox",
+"Mob",
+]]
+collision_layer = 2
+collision_mask = 63
+script = ExtResource( 7 )
+
+[node name="Body" type="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2( 7.32663, -47.6139 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyChecker" index="0"]
+position = Vector2( -0.642181, -14.8835 )
+shape = SubResource( 7 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 anims/scale_down = SubResource( 5 )
 anims/scale_up = SubResource( 6 )
+
+[node name="AnimatedSprite" parent="." index="5"]
+position = Vector2( 24.7882, -68.5299 )
+scale = Vector2( 0.34, 0.34 )
+frames = SubResource( 2 )
+animation = "attack"
+playing = true
+
+[node name="InvincibilityTimer" parent="." index="7"]
+wait_time = 1.0
 [connection signal="area_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
 [connection signal="body_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
 [connection signal="enemy_spotted" from="TriggerAttack" to="." method="_on_TriggerAttack"]
