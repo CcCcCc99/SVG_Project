@@ -5,8 +5,8 @@ export(PackedScene) var POOF
 var effect
 enum {NORMAL, INCAPACITATED, SCALEUP, SCALEDOWN}
 
-export(int) var max_hp
-var hp = 2 setget set_hp
+export(int) var max_hp: int
+var hp: int setget set_hp, get_hp
 
 export(int) var speed
 var alt_velocity = Vector2.ZERO
@@ -52,6 +52,9 @@ func get_direction() -> Vector2:
 func set_hp(new_hp: int):
 	hp = clamp(new_hp, 0, max_hp)
 
+func get_hp() -> int:
+	return hp
+
 func is_normal() -> bool:
 	return state == NORMAL
 
@@ -69,7 +72,7 @@ func take_damage(damage: int):
 	if $InvincibilityTimer.is_stopped():
 		$InvincibilityTimer.start()
 		is_taking_damage = true
-		set_hp(hp-damage)
+		set_hp(hp - damage)
 
 func _animate_damage():
 	scale = Vector2(clamp(abs(sin(i)), 0.5, 1), clamp(abs(cos(i)), 0.5, 1))

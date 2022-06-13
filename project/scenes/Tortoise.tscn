@@ -1,108 +1,129 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/Mob.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/tortoise/cammina1.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/tortoise/cammina2.png" type="Texture" id=3]
-[ext_resource path="res://src/MobIA/TortoiseFSM.gd" type="Script" id=4]
+[ext_resource path="res://src/MobIA/Tortoise.gd" type="Script" id=4]
+[ext_resource path="res://assets/sprites/tortoise/idle.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/tortoise/cutie.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/tortoise/cutie2.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/tortoise/cutie3.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/tortoise/cutie4.png" type="Texture" id=9]
+[ext_resource path="res://src/Hitbox.gd" type="Script" id=10]
+[ext_resource path="res://src/TriggerAttack.gd" type="Script" id=11]
+[ext_resource path="res://src/LittleFriend.gd" type="Script" id=12]
+[ext_resource path="res://scenes/prefabs/prop/Poof.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 202.5, 200.5 )
+extents = Vector2( 34.75, 14.3491 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=3]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ "walk" ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AnimatedSprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1 ]
-}
+[sub_resource type="CircleShape2D" id=3]
+radius = 30.4037
 
-[sub_resource type="Animation" id=4]
-resource_name = "walk"
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 1,
-"values": [  ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AnimatedSprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 1, 0 ]
-}
+[sub_resource type="CapsuleShape2D" id=7]
+height = 11.9674
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 193.5, 36.5 )
+[sub_resource type="RayShape2D" id=4]
+length = 111.0
 
-[sub_resource type="AnimationNodeStateMachine" id=7]
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "attack",
+"speed": 5.0
+} ]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=6]
+[sub_resource type="CircleShape2D" id=6]
+radius = 13.0
 
 [node name="Tortoise" instance=ExtResource( 1 )]
-position = Vector2( 0, -21 )
 script = ExtResource( 4 )
+speed = 1000
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2( -43, -43 )
+position = Vector2( -0.0179901, 32.3895 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" parent="." index="1"]
-position = Vector2( 1, 1 )
+scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
 animation = "walk"
+playing = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
-anims/RESET = SubResource( 3 )
-anims/walk = SubResource( 4 )
+[node name="HitBox" type="Area2D" parent="." index="2" groups=["Character", "Hitbox", "Mob"]]
+script = ExtResource( 10 )
 
-[node name="HitBox" type="Area2D" parent="." index="4"]
-position = Vector2( -16, 233 )
+[node name="Body" type="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2( -3.5845, 11.5037 )
+shape = SubResource( 3 )
 
-[node name="Legs" type="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2( 41.5, -39 )
-shape = SubResource( 5 )
+[node name="Head" type="CollisionShape2D" parent="HitBox" index="1"]
+position = Vector2( -39.4775, -34.7114 )
+rotation = 0.469494
+shape = SubResource( 7 )
 
-[node name="AnimationTree" type="AnimationTree" parent="." index="5"]
-tree_root = SubResource( 7 )
-anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/playback = SubResource( 6 )
+[node name="Cooldown" parent="." index="3"]
+wait_time = 20.0
+
+[node name="TriggerAttack" type="Area2D" parent="." index="4"]
+position = Vector2( -62, 6 )
+rotation = 1.5708
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Raycast" type="CollisionShape2D" parent="TriggerAttack" index="0"]
+shape = SubResource( 4 )
+
+[node name="LittleFriend" type="KinematicBody2D" parent="." index="5" groups=["Character", "Mob"]]
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_group_": true
+}
+POOF = ExtResource( 13 )
+speed = 10000
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="LittleFriend" index="0"]
+scale = Vector2( 0.2, 0.2 )
+frames = SubResource( 5 )
+animation = "attack"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LittleFriend" index="1"]
+position = Vector2( 1, -27 )
+shape = SubResource( 6 )
+
+[node name="Cooldown" type="Timer" parent="LittleFriend" index="2"]
+wait_time = 20.0
+
+[node name="InvincibilityTimer" type="Timer" parent="LittleFriend" index="3"]
+one_shot = true
+
+[node name="InvincibilityTimer" parent="." index="6"]
+wait_time = 1.0
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
+[connection signal="area_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
+[connection signal="body_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
+[connection signal="enemy_spotted" from="TriggerAttack" to="." method="_on_TriggerAttack"]
+[connection signal="timeout" from="LittleFriend/Cooldown" to="LittleFriend" method="_on_Cooldown_timeout"]

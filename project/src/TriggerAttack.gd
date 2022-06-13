@@ -5,4 +5,5 @@ var enemy = "Player"
 signal enemy_spotted(body)
 
 func _on_TriggerAttack_body_entered(body):
-	emit_signal("enemy_spotted", body)
+	if (body.is_in_group("Character")):
+		emit_signal("enemy_spotted", body)

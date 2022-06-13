@@ -5,7 +5,7 @@ enum {NORMAL, SCALEUP, SCALEDOWN}
 var state = NORMAL
 
 export var speed = 10000
-export var damage = 3
+export var damage = 1
 
 var direction = Vector2(-1,0)
 
