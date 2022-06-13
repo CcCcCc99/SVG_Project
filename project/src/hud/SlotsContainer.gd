@@ -1,4 +1,4 @@
-extends GridContainer
+extends HBoxContainer
 
 var slots: Array
 var enabled_slots: int
