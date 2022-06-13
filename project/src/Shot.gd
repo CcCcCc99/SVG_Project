@@ -58,18 +58,19 @@ func teleport_to(dest: Portal2D):
 
 func _teleport():
 	position = destination
+	start_scaling_up()
 
 func _scale_up():
 	if scale < Vector2(1,1):
-		scale *= 1.2
+		scale *= 1.1
 	else:
 		emit_signal("scaled_up")
 		_reset_animations()
 		state = NORMAL
 
 func _scale_down():
-	if scale > Vector2(0.05,0.05):
-		scale *= 0.8
+	if scale > Vector2(0.1,0.1):
+		scale *= 0.9
 	else:
 		emit_signal("scaled_down")
 
@@ -78,3 +79,6 @@ func start_scaling_down():
 
 func start_scaling_up():
 	state = SCALEUP
+
+func back_to_normal():
+	state = NORMAL

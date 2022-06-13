@@ -1,163 +1,68 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://assets/sprites/player/corpolato.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Player.gd" type="Script" id=2]
-[ext_resource path="res://assets/sprites/player/bracciale.png" type="Texture" id=3]
-[ext_resource path="res://src/Portalgun.gd" type="Script" id=4]
-[ext_resource path="res://scenes/prefabs/prop/Portal.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/sprites/player/gambe4.png" type="Texture" id=6]
-[ext_resource path="res://assets/sprites/player/gambe3.png" type="Texture" id=7]
-[ext_resource path="res://assets/sprites/player/gambe2_versoDx.png" type="Texture" id=8]
-[ext_resource path="res://assets/sprites/player/gambe1_versoDx.png" type="Texture" id=9]
-[ext_resource path="res://assets/sprites/player/testaavanti1.png" type="Texture" id=10]
-[ext_resource path="res://assets/sprites/player/corpoavanti.png" type="Texture" id=11]
-[ext_resource path="res://assets/sprites/player/gambeidle.png" type="Texture" id=12]
-[ext_resource path="res://assets/sprites/player/testalato.png" type="Texture" id=13]
-[ext_resource path="res://assets/sprites/player/testadietro.png" type="Texture" id=14]
+[ext_resource path="res://scenes/prefabs/prop/Portalgun.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/animations/PlayerOldBody.tres" type="SpriteFrames" id=4]
+[ext_resource path="res://assets/animations/PlayerOldHead.tres" type="SpriteFrames" id=5]
+[ext_resource path="res://assets/animations/PlayerOldLegs.tres" type="SpriteFrames" id=6]
 [ext_resource path="res://src/PlayerAnimator.gd" type="Script" id=15]
-[ext_resource path="res://assets/sprites/player/gambe2_versoSx.png" type="Texture" id=16]
-[ext_resource path="res://assets/sprites/player/gambe1_versoSx.png" type="Texture" id=17]
-[ext_resource path="res://assets/sprites/player/guanto.png" type="Texture" id=18]
-[ext_resource path="res://scenes/prefabs/prop/Poof.tscn" type="PackedScene" id=19]
 [ext_resource path="res://src/Hitbox.gd" type="Script" id=20]
 [ext_resource path="res://src/Assistant.gd" type="Script" id=21]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 11 ) ],
-"loop": true,
-"name": "front",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "back",
-"speed": 1.0
-} ]
+[sub_resource type="CircleShape2D" id=1]
+radius = 43.5115
 
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 10 ) ],
-"loop": true,
-"name": "front",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 14 ) ],
-"loop": true,
-"name": "back",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 13 ) ],
-"loop": true,
-"name": "side",
-"speed": 1.0
-} ]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 18.2024, 26.3791 )
 
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ ExtResource( 12 ) ],
-"loop": true,
-"name": "idle",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 17 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 17 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "vertical",
-"speed": 5.0
-} ]
-
-[sub_resource type="CircleShape2D" id=4]
-radius = 42.337
-
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 18.3289, 25.5579 )
-
-[node name="Player" type="KinematicBody2D" groups=["Character", "Player"]]
-collision_mask = 63
+[node name="Player" groups=[
+"Player",
+] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-POOF = ExtResource( 19 )
 max_hp = 6
 speed = 15000
 max_mana = 5
 
-[node name="Animator" type="Node2D" parent="."]
-position = Vector2( 7.908, -112.982 )
+[node name="Animator" type="Node2D" parent="." index="0"]
+position = Vector2( 7.51965, -114.984 )
 scale = Vector2( 0.6, 0.6 )
 script = ExtResource( 15 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Body" type="AnimatedSprite" parent="Animator"]
-frames = SubResource( 1 )
-animation = "front"
-playing = true
-
-[node name="Head" type="AnimatedSprite" parent="Animator"]
-frames = SubResource( 2 )
+[node name="Body" type="AnimatedSprite" parent="Animator" index="0"]
+frames = ExtResource( 4 )
 animation = "front"
 
-[node name="Legs" type="AnimatedSprite" parent="Animator"]
-frames = SubResource( 3 )
+[node name="Head" type="AnimatedSprite" parent="Animator" index="1"]
+frames = ExtResource( 5 )
+animation = "front"
+
+[node name="Legs" type="AnimatedSprite" parent="Animator" index="2"]
+frames = ExtResource( 6 )
 animation = "idle"
-playing = true
 
-[node name="Hitbox" type="Area2D" parent="." groups=["Character", "Hitbox", "Player"]]
-position = Vector2( 0, -72 )
+[node name="Hitbox" type="Area2D" parent="." index="1" groups=[
+"Character",
+"Hitbox",
+"Player",
+]]
 script = ExtResource( 20 )
 
-[node name="CollisionShapeHead" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2( 5.13495, -130.279 )
-shape = SubResource( 4 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox" index="0"]
+polygon = PoolVector2Array( 1.5, -158.5, -26, -29, 25.5, -27.5 )
 
-[node name="CollisionPolygonBody" type="CollisionPolygon2D" parent="Hitbox"]
-position = Vector2( 1.33743, -41.3288 )
-scale = Vector2( 1.5836, 1.54859 )
-polygon = PoolVector2Array( 1, -29, 16, 56, -18, 56, -2, -28 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="1"]
+position = Vector2( 5, -204 )
+shape = SubResource( 1 )
 
-[node name="CollisionShapeLegs" type="CollisionShape2D" parent="."]
-position = Vector2( 0.547516, -18.0994 )
-shape = SubResource( 5 )
+[node name="Portalgun" parent="." index="2" instance=ExtResource( 3 )]
 
-[node name="Portalgun" type="Node2D" parent="."]
-position = Vector2( -0.725161, -81.3505 )
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
-distance = 150
-portal = ExtResource( 5 )
-colors = [ Color( 0.937255, 0.596078, 0.984314, 1 ), Color( 0.364706, 0.913725, 0.811765, 1 ) ]
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2( -0.445465, -20.9907 )
+shape = SubResource( 2 )
 
-[node name="glove" type="Sprite" parent="Portalgun"]
-position = Vector2( 77.239, 0.457 )
-rotation = 1.52367
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 18 )
-
-[node name="bracelet" type="Sprite" parent="Portalgun"]
-position = Vector2( 79.006, 1.161 )
-rotation = 1.52367
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 3 )
-
-[node name="InvincibilityTimer" type="Timer" parent="."]
-wait_time = 0.7
-
-[node name="AssistantDummySystem" type="Node" parent="."]
+[node name="AssistantDummySystem" type="Node" parent="." index="6"]
 script = ExtResource( 21 )

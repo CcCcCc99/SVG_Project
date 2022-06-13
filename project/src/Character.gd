@@ -106,6 +106,7 @@ func teleport_to(dest: Portal2D):
 
 func _teleport():
 	position = destination
+	start_scaling_up()
 
 func _scale_up():
 	if scale < Vector2(1,1):
