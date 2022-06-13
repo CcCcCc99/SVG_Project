@@ -48,7 +48,7 @@ frames = SubResource( 2 )
 animation = "attack"
 playing = true
 
-[node name="HitBox" type="Area2D" parent="." index="2" groups=[
+[node name="HitBox" type="Area2D" parent="." index="3" groups=[
 "Character",
 "Hitbox",
 "Mob",
@@ -77,6 +77,8 @@ shape = SubResource( 4 )
 
 [node name="InvincibilityTimer" parent="." index="5"]
 wait_time = 1.0
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
 [connection signal="area_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
 [connection signal="body_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
 [connection signal="enemy_spotted" from="TriggerAttack" to="." method="_on_TriggerAttack"]
