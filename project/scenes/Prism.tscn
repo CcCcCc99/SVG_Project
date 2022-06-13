@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/sprites/prism/prisma.png" type="Texture" id=1]
 [ext_resource path="res://src/MobIA/Prism.gd" type="Script" id=2]
 [ext_resource path="res://scenes/prefabs/prop/Poof.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/prefabs/prop/Jolt.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/prefabs/prop/RayCast2D.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/TriggerAttack.gd" type="Script" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 87.25, 35.25 )
@@ -21,9 +22,6 @@ position = Vector2( 1, 1 )
 collision_layer = 2
 collision_mask = 63
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 POOF = ExtResource( 3 )
 speed = 4000
 jolt = ExtResource( 4 )
@@ -48,13 +46,21 @@ shape = SubResource( 2 )
 
 [node name="TriggerAttack" type="Area2D" parent="."]
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Raycast" type="CollisionShape2D" parent="TriggerAttack"]
 rotation = 1.5708
 shape = SubResource( 3 )
+
+[node name="AttackMode" type="Node2D" parent="."]
+
+[node name="Icon" type="Sprite" parent="AttackMode"]
+rotation = 0.785398
+scale = Vector2( 3, 3 )
+texture = ExtResource( 6 )
+
+[node name="RayCast2D" parent="AttackMode" instance=ExtResource( 4 )]
+position = Vector2( 0, -120 )
+rotation = 4.71239
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
 [connection signal="area_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]

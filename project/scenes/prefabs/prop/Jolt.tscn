@@ -10,9 +10,9 @@
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 2 ) ],
-"loop": false,
+"loop": true,
 "name": "default",
-"speed": 10.0
+"speed": 5.0
 } ]
 
 [sub_resource type="CircleShape2D" id=2]
@@ -31,7 +31,6 @@ speed = 500
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 1 )
-frame = 4
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
