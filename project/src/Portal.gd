@@ -34,7 +34,6 @@ func _on_Portal_body_entered(body: Node):
 		if is_receiving:
 			destination.is_sending = false
 			is_receiving = false
-			body.start_scaling_up()
 		else:
 			is_sending = true
 			destination.is_receiving = true

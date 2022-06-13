@@ -20,5 +20,10 @@ func _check_collision():
 		if collision.collider.is_in_group("Environment"):
 			_on_collision_environment()
 
+func _reset_animations():
+	._reset_animations()
+	if flip:
+		scale.x = -1
+
 func _on_collision_environment():
 	pass
