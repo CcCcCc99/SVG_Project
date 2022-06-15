@@ -1,5 +1,7 @@
 extends Mob
 
+export var shot_direction: Vector2
+
 var direction = Vector2.UP
 var is_returned: bool = true
 
@@ -22,7 +24,7 @@ func _on_TriggerAttack(body):
 	if ia_state != IDLE:
 		ia_state = IDLE
 		$Cooldown.start()
-		$LittleFriend.ia_state = ATTACK
+		$LittleFirend.set_direction(shot_direction)
 		is_returned = false
 
 func _on_Cooldown_timeout():

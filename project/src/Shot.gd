@@ -7,7 +7,7 @@ var state = NORMAL
 export var speed = 10000
 export var damage = 1
 
-var direction = Vector2(-1,0)
+var direction = Vector2.ZERO
 
 var is_in_portal: bool = true
 
@@ -26,8 +26,8 @@ func _physics_process(delta):
 	else:
 		position += direction * speed * delta
 
-func set_direction(dir):
-	direction = dir
+func set_direction(dir: Vector2):
+	direction = dir.normalized()
 	if dir.x > 0:
 		$AnimatedSprite.flip_h = true
 	if dir.y > 0:

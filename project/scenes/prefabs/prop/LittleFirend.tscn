@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/prop/LittleFirend.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/tortoise/cutie3.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/tortoise/cutie.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/tortoise/cutie4.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "attack",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 28.5145
+
+[node name="LittleFirend" type="Area2D"]
+collision_layer = 16
+collision_mask = 31
+script = ExtResource( 1 )
+speed = 800
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -2.00226, 54.7284 )
+scale = Vector2( 0.45, 0.45 )
+frames = SubResource( 1 )
+animation = "idle"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1.6685, -10.5999 )
+shape = SubResource( 2 )
+[connection signal="area_entered" from="." to="." method="_on_hit"]
+[connection signal="body_entered" from="." to="." method="_on_hit"]
