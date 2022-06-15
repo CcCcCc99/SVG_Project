@@ -5,8 +5,6 @@
 [ext_resource path="res://scenes/prefabs/prop/Portal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sprites/player/guanto.png" type="Texture" id=4]
 
-
-
 [node name="Portalgun" type="Node2D"]
 position = Vector2( -0.725161, -81.3505 )
 script = ExtResource( 2 )

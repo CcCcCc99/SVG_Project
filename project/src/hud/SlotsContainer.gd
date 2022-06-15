@@ -43,3 +43,6 @@ func select(s: int):
 		slots[active_slot].deactivate()
 		active_slot = s
 		slots[active_slot].activate()
+
+func set_current(t: Texture):
+	slots[active_slot].get_node("TextureRect").texture = t

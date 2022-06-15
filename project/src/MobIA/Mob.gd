@@ -6,8 +6,10 @@ enum {IDLE, WALK, ATTACK}
 var ia_state = WALK
 export(bool) var flip = false
 export(int) var contact_damage = 1
+export(Texture) var icon
 
 func _ready():
+	._ready()
 	if flip:
 		scale.x = -1
 
@@ -25,3 +27,4 @@ func _on_BodyChecker_body_entered(body):
 		_on_collision_environment()
 	elif body.is_in_group("Player"):
 		body.take_damage(contact_damage)
+

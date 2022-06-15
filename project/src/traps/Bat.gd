@@ -4,7 +4,8 @@ var effect
 
 func _on_Bat_area_entered(area):
 	._on_hit(area)
-	_spawn_death_effect()
+	if not area.is_in_group("Portal"):
+		_spawn_death_effect()
 
 func _on_Bat_body_entered(body):
 	_on_Bat_area_entered(body)

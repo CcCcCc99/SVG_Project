@@ -8,7 +8,6 @@ radius = 25.6213
 height = 55.1762
 
 [node name="BlowerCorpse" instance=ExtResource( 1 )]
-summon = "Blower"
 
 [node name="Shadow" parent="." index="0"]
 position = Vector2( 8.34276, -10.6787 )

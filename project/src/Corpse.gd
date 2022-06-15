@@ -1,18 +1,12 @@
 extends Area2D
 
-export var summon: String
+var summon: String setget set_summon
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+func set_summon(sum):
+	summon = sum
 
 func _on_Corpse_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.is_action_pressed("teke_soul"):
 			$Shadow.hide()
+			get_tree().root.get_child(0).load_summon(summon)

@@ -1,6 +1,6 @@
 extends CenterContainer
 
-export var slot_number: int
+export var slot_number: int setget set_num
 var debug_icon = "res://assets/sprites/blower/SummonIcon.tres"
 
 func _ready():
@@ -21,3 +21,13 @@ func _input(event: InputEvent):
 		var key = event.scancode
 		if key >= KEY_1 and key <= KEY_6:
 			$Slots.select(key-KEY_1)
+
+
+func set_num(num):
+	slot_number = num
+
+func set_slot(t: Texture):
+	$Slots.set_current(t)
+
+func current() -> int:
+	return $Slots.active_slot

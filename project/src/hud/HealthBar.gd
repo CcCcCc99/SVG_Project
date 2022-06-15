@@ -1,8 +1,8 @@
 extends HBoxContainer
 
-var heart_full = preload("res://assets/cuore_pieno.png")
-var heart_half = preload("res://assets/cuore_a_metà.png")
-var heart_empty = preload("res://assets/cuore_vuoto.png")
+export var heart_full = preload("res://assets/cuore_pieno.png")
+export var heart_half = preload("res://assets/cuore_a_metà.png")
+export var heart_empty = preload("res://assets/cuore_vuoto.png")
 var current_heart: int = 0
 
 var player

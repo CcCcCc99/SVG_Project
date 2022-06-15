@@ -1,8 +1,8 @@
 extends HBoxContainer
 
-var mana_full = preload("res://assets/mana_pieno.png")
-var mana_empty = preload("res://assets/mana_vuoto.png")
-var current_point_of_mana: int = 0
+export var mana_full = preload("res://assets/mana_pieno.png")
+export var mana_empty = preload("res://assets/mana_vuoto.png")
+export var current_point_of_mana: int = 0
 
 var player
 
