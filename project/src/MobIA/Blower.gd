@@ -4,6 +4,10 @@ export(PackedScene) var blow
 
 var direction = Vector2.UP
 
+func _ready():
+	path = "res://scenes/prefabs/mob/Blower.tscn"
+	._ready()
+
 func get_direction():
 	match ia_state:
 		WALK:

@@ -10,10 +10,10 @@
 [ext_resource path="res://src/player/PlayerAnimator.gd" type="Script" id=15]
 [ext_resource path="res://src/utility/Hitbox.gd" type="Script" id=20]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18.2024, 26.3791 )
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=2]
 radius = 43.5115
 
 [node name="Player" groups=[
@@ -27,7 +27,7 @@ max_mana = 5
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2( -0.445465, -20.9907 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Animator" type="Node2D" parent="." index="2"]
 position = Vector2( 7.51965, -114.984 )
@@ -61,7 +61,7 @@ polygon = PoolVector2Array( 1.5, -158.5, -26, -29, 25.5, -27.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="1"]
 position = Vector2( 5, -204 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Portalgun" parent="." index="4" instance=ExtResource( 3 )]
 

@@ -14,7 +14,6 @@ assistant_scene = ExtResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 1.872, 1.808 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
