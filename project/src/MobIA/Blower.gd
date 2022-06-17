@@ -26,6 +26,8 @@ func _on_TriggerAttack(body):
 			ia_state = ATTACK
 			$Cooldown.start()
 			var b = blow.instance()
+			if is_summoned:
+				b.is_summoned = true
 			if flip:
 				b.set_direction(Vector2(1,0))
 			else:
