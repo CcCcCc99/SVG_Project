@@ -7,6 +7,7 @@ var ia_state = WALK
 export(bool) var flip = false
 export(int) var contact_damage = 1
 export(Texture) var icon
+var is_summoned: bool = false
 
 func _ready():
 	._ready()
@@ -26,5 +27,8 @@ func _on_BodyChecker_body_entered(body):
 	if body.is_in_group("Environment"):
 		_on_collision_environment()
 	elif body.is_in_group("Player"):
-		body.take_damage(contact_damage)
-
+		if not is_summoned:
+			body.take_damage(contact_damage)
+	elif body.is_in_group("Mob"):
+		if is_summoned:
+			body.take_damage(contact_damage)
