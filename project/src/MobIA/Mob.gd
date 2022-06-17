@@ -30,5 +30,5 @@ func _on_BodyChecker_body_entered(body):
 		if not is_summoned:
 			body.take_damage(contact_damage)
 	elif body.is_in_group("Mob"):
-		if is_summoned:
+		if is_summoned and body != self:
 			body.take_damage(contact_damage)
