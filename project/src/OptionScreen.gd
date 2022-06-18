@@ -1,25 +1,24 @@
-extends Node2D
+extends CenterContainer
 
 var selected_menu = 0
+var pointer
 
 func change_menu_color():
-	$Resolution.modulate = "969696"
-	$Volume.modulate = "969696"
-	$Back.modulate = "969696"
+	_on_Resolution_mouse_exited()
+	_on_Volume_mouse_exited()
+	_on_Back_mouse_exited()
 	
 	match selected_menu:
 		0:
-			#$NewGame.color = Color.greenyellow
-			$Resolution.modulate = "ffffff"
-			$Pointer.position.y = 230
+			_on_Resolution_mouse_entered()
 		1:
-			$Volume.modulate = "ffffff"
-			$Pointer.position.y = 310
+			_on_Volume_mouse_entered()
 		2:
-			$Back.modulate = "ffffff"
-			$Pointer.position.y = 390
+			_on_Back_mouse_entered()
 
 func _ready():
+	pointer = $Pointer
+	remove_child(pointer)
 	change_menu_color()
 
 func _input(event):
@@ -35,17 +34,58 @@ func _input(event):
 	elif Input.is_action_just_pressed("ui_accept"):
 		match selected_menu:
 			0:
-				get_tree().change_scene("res://scenes/menu/ResolutionPopup.tscn")
+				# Resolution
+				_on_Resolution_pressed()
 			1:
 				# Volume
-				"""
-				var next_level_resource = load("res://Scenes/Main.tscn");
-				var next_level = next_level_resource.instance()
-				next_level.load_saved_game = true
-				get_tree().root.call_deferred("add_child", next_level)
-				queue_free()
-				"""
-				pass
+				_on_Volume_pressed()
 			2:
 				# Back
-				get_tree().change_scene("res://scenes/menu/StartScreen.tscn")
+				_on_Back_pressed()
+
+
+func _on_Resolution_pressed():
+	get_tree().change_scene("res://scenes/menu/ResolutionPopup.tscn")
+
+
+func _on_Resolution_mouse_entered():
+	$Menu/Resolution.modulate = "ffffff"
+	$Menu/Resolution.add_child(pointer)
+	selected_menu = 0
+
+
+func _on_Resolution_mouse_exited():
+	$Menu/Resolution.modulate = "969696"
+	if $Menu/Resolution.has_node(pointer.name):
+		$Menu/Resolution.remove_child(pointer)
+
+func _on_Volume_pressed():
+	pass
+
+
+func _on_Volume_mouse_entered():
+	$Menu/Volume.modulate = "ffffff"
+	$Menu/Volume.add_child(pointer)
+	selected_menu = 1
+
+
+func _on_Volume_mouse_exited():
+	$Menu/Volume.modulate = "969696"
+	if $Menu/Volume.has_node(pointer.name):
+		$Menu/Volume.remove_child(pointer)
+
+
+func _on_Back_pressed():
+	get_tree().change_scene("res://scenes/menu/StartScreen.tscn")
+
+
+func _on_Back_mouse_entered():
+	$Menu/Back.modulate = "ffffff"
+	$Menu/Back.add_child(pointer)
+	selected_menu = 2
+
+
+func _on_Back_mouse_exited():
+	$Menu/Back.modulate = "969696"
+	if $Menu/Back.has_node(pointer.name):
+		$Menu/Back.remove_child(pointer)

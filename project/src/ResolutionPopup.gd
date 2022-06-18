@@ -1,30 +1,31 @@
-extends Node2D
+extends VBoxContainer
 
 var selected_menu = 0
+var pointer
 
 func change_menu_color():
-	$Res1024x546.modulate = "969696"
-	$Res1280x720.modulate = "969696"
-	$Res1600x900.modulate = "969696"
-	$Res1920x1080.modulate = "969696"
-	$Back.modulate = "969696"
+	_on_Res1024x546_mouse_exited()
+	_on_Res1280x720_mouse_exited()
+	_on_Res1600x900_mouse_exited()
+	_on_Res1920x1080_mouse_exited()
+	_on_Back_mouse_exited()
 	
 	match selected_menu:
 		0:
-			$Res1024x546.modulate = "ffffff"
-			$Pointer.position = Vector2(400,140)
+			_on_Res1024x546_mouse_entered()
 		1:
-			$Res1280x720.modulate = "ffffff"
-			$Pointer.position = Vector2(690,140)
+			_on_Res1280x720_mouse_entered()
 		2:
-			$Res1600x900.modulate = "ffffff"
-			$Pointer.position = Vector2(400,340)
+			_on_Res1600x900_mouse_entered()
 		3:
-			$Res1920x1080.modulate = "ffffff"
-			$Pointer.position = Vector2(690,340)
+			_on_Res1920x1080_mouse_entered()
 		4:
-			$Back.modulate = "ffffff"
-			$Pointer.position = Vector2(500,500)
+			_on_Back_mouse_entered()
+
+func _ready():
+	pointer = $Pointer
+	remove_child(pointer)
+	change_menu_color()
 
 func _input(event):
 	
@@ -42,12 +43,91 @@ func _input(event):
 	elif Input.is_action_just_pressed("ui_accept"):
 		match selected_menu:
 			0:
-				OS.set_window_size(Vector2(1024,546))
+				_on_Res1024x546_pressed()
 			1:
-				OS.set_window_size(Vector2(1280,720))
+				_on_Res1280x720_pressed()
 			2:
-				OS.set_window_size(Vector2(1600,900))
+				_on_Res1600x900_pressed()
 			3:
-				OS.set_window_size(Vector2(1920,1080))
+				_on_Res1920x1080_pressed()
 			4:
-				get_tree().change_scene("res://scenes/menu/OptionScreen.tscn")
+				_on_Back_pressed()
+
+func _on_Res1024x546_pressed():
+	OS.set_window_size(Vector2(1024,546))
+
+
+func _on_Res1024x546_mouse_entered():
+	$Menu/Res1024x546.modulate = "ffffff"
+	$Menu/Res1024x546.add_child(pointer)
+	selected_menu = 0
+
+
+func _on_Res1024x546_mouse_exited():
+	$Menu/Res1024x546.modulate = "969696"
+	if $Menu/Res1024x546.has_node(pointer.name):
+		$Menu/Res1024x546.remove_child(pointer)
+
+
+func _on_Res1280x720_pressed():
+	OS.set_window_size(Vector2(1280,720))
+
+
+func _on_Res1280x720_mouse_entered():
+	$Menu/Res1280x720.modulate = "ffffff"
+	$Menu/Res1280x720.add_child(pointer)
+	selected_menu = 1
+
+
+func _on_Res1280x720_mouse_exited():
+	$Menu/Res1280x720.modulate = "969696"
+	if $Menu/Res1280x720.has_node(pointer.name):
+		$Menu/Res1280x720.remove_child(pointer)
+
+
+func _on_Res1600x900_pressed():
+	OS.set_window_size(Vector2(1600,900))
+
+
+func _on_Res1600x900_mouse_entered():
+	$Menu/Res1600x900.modulate = "ffffff"
+	$Menu/Res1600x900.add_child(pointer)
+	selected_menu = 2
+
+
+func _on_Res1600x900_mouse_exited():
+	$Menu/Res1600x900.modulate = "969696"
+	if $Menu/Res1600x900.has_node(pointer.name):
+		$Menu/Res1600x900.remove_child(pointer)
+
+
+func _on_Res1920x1080_pressed():
+	OS.set_window_size(Vector2(1920,1080))
+
+
+func _on_Res1920x1080_mouse_entered():
+	$Menu/Res1920x1080.modulate = "ffffff"
+	$Menu/Res1920x1080.add_child(pointer)
+	selected_menu = 3
+
+
+func _on_Res1920x1080_mouse_exited():
+	$Menu/Res1920x1080.modulate = "969696"
+	if $Menu/Res1920x1080.has_node(pointer.name):
+		$Menu/Res1920x1080.remove_child(pointer)
+
+
+func _on_Back_pressed():
+	get_tree().change_scene("res://scenes/menu/OptionScreen.tscn")
+
+
+func _on_Back_mouse_entered():
+	$Back.modulate = "ffffff"
+	$Back.add_child(pointer)
+	selected_menu = 4
+
+
+func _on_Back_mouse_exited():
+	$Back.modulate = "969696"
+	if $Back.has_node(pointer.name):
+		$Back.remove_child(pointer)

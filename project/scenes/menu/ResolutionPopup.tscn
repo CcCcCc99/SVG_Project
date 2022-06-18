@@ -8,59 +8,88 @@
 [ext_resource path="res://assets/menu/label_1024x546.png" type="Texture" id=6]
 [ext_resource path="res://assets/menu/label_back.png" type="Texture" id=7]
 
-[node name="ResolutionPopup" type="Node2D"]
+[node name="ResolutionPopup" type="CenterContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -298.5
+margin_top = -252.0
+margin_right = 298.5
+margin_bottom = 252.0
+
+[node name="VBox" type="VBoxContainer" parent="."]
+margin_right = 597.0
+margin_bottom = 504.0
+alignment = 1
 script = ExtResource( 1 )
 
+[node name="Menu" type="GridContainer" parent="VBox"]
+margin_right = 597.0
+margin_bottom = 398.0
+custom_constants/vseparation = 50
+custom_constants/hseparation = 150
+columns = 2
+
+[node name="Res1024x546" type="TextureButton" parent="VBox/Menu"]
+modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+margin_right = 224.0
+margin_bottom = 174.0
+texture_normal = ExtResource( 6 )
+
+[node name="Res1280x720" type="TextureButton" parent="VBox/Menu"]
+modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+margin_left = 374.0
+margin_right = 597.0
+margin_bottom = 174.0
+texture_normal = ExtResource( 4 )
+
+[node name="Res1600x900" type="TextureButton" parent="VBox/Menu"]
+modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+margin_top = 224.0
+margin_right = 224.0
+margin_bottom = 398.0
+texture_normal = ExtResource( 5 )
+
+[node name="Res1920x1080" type="TextureButton" parent="VBox/Menu"]
+modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+margin_left = 374.0
+margin_top = 224.0
+margin_right = 597.0
+margin_bottom = 398.0
+texture_normal = ExtResource( 2 )
+
+[node name="Back" type="TextureButton" parent="VBox"]
+modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+margin_left = 130.0
+margin_top = 450.0
+margin_right = 597.0
+margin_bottom = 504.0
+texture_normal = ExtResource( 7 )
+
+[node name="Pointer" type="Sprite" parent="VBox"]
+position = Vector2( -45, 80 )
+texture = ExtResource( 3 )
+
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 1025.0
-margin_bottom = 600.0
+margin_left = 298.0
+margin_top = 252.0
+margin_right = 298.0
+margin_bottom = 252.0
 color = Color( 0, 0, 0, 0.392157 )
 
-[node name="Res1024x546" type="TextureRect" parent="."]
-margin_left = 200.0
-margin_top = -45.0
-margin_right = 712.0
-margin_bottom = 467.0
-rect_scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 6 )
-
-[node name="Res1280x720" type="TextureRect" parent="."]
-modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
-margin_left = 485.0
-margin_top = -45.0
-margin_right = 997.0
-margin_bottom = 467.0
-rect_scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 4 )
-
-[node name="Res1600x900" type="TextureRect" parent="."]
-modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
-margin_left = 200.0
-margin_top = 155.0
-margin_right = 712.0
-margin_bottom = 667.0
-rect_scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 5 )
-
-[node name="Res1920x1080" type="TextureRect" parent="."]
-modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
-margin_left = 485.0
-margin_top = 155.0
-margin_right = 997.0
-margin_bottom = 667.0
-rect_scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 2 )
-
-[node name="Back" type="TextureRect" parent="."]
-modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
-margin_left = 340.0
-margin_top = 325.0
-margin_right = 852.0
-margin_bottom = 837.0
-rect_scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 7 )
-
-[node name="Pointer" type="Sprite" parent="."]
-position = Vector2( 400, 140 )
-scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 3 )
+[connection signal="mouse_entered" from="VBox/Menu/Res1024x546" to="VBox" method="_on_Res1024x546_mouse_entered"]
+[connection signal="mouse_exited" from="VBox/Menu/Res1024x546" to="VBox" method="_on_Res1024x546_mouse_exited"]
+[connection signal="pressed" from="VBox/Menu/Res1024x546" to="VBox" method="_on_Res1024x546_pressed"]
+[connection signal="mouse_entered" from="VBox/Menu/Res1280x720" to="VBox" method="_on_Res1280x720_mouse_entered"]
+[connection signal="mouse_exited" from="VBox/Menu/Res1280x720" to="VBox" method="_on_Res1280x720_mouse_exited"]
+[connection signal="pressed" from="VBox/Menu/Res1280x720" to="VBox" method="_on_Res1280x720_pressed"]
+[connection signal="mouse_entered" from="VBox/Menu/Res1600x900" to="VBox" method="_on_Res1600x900_mouse_entered"]
+[connection signal="mouse_exited" from="VBox/Menu/Res1600x900" to="VBox" method="_on_Res1600x900_mouse_exited"]
+[connection signal="pressed" from="VBox/Menu/Res1600x900" to="VBox" method="_on_Res1600x900_pressed"]
+[connection signal="mouse_entered" from="VBox/Menu/Res1920x1080" to="VBox" method="_on_Res1920x1080_mouse_entered"]
+[connection signal="mouse_exited" from="VBox/Menu/Res1920x1080" to="VBox" method="_on_Res1920x1080_mouse_exited"]
+[connection signal="pressed" from="VBox/Menu/Res1920x1080" to="VBox" method="_on_Res1920x1080_pressed"]
+[connection signal="mouse_entered" from="VBox/Back" to="VBox" method="_on_Back_mouse_entered"]
+[connection signal="mouse_exited" from="VBox/Back" to="VBox" method="_on_Back_mouse_exited"]
+[connection signal="pressed" from="VBox/Back" to="VBox" method="_on_Back_pressed"]
