@@ -73,14 +73,14 @@ tracks/1/keys = {
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "walk",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
 "name": "attack",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "walk",
 "speed": 5.0
 } ]
 
@@ -110,11 +110,7 @@ shape = SubResource( 1 )
 position = Vector2( -0.500618, -14.814 )
 shape = SubResource( 2 )
 
-[node name="HitBox" type="Area2D" parent="." index="2" groups=[
-"Character",
-"Hitbox",
-"Mob",
-]]
+[node name="HitBox" type="Area2D" parent="." index="2" groups=["Character", "Hitbox", "Mob"]]
 collision_layer = 2
 collision_mask = 63
 script = ExtResource( 4 )
@@ -143,6 +139,7 @@ wait_time = 1.0
 
 [node name="Shadow" parent="." index="8"]
 scale = Vector2( 0.25, 0.25 )
+
 [connection signal="area_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
 [connection signal="body_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
 [connection signal="enemy_spotted" from="TriggerAttack" to="." method="_on_TriggerAttack"]
