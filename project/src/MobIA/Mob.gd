@@ -8,11 +8,16 @@ export(bool) var flip = false
 export(int) var contact_damage = 1
 export(Texture) var icon
 var is_summoned: bool = false
+var enemy: String
 
 func _ready():
 	._ready()
 	if flip:
 		scale.x = -1
+	if is_summoned:
+		enemy = "Mob"
+	else:
+		enemy = "Player"
 
 
 func _reset_animations():
@@ -26,9 +31,6 @@ func _on_collision_environment():
 func _on_BodyChecker_body_entered(body):
 	if body.is_in_group("Environment"):
 		_on_collision_environment()
-	elif body.is_in_group("Player"):
-		if not is_summoned:
-			body.take_damage(contact_damage)
-	elif body.is_in_group("Mob"):
-		if is_summoned and body != self:
+	elif body.is_in_group(enemy):
+		if body != self:
 			body.take_damage(contact_damage)

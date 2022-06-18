@@ -12,6 +12,7 @@ var direction = Vector2.ZERO
 var is_in_portal: bool = true
 
 var is_summoned: bool = false
+var enemy: String
 
 
 signal scaled_down
@@ -19,6 +20,10 @@ signal scaled_up
 
 func _ready():
 	self.connect("scaled_down", self, "_teleport")
+	if is_summoned:
+		enemy = "Mob"
+	else:
+		enemy = "Player"
 
 func _physics_process(delta):
 	if state == SCALEDOWN:
@@ -39,11 +44,7 @@ func _on_hit(body):
 	if body.is_in_group("Environment"):
 		queue_free()
 		
-	elif body.is_in_group("Player"):
-		if not is_summoned:
-			body.take_damage(damage)
-	
-	elif body.is_in_group("Mob"):
+	elif body.is_in_group(enemy):
 		body.take_damage(damage)
 		
 	elif body.is_in_group("Portal"):
