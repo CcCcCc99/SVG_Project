@@ -4,8 +4,6 @@ class_name Room2D
 var num_enemies: int
 
 onready var door_container: Node2D = get_node("Doors")
-#onready var enemy_positions_container: Node2D = get_node("EnemyPositions")
-onready var player_detector: Area2D = get_node("PlayerDetector")
 
 export var closed: bool = false
 
@@ -54,12 +52,6 @@ func _open_doors() -> void:
 func _close_doors() -> void:
 	for door in doors:
 		door.close()
-
-func _on_PlayerDetector_body_entered(_body: KinematicBody2D) -> void:
-	player_detector.queue_free()
-	_close_doors()
-	#_spawn_enemies()
-
 
 func _is_valid_room(room: int) -> bool:
 	return room > -1

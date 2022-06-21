@@ -11,7 +11,6 @@ var is_summoned: bool = false
 var enemy: String
 
 func _ready():
-	._ready()
 	if flip:
 		scale.x = -1
 	if is_summoned:
