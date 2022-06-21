@@ -9,6 +9,7 @@ var action_bar setget set_actionbar
 func _process(delta):
 	if Input.is_action_just_pressed("summon"):
 		print("summon ", get_viewport().get_mouse_position())
+		summons[action_bar.current()].is_summoned = true
 		summons[action_bar.current()].position = get_viewport().get_mouse_position()
 		get_parent().add_child(summons[action_bar.current()])
 
