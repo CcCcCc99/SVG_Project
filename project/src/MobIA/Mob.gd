@@ -7,7 +7,7 @@ var ia_state = WALK
 export(bool) var flip = false
 export(int) var contact_damage = 1
 export(Texture) var icon
-var is_summoned: bool = false
+export var is_summoned: bool = false
 var enemy: String
 
 func _ready():
