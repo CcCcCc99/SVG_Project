@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fullmana.png-a25c4e6c3ee589e12f16894f59163675.stex"
+path="res://.import/label_volume.png-81d355af71a9e2518d8b679d019d70c5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fullmana.png"
-dest_files=[ "res://.import/fullmana.png-a25c4e6c3ee589e12f16894f59163675.stex" ]
+source_file="res://assets/menu/label_volume.png"
+dest_files=[ "res://.import/label_volume.png-81d355af71a9e2518d8b679d019d70c5.stex" ]
 
 [params]
 
