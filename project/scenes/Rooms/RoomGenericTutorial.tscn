@@ -5,8 +5,6 @@
 [ext_resource path="res://scenes/prefabs/prop/doors/Door0V.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/room.png" type="Texture" id=4]
 
-
-
 [node name="Room" instance=ExtResource( 1 )]
 
 [node name="Sprite" parent="." index="0"]
@@ -26,5 +24,14 @@ position = Vector2( 12.5992, -526.647 )
 position = Vector2( 15.119, 524.127 )
 scale = Vector2( 1, -1 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions" index="0"]
-polygon = PoolVector2Array( -938.48, -73.4285, -877.935, -66.7013, -797.704, -387.288, -63.614, -445.656, -82.0278, -520.841, 76.3641, -520.841, 70.7073, -444.473, 743.873, -393.561, 777.814, -65.4639, 919.235, -90.9197, 919.235, 92.9281, 774.986, 61.8153, 721.245, 406.884, 73.5356, 435.168, 79.1925, 497.393, -79.1993, 500.222, -62.2289, 440.825, -817.419, 370.114, -865.502, 61.8153, -933.384, 81.6144, -964.497, 90.0996, -956.012, 539.82, 950.348, 536.991, 958.833, -537.811, -953.183, -537.811, -967.326, 67.4722, -936.213, 58.9869 )
+[node name="CollisionUp" type="CollisionPolygon2D" parent="CollisionsVerticals" index="0"]
+polygon = PoolVector2Array( -960, -541, -780, -391, -59, -434, -81, -514, 77, -514, 68, -434, 724, -391, 961, -539 )
+
+[node name="CollisionDown" type="CollisionPolygon2D" parent="CollisionsVerticals" index="1"]
+polygon = PoolVector2Array( -960, 540, -816, 366, -56, 426, -78, 521, 79, 522, 71, 437, 719, 407, 959, 539 )
+
+[node name="CollisionLeft" type="CollisionPolygon2D" parent="CollisionsHorizontals" index="0"]
+polygon = PoolVector2Array( -959, -540, -787, -397, -849, -63, -940, -76, -936, 82, -848, 61, -823, 378, -960, 540 )
+
+[node name="CollisionRight" type="CollisionPolygon2D" parent="CollisionsHorizontals" index="1"]
+polygon = PoolVector2Array( 960, -539, 744, -403, 771, -65, 922, -88, 927, 95, 758, 59, 716, 402, 959, 538 )
