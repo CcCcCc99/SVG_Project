@@ -46,7 +46,6 @@ func _on_hit(body):
 	if body.is_in_group("Environment"):
 		if is_shot:
 			queue_free()
-		speed = 0
 		
 	elif body.is_in_group(enemy):
 		body.take_damage(damage)

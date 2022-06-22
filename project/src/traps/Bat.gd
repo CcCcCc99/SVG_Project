@@ -6,6 +6,7 @@ var effect
 func _on_Bat_area_entered(area):
 	._on_hit(area)
 	if not area.is_in_group("Portal"):
+		speed = 0
 		_spawn_death_effect()
 
 func _on_Bat_body_entered(body):
