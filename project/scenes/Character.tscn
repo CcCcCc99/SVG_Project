@@ -4,9 +4,7 @@
 [ext_resource path="res://scenes/prefabs/prop/Poof.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/prefabs/prop/Shadow.tscn" type="PackedScene" id=3]
 
-[node name="Character" type="KinematicBody2D" groups=[
-"Character",
-]]
+[node name="Character" type="KinematicBody2D" groups=["Character"]]
 script = ExtResource( 1 )
 POOF = ExtResource( 2 )
 
