@@ -5,10 +5,10 @@
 [ext_resource path="res://assets/sprites/tortoise/cammina1.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/tortoise/cammina2.png" type="Texture" id=4]
 [ext_resource path="res://assets/sprites/tortoise/idle.png" type="Texture" id=5]
+[ext_resource path="res://scenes/corps/TortoiseCorpse.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/MobIA/Tortoise.gd" type="Script" id=7]
 [ext_resource path="res://src/utility/Hitbox.gd" type="Script" id=11]
 [ext_resource path="res://src/utility/TriggerAttack.gd" type="Script" id=12]
-[ext_resource path="res://scenes/Corpse.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 76.896, 39.8492 )
@@ -41,7 +41,7 @@ height = 28.8621
 
 [node name="Tortoise" instance=ExtResource( 1 )]
 script = ExtResource( 7 )
-CORPSE = ExtResource( 14 )
+CORPSE = ExtResource( 6 )
 max_hp = 4
 speed = 1000
 shot_direction = Vector2( -1, -2 )
@@ -70,16 +70,13 @@ position = Vector2( 7, -129 )
 scale = Vector2( 0.45, 0.45 )
 frames = SubResource( 4 )
 animation = "walk"
+frame = 1
 playing = true
 
 [node name="Cooldown" parent="." index="4"]
 wait_time = 20.0
 
-[node name="HitBox" type="Area2D" parent="." index="5" groups=[
-"Character",
-"Hitbox",
-"Mob",
-]]
+[node name="HitBox" type="Area2D" parent="." index="5" groups=["Character", "Hitbox", "Mob"]]
 script = ExtResource( 11 )
 
 [node name="Body" type="CollisionShape2D" parent="HitBox" index="0"]
@@ -100,6 +97,7 @@ scale = Vector2( 0.525591, 0.533342 )
 
 [node name="LittleFirend" parent="." index="8" instance=ExtResource( 2 )]
 position = Vector2( 7.93701, -189.695 )
+
 [connection signal="area_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
 [connection signal="body_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
 [connection signal="enemy_spotted" from="TriggerAttack" to="." method="_on_TriggerAttack"]
