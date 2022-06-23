@@ -10,6 +10,16 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 6 ) ],
+"loop": false,
+"name": "back",
+"speed": 11.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "idle",
+"speed": 1.0
+}, {
 "frames": [ ExtResource( 6 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": false,
 "name": "eat",
@@ -25,7 +35,8 @@ script = ExtResource( 7 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "eat"
+animation = "idle"
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -73.5, -21.5 )

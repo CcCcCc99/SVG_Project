@@ -7,9 +7,12 @@ var state = NORMAL
 export var speed = 10000
 export var damage = 1
 
-var direction = Vector2(-1,0)
+var direction = Vector2.ZERO
 
 var is_in_portal: bool = true
+
+var is_summoned: bool = false
+var enemy: String
 
 
 signal scaled_down
@@ -17,6 +20,10 @@ signal scaled_up
 
 func _ready():
 	self.connect("scaled_down", self, "_teleport")
+	if is_summoned:
+		enemy = "Mob"
+	else:
+		enemy = "Player"
 
 func _physics_process(delta):
 	if state == SCALEDOWN:
@@ -26,8 +33,8 @@ func _physics_process(delta):
 	else:
 		position += direction * speed * delta
 
-func set_direction(dir):
-	direction = dir
+func set_direction(dir: Vector2):
+	direction = dir.normalized()
 	if dir.x > 0:
 		$AnimatedSprite.flip_h = true
 	if dir.y > 0:
@@ -37,7 +44,7 @@ func _on_hit(body):
 	if body.is_in_group("Environment"):
 		queue_free()
 		
-	elif body.is_in_group("Player"):
+	elif body.is_in_group(enemy):
 		body.take_damage(damage)
 		
 	elif body.is_in_group("Portal"):
@@ -58,18 +65,19 @@ func teleport_to(dest: Portal2D):
 
 func _teleport():
 	position = destination
+	start_scaling_up()
 
 func _scale_up():
 	if scale < Vector2(1,1):
-		scale *= 1.2
+		scale *= 1.1
 	else:
 		emit_signal("scaled_up")
 		_reset_animations()
 		state = NORMAL
 
 func _scale_down():
-	if scale > Vector2(0.05,0.05):
-		scale *= 0.8
+	if scale > Vector2(0.1,0.1):
+		scale *= 0.9
 	else:
 		emit_signal("scaled_down")
 
@@ -78,3 +86,6 @@ func start_scaling_down():
 
 func start_scaling_up():
 	state = SCALEUP
+
+func back_to_normal():
+	state = NORMAL

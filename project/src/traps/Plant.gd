@@ -3,14 +3,15 @@ extends Area2D
 export var damage = 3
 
 func _on_Plant_area_entered(area):
-	$AnimatedSprite.play("", false)
 	_on_hit(area)
 
 func _on_Plant_body_entered(body):
 	_on_Plant_area_entered(body)
 
 func _on_hit(body):
-	if body.is_in_group("Player"):
+	$AnimatedSprite.animation = "eat"
+	$AnimatedSprite.frame = 0
+	if body.is_in_group("Character"):
 		body.take_damage(damage)
 		
 	elif body.is_in_group("Portal"):
@@ -19,8 +20,12 @@ func _on_hit(body):
 		pass
 
 func _on_AnimatedSprite_animation_finished():
-	$Timer.start()
+	print($AnimatedSprite.animation)
+	if $AnimatedSprite.animation == "eat":
+		$Timer.start()
+		$AnimatedSprite.animation = "back"
+	elif $AnimatedSprite.animation == "back":
+		$AnimatedSprite.animation = "idle"
 
 func _on_Timer_timeout():
-	$AnimatedSprite.frame = 0
 	$AnimatedSprite.stop()
