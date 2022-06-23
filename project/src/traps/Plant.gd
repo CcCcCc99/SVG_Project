@@ -11,6 +11,7 @@ func _on_Plant_body_entered(body):
 func _on_hit(body):
 	$AnimatedSprite.animation = "eat"
 	$AnimatedSprite.frame = 0
+	$AudioStreamPlayer2D.play()
 	if body.is_in_group("Character"):
 		body.take_damage(damage)
 		
