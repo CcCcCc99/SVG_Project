@@ -2,15 +2,17 @@ extends Shot
 
 export var bounces: int = 5
 var cont: int = 0
-var is_stopped = false
+var is_stopped = true
 
 func _on_hit(body):
-	if body.is_in_group("VerticalEnvironment"):
-		_bounce(false)
-	elif body.is_in_group("HorizontalEnvironment"):
-		_bounce(true)
-	else:
-		._on_hit(body)
+	if not is_stopped:
+		print("pischello")
+		if body.is_in_group("VerticalEnvironment"):
+			_bounce(false)
+		elif body.is_in_group("HorizontalEnvironment"):
+			_bounce(true)
+		else:
+			._on_hit(body)
 
 func _bounce(horizontal):
 	if cont < bounces:
@@ -23,5 +25,6 @@ func _bounce(horizontal):
 		_stop()
 
 func _stop():
+	cont = 0
 	.set_direction(Vector2.ZERO)
 	is_stopped = true
