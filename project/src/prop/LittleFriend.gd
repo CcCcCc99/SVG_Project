@@ -6,7 +6,6 @@ var is_stopped = true
 
 func _on_hit(body):
 	if not is_stopped:
-		print("pischello")
 		if body.is_in_group("VerticalEnvironment"):
 			_bounce(false)
 		elif body.is_in_group("HorizontalEnvironment"):

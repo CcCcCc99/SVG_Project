@@ -22,7 +22,7 @@ func get_direction():
 				elif ($LittleFriend.position.x > 0 and $LittleFriend.position.y > 0):
 					direction = Vector2(1, 1)
 					$LittleFriend.global_position = previous_position
-				if ($LittleFriend.position.x > -90 and $LittleFriend.position.x < 90 and $LittleFriend.position.y > -90 and $LittleFriend.position.y < 90):
+				if ($LittleFriend.position.x > -130 and $LittleFriend.position.x < 130 and $LittleFriend.position.y > -130 and $LittleFriend.position.y < 90):
 					is_returned = true
 					$LittleFriend.position = Vector2(10, -185)
 					speed = 1000
