@@ -12,17 +12,25 @@ texture = ExtResource( 4 )
 
 [node name="Left" parent="Doors" index="0" instance=ExtResource( 2 )]
 position = Vector2( -944.941, -10.0794 )
+collision_layer = 8
+collision_mask = 63
 
 [node name="Right" parent="Doors" index="1" instance=ExtResource( 2 )]
 position = Vector2( 861.786, -12.5992 )
 scale = Vector2( -1, 1 )
+collision_layer = 8
+collision_mask = 63
 
 [node name="Top" parent="Doors" index="2" instance=ExtResource( 3 )]
 position = Vector2( 12.5992, -526.647 )
+collision_layer = 8
+collision_mask = 63
 
 [node name="Bottom" parent="Doors" index="3" instance=ExtResource( 3 )]
 position = Vector2( 15.119, 524.127 )
 scale = Vector2( 1, -1 )
+collision_layer = 8
+collision_mask = 63
 
 [node name="CollisionUp" type="CollisionPolygon2D" parent="CollisionsVerticals" index="0"]
 polygon = PoolVector2Array( -960, -541, -780, -391, -59, -434, -81, -514, 77, -514, 68, -434, 724, -391, 961, -539 )

@@ -14,6 +14,7 @@ func _on_hit(body):
 			._on_hit(body)
 
 func _bounce(horizontal):
+	print("body.name")
 	if cont < bounces:
 		if horizontal:
 			direction.x *= -1

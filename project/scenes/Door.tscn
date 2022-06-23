@@ -2,9 +2,9 @@
 
 [ext_resource path="res://src/Door.gd" type="Script" id=3]
 
-[node name="Door" type="StaticBody2D" groups=["Environment"]]
-collision_layer = 8
-collision_mask = 63
+[node name="Door" type="StaticBody2D" groups=[
+"Environment",
+]]
 script = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
