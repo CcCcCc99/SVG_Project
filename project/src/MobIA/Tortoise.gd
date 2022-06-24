@@ -25,9 +25,11 @@ func get_direction():
 				if ($LittleFriend.position.x > -130 and $LittleFriend.position.x < 130 and $LittleFriend.position.y > -130 and $LittleFriend.position.y < 90):
 					is_returned = true
 					$LittleFriend.position = Vector2(10, -185)
+					$LittleFriend.get_node("AnimatedSprite").flip_h = false
 					speed = 1000
 					direction.x = 0
 					direction.y = -direction.y
+					$AnimatedSprite.flip_h = false
 			$AnimatedSprite.animation = "walk"
 			return direction
 		IDLE:
@@ -35,6 +37,8 @@ func get_direction():
 			if $LittleFriend.is_stopped:
 				ia_state = WALK
 				previous_position = $LittleFriend.global_position
+				if ($LittleFriend.position.x > 0):
+					$AnimatedSprite.flip_h = true
 			return Vector2.ZERO
 
 func _on_collision_environment():
@@ -44,6 +48,7 @@ func _on_collision_environment():
 func _on_TriggerAttack(body):
 	if ia_state != IDLE and is_returned:
 		ia_state = IDLE
+		$LittleFriend.position = Vector2(0, 0)
 		$LittleFriend.set_direction(shot_direction)
 		$LittleFriend.is_stopped = false
 		is_returned = false
