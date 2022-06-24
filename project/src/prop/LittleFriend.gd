@@ -14,17 +14,22 @@ func _on_hit(body):
 			._on_hit(body)
 
 func _bounce(horizontal):
-	print("body.name")
-	if cont < bounces:
-		if horizontal:
-			direction.x *= -1
-		else:
-			direction.y *= -1
-		cont += 1
+	if horizontal:
+		direction.x *= -1
+		$AnimatedSprite.flip_h = not $AnimatedSprite.flip_h
 	else:
-		_stop()
+		direction.y *= -1
+	if $CooldownTimer.is_stopped():
+		if cont < bounces:
+			cont += 1
+		else:
+			_stop()
 
 func _stop():
 	cont = 0
+	$CooldownTimer.start()
+
+func _on_CooldownTimer_timeout():
+	$CooldownTimer.stop()
 	.set_direction(Vector2.ZERO)
 	is_stopped = true
