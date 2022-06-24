@@ -28,7 +28,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 182.5, 187.5 )
+extents = Vector2( 182.5, 106 )
 
 [node name="Plant" type="Area2D"]
 z_index = 1
@@ -40,13 +40,14 @@ animation = "idle"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -73.5, -21.5 )
+position = Vector2( -73.5, -25 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
 one_shot = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -54,7 +55,7 @@ stream = ExtResource( 8 )
 pitch_scale = 1.5
 bus = "SFX"
 
-[connection signal="area_entered" from="." to="." method="_on_Plant_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_Plant_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_hit"]
+[connection signal="body_entered" from="." to="." method="_on_hit"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

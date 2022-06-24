@@ -7,4 +7,17 @@
 bottom_room = 1
 
 [node name="BatSpawner" parent="Objects" index="0" instance=ExtResource( 2 )]
-position = Vector2( -1.53998, -0.709015 )
+position = Vector2( -811, 214 )
+flipx = false
+
+[node name="BatSpawner2" parent="Objects" index="1" instance=ExtResource( 2 )]
+position = Vector2( 735, -194 )
+flipy = false
+
+[node name="BatSpawner3" parent="Objects" index="2" instance=ExtResource( 2 )]
+position = Vector2( -563, 367 )
+flipx = false
+flipy = false
+
+[node name="BatSpawner4" parent="Objects" index="3" instance=ExtResource( 2 )]
+position = Vector2( 475, -381 )

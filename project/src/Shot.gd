@@ -1,6 +1,8 @@
 extends Area2D
 class_name Shot
 
+export(bool) var is_shot
+
 enum {NORMAL, SCALEUP, SCALEDOWN}
 var state = NORMAL
 
@@ -42,7 +44,8 @@ func set_direction(dir: Vector2):
 
 func _on_hit(body):
 	if body.is_in_group("Environment"):
-		queue_free()
+		if is_shot:
+			queue_free()
 		
 	elif body.is_in_group(enemy):
 		body.take_damage(damage)
