@@ -8,6 +8,7 @@ var objects_array: Array
 func _on_hit(object):
 	if $Timer.time_left == 0:
 		if not object.is_in_group("Environment"):
+			$AudioStreamPlayer.play()
 			if $AnimatedSprite.animation == "idle":
 				$AnimatedSprite.animation = "eat"
 				$AnimatedSprite.frame = 0
