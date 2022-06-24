@@ -4,6 +4,7 @@ export var damage = 3
 
 var objects_array: Array
 
+
 func _on_hit(object):
 	if $Timer.time_left == 0:
 		if not object.is_in_group("Environment"):
