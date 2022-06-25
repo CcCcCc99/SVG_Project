@@ -4,8 +4,6 @@ class_name Character
 export(PackedScene) var POOF
 export(PackedScene) var CORPSE
 
-var path = ""
-
 var effect
 var corpse
 enum {NORMAL, INCAPACITATED, SCALEUP, SCALEDOWN}
@@ -29,7 +27,6 @@ func _ready():
 	set_hp(max_hp)
 	effect = POOF.instance()
 	corpse = CORPSE.instance()
-	corpse.summon = path
 	effect.connect("animation_finished", self, "_end_effect")
 	self.connect("scaled_down", self, "_teleport")
 	$InvincibilityTimer.connect("timeout", self, "_on_invincibility_timeout")

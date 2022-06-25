@@ -8,10 +8,12 @@ radius = 25.6213
 height = 55.1762
 
 [node name="BlowerCorpse" instance=ExtResource( 1 )]
+summon = "res://scenes/prefabs/mob/Blower.tscn"
+cost = 2
 
 [node name="Shadow" parent="." index="0"]
 position = Vector2( 8.34276, -10.6787 )
-scale = Vector2( 0.26, 0.26 )
+scale = Vector2( 0.3, 0.3 )
 
 [node name="Sprite" parent="." index="1"]
 position = Vector2( 17.553, -89.0341 )

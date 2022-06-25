@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/prefabs/mob/Blower.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/prefabs/traps/Plant.tscn" type="PackedScene" id=3]
 
-[node name="Room0Test" instance=ExtResource( 1 )]
+[node name="Room" instance=ExtResource( 1 )]
 right_room = 1
 
 [node name="Sprite" parent="." index="0"]

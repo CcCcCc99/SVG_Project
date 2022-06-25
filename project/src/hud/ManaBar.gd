@@ -4,24 +4,16 @@ export var mana_full = preload("res://assets/mana_pieno.png")
 export var mana_empty = preload("res://assets/mana_vuoto.png")
 export var current_point_of_mana: int = 0
 
-var player
+var assistant
 
-#func _process(delta):
-	#if Input.is_action_just_pressed("ui_accept"):
-		#player.set_mana(player.get_mana() - 1)
-	#if Input.is_action_just_pressed("ui_down"):
-		#player.set_mana(player.get_mana() + 1)
-	#if Input.is_action_just_pressed("ui_page_down"):
-		#player.set_max_mana(player.max_mana + 1)
-
-func set_player(p: Character) -> void:
-	player = p
-	player.connect("mana_changed", self, "_change_mana_bar")
+func set_player(p: Node2D) -> void:
+	assistant = p
+	assistant.connect("mana_changed", self, "_change_mana_bar")
 
 func _add_mana() -> void:
 	var i = 0
 	var n = get_child_count() # number of actual children
-	while(i < player.get_mana() - n):
+	while(i < assistant.get_mana() - n):
 		var mana_i = TextureRect.new()
 		add_child(mana_i)
 		mana_i.texture = mana_full
