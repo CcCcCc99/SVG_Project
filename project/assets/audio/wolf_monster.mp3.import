@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/wolf_monster.mp3-316e33cd6b9cfd1e4580d1bfec8be620.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/wolf_monster.mp3"
+dest_files=[ "res://.import/wolf_monster.mp3-316e33cd6b9cfd1e4580d1bfec8be620.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

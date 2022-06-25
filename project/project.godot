@@ -56,6 +56,10 @@ boot_splash/image="res://assets/logo6.png"
 boot_splash/bg_color=Color( 0.117647, 0.117647, 0.117647, 1 )
 config/icon="res://icon.png"
 
+[autoload]
+
+DefaultLoad="*res://src/default_load.gd"
+
 [display]
 
 window/size/width=1920
