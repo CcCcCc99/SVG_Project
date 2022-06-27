@@ -70,7 +70,6 @@ func _set_config() -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), _volume_to_db(music_volume))
 	
 	# risoluzione da settare
-	OS.set_window_resizable(false)
 	if resolution < OS.get_screen_size():
 		OS.set_window_maximized(false)
 		OS.set_window_size(resolution)
