@@ -77,7 +77,6 @@ func take_damage(damage: int):
 		$InvincibilityTimer.start()
 		is_taking_damage = true
 		set_hp(hp - damage)
-		print(hp)
 		if hp <= 0:
 			 _spawn_death_effect()
 
@@ -97,11 +96,12 @@ func _spawn_death_effect():
 
 func _end_effect():
 	effect.queue_free()
-	corpse.position = position
-	get_parent().add_child(corpse)
+	_spawn_corpse()
 	self.queue_free()
 	
-
+func _spawn_corpse():
+	corpse.position = position
+	get_parent().add_child(corpse)
 
 ############################################
 

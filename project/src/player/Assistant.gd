@@ -36,12 +36,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("summon") and is_instance_valid(summons[action_bar.current()]):
-		var spawned = summons[action_bar.current()].spawn(
+	var active: summon = summons[action_bar.current()]
+	if Input.is_action_just_pressed("summon") and is_instance_valid(active) and mana >= active.mana_cost:
+		var spawned = active.spawn(
 			get_parent().get_node("Room").get_node("Objects"),
 			get_global_mouse_position())
 		if spawned:
-			set_mana(mana - summons[action_bar.current()].mana_cost)
+			set_mana(mana - active.mana_cost)
 
 func set_actionbar(bar):
 	action_bar = bar
