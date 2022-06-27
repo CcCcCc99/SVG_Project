@@ -11,6 +11,9 @@ func _ready() -> void:
 	_load_config()
 	_set_config()
 
+func _volume_to_db(volume: float) -> float:
+	return log(volume / 10) * 20
+
 func set_resolution(res: Vector2) -> void:
 	if resolution != res:
 		resolution = res
@@ -61,7 +64,12 @@ func _load_config() -> void:
 	file.close()
 
 func _set_config() -> void:
-	# volumi da settare #
+	# volumi da settare
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), _volume_to_db(master_volume))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), _volume_to_db(sfx_volume))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), _volume_to_db(music_volume))
+	
+	# risoluzione da settare
 	OS.set_window_resizable(false)
 	if resolution < OS.get_screen_size():
 		OS.set_window_maximized(false)
