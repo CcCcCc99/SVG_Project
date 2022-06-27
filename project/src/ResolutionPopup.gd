@@ -3,6 +3,8 @@ extends VBoxContainer
 var selected_menu = 0
 var pointer
 
+onready var config = get_node("/root/DefaultLoad")
+
 func change_menu_color():
 	_on_Res1024x546_mouse_exited()
 	_on_Res1280x720_mouse_exited()
@@ -54,8 +56,7 @@ func _input(event):
 				_on_Back_pressed()
 
 func _on_Res1024x546_pressed():
-	OS.set_window_size(Vector2(1024,546))
-
+	config.set_resolution(Vector2(1024, 546))
 
 func _on_Res1024x546_mouse_entered():
 	$Menu/Res1024x546.modulate = "ffffff"
@@ -70,8 +71,7 @@ func _on_Res1024x546_mouse_exited():
 
 
 func _on_Res1280x720_pressed():
-	OS.set_window_size(Vector2(1280,720))
-
+	config.set_resolution(Vector2(1280, 720))
 
 func _on_Res1280x720_mouse_entered():
 	$Menu/Res1280x720.modulate = "ffffff"
@@ -86,8 +86,7 @@ func _on_Res1280x720_mouse_exited():
 
 
 func _on_Res1600x900_pressed():
-	OS.set_window_size(Vector2(1600,900))
-
+	config.set_resolution(Vector2(1600, 900))
 
 func _on_Res1600x900_mouse_entered():
 	$Menu/Res1600x900.modulate = "ffffff"
@@ -102,7 +101,7 @@ func _on_Res1600x900_mouse_exited():
 
 
 func _on_Res1920x1080_pressed():
-	OS.set_window_size(Vector2(1920,1080))
+	config.set_resolution(Vector2(1920, 1080))
 
 
 func _on_Res1920x1080_mouse_entered():

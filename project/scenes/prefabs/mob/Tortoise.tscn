@@ -5,10 +5,10 @@
 [ext_resource path="res://assets/sprites/tortoise/cammina1.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/tortoise/cammina2.png" type="Texture" id=4]
 [ext_resource path="res://assets/sprites/tortoise/idle.png" type="Texture" id=5]
+[ext_resource path="res://scenes/corps/TortoiseCorpse.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/MobIA/Tortoise.gd" type="Script" id=7]
 [ext_resource path="res://src/utility/Hitbox.gd" type="Script" id=11]
 [ext_resource path="res://src/utility/TriggerAttack.gd" type="Script" id=12]
-[ext_resource path="res://scenes/Corpse.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 76.896, 39.8492 )
@@ -41,7 +41,7 @@ height = 28.8621
 
 [node name="Tortoise" instance=ExtResource( 1 )]
 script = ExtResource( 7 )
-CORPSE = ExtResource( 14 )
+CORPSE = ExtResource( 6 )
 max_hp = 4
 speed = 1000
 shot_direction = Vector2( -1, -2 )
@@ -97,6 +97,7 @@ scale = Vector2( 0.525591, 0.533342 )
 
 [node name="LittleFriend" parent="." index="8" instance=ExtResource( 2 )]
 position = Vector2( 10, -185 )
+
 
 [connection signal="area_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
 [connection signal="body_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
