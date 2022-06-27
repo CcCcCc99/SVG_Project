@@ -78,3 +78,4 @@ func _set_config() -> void:
 		OS.set_window_maximized(true)
 	OS.center_window()
 	OS.set_window_fullscreen(fullscreen)
+

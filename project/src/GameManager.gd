@@ -17,9 +17,9 @@ func _ready():
 	player = player_scene.instance()
 	assistant = assistant_scene.instance()
 	assistant.action_bar = $HUD/ActionBar
-	add_child(assistant)
 	health_bar.set_player(player)
-	mana_bar.set_player(player)
+	mana_bar.set_player(assistant)
+	add_child(assistant)
 	_load_level()
 
 func _load_level():
@@ -46,7 +46,7 @@ func _switch_to_room(r: int, d: int):
 	call_deferred("_unload_room")
 	call_deferred("_load_room", r, d)
 
-func load_summon(sum):
+func load_summon(sum, cost):
 	var summon = load(sum).instance()
-	assistant.add_summon(summon)
+	assistant.add_summon(summon, cost)
 

@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/prefabs/mob/Blower.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/prefabs/traps/Plant.tscn" type="PackedScene" id=3]
 
-[node name="Room0Test" instance=ExtResource( 1 )]
+[node name="Room" instance=ExtResource( 1 )]
 right_room = 1
 
 [node name="Sprite" parent="." index="0"]
@@ -17,3 +17,9 @@ scale = Vector2( 0.8, 0.8 )
 
 [node name="Blower" parent="Objects" index="1" instance=ExtResource( 2 )]
 position = Vector2( 321.929, 342.344 )
+
+[node name="Blower2" parent="Objects" index="2" instance=ExtResource( 2 )]
+position = Vector2( 421.929, 70.344 )
+
+[node name="Blower3" parent="Objects" index="3" instance=ExtResource( 2 )]
+position = Vector2( 251.929, 144.344 )
