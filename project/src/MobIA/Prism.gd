@@ -1,6 +1,7 @@
 extends Mob
 
 var direction = Vector2.LEFT
+export var laser_dmg = 2
 
 export(PackedScene) var raycast
 
@@ -15,7 +16,7 @@ func get_direction():
 
 func _on_collision_environment():
 	direction.x *= -1
-	flip = true
+	scale.x *= -1
 
 func _walk():
 	$AnimatedSprite.show()
@@ -37,3 +38,7 @@ func _on_Cooldown_timeout():
 
 func _on_HitBox_body_entered(body):
 	ia_state = ATTACK
+
+func _on_hit(body):
+	if body.is_in_group(enemy):
+		body.take_damage(laser_dmg)
