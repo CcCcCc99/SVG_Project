@@ -10,14 +10,16 @@ class summon:
 		mana_cost = c
 		summoned = false
 
-	func spawn(parent: Node, pos: Vector2):
-		if not summoned:
-			summoned = true
-			mob.is_summoned = true
-			mob.position = pos
-			mob.modulate = Color.darkblue
-			mob.get_node("Shadow").hide()
-			parent.add_child(mob)
+	func spawn(parent: Node, pos: Vector2) -> bool:
+		if summoned:
+			return false
+		summoned = true
+		mob.is_summoned = true
+		mob.position = pos
+		mob.modulate = Color.darkblue
+		mob.get_node("Shadow").hide()
+		parent.add_child(mob)
+		return true
 
 var summons: Array = [null, null, null, null, null, null]
 export var summons_number: int = 1
@@ -34,11 +36,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("summon") and is_instance_valid(summons[action_bar.current()]):
-		summons[action_bar.current()].spawn(
+	var active: summon = summons[action_bar.current()]
+	if Input.is_action_just_pressed("summon") and is_instance_valid(active) and mana >= active.mana_cost:
+		var spawned = active.spawn(
 			get_parent().get_node("Room").get_node("Objects"),
 			get_global_mouse_position())
-		set_mana(mana - summons[action_bar.current()].mana_cost)
+		if spawned:
+			set_mana(mana - active.mana_cost)
 
 func set_actionbar(bar):
 	action_bar = bar

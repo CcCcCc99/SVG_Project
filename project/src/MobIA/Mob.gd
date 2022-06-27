@@ -18,6 +18,9 @@ func _ready():
 	else:
 		enemy = "Player"
 
+func _spawn_corpse():
+	if not is_summoned:
+		._spawn_corpse()
 
 func _reset_animations():
 	._reset_animations()
