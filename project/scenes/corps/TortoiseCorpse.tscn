@@ -8,6 +8,7 @@ radius = 33.9998
 height = 112.0
 
 [node name="TortoiseCorpse" instance=ExtResource( 2 )]
+summon = "res://scenes/prefabs/mob/Tortoise.tscn"
 
 [node name="Shadow" parent="." index="0"]
 scale = Vector2( 0.443759, 0.466811 )

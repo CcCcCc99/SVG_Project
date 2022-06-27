@@ -37,10 +37,8 @@ func _physics_process(delta):
 
 func set_direction(dir: Vector2):
 	direction = dir.normalized()
-	if dir.x > 0:
-		$AnimatedSprite.flip_h = true
-	if dir.y > 0:
-		$AnimatedSprite.flip_v = true
+	scale.x = -1 if dir.x > 0 else 1
+	scale.y = -1 if dir.y > 0 else 1
 
 func _on_hit(body):
 	if body.is_in_group("Environment"):

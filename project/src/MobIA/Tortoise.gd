@@ -4,42 +4,47 @@ export var shot_direction: Vector2
 
 var direction = Vector2.UP
 var is_returned: bool = true
-var previous_position: Vector2
+var previous_direction: Vector2 = Vector2.ZERO
+
+var lf
+
+func _ready():
+	lf = $LittleFriend
 
 func get_direction():
 	match ia_state:
 		WALK:
 			if not is_returned:
-				if ($LittleFriend.position.x < 0 and $LittleFriend.position.y < 0):
+				if (lf.position.x < position.x and lf.position.y < position.y):
 					direction = Vector2(-1, -1)
-					$LittleFriend.global_position = previous_position
-				elif ($LittleFriend.position.x > 0 and $LittleFriend.position.y < 0):
+				elif (lf.position.x > position.x and lf.position.y < position.y):
 					direction = Vector2(1, -1)
-					$LittleFriend.global_position = previous_position
-				elif ($LittleFriend.position.x < 0 and $LittleFriend.position.y > 0):
+				elif (lf.position.x < position.x and lf.position.y > position.y):
 					direction = Vector2(-1, 1)
-					$LittleFriend.global_position = previous_position
-				elif ($LittleFriend.position.x > 0 and $LittleFriend.position.y > 0):
+				elif (lf.position.x > position.x and lf.position.y > position.y):
 					direction = Vector2(1, 1)
-					$LittleFriend.global_position = previous_position
-				if ($LittleFriend.position.x > -130 and $LittleFriend.position.x < 130 and $LittleFriend.position.y > -130 and $LittleFriend.position.y < 90):
-					is_returned = true
-					$LittleFriend.position = Vector2(10, -185)
-					$LittleFriend.get_node("AnimatedSprite").flip_h = false
-					speed = 1000
-					direction.x = 0
-					direction.y = -direction.y
-					$AnimatedSprite.flip_h = false
+				if lf.position.distance_to(position) < 130:
+					_return()
 			$AnimatedSprite.animation = "walk"
+			if direction.x != previous_direction.x and previous_direction.x != 0:
+				scale.x *= -1
+			previous_direction = direction
 			return direction
 		IDLE:
 			$AnimatedSprite.animation = "idle"
-			if $LittleFriend.is_stopped:
+			if lf.is_stopped:
 				ia_state = WALK
-				previous_position = $LittleFriend.global_position
-				if ($LittleFriend.position.x > 0):
-					$AnimatedSprite.flip_h = true
+			previous_direction = Vector2.ZERO
 			return Vector2.ZERO
+
+func _return():
+	get_parent().remove_child(lf)
+	add_child(lf)
+	is_returned = true
+	lf.position = Vector2(10, -185)
+	speed = 1000
+	direction.x = 0
+	direction.y = -direction.y
 
 func _on_collision_environment():
 	if is_returned:
@@ -48,8 +53,16 @@ func _on_collision_environment():
 func _on_TriggerAttack(body):
 	if ia_state != IDLE and is_returned:
 		ia_state = IDLE
-		$LittleFriend.position = Vector2(0, 0)
-		$LittleFriend.set_direction(shot_direction)
-		$LittleFriend.is_stopped = false
+		lf.position = $launch_point.global_position
+		lf.set_direction(shot_direction)
+		lf.scale = Vector2(1,1)
+		remove_child(lf)
+		get_parent().add_child(lf)
+		lf.is_stopped = false
 		is_returned = false
 		speed = 10000
+
+func _end_effect():
+	get_parent().remove_child(lf)
+	add_child(lf)
+	._end_effect()

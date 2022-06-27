@@ -30,6 +30,7 @@ position = Vector2( -2.00226, 54.7284 )
 scale = Vector2( 0.45, 0.45 )
 frames = SubResource( 1 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -37,7 +38,7 @@ position = Vector2( 1.6685, -10.5999 )
 shape = SubResource( 2 )
 
 [node name="CooldownTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.5
 
 [connection signal="area_entered" from="." to="." method="_on_hit"]
 [connection signal="body_entered" from="." to="." method="_on_hit"]
