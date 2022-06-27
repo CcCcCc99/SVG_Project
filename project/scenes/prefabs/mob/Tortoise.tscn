@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/Mob.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/prefabs/prop/LittleFirend.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/prefabs/prop/LittleFriend.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/sprites/tortoise/cammina1.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/tortoise/cammina2.png" type="Texture" id=4]
 [ext_resource path="res://assets/sprites/tortoise/idle.png" type="Texture" id=5]
@@ -95,10 +95,10 @@ wait_time = 1.0
 position = Vector2( -2.3811, -27.3826 )
 scale = Vector2( 0.525591, 0.533342 )
 
-[node name="LittleFirend" parent="." index="8" instance=ExtResource( 2 )]
-position = Vector2( 7.93701, -189.695 )
+[node name="LittleFriend" parent="." index="8" instance=ExtResource( 2 )]
+position = Vector2( 10, -185 )
+
 
 [connection signal="area_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
 [connection signal="body_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
 [connection signal="enemy_spotted" from="TriggerAttack" to="." method="_on_TriggerAttack"]
-[connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]

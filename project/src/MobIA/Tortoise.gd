@@ -4,28 +4,52 @@ export var shot_direction: Vector2
 
 var direction = Vector2.UP
 var is_returned: bool = true
+var previous_position: Vector2
 
 func get_direction():
 	match ia_state:
 		WALK:
+			if not is_returned:
+				if ($LittleFriend.position.x < 0 and $LittleFriend.position.y < 0):
+					direction = Vector2(-1, -1)
+					$LittleFriend.global_position = previous_position
+				elif ($LittleFriend.position.x > 0 and $LittleFriend.position.y < 0):
+					direction = Vector2(1, -1)
+					$LittleFriend.global_position = previous_position
+				elif ($LittleFriend.position.x < 0 and $LittleFriend.position.y > 0):
+					direction = Vector2(-1, 1)
+					$LittleFriend.global_position = previous_position
+				elif ($LittleFriend.position.x > 0 and $LittleFriend.position.y > 0):
+					direction = Vector2(1, 1)
+					$LittleFriend.global_position = previous_position
+				if ($LittleFriend.position.x > -130 and $LittleFriend.position.x < 130 and $LittleFriend.position.y > -130 and $LittleFriend.position.y < 90):
+					is_returned = true
+					$LittleFriend.position = Vector2(10, -185)
+					$LittleFriend.get_node("AnimatedSprite").flip_h = false
+					speed = 1000
+					direction.x = 0
+					direction.y = -direction.y
+					$AnimatedSprite.flip_h = false
 			$AnimatedSprite.animation = "walk"
 			return direction
 		IDLE:
 			$AnimatedSprite.animation = "idle"
-			if is_returned:
+			if $LittleFriend.is_stopped:
 				ia_state = WALK
-				$LittleFriend.ia_state = IDLE
+				previous_position = $LittleFriend.global_position
+				if ($LittleFriend.position.x > 0):
+					$AnimatedSprite.flip_h = true
 			return Vector2.ZERO
 
 func _on_collision_environment():
-	direction.y *= -1
+	if is_returned:
+		direction.y *= -1
 
 func _on_TriggerAttack(body):
-	if ia_state != IDLE:
+	if ia_state != IDLE and is_returned:
 		ia_state = IDLE
-		$Cooldown.start()
-		$LittleFirend.set_direction(shot_direction)
+		$LittleFriend.position = Vector2(0, 0)
+		$LittleFriend.set_direction(shot_direction)
+		$LittleFriend.is_stopped = false
 		is_returned = false
-
-func _on_Cooldown_timeout():
-	$LittleFriend.is_returning = true
+		speed = 10000

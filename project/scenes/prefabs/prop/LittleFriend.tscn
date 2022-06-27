@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://src/prop/LittleFirend.gd" type="Script" id=1]
+[ext_resource path="res://src/prop/LittleFriend.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/tortoise/cutie3.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/tortoise/cutie.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/tortoise/cutie4.png" type="Texture" id=4]
@@ -21,9 +21,7 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=2]
 radius = 28.5145
 
-[node name="LittleFirend" type="Area2D"]
-collision_layer = 16
-collision_mask = 31
+[node name="LittleFriend" type="Area2D"]
 script = ExtResource( 1 )
 speed = 800
 
@@ -32,11 +30,15 @@ position = Vector2( -2.00226, 54.7284 )
 scale = Vector2( 0.45, 0.45 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1.6685, -10.5999 )
 shape = SubResource( 2 )
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="area_entered" from="." to="." method="_on_hit"]
 [connection signal="body_entered" from="." to="." method="_on_hit"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_CooldownTimer_timeout"]
