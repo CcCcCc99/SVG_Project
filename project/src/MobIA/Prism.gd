@@ -16,6 +16,7 @@ func get_direction():
 
 func _on_collision_environment():
 	direction.x *= -1
+	scale.x *= -1
 
 func _walk():
 	$AnimatedSprite.show()
