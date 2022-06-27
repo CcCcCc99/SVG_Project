@@ -7,6 +7,8 @@ var master_volume: float
 var resolution: Vector2
 var fullscreen: bool
 
+const config_path = "config"
+
 func _ready() -> void:
 	_load_config()
 	_set_config()
@@ -18,13 +20,7 @@ func set_resolution(res: Vector2) -> void:
 	if resolution != res:
 		resolution = res
 		
-		if resolution < OS.get_screen_size():
-			OS.set_window_maximized(false)
-			OS.set_window_size(resolution)
-		else:
-			if !OS.is_window_maximized():
-				OS.set_window_size(OS.get_screen_size())
-				OS.set_window_maximized(true)
+		OS.set_window_size(resolution)
 		OS.center_window()
 		
 		_save_config()
@@ -39,7 +35,7 @@ func set_fullscreen(fs: bool) -> void:
 
 func _save_config() -> void:
 	var file = File.new()
-	file.open("config.ini", File.WRITE)
+	file.open(config_path, File.WRITE)
 	
 	file.store_var(music_volume)
 	file.store_var(sfx_volume)
@@ -52,7 +48,7 @@ func _save_config() -> void:
 
 func _load_config() -> void:
 	var file = File.new()
-	file.open("config.ini", File.READ)
+	file.open(config_path, File.READ)
 	
 	music_volume = file.get_var()
 	sfx_volume = file.get_var()
@@ -70,12 +66,7 @@ func _set_config() -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), _volume_to_db(music_volume))
 	
 	# risoluzione da settare
-	if resolution < OS.get_screen_size():
-		OS.set_window_maximized(false)
-		OS.set_window_size(resolution)
-	else:
-		OS.set_window_size(OS.get_screen_size())
-		OS.set_window_maximized(true)
+	OS.set_window_size(resolution)
 	OS.center_window()
 	OS.set_window_fullscreen(fullscreen)
 
