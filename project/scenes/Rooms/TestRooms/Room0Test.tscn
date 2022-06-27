@@ -17,3 +17,9 @@ scale = Vector2( 0.8, 0.8 )
 
 [node name="Blower" parent="Objects" index="1" instance=ExtResource( 2 )]
 position = Vector2( 321.929, 342.344 )
+
+[node name="Blower2" parent="Objects" index="2" instance=ExtResource( 2 )]
+position = Vector2( 421.929, 70.344 )
+
+[node name="Blower3" parent="Objects" index="3" instance=ExtResource( 2 )]
+position = Vector2( 251.929, 144.344 )
