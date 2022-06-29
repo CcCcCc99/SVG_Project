@@ -67,3 +67,8 @@ func get_mana() -> int:
 func set_max_mana(new_max_mana: int):
 	max_mana = new_max_mana
 	set_mana(new_max_mana)
+
+func get_current_cost() -> int:
+	if summons[action_bar.current()] == null:
+		return 0
+	return summons[action_bar.current()].mana_cost

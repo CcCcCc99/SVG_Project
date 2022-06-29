@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/depletedmana.png-0f6e16f78c895242743acf62ee9bbd36.stex"
+path="res://.import/slot.png-38da9a76e6e2f046bd7f2b9e381d2fb8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/depletedmana.png"
-dest_files=[ "res://.import/depletedmana.png-0f6e16f78c895242743acf62ee9bbd36.stex" ]
+source_file="res://assets/hud/slot.png"
+dest_files=[ "res://.import/slot.png-38da9a76e6e2f046bd7f2b9e381d2fb8.stex" ]
 
 [params]
 

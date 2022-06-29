@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/halfhp.png-5bfd735921af587f3041572969fa94e6.stex"
+path="res://.import/info_backgrond.png-777e85378bf3eea0b0d52d3a66cf0260.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/halfhp.png"
-dest_files=[ "res://.import/halfhp.png-5bfd735921af587f3041572969fa94e6.stex" ]
+source_file="res://assets/hud/info_backgrond.png"
+dest_files=[ "res://.import/info_backgrond.png-777e85378bf3eea0b0d52d3a66cf0260.stex" ]
 
 [params]
 

@@ -14,6 +14,7 @@ var rooms: Array
 var current_room: int
 
 func _ready():
+	$Camera2D.set_process_input(false)
 	player = player_scene.instance()
 	assistant = assistant_scene.instance()
 	assistant.action_bar = $HUD/ActionBar
@@ -49,4 +50,7 @@ func _switch_to_room(r: int, d: int):
 func load_summon(sum, cost):
 	var summon = load(sum).instance()
 	assistant.add_summon(summon, cost)
+
+func get_cost() -> int:
+	return assistant.get_current_cost()
 

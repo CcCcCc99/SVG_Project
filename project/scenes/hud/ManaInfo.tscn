@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/TheNautigal-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/hud/info_frame.png" type="Texture" id=2]
+[ext_resource path="res://assets/hud/info_backgrond.png" type="Texture" id=3]
+[ext_resource path="res://src/hud/ManaInfo.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 256, 128 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 256, 128 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 80
+font_data = ExtResource( 1 )
+
+[node name="ManaInfo" type="Panel"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -128.0
+margin_right = 256.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 4 )
+
+[node name="Frame" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="CurrentCost" type="Label" parent="."]
+margin_left = 42.4744
+margin_top = 12.2703
+margin_right = 82.4744
+margin_bottom = 109.27
+custom_fonts/font = SubResource( 3 )
+
+[node name="NewCost" type="Label" parent="."]
+margin_left = 187.035
+margin_top = 12.2703
+margin_right = 228.035
+margin_bottom = 109.27
+custom_fonts/font = SubResource( 3 )

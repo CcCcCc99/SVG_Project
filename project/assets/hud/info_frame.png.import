@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cuoreVuoto.png-d957bf2e562ededdc322cafd93c7dac6.stex"
+path="res://.import/info_frame.png-4e587484daa338cddc3805c1214beb32.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cuoreVuoto.png"
-dest_files=[ "res://.import/cuoreVuoto.png-d957bf2e562ededdc322cafd93c7dac6.stex" ]
+source_file="res://assets/hud/info_frame.png"
+dest_files=[ "res://.import/info_frame.png-4e587484daa338cddc3805c1214beb32.stex" ]
 
 [params]
 

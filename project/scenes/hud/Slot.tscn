@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/slot_frame.png" type="Texture" id=1]
-[ext_resource path="res://assets/slot_background.png" type="Texture" id=2]
+[ext_resource path="res://assets/hud/slot_frame.png" type="Texture" id=1]
+[ext_resource path="res://assets/hud/slot_background.png" type="Texture" id=2]
 [ext_resource path="res://src/hud/Slot.gd" type="Script" id=4]
 
 [sub_resource type="StyleBoxTexture" id=1]
