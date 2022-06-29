@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/prefabs/prop/RayCast2D.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/MobIA/Prism.gd" type="Script" id=5]
 [ext_resource path="res://scenes/Corpse.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/sprites/prism/PrismIcon.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 38, 39.5 )
@@ -28,13 +29,11 @@ length = 1060.0
 radius = 66.1806
 height = 67.6389
 
-[sub_resource type="RayShape2D" id=4]
-length = 390.0
-
 [node name="Prism" instance=ExtResource( 2 )]
 script = ExtResource( 5 )
 CORPSE = ExtResource( 6 )
 speed = 5000
+icon = ExtResource( 7 )
 raycast = ExtResource( 4 )
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -83,15 +82,8 @@ collision_mask = 63
 position = Vector2( -3, -183 )
 shape = SubResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" index="1"]
-position = Vector2( -165, 1.00001 )
-rotation = 1.5708
-scale = Vector2( -2.78703, 1.07613 )
-shape = SubResource( 4 )
-
 [node name="Shadow" parent="." index="7"]
 scale = Vector2( 0.3, 0.3 )
 
 [connection signal="area_entered" from="AttackMode" to="." method="_on_hit"]
 [connection signal="body_entered" from="AttackMode" to="." method="_on_hit"]
-[connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]

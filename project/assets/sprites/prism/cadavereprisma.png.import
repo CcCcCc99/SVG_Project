@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/jolt4.png-d8ab731614afb6ccceb77a0894013515.stex"
+path="res://.import/cadavereprisma.png-545e6b2f558149996b770e30841dc90a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/prism/jolt4.png"
-dest_files=[ "res://.import/jolt4.png-d8ab731614afb6ccceb77a0894013515.stex" ]
+source_file="res://assets/sprites/prism/cadavereprisma.png"
+dest_files=[ "res://.import/cadavereprisma.png-545e6b2f558149996b770e30841dc90a.stex" ]
 
 [params]
 

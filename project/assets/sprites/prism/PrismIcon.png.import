@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/jolt4.png-d8ab731614afb6ccceb77a0894013515.stex"
+path="res://.import/PrismIcon.png-d322d3d2f115943c008390172fee8075.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/prism/jolt4.png"
-dest_files=[ "res://.import/jolt4.png-d8ab731614afb6ccceb77a0894013515.stex" ]
+source_file="res://assets/sprites/prism/PrismIcon.png"
+dest_files=[ "res://.import/PrismIcon.png-d322d3d2f115943c008390172fee8075.stex" ]
 
 [params]
 

@@ -17,6 +17,7 @@ func get_direction():
 func _on_collision_environment():
 	direction.x *= -1
 	scale.x *= -1
+	ia_state = ATTACK
 
 func _walk():
 	$AnimatedSprite.show()
@@ -36,8 +37,6 @@ func _laser_attack():
 func _on_Cooldown_timeout():
 	pass
 
-func _on_HitBox_body_entered(body):
-	ia_state = ATTACK
 
 func _on_hit(body):
 	if body.is_in_group(enemy):
