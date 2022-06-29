@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/slot_background.png-58ad07fb4a9505a55de04108afa363bf.stex"
+path="res://.import/rotazione.png-5088351ae0b9909c1bec8ee51a174f53.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/slot_background.png"
-dest_files=[ "res://.import/slot_background.png-58ad07fb4a9505a55de04108afa363bf.stex" ]
+source_file="res://assets/sprites/prism/rotazione.png"
+dest_files=[ "res://.import/rotazione.png-5088351ae0b9909c1bec8ee51a174f53.stex" ]
 
 [params]
 

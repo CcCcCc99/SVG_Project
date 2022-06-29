@@ -1,0 +1,97 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/sprites/prism/prisma.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Mob.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/sprites/prism/rotazione.png" type="Texture" id=3]
+[ext_resource path="res://scenes/prefabs/prop/RayCast2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/MobIA/Prism.gd" type="Script" id=5]
+[ext_resource path="res://scenes/Corpse.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 38, 39.5 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 49, 76.5 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RayShape2D" id=6]
+length = 1060.0
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 66.1806
+height = 67.6389
+
+[sub_resource type="RayShape2D" id=4]
+length = 390.0
+
+[node name="Prism" instance=ExtResource( 2 )]
+script = ExtResource( 5 )
+CORPSE = ExtResource( 6 )
+speed = 5000
+raycast = ExtResource( 4 )
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource( 2 )
+
+[node name="BodyChecker" parent="." index="1"]
+collision_layer = 2
+collision_mask = 63
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyChecker" index="0"]
+position = Vector2( 0.999999, -29.5 )
+rotation = 3.14159
+shape = SubResource( 5 )
+
+[node name="AnimatedSprite" parent="." index="2"]
+position = Vector2( -53.603, -193.596 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 1 )
+
+[node name="AttackMode" type="Area2D" parent="." index="5"]
+position = Vector2( -5, -192 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="RayCast2D" parent="AttackMode" index="0" instance=ExtResource( 4 )]
+position = Vector2( 0, -60 )
+rotation = -1.5708
+collision_mask = 63
+
+[node name="Icon" type="Sprite" parent="AttackMode" index="1"]
+position = Vector2( 4, 10 )
+rotation = 0.0523599
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackMode" index="2"]
+rotation = 3.14159
+shape = SubResource( 6 )
+
+[node name="HitBox" type="Area2D" parent="." index="6"]
+collision_layer = 2
+collision_mask = 63
+
+[node name="Body" type="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2( -3, -183 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" index="1"]
+position = Vector2( -165, 1.00001 )
+rotation = 1.5708
+scale = Vector2( -2.78703, 1.07613 )
+shape = SubResource( 4 )
+
+[node name="Shadow" parent="." index="7"]
+scale = Vector2( 0.3, 0.3 )
+
+[connection signal="area_entered" from="AttackMode" to="." method="_on_hit"]
+[connection signal="body_entered" from="AttackMode" to="." method="_on_hit"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]

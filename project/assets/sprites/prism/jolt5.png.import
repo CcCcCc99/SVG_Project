@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/slot_background.png-58ad07fb4a9505a55de04108afa363bf.stex"
+path="res://.import/jolt5.png-36e6b374a9d55797c7404d28f48233d3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/slot_background.png"
-dest_files=[ "res://.import/slot_background.png-58ad07fb4a9505a55de04108afa363bf.stex" ]
+source_file="res://assets/sprites/prism/jolt5.png"
+dest_files=[ "res://.import/jolt5.png-36e6b374a9d55797c7404d28f48233d3.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
