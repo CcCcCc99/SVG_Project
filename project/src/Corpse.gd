@@ -16,7 +16,7 @@ func _ready():
 func _on_Corpse_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseMotion:
 		if not is_soul_taken:
-			info_panel.set_global_position(get_global_mouse_position() + Vector2(10,-130))
+			info_panel.set_global_position(get_global_mouse_position() + Vector2(5,-65))
 	if event is InputEventMouseButton:
 		if event.is_action_pressed("teke_soul") and not is_soul_taken:
 			$Shadow.hide()
