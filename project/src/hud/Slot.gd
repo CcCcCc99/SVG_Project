@@ -25,6 +25,18 @@ func deactivate():
 	is_active = false
 	_set_color()
 
+func out_of_mana(has_mana: bool):
+	if not has_mana:
+		$OutOfManaX.hide()
+	else:
+		$OutOfManaX.show()
+
+func summoned(is_summoned: bool):
+	if not is_summoned:
+		$SummonedArrow.hide()
+	else:
+		$SummonedArrow.show()
+
 func set_content(summon: Panel):
 	#_free_summon()
 	print(summon)

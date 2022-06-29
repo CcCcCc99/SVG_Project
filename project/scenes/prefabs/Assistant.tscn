@@ -4,4 +4,5 @@
 
 [node name="Assistant" type="Node2D"]
 script = ExtResource( 1 )
+summons_number = 4
 max_mana = 5

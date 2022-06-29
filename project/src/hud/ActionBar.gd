@@ -32,3 +32,6 @@ func set_slot(t: Texture):
 
 func current() -> int:
 	return $Slots.active_slot
+
+func get_grafic_array():
+	return $Slots.get_all()

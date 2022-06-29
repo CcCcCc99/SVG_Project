@@ -43,14 +43,26 @@ func _process(delta):
 			get_global_mouse_position())
 		if spawned:
 			set_mana(mana - active.mana_cost)
+		_update_grafics()
+
+func _update_grafics():
+	var g_array = action_bar.get_grafic_array()
+	var i = 0
+	while i < summons_number:
+		if summons[i] != null:
+			g_array[i].out_of_mana(mana <  summons[i].mana_cost)
+			g_array[i].summoned(summons[i].summoned)
+		i+=1
 
 func set_actionbar(bar):
 	action_bar = bar
+	action_bar.slot_number = summons_number
 
 func add_summon(sum, cost):
 	summons[action_bar.current()] = summon.new(sum, cost)
 	var t = sum.icon
 	action_bar.set_slot(t)
+	_update_grafics()
 
 func add_slot():
 	pass
