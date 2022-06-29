@@ -17,14 +17,26 @@ var doors
 enum {LEFT = 0, RIGHT = 1, TOP = 2, BOTTOM = 3}
 
 signal exited_room(next_room, door_used)
+signal completed
 
 func _ready() -> void:
 	doors = door_container.get_children()
 	_enable_doors()
 	if not closed:
-		num_enemies = 0#enemy_positions_container.get_child_count()
+		_open_doors()
+	else:
+		num_enemies = _count_enemies()
 		if num_enemies == 0:
 			_open_doors()
+
+func _count_enemies() -> int:
+	var objs = $Objects.get_children()
+	var cont = 0
+	for o in objs:
+		if o.is_in_group("Mob"):
+			o.connect("killed", self, "_on_enemy_killed")
+			cont += 1
+	return cont
 
 func _enable_doors():
 	_enable_door(LEFT, left_room)
@@ -44,6 +56,7 @@ func _on_enemy_killed() -> void:
 	num_enemies -= 1
 	if num_enemies == 0:
 		_open_doors()
+		emit_signal("completed")
 
 func _open_doors() -> void:
 	for door in doors:

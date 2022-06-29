@@ -9,6 +9,7 @@ height = 112.0
 
 [node name="TortoiseCorpse" instance=ExtResource( 2 )]
 summon = "res://scenes/prefabs/mob/Tortoise.tscn"
+cost = 3
 
 [node name="Shadow" parent="." index="0"]
 scale = Vector2( 0.443759, 0.466811 )
