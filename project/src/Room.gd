@@ -56,6 +56,8 @@ func _on_enemy_killed() -> void:
 	num_enemies -= 1
 	if num_enemies == 0:
 		_open_doors()
+		if get_node("Objects").has_node("PortalReward"):
+			get_node("Objects").get_node("PortalReward").visible = true
 		emit_signal("completed")
 
 func _open_doors() -> void:
