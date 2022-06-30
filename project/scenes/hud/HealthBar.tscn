@@ -10,9 +10,6 @@ margin_right = 100.0
 margin_bottom = 100.0
 custom_constants/separation = 5
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 heart_full = ExtResource( 3 )
 heart_half = ExtResource( 2 )
 heart_empty = ExtResource( 4 )
