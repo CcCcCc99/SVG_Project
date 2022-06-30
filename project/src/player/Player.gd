@@ -2,7 +2,11 @@ extends Character
 
 onready var anim = $Animator
 
+var checkpoint_position: Vector2 = Vector2(0, 0)
+var checkpoint_room: int = 0
+
 signal hp_changed(old_hp, new_hp)
+signal is_dead
 
 func _process(delta):
 	._process(delta)
@@ -14,10 +18,17 @@ func set_hp(new_hp: int):
 	if old_hp != new_hp:
 		.set_hp(new_hp)
 		emit_signal("hp_changed", old_hp, get_hp())
+		if hp == 0:
+			emit_signal("is_dead")
 
 func set_max_hp(new_max_hp: int):
 	max_hp = new_max_hp
 	set_hp(new_max_hp)
+
+func set_checkpoint(checkpoint: Vector2, room: int) -> void:
+	if checkpoint_position != checkpoint or checkpoint_room != room:
+		checkpoint_position = checkpoint
+		checkpoint_room = room
 
 func get_direction() -> Vector2:
 	# movement
