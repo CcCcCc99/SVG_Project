@@ -21,7 +21,7 @@ func _ready():
 	mana_bar.set_player(assistant)
 	add_child(assistant)
 	_load_level()
-	player.connect("is_dead", self, "_switch_to_checkpoint")
+	player.connect("is_dead", self, "_switch_to_room")
 
 func _load_level():
 	var room_scenes = testlLevel.get_rooms()
@@ -30,49 +30,40 @@ func _load_level():
 	var start = testlLevel.get_first_room()
 	_load_room(start, 0)
 
-func _load_room(r: int, d: int):
+func _load_room(r: int, d):
 	current_room = r
 	player.position = Vector2(0, 0)
 	rooms[r].get_node("Objects").add_child(player)
 	rooms[r].connect("exited_room", self, "_switch_to_room")
 	add_child(rooms[r])
-	rooms[r].set_player_position(player, d)
-	if rooms[r].get_node("Objects/Checkpoint") != null:
-		if !rooms[r].get_node("Objects/Checkpoint").is_checkpoint_setted():
-			rooms[r].get_node("Objects/Checkpoint").set_checkpoint(r)
+	if d == null:
+		player.position = player.checkpoint_position
+	else:
+		rooms[r].set_player_position(player, d)
 
 func _unload_room():
-	rooms[current_room].get_node("Objects").remove_child(player)
+	if !player.player_is_dead:
+		rooms[current_room].get_node("Objects").remove_child(player)
 	rooms[current_room].disconnect("exited_room", self, "_switch_to_room")
 	remove_child(rooms[current_room])
 
-func _switch_to_room(r: int, d: int):
+func _switch_to_room(r: int, d):
 	player.destroy_portals()
 	assistant.destroy_summons()
 	call_deferred("_unload_room")
+	
+	if player.player_is_dead:
+		player.disconnect("is_dead", self, "_switch_to_room")
+		
+		var new_player = player_scene.instance()
+		new_player.checkpoint_position = player.checkpoint_position
+		new_player.checkpoint_room = player.checkpoint_room
+		player = new_player
+		
+		health_bar.set_new_player(player)
+		player.connect("is_dead", self, "_switch_to_room")
+	
 	call_deferred("_load_room", r, d)
-
-func _unload_checkpoint_room() -> void:
-	rooms[current_room].disconnect("exited_room", self, "_switch_to_room")
-	remove_child(rooms[current_room])
-
-func _load_checkpoint_room(r: int) -> void:
-	current_room = r
-	rooms[r].get_node("Objects").add_child(player)
-	rooms[r].connect("exited_room", self, "_switch_to_room")
-	add_child(rooms[r])
-	player.position = player.checkpoint_position
-
-func _switch_to_checkpoint() -> void:
-	player.destroy_portals()
-	assistant.destroy_summons()
-	var new_player = player_scene.instance()
-	call_deferred("_unload_checkpoint_room")
-	new_player.set_checkpoint(player.checkpoint_position, player.checkpoint_room)
-	player = new_player
-	health_bar.set_player(player)
-	player.connect("is_dead", self, "_switch_to_checkpoint")
-	call_deferred("_load_checkpoint_room", player.checkpoint_room)
 
 func load_summon(sum, cost):
 	var summon = load(sum).instance()
