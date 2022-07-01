@@ -10,8 +10,8 @@ func give_reward():
 	var healthGain = healthScene.instance()
 	var manaGain = manaScene.instance()
 	manaGain.set_assistant(assistant)
-	#add_child(healthGain)
-	add_child(manaGain)
+	add_child(healthGain)
+	#add_child(manaGain)
 
 func set_assistant(assistant):
 	self.assistant = assistant

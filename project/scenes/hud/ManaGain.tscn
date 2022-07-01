@@ -11,10 +11,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=2]
-
 [sub_resource type="CircleShape2D" id=3]
 radius = 25.7596
+
+[sub_resource type="CircleShape2D" id=2]
 
 [node name="ManaGain" type="StaticBody2D"]
 scale = Vector2( 1.5, 1.5 )
@@ -23,12 +23,14 @@ script = ExtResource( 2 )
 [node name="Animation" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 
-[node name="Push" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+[node name="Area2DGain" type="Area2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="Gain" type="CollisionShape2D" parent="Area2D"]
+[node name="Gain" type="CollisionShape2D" parent="Area2DGain"]
 shape = SubResource( 3 )
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[node name="Area2DPush" type="Area2D" parent="."]
+
+[node name="Push" type="CollisionShape2D" parent="Area2DPush"]
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="Area2DGain" to="." method="_on_Area2DGain_body_entered"]
