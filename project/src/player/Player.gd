@@ -4,7 +4,6 @@ onready var anim = $Animator
 
 var checkpoint_position: Vector2 = Vector2(0, 0)
 var checkpoint_room: int = 0
-var player_is_dead = false
 
 signal hp_changed(old_hp, new_hp)
 signal is_dead(room, door_null)
@@ -25,8 +24,8 @@ func set_max_hp(new_max_hp: int):
 	set_hp(new_max_hp)
 
 func _end_effect():
-	._end_effect()
-	player_is_dead = true
+	effect.frame = 0
+	remove_child(effect)
 	emit_signal("is_dead", checkpoint_room, null)
 
 func get_direction() -> Vector2:

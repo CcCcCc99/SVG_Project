@@ -19,10 +19,6 @@ func set_player(p: Character) -> void:
 	player = p
 	player.connect("hp_changed", self, "_change_health_bar")
 
-func set_new_player(p: Character) -> void:
-	player.disconnect("hp_changed", self, "_change_health_bar")
-	set_player(p)
-
 func _add_hearts() -> void:
 	var i = 0
 	var n = get_child_count() # number of actual children
