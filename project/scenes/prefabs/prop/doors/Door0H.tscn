@@ -39,5 +39,8 @@ shape = SubResource( 2 )
 position = Vector2( -37, 10 )
 shape = SubResource( 3 )
 
-[node name="SpawnPoint" parent="." index="3"]
-position = Vector2( 140, 12 )
+[node name="PlayerSpawnPoint" parent="." index="3"]
+position = Vector2( 214.186, -1.25992 )
+
+[node name="AssistantSpawnPoint" parent="." index="4"]
+position = Vector2( 177.649, 90.7143 )

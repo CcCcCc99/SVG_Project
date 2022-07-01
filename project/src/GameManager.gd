@@ -20,7 +20,6 @@ func _ready():
 	assistant.action_bar = $HUD/ActionBar
 	health_bar.set_player(player)
 	mana_bar.set_player(assistant)
-	add_child(assistant)
 	_load_level()
 
 func _load_level():
@@ -34,12 +33,14 @@ func _load_room(r: int, d: int):
 	current_room = r
 	player.position = Vector2(0,0)
 	rooms[r].get_node("Objects").add_child(player)
+	rooms[r].get_node("Objects").add_child(assistant)
 	rooms[r].connect("exited_room", self, "_switch_to_room")
 	add_child(rooms[r])
-	rooms[r].set_player_position(player, d)
+	rooms[r].set_player_position(player, assistant, d)
 
 func _unload_room():
 	rooms[current_room].get_node("Objects").remove_child(player)
+	rooms[current_room].get_node("Objects").remove_child(assistant)
 	rooms[current_room].disconnect("exited_room", self, "_switch_to_room")
 	remove_child(rooms[current_room])
 

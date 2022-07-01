@@ -56,13 +56,13 @@ func _close_doors() -> void:
 func _is_valid_room(room: int) -> bool:
 	return room > -1
 
-func set_player_position(player: Character, door_used: int):
+func set_player_position(player: Character, assistant: Node, door_used: int):
 	match door_used:
 		LEFT:
-			doors[RIGHT].set_player_position(player);
+			doors[RIGHT].set_player_position(player, assistant);
 		RIGHT:
-			doors[LEFT].set_player_position(player);
+			doors[LEFT].set_player_position(player, assistant);
 		TOP:
-			doors[BOTTOM].set_player_position(player);
+			doors[BOTTOM].set_player_position(player, assistant);
 		BOTTOM:
-			doors[TOP].set_player_position(player);
+			doors[TOP].set_player_position(player, assistant);

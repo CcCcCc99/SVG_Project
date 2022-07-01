@@ -1,4 +1,4 @@
-extends Node2D
+extends StaticBody2D
 
 class summon:
 	var mob: Mob
@@ -39,7 +39,7 @@ func _process(delta):
 	var active: summon = summons[action_bar.current()]
 	if Input.is_action_just_pressed("summon") and is_instance_valid(active) and mana >= active.mana_cost:
 		var spawned = active.spawn(
-			get_parent().get_node("Room").get_node("Objects"),
+			get_parent(),
 			get_global_mouse_position())
 		if spawned:
 			set_mana(mana - active.mana_cost)
