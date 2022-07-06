@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/depletedmana.png-0f6e16f78c895242743acf62ee9bbd36.stex"
+path="res://.import/discussione2.png-d483063829af89af318dcaa4b1eb8df6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/depletedmana.png"
-dest_files=[ "res://.import/depletedmana.png-0f6e16f78c895242743acf62ee9bbd36.stex" ]
+source_file="res://assets/sprites/assistant/discussione2.png"
+dest_files=[ "res://.import/discussione2.png-d483063829af89af318dcaa4b1eb8df6.stex" ]
 
 [params]
 

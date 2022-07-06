@@ -16,6 +16,8 @@ z_index = -1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 
-[node name="SpawnPoint" type="Position2D" parent="."]
+[node name="PlayerSpawnPoint" type="Position2D" parent="."]
+
+[node name="AssistantSpawnPoint" type="Position2D" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
