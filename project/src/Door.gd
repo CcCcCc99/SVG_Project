@@ -30,8 +30,9 @@ func close() -> void:
 	collision_shape.disabled = false
 
 
-func set_player_position(player: Character):
-	player.position = $SpawnPoint.global_position
+func set_player_position(player: Character, assistant: Node):
+	player.position = $PlayerSpawnPoint.global_position
+	assistant.position = $AssistantSpawnPoint.global_position
 
 func _on_Area2D_body_entered(_body: KinematicBody2D) -> void:
 	if is_instance_valid(_body):

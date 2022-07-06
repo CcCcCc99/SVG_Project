@@ -5,8 +5,8 @@
 [ext_resource path="res://scenes/prefabs/prop/Poof.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 52.7659
-height = 38.7214
+radius = 41.5335
+height = 32.3852
 
 [node name="Portal" type="Area2D" groups=["Portal"]]
 scale = Vector2( 0.975863, 1 )
@@ -21,6 +21,7 @@ colors = [ Color( 0.937255, 0.596078, 0.984314, 1 ), Color( 0.364706, 0.913725, 
 scale = Vector2( 0.52, 0.52 )
 frames = ExtResource( 1 )
 frame = 3
+
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

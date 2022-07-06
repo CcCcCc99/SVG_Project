@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/depletedhp.png-f4ec0acf89b7414b422ca512ffe7ba1d.stex"
+path="res://.import/info_frame.png-4e587484daa338cddc3805c1214beb32.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/depletedhp.png"
-dest_files=[ "res://.import/depletedhp.png-f4ec0acf89b7414b422ca512ffe7ba1d.stex" ]
+source_file="res://assets/hud/info_frame.png"
+dest_files=[ "res://.import/info_frame.png-4e587484daa338cddc3805c1214beb32.stex" ]
 
 [params]
 

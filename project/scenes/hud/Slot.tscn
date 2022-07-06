@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/slot_frame.png" type="Texture" id=1]
-[ext_resource path="res://assets/slot_background.png" type="Texture" id=2]
+[ext_resource path="res://assets/hud/slot_frame.png" type="Texture" id=1]
+[ext_resource path="res://assets/hud/slot_background.png" type="Texture" id=2]
+[ext_resource path="res://assets/hud/freccia_summon.png" type="Texture" id=3]
 [ext_resource path="res://src/hud/Slot.gd" type="Script" id=4]
+[ext_resource path="res://assets/hud/x_summon.png" type="Texture" id=5]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -38,3 +40,15 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/panel = SubResource( 2 )
+
+[node name="OutOfManaX" type="TextureRect" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+
+[node name="SummonedArrow" type="TextureRect" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
