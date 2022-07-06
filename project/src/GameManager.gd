@@ -28,7 +28,7 @@ func _ready():
 	assistant.action_bar = $HUD/ActionBar
 	health_bar.set_player(player)
 	mana_bar.set_player(assistant)
-	_load_level()
+	_load_level(loadlvl)
 
 func _load_level(l: int):
 	currentLevel = load(levels[l])
