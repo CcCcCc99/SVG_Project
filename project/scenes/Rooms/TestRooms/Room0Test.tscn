@@ -29,3 +29,5 @@ position = Vector2( 251.929, 144.344 )
 visible = false
 position = Vector2( 438, 251 )
 z_index = -1
+number_of_hearts = 3
+number_of_mana = 0
