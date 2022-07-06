@@ -33,7 +33,6 @@ func _ready():
 
 func _load_level(l: int):
 	currentLevel = load(levels[l])
-	rooms.clear()
 	var room_scenes = currentLevel.get_rooms()
 	for rs in room_scenes:
 		rooms.append(rs.instance())
@@ -42,6 +41,7 @@ func _load_level(l: int):
 
 func _unload_level():
 	_unload_room()
+	rooms.clear()
 	#currentLevel.queue_free()
 	pass
 
@@ -50,7 +50,7 @@ func _switch_to_level(l: int):
 	call_deferred("_unload_level")
 	call_deferred("_load_level", l)
 
-func _load_room(r: int, d: int):
+func _load_room(r: int, d):
 	current_room = r
 	rooms[r].get_node("Objects").add_child(player)
 	rooms[r].get_node("Objects").add_child(assistant)
@@ -60,7 +60,7 @@ func _load_room(r: int, d: int):
 		player.set_hp(player.max_hp)
 		player.position = player.checkpoint_position
 	else:
-		rooms[r].set_player_position(player, d)
+		rooms[r].set_player_position(player, assistant, d)
 
 
 func _unload_room():
@@ -72,14 +72,15 @@ func _unload_room():
 	remove_child(rooms[current_room])
 
 
-func _switch_to_room(r: int, d: int):
+func _switch_to_room(r: int, d):
 	player.destroy_portals()
 	assistant.destroy_summons()
 	call_deferred("_unload_room")
 	call_deferred("_load_room", r, d)
 
 func _respawn(room):
-	_load_level()
+	_unload_level()
+	_load_level(loadlvl)
 	_switch_to_room(room, null)
 
 func load_summon(sum, cost):
