@@ -85,14 +85,12 @@ func set_max_mana(new_max_mana: int):
 	max_mana = new_max_mana
 	set_mana(new_max_mana)
 
-<<<<<<< HEAD
 func get_current_cost() -> int:
 	if summons[action_bar.current()] == null:
 		return 0
 	return summons[action_bar.current()].mana_cost
-=======
+
 func destroy_summons():
 	for mob in summoned_mobs:
 		if is_instance_valid(mob):
 			mob.queue_free()
->>>>>>> main
