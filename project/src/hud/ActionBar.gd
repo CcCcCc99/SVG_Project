@@ -1,6 +1,7 @@
 extends CenterContainer
 
 export var slot_number: int setget set_num
+var current_cost: int = 0
 var debug_icon = "res://assets/sprites/blower/SummonIcon.tres"
 
 func _ready():
@@ -31,3 +32,6 @@ func set_slot(t: Texture):
 
 func current() -> int:
 	return $Slots.active_slot
+
+func get_grafic_array():
+	return $Slots.get_all()

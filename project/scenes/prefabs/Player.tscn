@@ -16,7 +16,9 @@ extents = Vector2( 18.2024, 26.3791 )
 [sub_resource type="CircleShape2D" id=2]
 radius = 43.5115
 
-[node name="Player" groups=["Player"] instance=ExtResource( 1 )]
+[node name="Player" groups=[
+"Player",
+] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 CORPSE = ExtResource( 7 )
 max_hp = 6
@@ -46,7 +48,11 @@ animation = "front"
 frames = ExtResource( 6 )
 animation = "idle"
 
-[node name="Hitbox" type="Area2D" parent="." index="3" groups=["Character", "Hitbox", "Player"]]
+[node name="Hitbox" type="Area2D" parent="." index="3" groups=[
+"Character",
+"Hitbox",
+"Player",
+]]
 script = ExtResource( 20 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox" index="0"]
