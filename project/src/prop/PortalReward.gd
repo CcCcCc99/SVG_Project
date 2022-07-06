@@ -6,7 +6,8 @@ export(PackedScene) var manaScene
 export var number_of_hearts: int = 1
 export var number_of_mana: int = 1
 
-var assistant
+func _ready():
+	get_parent().get_parent().connect("completed", self, "give_reward")
 
 func give_reward():
 	if number_of_hearts > 0 or number_of_mana > 0:
@@ -17,6 +18,3 @@ func give_reward():
 	for i in range(number_of_mana):
 		var manaGain = manaScene.instance()
 		add_child(manaGain)
-
-func set_assistant(assistant):
-	self.assistant = assistant
