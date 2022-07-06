@@ -62,7 +62,6 @@ func _load_room(r: int, d):
 	else:
 		rooms[r].set_player_position(player, assistant, d)
 
-
 func _unload_room():
 	player.destroy_portals()
 	assistant.destroy_summons()

@@ -110,11 +110,7 @@ shape = SubResource( 1 )
 position = Vector2( -0.500618, -14.814 )
 shape = SubResource( 2 )
 
-[node name="HitBox" type="Area2D" parent="." index="2" groups=[
-"Character",
-"Hitbox",
-"Mob",
-]]
+[node name="HitBox" type="Area2D" parent="." index="2" groups=["Character", "Hitbox", "Mob"]]
 collision_layer = 2
 collision_mask = 63
 script = ExtResource( 4 )

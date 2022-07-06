@@ -14,6 +14,8 @@ export var bottom_room: int = -1
 
 var doors
 
+var assistant
+
 enum {LEFT = 0, RIGHT = 1, TOP = 2, BOTTOM = 3}
 
 signal exited_room(next_room, door_used)
@@ -56,6 +58,9 @@ func _on_enemy_killed() -> void:
 	num_enemies -= 1
 	if num_enemies == 0:
 		_open_doors()
+		if get_node("Objects").has_node("PortalReward"):
+			get_node("Objects").get_node("PortalReward").set_assistant(assistant)
+			get_node("Objects").get_node("PortalReward").give_reward()
 		emit_signal("completed")
 
 func _open_doors() -> void:
@@ -79,3 +84,6 @@ func set_player_position(player: Character, assistant: Node, door_used: int):
 			doors[BOTTOM].set_player_position(player, assistant);
 		BOTTOM:
 			doors[TOP].set_player_position(player, assistant);
+
+func set_assistant(assistant):
+	self.assistant = assistant
