@@ -48,3 +48,9 @@ func _spawn_portal(direction: Vector2):
 	last_portal = p
 
 	_update_bracelet()
+
+func destroy_all():
+	if is_instance_valid(previous_portal):
+		previous_portal.queue_free()
+	if is_instance_valid(last_portal):
+		last_portal.queue_free()

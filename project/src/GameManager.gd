@@ -45,6 +45,8 @@ func _unload_room():
 	remove_child(rooms[current_room])
 
 func _switch_to_room(r: int, d: int):
+	player.destroy_portals()
+	assistant.destroy_summons()
 	call_deferred("_unload_room")
 	call_deferred("_load_room", r, d)
 

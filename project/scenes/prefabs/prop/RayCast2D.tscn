@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/prop/RayCast2D.gd" type="Script" id=1]
+
+[node name="RayCast2D" type="RayCast2D"]
+cast_to = Vector2( 1000, 0 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( 0, 0, 100, 0 )
+default_color = Color( 0.670588, 0.0705882, 0.0705882, 1 )
+
+[node name="Tween" type="Tween" parent="."]

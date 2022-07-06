@@ -10,18 +10,19 @@ class summon:
 		mana_cost = c
 		summoned = false
 
-	func spawn(parent: Node, pos: Vector2) -> bool:
+	func spawn(parent: Node, pos: Vector2) -> Mob:
 		if summoned:
-			return false
+			return null
 		summoned = true
 		mob.is_summoned = true
 		mob.position = pos
 		mob.modulate = Color.darkblue
 		mob.get_node("Shadow").hide()
 		parent.add_child(mob)
-		return true
+		return mob
 
 var summons: Array = [null, null, null, null, null, null]
+var summoned_mobs: Array
 export var summons_number: int = 1
 
 export(int) var max_mana: int
@@ -44,7 +45,8 @@ func _process(delta):
 		var spawned = active.spawn(
 			get_parent(),
 			get_global_mouse_position())
-		if spawned:
+		if spawned != null:
+			summoned_mobs.append(spawned)
 			set_mana(mana - active.mana_cost)
 		_update_grafics()
 
@@ -83,7 +85,14 @@ func set_max_mana(new_max_mana: int):
 	max_mana = new_max_mana
 	set_mana(new_max_mana)
 
+<<<<<<< HEAD
 func get_current_cost() -> int:
 	if summons[action_bar.current()] == null:
 		return 0
 	return summons[action_bar.current()].mana_cost
+=======
+func destroy_summons():
+	for mob in summoned_mobs:
+		if is_instance_valid(mob):
+			mob.queue_free()
+>>>>>>> main

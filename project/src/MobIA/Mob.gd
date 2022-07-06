@@ -10,6 +10,8 @@ export(Texture) var icon
 export var is_summoned: bool = false
 var enemy: String
 
+signal killed
+
 func _ready():
 	if flip:
 		scale.x = -1
@@ -17,6 +19,10 @@ func _ready():
 		enemy = "Mob"
 	else:
 		enemy = "Player"
+
+func _end_effect():
+	emit_signal("killed")
+	._end_effect()
 
 func _spawn_corpse():
 	if not is_summoned:

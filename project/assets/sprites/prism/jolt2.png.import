@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cuore_a_metà.png-735fc995a0e7ed54c662c274badbeb80.stex"
+path="res://.import/jolt2.png-12e60eadeac5a843db6b4aa6bd34b385.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cuore_a_metà.png"
-dest_files=[ "res://.import/cuore_a_metà.png-735fc995a0e7ed54c662c274badbeb80.stex" ]
+source_file="res://assets/sprites/prism/jolt2.png"
+dest_files=[ "res://.import/jolt2.png-12e60eadeac5a843db6b4aa6bd34b385.stex" ]
 
 [params]
 
