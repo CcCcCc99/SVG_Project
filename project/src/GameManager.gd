@@ -15,7 +15,7 @@ var current_room: int
 
 func _ready():
 	player = player_scene.instance()
-	player.connect("is_dead", self, "_switch_to_room")
+	player.connect("is_dead", self, "_respawn")
 	assistant = assistant_scene.instance()
 	assistant.action_bar = $HUD/ActionBar
 	health_bar.set_player(player)
@@ -28,7 +28,7 @@ func _load_level():
 	for rs in room_scenes:
 		rooms.append(rs.instance())
 	var start = testlLevel.get_first_room()
-	_load_room(start, 0)
+	_load_room(start, null)
 
 func _load_room(r: int, d):
 	current_room = r
@@ -51,6 +51,10 @@ func _switch_to_room(r: int, d):
 	assistant.destroy_summons()
 	call_deferred("_unload_room")
 	call_deferred("_load_room", r, d)
+
+func _respawn(room):
+	_load_level()
+	_switch_to_room(room, null)
 
 func load_summon(sum, cost):
 	var summon = load(sum).instance()

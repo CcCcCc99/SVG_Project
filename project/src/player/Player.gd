@@ -6,7 +6,7 @@ var checkpoint_position: Vector2 = Vector2(0, 0)
 var checkpoint_room: int = 0
 
 signal hp_changed(old_hp, new_hp)
-signal is_dead(room, door_null)
+signal is_dead(room)
 
 func _process(delta):
 	._process(delta)
@@ -26,7 +26,7 @@ func set_max_hp(new_max_hp: int):
 func _end_effect():
 	effect.frame = 0
 	remove_child(effect)
-	emit_signal("is_dead", checkpoint_room, null)
+	emit_signal("is_dead", checkpoint_room)
 
 func get_direction() -> Vector2:
 	# movement
