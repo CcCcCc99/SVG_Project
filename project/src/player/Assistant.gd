@@ -35,7 +35,10 @@ func _ready():
 	set_mana(max_mana)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+var dialogue = preload("res://dialogues/Test.tres")
 func _process(delta):
+	if Input.is_action_just_released("debug1"):
+		DialogueManager.show_example_dialogue_balloon("Room2Test", dialogue)
 	var active: summon = summons[action_bar.current()]
 	if Input.is_action_just_pressed("summon") and is_instance_valid(active) and mana >= active.mana_cost:
 		var spawned = active.spawn(

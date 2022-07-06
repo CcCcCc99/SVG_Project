@@ -65,6 +65,7 @@ config/icon="res://icon.png"
 [autoload]
 
 DefaultLoad="*res://src/default_load.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [display]
 
@@ -75,6 +76,10 @@ window/size/test_width=1024
 window/size/test_height=600
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/dialogue_manager/plugin.cfg" )
 
 [input]
 
