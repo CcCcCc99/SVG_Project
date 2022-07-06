@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/slot.png-da0c405054554ee52404d29ec6487048.stex"
+path="res://.import/freccia_summon.png-344c48bc110184c8b2a786d3882376d7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/slot.png"
-dest_files=[ "res://.import/slot.png-da0c405054554ee52404d29ec6487048.stex" ]
+source_file="res://assets/hud/freccia_summon.png"
+dest_files=[ "res://.import/freccia_summon.png-344c48bc110184c8b2a786d3882376d7.stex" ]
 
 [params]
 

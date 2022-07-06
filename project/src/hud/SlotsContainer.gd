@@ -46,3 +46,6 @@ func select(s: int):
 
 func set_current(t: Texture):
 	slots[active_slot].get_node("TextureRect").texture = t
+
+func get_all():
+	return slots

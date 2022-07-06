@@ -13,9 +13,6 @@ margin_left = -202.0
 margin_top = -64.0
 margin_right = 202.0
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 slot_number = 4
 
 [node name="Slots" type="HBoxContainer" parent="."]

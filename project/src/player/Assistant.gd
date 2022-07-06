@@ -1,4 +1,4 @@
-extends Node2D
+extends StaticBody2D
 
 class summon:
 	var mob: Mob
@@ -36,23 +36,38 @@ func _ready():
 	set_mana(max_mana)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+var dialogue = preload("res://dialogues/Test.tres")
 func _process(delta):
+	if Input.is_action_just_released("debug1"):
+		DialogueManager.show_example_dialogue_balloon("Room2Test", dialogue)
 	var active: summon = summons[action_bar.current()]
 	if Input.is_action_just_pressed("summon") and is_instance_valid(active) and mana >= active.mana_cost:
 		var spawned = active.spawn(
-			get_parent().get_node("Room").get_node("Objects"),
+			get_parent(),
 			get_global_mouse_position())
 		if spawned != null:
 			summoned_mobs.append(spawned)
 			set_mana(mana - active.mana_cost)
+		_update_grafics()
+
+func _update_grafics():
+	var g_array = action_bar.get_grafic_array()
+	var i = 0
+	while i < summons_number:
+		if summons[i] != null:
+			g_array[i].out_of_mana(mana <  summons[i].mana_cost)
+			g_array[i].summoned(summons[i].summoned)
+		i+=1
 
 func set_actionbar(bar):
 	action_bar = bar
+	action_bar.slot_number = summons_number
 
 func add_summon(sum, cost):
 	summons[action_bar.current()] = summon.new(sum, cost)
 	var t = sum.icon
 	action_bar.set_slot(t)
+	_update_grafics()
 
 func add_slot():
 	pass
@@ -69,6 +84,11 @@ func get_mana() -> int:
 func set_max_mana(new_max_mana: int):
 	max_mana = new_max_mana
 	set_mana(new_max_mana)
+
+func get_current_cost() -> int:
+	if summons[action_bar.current()] == null:
+		return 0
+	return summons[action_bar.current()].mana_cost
 
 func destroy_summons():
 	for mob in summoned_mobs:

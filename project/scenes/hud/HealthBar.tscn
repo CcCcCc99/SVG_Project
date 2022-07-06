@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/hud/HealthBar.gd" type="Script" id=1]
-[ext_resource path="res://assets/halfhp.png" type="Texture" id=2]
-[ext_resource path="res://assets/fullhp.png" type="Texture" id=3]
-[ext_resource path="res://assets/cuoreVuoto.png" type="Texture" id=4]
+[ext_resource path="res://assets/hud/halfhp.png" type="Texture" id=2]
+[ext_resource path="res://assets/hud/fullhp.png" type="Texture" id=3]
+[ext_resource path="res://assets/hud/cuoreVuoto.png" type="Texture" id=4]
 
 [node name="HealthBar" type="HBoxContainer"]
 margin_right = 100.0

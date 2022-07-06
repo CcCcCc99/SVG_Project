@@ -4,6 +4,7 @@
 [ext_resource path="res://scenes/prefabs/mob/Blower.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/prefabs/traps/Plant.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/prefabs/prop/PortalReward.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/prefabs/prop/Checkpoint.tscn" type="PackedScene" id=5]
 
 [node name="Room" instance=ExtResource( 1 )]
 right_room = 1
@@ -31,3 +32,6 @@ position = Vector2( 438, 251 )
 z_index = -1
 number_of_hearts = 3
 number_of_mana = 0
+
+[node name="Checkpoint" parent="Objects" index="4" instance=ExtResource( 5 )]
+position = Vector2( -568, -252 )
