@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/prop/Pickupable.gd" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 17.7621
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 35.0
+
+[node name="Pickupable" type="RigidBody2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="Push" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Area2DGain" type="Area2D" parent="."]
+
+[node name="Gain" type="CollisionShape2D" parent="Area2DGain"]
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="Area2DGain" to="." method="_on_Area2DGain_body_entered"]

@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 export(PackedScene) var healthScene
 export(PackedScene) var manaScene
