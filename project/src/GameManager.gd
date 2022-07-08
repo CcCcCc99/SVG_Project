@@ -58,6 +58,7 @@ func _load_room(r: int, d):
 	add_child(rooms[r])
 	if d == null:
 		player.set_hp(player.max_hp)
+		assistant.set_mana(assistant.max_mana)
 		player.position = player.checkpoint_position
 	else:
 		rooms[r].set_player_position(player, assistant, d)
