@@ -31,8 +31,8 @@ func _ready():
 	self.connect("scaled_down", self, "_teleport")
 	$InvincibilityTimer.connect("timeout", self, "_on_invincibility_timeout")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+# warning-ignore:unused_argument
+func _physics_process(delta):
 	var velocity
 	# warning-ignore:return_value_discarded
 	if state == NORMAL:
@@ -40,9 +40,6 @@ func _process(delta):
 	else:
 		velocity = alt_velocity
 	move_and_slide(velocity*delta)
-
-# warning-ignore:unused_argument
-func _physics_process(delta):
 	if state == SCALEDOWN:
 		_scale_down()
 	elif state == SCALEUP:

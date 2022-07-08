@@ -24,7 +24,7 @@ position = Vector2( 321.929, 342.344 )
 position = Vector2( 421.929, 70.344 )
 
 [node name="Blower3" parent="Objects" index="3" instance=ExtResource( 2 )]
-position = Vector2( 251.929, 144.344 )
+position = Vector2( 289.929, 166.344 )
 
 [node name="Checkpoint" parent="Objects" index="4" instance=ExtResource( 5 )]
 position = Vector2( -568, -252 )

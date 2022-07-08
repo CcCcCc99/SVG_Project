@@ -9,7 +9,7 @@ signal hp_changed(old_hp, new_hp)
 signal is_dead(room)
 
 func _process(delta):
-	._process(delta)
+	#._process(delta)
 	# TODO sistemare questo scempio
 	anim.animate(get_direction() * speed * delta)
 

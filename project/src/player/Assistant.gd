@@ -1,25 +1,40 @@
 extends StaticBody2D
 
 class summon:
-	var mob: Mob
+	var scene: String
+	var mob: Mob = null
 	var mana_cost: int
 	var summoned: bool
+	
+	signal reset
 
-	func _init(m, c):
-		mob = m
+	func _init(s, c):
+		scene = s
+		reset()
 		mana_cost = c
 		summoned = false
+		
+	func reset():
+		if is_instance_valid(mob):
+			mob.queue_free()
+		summoned = false
+		mob = load(scene).instance()
+		mob.modulate = Color.darkblue
+		mob.get_node("Shadow").hide()
+		mob.connect("killed", self, "reset")
+		emit_signal("reset")
 
-	func spawn(parent: Node, pos: Vector2) -> Mob:
+	func spawn(parent: Node, pos: Vector2) -> bool:
 		if summoned:
-			return null
+			return false
 		summoned = true
 		mob.is_summoned = true
 		mob.position = pos
-		mob.modulate = Color.darkblue
-		mob.get_node("Shadow").hide()
 		parent.add_child(mob)
-		return mob
+		return true
+	
+	func get_icon():
+		return mob.icon
 
 var summons: Array = [null, null, null, null, null, null]
 var summoned_mobs: Array
@@ -45,8 +60,9 @@ func _process(delta):
 		var spawned = active.spawn(
 			get_parent(),
 			get_global_mouse_position())
-		if spawned != null:
-			summoned_mobs.append(spawned)
+		if spawned:
+			active.connect("reset", self, "_update_grafics")
+			summoned_mobs.append(active)
 			set_mana(mana - active.mana_cost)
 		_update_grafics()
 
@@ -65,7 +81,7 @@ func set_actionbar(bar):
 
 func add_summon(sum, cost):
 	summons[action_bar.current()] = summon.new(sum, cost)
-	var t = sum.icon
+	var t = summons[action_bar.current()].get_icon()
 	action_bar.set_slot(t)
 	_update_grafics()
 
@@ -77,6 +93,7 @@ func set_mana(new_mana: int):
 	if old_mana != new_mana:
 		mana = int(clamp(new_mana, 0, max_mana))
 		emit_signal("mana_changed", old_mana, get_mana())
+		_update_grafics()
 
 func get_mana() -> int:
 	return mana
@@ -93,4 +110,5 @@ func get_current_cost() -> int:
 func destroy_summons():
 	for mob in summoned_mobs:
 		if is_instance_valid(mob):
-			mob.queue_free()
+			mob.reset()
+			_update_grafics()

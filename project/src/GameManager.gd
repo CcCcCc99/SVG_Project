@@ -83,8 +83,7 @@ func _respawn(room):
 	_switch_to_room(room, null)
 
 func load_summon(sum, cost):
-	var summon = load(sum).instance()
-	assistant.add_summon(summon, cost)
+	assistant.add_summon(sum, cost)
 
  
 func get_cost() -> int:
