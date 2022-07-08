@@ -1,0 +1,91 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scenes/Mob.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/sprites/pong/salto2.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/pong/salto3.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/pong/salto1.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/pong/mobattacca.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/pong/mobicaughtyou.png" type="Texture" id=6]
+[ext_resource path="res://src/boss/Pong.gd" type="Script" id=7]
+[ext_resource path="res://scenes/Corpse.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/utility/Hitbox.gd" type="Script" id=9]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": " idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "jump_down",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "spit",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "jump_up",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "jumping",
+"speed": 1.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 42.6252
+height = 139.063
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 141.391
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 46.1297
+height = 136.965
+
+[node name="Pong" instance=ExtResource( 1 )]
+script = ExtResource( 7 )
+CORPSE = ExtResource( 8 )
+speed = 5000
+jump_speed = 4000
+
+[node name="AnimatedSprite" parent="." index="0"]
+position = Vector2( 41.127, -208 )
+frames = SubResource( 1 )
+animation = " idle"
+playing = true
+
+[node name="Cooldown" parent="." index="1"]
+wait_time = 3.0
+
+[node name="Shadow" parent="." index="3"]
+position = Vector2( 2.51487, -27.5529 )
+scale = Vector2( 0.943355, 0.731231 )
+
+[node name="CollisionShape2D" parent="." index="4"]
+position = Vector2( -1.59821, -54.3992 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="HitBox" type="Area2D" parent="." index="5" groups=["Character", "Hitbox", "Mob"]]
+collision_layer = 2
+collision_mask = 63
+script = ExtResource( 9 )
+
+[node name="Body" type="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2( 10.505, -145.085 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyChecker" index="0"]
+position = Vector2( -1.37442, -54.1471 )
+rotation = 1.5708
+shape = SubResource( 4 )
+
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]

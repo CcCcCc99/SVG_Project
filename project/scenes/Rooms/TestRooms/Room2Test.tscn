@@ -1,27 +1,25 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/Rooms/RoomGenericTutorial.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/prefabs/traps/BatSpawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/prefabs/prop/ChangeLevelPortal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/prefabs/boss/Pong.tscn" type="PackedScene" id=4]
 
 [node name="Room" instance=ExtResource( 1 )]
 bottom_room = 1
 
-[node name="BatSpawner" parent="Objects" index="0" instance=ExtResource( 2 )]
-position = Vector2( -811, 214 )
-flipx = false
-
-[node name="BatSpawner2" parent="Objects" index="1" instance=ExtResource( 2 )]
-position = Vector2( 735, -194 )
+[node name="BatSpawner2" parent="Objects" index="0" instance=ExtResource( 2 )]
+position = Vector2( 755, -232 )
 flipy = false
 
-[node name="BatSpawner3" parent="Objects" index="2" instance=ExtResource( 2 )]
-position = Vector2( -563, 367 )
-flipx = false
-flipy = false
+[node name="BatSpawner4" parent="Objects" index="1" instance=ExtResource( 2 )]
+position = Vector2( 657, -373 )
 
-[node name="BatSpawner4" parent="Objects" index="3" instance=ExtResource( 2 )]
-position = Vector2( 475, -381 )
+[node name="BatSpawner5" parent="Objects" index="2" instance=ExtResource( 2 )]
+position = Vector2( -715, -369 )
 
-[node name="GotoNextLvl" parent="." index="5" instance=ExtResource( 3 )]
+[node name="GotoNextLvl" parent="Objects" index="3" instance=ExtResource( 3 )]
 to_level = 1
+
+[node name="Pong" parent="Objects" index="4" instance=ExtResource( 4 )]
+position = Vector2( -16, 38 )
