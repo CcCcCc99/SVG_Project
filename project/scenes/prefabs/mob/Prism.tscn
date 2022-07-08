@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/sprites/prism/rotazione.png" type="Texture" id=3]
 [ext_resource path="res://scenes/prefabs/prop/RayCast2D.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/MobIA/Prism.gd" type="Script" id=5]
-[ext_resource path="res://scenes/Corpse.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/corps/PrismCorpse.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/sprites/prism/PrismIcon.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
