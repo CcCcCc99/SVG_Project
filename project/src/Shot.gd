@@ -9,7 +9,7 @@ var state = NORMAL
 export var speed = 10000
 export var damage = 1
 
-var direction = Vector2.ZERO
+var direction: Vector2 = Vector2.ZERO
 
 var is_in_portal: bool = true
 

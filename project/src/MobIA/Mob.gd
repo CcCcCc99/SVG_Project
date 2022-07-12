@@ -39,6 +39,6 @@ func _on_collision_environment():
 func _on_BodyChecker_body_entered(body):
 	if body.is_in_group("Environment"):
 		_on_collision_environment()
-	elif body.is_in_group(enemy):
+	elif body.is_in_group(enemy) and not body.is_in_group("Hitbox"):
 		if body != self:
 			body.take_damage(contact_damage)
