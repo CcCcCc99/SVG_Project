@@ -2,10 +2,10 @@ extends Mob
 
 export var jump_speed = 20000
 export var landing_damage = 7
-export var aoe_damage = 3
 export var spit: PackedScene
+export var earthquake: PackedScene
 
-enum {normal = 0, jumping  = 1, out_of_screen = 2, landing  = 3, shooting_left = 4, shooting_right = 5}
+enum {normal, jumping, out_of_screen, landing, shooting_left, shooting_right}
 var jumping_state = normal
 
 var sprite_offset
@@ -20,6 +20,7 @@ func _ready():
 
 func _physics_process(delta):
 	._physics_process(delta)
+	print(hp)
 	match jumping_state:
 		jumping:
 			jump(delta)
@@ -32,7 +33,7 @@ func get_direction() -> Vector2:
 	return Vector2.ZERO
 
 func take_damage(damage):
-	if jumping_state == normal:
+	if jumping_state != out_of_screen:
 		.take_damage(damage)
 
 var spit_dir = -2
@@ -59,6 +60,7 @@ func _on_AnimatedSprite_animation_finished():
 	if $AnimatedSprite.animation == "jump_up":
 		jumping_state = jumping
 	elif $AnimatedSprite.animation == "jump_down":
+		start_earthquake()
 		jumping_state = shooting_left
 		$Cooldown.start()
 		contact_damage = original_contact_damage
@@ -72,8 +74,9 @@ func _on_Cooldown_timeout():
 			$AnimatedSprite.animation = "jump_up"
 		out_of_screen:
 			jumping_state = landing
-			$Cooldown.wait_time = 1
 		shooting_left:
+			$Cooldown.wait_time = 1
+			end_earthquake()
 			_spit()
 			jumping_state = shooting_right
 			$Cooldown.start()
@@ -83,23 +86,31 @@ func _on_Cooldown_timeout():
 			$AnimatedSprite.animation = "idle"
 			$Cooldown.wait_time = 2
 			$Cooldown.start()
-	
 
 func jump(delta):
 	$CollisionShape2D.disabled = true
-	$BodyChecker/CollisionShape2D.position.y -= jump_speed * delta
-	$AnimatedSprite.position.y -= jump_speed * delta
+	var displacement = jump_speed * delta
+	$BodyChecker.position.y -= displacement
+	$AnimatedSprite.position.y -= displacement
 	if $AnimatedSprite.position.y < -2000:
 		jumping_state = out_of_screen
 		$Cooldown.start()
-		print(scale)
 
 func land(delta):
 	contact_damage = landing_damage
-	$BodyChecker/CollisionShape2D.position.y += jump_speed * delta
-	$AnimatedSprite.position.y += jump_speed * delta
+	var displacement = jump_speed * delta
+	$BodyChecker.position.y += displacement
+	$AnimatedSprite.position.y += displacement
 	if $AnimatedSprite.position.y > sprite_offset:
 		$AnimatedSprite.position.y = sprite_offset
 		$AnimatedSprite.animation = "jump_down"
+		$BodyChecker.position.y = 0
 
+var current_shock: Node
 
+func start_earthquake():
+	current_shock = earthquake.instance()
+	add_child(current_shock)
+
+func end_earthquake():
+	current_shock.queue_free()

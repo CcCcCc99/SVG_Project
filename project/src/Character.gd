@@ -117,7 +117,7 @@ func _teleport():
 
 func _scale_up():
 	if scale < Vector2(1,1):
-		scale *= 1.1
+		scale *= 1.3
 		rotation = sin(i)
 		i += 0.5
 	else:
@@ -127,7 +127,7 @@ func _scale_up():
 
 func _scale_down():
 	if scale > Vector2(0.1,0.1):
-		scale *= 0.9
+		scale *= 0.7
 		rotation = sin(i)
 		i += 0.5
 	else:
