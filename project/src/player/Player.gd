@@ -24,8 +24,8 @@ func set_max_hp(new_max_hp: int):
 	set_hp(new_max_hp)
 
 func _end_effect():
-	effect.frame = 0
-	remove_child(effect)
+	._end_effect()
+	destroy_portals()
 	emit_signal("is_dead", checkpoint_room)
 
 func get_direction() -> Vector2:

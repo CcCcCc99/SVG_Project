@@ -85,10 +85,24 @@ func _switch_to_room(r: int, d):
 	call_deferred("_unload_room")
 	call_deferred("_load_room", r, d)
 
+var respawn_room
 func _respawn(room):
-	_unload_level()
-	_load_level(loadlvl)
-	_switch_to_room(room, null)
+	$HUD/ColorRect.show()
+	$AnimationPlayer.play("Fadeout")
+	respawn_room = room
+	player = player_scene.instance()
+	player.connect("is_dead", self, "_respawn")
+	health_bar.set_player(player)
+	
+func _on_AnimationPlayer_animation_finished(anim_name):
+	$AnimationPlayer.stop()
+	if anim_name == "Fadeout":
+		_unload_level()
+		_load_level(loadlvl)
+		_switch_to_room(respawn_room, null)
+		$AnimationPlayer.play("Fadein")
+	else:
+		$HUD/ColorRect.hide()
 
 func load_summon(sum, cost):
 	assistant.add_summon(sum, cost)
@@ -96,4 +110,3 @@ func load_summon(sum, cost):
  
 func get_cost() -> int:
 	return assistant.get_current_cost()
-
