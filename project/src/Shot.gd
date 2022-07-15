@@ -9,7 +9,7 @@ var state = NORMAL
 export var speed = 10000
 export var damage = 1
 
-var direction = Vector2.ZERO
+var direction: Vector2 = Vector2.ZERO
 
 var is_in_portal: bool = true
 
@@ -22,10 +22,7 @@ signal scaled_up
 
 func _ready():
 	self.connect("scaled_down", self, "_teleport")
-	if is_summoned:
-		enemy = "Mob"
-	else:
-		enemy = "Player"
+	enemy = "Character"
 
 func _physics_process(delta):
 	if state == SCALEDOWN:
@@ -55,7 +52,8 @@ func _on_hit(body):
 var destination = null
 
 func _reset_animations():
-	scale = Vector2(1,1)
+	scale.x = 1 if scale.x > 0 else -1
+	scale.y = 1 if scale.y > 0 else -1
 	visible = true
 	rotation = 0
 
@@ -69,12 +67,15 @@ func _teleport():
 	start_scaling_up()
 
 func _scale_up():
-	if scale < Vector2(1,1):
+	if _abs_scale() < Vector2(1,1):
 		scale *= 1.1
 	else:
 		emit_signal("scaled_up")
 		_reset_animations()
 		state = NORMAL
+
+func _abs_scale():
+	return Vector2(abs(scale.x), abs(scale.y))
 
 func _scale_down():
 	if scale > Vector2(0.1,0.1):

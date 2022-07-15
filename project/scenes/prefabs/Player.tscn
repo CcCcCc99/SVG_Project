@@ -18,11 +18,12 @@ radius = 43.5115
 
 [node name="Player" groups=[
 "Player",
+"PlayerAlly",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 CORPSE = ExtResource( 7 )
 max_hp = 6
-speed = 15000
+speed = 30000
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2( -0.445465, -20.9907 )

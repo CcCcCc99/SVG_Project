@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/prop/FireSpit.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/pong/palladifuoco.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 30.1496
+
+[node name="FireSpit" type="Area2D" groups=[
+"Shot",
+]]
+z_index = 1
+script = ExtResource( 1 )
+speed = 1300
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 8, 15 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -2, -4 )
+shape = SubResource( 1 )
+
+[connection signal="area_entered" from="." to="." method="_on_hit"]
+[connection signal="body_entered" from="." to="." method="_on_hit"]
