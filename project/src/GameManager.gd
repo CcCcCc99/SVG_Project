@@ -11,6 +11,7 @@ onready var mana_bar = get_node("HUD/ManaBar")
 #var testlLevel #= preload("res://levels/TestLevel.tres")
 var levels: Array
 var currentLevel
+var boss_room
 
 export var loadlvl = 0
 
@@ -37,6 +38,7 @@ func _load_level(l: int):
 	for rs in room_scenes:
 		rooms.append(rs.instance())
 	var start = currentLevel.get_first_room()
+	boss_room = currentLevel.get_boss_room()
 	_load_room(start, null)
 
 func _unload_level():
@@ -62,6 +64,11 @@ func _load_room(r: int, d):
 		player.position = player.checkpoint_position
 	else:
 		rooms[r].set_player_position(player, assistant, d)
+	if r == boss_room:
+		$Camera2D.current = false
+		rooms[r].get_node("Camera2D").current = true
+	else:
+		$Camera2D.current = true
 
 func _unload_room():
 	player.destroy_portals()

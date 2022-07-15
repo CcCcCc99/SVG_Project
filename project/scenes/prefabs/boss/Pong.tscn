@@ -12,29 +12,29 @@
 [ext_resource path="res://scenes/prefabs/prop/FireSpit.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/prefabs/prop/Earthquake.tscn" type="PackedScene" id=11]
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 42.6252
 height = 139.063
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 46.1297
 height = 136.965
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": " idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ) ],
-"loop": false,
-"name": "jump_down",
-"speed": 6.0
-}, {
 "frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
 "loop": false,
 "name": "jump_up",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "jump_down",
 "speed": 6.0
 }, {
 "frames": [ ExtResource( 4 ) ],
@@ -48,10 +48,12 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=4]
 radius = 141.391
 
-[node name="Pong" groups=["Boss"] instance=ExtResource( 1 )]
+[node name="Pong" groups=[
+"Boss",
+] instance=ExtResource( 1 )]
 script = ExtResource( 7 )
 CORPSE = ExtResource( 8 )
 max_hp = 10
@@ -64,16 +66,16 @@ earthquake = ExtResource( 11 )
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2( -1.59821, -54.3992 )
 rotation = 1.5708
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyChecker" index="0"]
 position = Vector2( -1.37442, -54.1471 )
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="AnimatedSprite" parent="." index="2"]
 position = Vector2( 41.127, -208 )
-frames = SubResource( 1 )
+frames = SubResource( 3 )
 animation = " idle"
 playing = true
 
@@ -81,14 +83,19 @@ playing = true
 wait_time = 2.0
 one_shot = true
 
-[node name="HitBox" type="Area2D" parent="." index="5" groups=["Boss", "Character", "Hitbox", "Mob"]]
+[node name="HitBox" type="Area2D" parent="." index="5" groups=[
+"Boss",
+"Character",
+"Hitbox",
+"Mob",
+]]
 collision_layer = 2
 collision_mask = 63
 script = ExtResource( 9 )
 
 [node name="Body" type="CollisionShape2D" parent="HitBox" index="0"]
 position = Vector2( 10.505, -145.085 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Shadow" parent="." index="6"]
 position = Vector2( 2.51487, -27.5529 )

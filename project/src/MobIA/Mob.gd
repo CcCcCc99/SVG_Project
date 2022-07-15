@@ -17,8 +17,11 @@ func _ready():
 		scale.x = -1
 	if is_summoned:
 		enemy = "Mob"
+		add_to_group("PlayerAlly")
+		max_hp *= 2
+		set_hp(max_hp)
 	else:
-		enemy = "Player"
+		enemy = "PlayerAlly"
 
 func _end_effect():
 	emit_signal("killed")

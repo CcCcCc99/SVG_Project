@@ -72,13 +72,16 @@ position = Vector2( 7, -129 )
 scale = Vector2( 0.45, 0.45 )
 frames = SubResource( 4 )
 animation = "walk"
-frame = 1
 playing = true
 
 [node name="Cooldown" parent="." index="4"]
 wait_time = 20.0
 
-[node name="HitBox" type="Area2D" parent="." index="5" groups=["Character", "Hitbox", "Mob"]]
+[node name="HitBox" type="Area2D" parent="." index="5" groups=[
+"Character",
+"Hitbox",
+"Mob",
+]]
 script = ExtResource( 11 )
 
 [node name="Body" type="CollisionShape2D" parent="HitBox" index="0"]
@@ -102,6 +105,7 @@ position = Vector2( 10, -185 )
 bounces = 3
 
 [node name="launch_point" type="Position2D" parent="." index="9"]
+position = Vector2( 0, 22.6923 )
 
 [connection signal="area_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
 [connection signal="body_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]

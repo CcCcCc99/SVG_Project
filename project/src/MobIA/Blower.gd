@@ -29,6 +29,12 @@ func _on_TriggerAttack(body):
 			else:
 				b.set_direction(Vector2(-1,0))
 			b.position = $TriggerAttack.global_position - Vector2(30,15)
+			var enemy
+			if is_summoned:
+				enemy = "Mob"
+			else:
+				enemy = "Player"
+			b.enemy = enemy
 			get_parent().call_deferred("add_child",b)
 
 func _on_Cooldown_timeout():

@@ -60,7 +60,8 @@ func is_normal() -> bool:
 	return state == NORMAL
 
 func _reset_animations():
-	scale = Vector2(1,1)
+	scale.x = 1 if scale.x > 0 else -1
+	scale.y = 1 if scale.y > 0 else -1
 	visible = true
 	rotation = 0
 

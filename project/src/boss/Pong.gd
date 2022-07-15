@@ -20,7 +20,6 @@ func _ready():
 
 func _physics_process(delta):
 	._physics_process(delta)
-	print(hp)
 	match jumping_state:
 		jumping:
 			jump(delta)
@@ -36,25 +35,18 @@ func take_damage(damage):
 	if jumping_state != out_of_screen:
 		.take_damage(damage)
 
-var spit_dir = -2
+var spit_dir = -1
 func _spit():
 	if jumping_state == shooting_right:
 		spit_dir *= -1
 		scale.x *= -1
 	$AnimatedSprite.animation = "spit"
-	var spit_point = $Position2D.global_position
-	var spit_up = spit.instance()
-	var spit_mid = spit.instance()
-	var spit_down = spit.instance()
-	spit_up.set_direction(Vector2(spit_dir, -1))
-	spit_mid.set_direction(Vector2(spit_dir, 0))
-	spit_down.set_direction(Vector2(spit_dir, 1))
-	spit_up.position = spit_point
-	spit_mid.position = spit_point
-	spit_down.position = spit_point
-	get_parent().call_deferred("add_child",spit_up)
-	get_parent().call_deferred("add_child",spit_mid)
-	get_parent().call_deferred("add_child",spit_down)
+	var spits: Array
+	for i in 3:
+		var sp = spit.instance()
+		sp.set_pos_dir($Position2D.global_position, spit_dir, i)
+		get_parent().call_deferred("add_child", sp)
+		spits.append(sp)
 
 func _on_AnimatedSprite_animation_finished():
 	if $AnimatedSprite.animation == "jump_up":
@@ -64,6 +56,7 @@ func _on_AnimatedSprite_animation_finished():
 		jumping_state = shooting_left
 		$Cooldown.start()
 		contact_damage = original_contact_damage
+		$HitBox/Body.disabled = false
 		$CollisionShape2D.disabled = false
 		get_parent().crack_floor(position)
 
@@ -84,10 +77,11 @@ func _on_Cooldown_timeout():
 			_spit()
 			jumping_state = normal
 			$AnimatedSprite.animation = "idle"
-			$Cooldown.wait_time = 2
+			$Cooldown.wait_time = 5
 			$Cooldown.start()
 
 func jump(delta):
+	$HitBox/Body.disabled = true
 	$CollisionShape2D.disabled = true
 	var displacement = jump_speed * delta
 	$BodyChecker.position.y -= displacement
@@ -110,7 +104,8 @@ var current_shock: Node
 
 func start_earthquake():
 	current_shock = earthquake.instance()
-	add_child(current_shock)
+	current_shock.position = global_position
+	get_parent().add_child(current_shock)
 
 func end_earthquake():
 	current_shock.queue_free()
