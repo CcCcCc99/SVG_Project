@@ -137,6 +137,7 @@ current = true
 [node name="ManaBar" parent="HUD" instance=ExtResource( 5 )]
 
 [node name="ActionBar" parent="HUD" instance=ExtResource( 3 )]
+slot_number = 1
 
 [node name="ColorRect" type="ColorRect" parent="HUD"]
 visible = false

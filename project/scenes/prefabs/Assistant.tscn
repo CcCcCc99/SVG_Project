@@ -1,24 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/player/Assistant.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/assistant/discussione.png" type="Texture" id=2]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 35.4812
-
-[node name="Assistant" type="StaticBody2D"]
+[node name="Assistant" type="Node2D"]
 script = ExtResource( 1 )
-summons_number = 4
 max_mana = 5
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 13.3484, -80.0904 )
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.629974, -12.5992 )
-shape = SubResource( 1 )
 
 [node name="UpBaloonPosition" type="Position2D" parent="."]
 position = Vector2( 6.46994, -240.375 )

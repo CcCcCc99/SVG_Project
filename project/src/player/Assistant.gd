@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Node2D
 
 class summon:
 	var scene: String
@@ -77,7 +77,6 @@ func _update_grafics():
 
 func set_actionbar(bar):
 	action_bar = bar
-	action_bar.slot_number = summons_number
 
 func add_summon(sum, cost):
 	summons[action_bar.current()] = summon.new(sum, cost)

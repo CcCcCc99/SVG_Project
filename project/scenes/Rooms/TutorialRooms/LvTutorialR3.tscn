@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Rooms/RoomGenericTutorial.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/prefabs/mob/Blower.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/prefabs/mob/Tortoise.tscn" type="PackedScene" id=3]
+
+[node name="Room" instance=ExtResource( 1 )]
+left_room = 2
+top_room = 4
+
+[node name="Blower" parent="Objects" index="0" instance=ExtResource( 2 )]
+position = Vector2( 554.583, 273.874 )
+
+[node name="Tortoise" parent="Objects" index="1" instance=ExtResource( 3 )]
+position = Vector2( -556.989, -114.621 )
+flip = true

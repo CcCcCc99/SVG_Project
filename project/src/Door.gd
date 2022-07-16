@@ -29,11 +29,14 @@ func close() -> void:
 	animated_sprite.play("close")
 	collision_shape.disabled = false
 
+func is_open() -> bool:
+	return collision_shape.disabled
 
 func set_player_position(player: Character, assistant: Node):
+	print(global_position)
 	player.position = $PlayerSpawnPoint.global_position
 	assistant.position = $AssistantSpawnPoint.global_position
 
 func _on_Area2D_body_entered(_body: KinematicBody2D) -> void:
-	if is_instance_valid(_body):
+	if is_instance_valid(_body) and _body.is_in_group("Player"):
 		emit_signal("entered", next)

@@ -23,7 +23,7 @@ margin_left = 177.0
 margin_top = 209.0
 margin_right = 177.0
 margin_bottom = 209.0
-color = Color( 0, 0, 0, 0.490196 )
+color = Color( 0, 0, 0, 0.537255 )
 
 [node name="Menu" type="VBoxContainer" parent="."]
 margin_right = 355.0

@@ -26,7 +26,7 @@ func set_destination(portal: Portal2D):
 	destination = portal
 
 func _on_Portal_body_entered(body: Node):
-	if body.is_in_group("Boss"):
+	if body.is_in_group("Boss") or body.is_in_group("Reward"):
 		return
 	elif body.is_in_group("Environment"):
 		self._spawn_death_effect()

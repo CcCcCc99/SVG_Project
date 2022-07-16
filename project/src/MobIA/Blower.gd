@@ -33,7 +33,7 @@ func _on_TriggerAttack(body):
 			if is_summoned:
 				enemy = "Mob"
 			else:
-				enemy = "Player"
+				enemy = "PlayerAlly"
 			b.enemy = enemy
 			get_parent().call_deferred("add_child",b)
 
