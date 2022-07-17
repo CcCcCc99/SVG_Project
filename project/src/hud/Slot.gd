@@ -39,7 +39,6 @@ func summoned(is_summoned: bool):
 
 func set_content(summon: Panel):
 	#_free_summon()
-	print(summon)
 	add_child(summon)
 
 func _free_summon():

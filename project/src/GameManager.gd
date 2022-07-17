@@ -19,6 +19,7 @@ var rooms: Array
 var current_room: int
 
 func _init():
+	levels.append("res://levels/LvTestRoomSkip.tres")
 	levels.append("res://levels/LvTutorial.tres")
 	levels.append("res://levels/TestLevel2.tres")
 
@@ -84,18 +85,18 @@ func _load_room(r: int, d):
 		player.position = player.checkpoint_position
 	else:
 		rooms[r].set_player_position(player, assistant, d)
-		print(player.position)
 	if r == boss_room:
 		$Camera2D.current = false
 		rooms[r].get_node("Camera2D").current = true
 	else:
 		$Camera2D.current = true
-	rooms[r].check_and_open()
+	rooms[r].get_node("TimeToCheck").start()
 	#rooms[r].close_doors()
 
 func _unload_room():
 	player.destroy_portals()
 	assistant.destroy_summons()
+	rooms[current_room].close_doors()
 	rooms[current_room].get_node("Objects").remove_child(player)
 	rooms[current_room].get_node("Objects").remove_child(assistant)
 	rooms[current_room].disconnect("exited_room", self, "_switch_to_room")

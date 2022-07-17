@@ -12,8 +12,6 @@ export var right_room: int = -1
 export var top_room: int = -1
 export var bottom_room: int = -1
 
-export var dummy: PackedScene
-
 var doors
 
 enum {LEFT = 0, RIGHT = 1, TOP = 2, BOTTOM = 3}
@@ -27,15 +25,10 @@ func _ready() -> void:
 	check_and_open()
 
 func check_and_open():
-	#var dm = dummy.instance()
-	#$Objects.add_child(dm)
-	#dm.get_node("Cooldown").start()
-	close_doors()
 	if not closed:
 		open_doors()
 	else:
 		num_enemies = _count_enemies()
-		print(num_enemies)
 		if num_enemies == 0:
 			open_doors()
 
@@ -91,3 +84,5 @@ func set_player_position(player: Character, assistant: Node, door_used: int):
 		BOTTOM:
 			doors[TOP].set_player_position(player, assistant);
 
+func _on_TimeToCheck_timeout():
+	check_and_open()

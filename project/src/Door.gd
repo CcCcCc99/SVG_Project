@@ -33,7 +33,6 @@ func is_open() -> bool:
 	return collision_shape.disabled
 
 func set_player_position(player: Character, assistant: Node):
-	print(global_position)
 	player.position = $PlayerSpawnPoint.global_position
 	assistant.position = $AssistantSpawnPoint.global_position
 
