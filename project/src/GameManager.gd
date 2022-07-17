@@ -8,7 +8,6 @@ var assistant
 onready var health_bar = get_node("HUD/HealthBar")
 onready var mana_bar = get_node("HUD/ManaBar")
 
-#var testlLevel #= preload("res://levels/TestLevel.tres")
 var levels: Array
 var currentLevel
 var boss_room
@@ -19,7 +18,6 @@ var rooms: Array
 var current_room: int
 
 func _init():
-	levels.append("res://levels/LvTestRoomSkip.tres")
 	levels.append("res://levels/LvTutorial.tres")
 	levels.append("res://levels/TestLevel2.tres")
 
@@ -32,20 +30,6 @@ func _ready():
 	health_bar.set_player(player)
 	mana_bar.set_player(assistant)
 	call_deferred("_load_level",loadlvl)
-	
-class loading_room:
-	var r
-	var d
-	func _init(r, d):
-		self.r = r
-		self.d = d
-var queueload: Array
-
-func _process(delta):
-	if not queueload.empty():
-		var to_load = queueload.pop_front()
-		_switch_to_room(to_load.r, to_load.d)
-		queueload.clear()
 
 func _load_level(l: int):
 	currentLevel = load(levels[l])
@@ -55,29 +39,20 @@ func _load_level(l: int):
 	var start = currentLevel.get_first_room()
 	boss_room = currentLevel.get_boss_room()
 	_load_room(start, null)
-	#rooms[start].check_and_open()
 
 func _unload_level():
 	_unload_room()
 	rooms.clear()
-	#currentLevel.queue_free()
-	pass
 
 func _switch_to_level(l: int):
-	#call_deferred("_unload_room")
 	call_deferred("_unload_level")
 	call_deferred("_load_level", l)
-
-func _queue_load(r: int, d):
-	queueload.push_back(loading_room.new(r,d))
 
 func _load_room(r: int, d):
 	current_room = r
 	rooms[r].get_node("Objects").add_child(player)
 	rooms[r].get_node("Objects").add_child(assistant)
-	#rooms[r].position = Vector2(2000 * r, 0)
-	#$Camera2D.position = Vector2(2000 * r, 0)
-	rooms[r].connect("exited_room", self, "_queue_load")
+	rooms[r].connect("exited_room", self, "_going_trough_door")
 	add_child(rooms[r])
 	if d == null:
 		player.set_hp(player.max_hp)
@@ -91,7 +66,6 @@ func _load_room(r: int, d):
 	else:
 		$Camera2D.current = true
 	rooms[r].get_node("TimeToCheck").start()
-	#rooms[r].close_doors()
 
 func _unload_room():
 	player.destroy_portals()
@@ -99,37 +73,45 @@ func _unload_room():
 	rooms[current_room].close_doors()
 	rooms[current_room].get_node("Objects").remove_child(player)
 	rooms[current_room].get_node("Objects").remove_child(assistant)
-	rooms[current_room].disconnect("exited_room", self, "_switch_to_room")
+	rooms[current_room].disconnect("exited_room", self, "_going_trough_door")
 	remove_child(rooms[current_room])
 
 func _switch_to_room(r: int, d):
 	player.destroy_portals()
 	assistant.destroy_summons()
 	call_deferred("_unload_room")
-	#_unload_room()
 	call_deferred("_load_room", r, d)
-	#rooms[r].check_and_open()
-	#_load_room(r,d)
 
-var respawn_room
+var destination_room
+var door_used
+
+func _going_trough_door(room, door):
+	$HUD/ColorRect.show()
+	$AnimationPlayer.play("fast_Fadeout")
+	destination_room = room
+	door_used = door
+
 func _respawn(room):
 	$HUD/ColorRect.show()
 	$AnimationPlayer.play("Fadeout")
-	respawn_room = room
+	destination_room = room
 	player = player_scene.instance()
 	player.connect("is_dead", self, "_respawn")
 	health_bar.set_player(player)
 	
 func _on_AnimationPlayer_animation_finished(anim_name):
 	$AnimationPlayer.stop()
-	if anim_name == "Fadeout":
-		_unload_level()
-		_load_level(loadlvl)
-		_switch_to_room(respawn_room, null)
-		#rooms[respawn_room].check_and_open()
-		$AnimationPlayer.play("Fadein")
-	else:
-		$HUD/ColorRect.hide()
+	match anim_name:
+		"Fadeout":
+			_unload_level()
+			_load_level(loadlvl)
+			_switch_to_room(destination_room, null)
+			$AnimationPlayer.play("Fadein")
+		"fast_Fadeout":
+			_switch_to_room(destination_room, door_used)
+			$AnimationPlayer.play("fast_Fadein")
+		_:
+			$HUD/ColorRect.hide()
 
 func load_summon(sum, cost):
 	assistant.add_summon(sum, cost)

@@ -22,7 +22,7 @@ signal completed
 func _ready() -> void:
 	doors = door_container.get_children()
 	enable_doors()
-	check_and_open()
+	close_doors()
 
 func check_and_open():
 	if not closed:
