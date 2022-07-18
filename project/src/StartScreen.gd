@@ -4,10 +4,7 @@ var selected_menu = 0
 var pointer
 
 func change_menu_color():
-	_on_NewGameButton_mouse_exited()
-	_on_LoadGameButton_mouse_exited()
-	_on_OptionsButton_mouse_exited()
-	_on_QuitButton_mouse_exited()
+	_remove_pointer()
 	
 	match selected_menu:
 		0:
@@ -18,6 +15,13 @@ func change_menu_color():
 			_on_OptionsButton_mouse_entered()
 		3:
 			_on_QuitButton_mouse_entered()
+
+func _remove_pointer():
+	for child in $Menu.get_children():
+		if child.has_node(pointer.name):
+			child.modulate = "969696"
+			child.remove_child(pointer)
+			break
 
 func _ready():
 	pointer = $Pointer
@@ -56,6 +60,7 @@ func _on_NewGameButton_pressed():
 	parent.add_child(load("res://Main.tscn").instance())
 
 func _on_NewGameButton_mouse_entered():
+	_remove_pointer()
 	$Menu/NewGameButton.modulate = "ffffff"
 	$Menu/NewGameButton.add_child(pointer)
 	selected_menu = 0
@@ -73,6 +78,7 @@ func _on_LoadGameButton_pressed():
 	# load game
 
 func _on_LoadGameButton_mouse_entered():
+	_remove_pointer()
 	$Menu/LoadGameButton.modulate = "ffffff"
 	$Menu/LoadGameButton.add_child(pointer)
 	selected_menu = 1
@@ -92,6 +98,7 @@ func _on_OptionsButton_pressed():
 	parent.add_child(options)
 
 func _on_OptionsButton_mouse_entered():
+	_remove_pointer()
 	$Menu/OptionsButton.modulate = "ffffff"
 	$Menu/OptionsButton.add_child(pointer)
 	selected_menu = 2
@@ -105,6 +112,7 @@ func _on_QuitButton_pressed():
 	get_tree().quit()
 
 func _on_QuitButton_mouse_entered():
+	_remove_pointer()
 	$Menu/QuitButton.modulate = "ffffff"
 	$Menu/QuitButton.add_child(pointer)
 	selected_menu = 3

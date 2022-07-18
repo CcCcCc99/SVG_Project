@@ -6,9 +6,7 @@ var pointer
 var back_to: bool
 
 func change_menu_color():
-	_on_Resolution_mouse_exited()
-	_on_Volume_mouse_exited()
-	_on_Back_mouse_exited()
+	_remove_pointer()
 	
 	match selected_menu:
 		0:
@@ -17,6 +15,13 @@ func change_menu_color():
 			_on_Volume_mouse_entered()
 		2:
 			_on_Back_mouse_entered()
+
+func _remove_pointer():
+	for child in $Menu.get_children():
+		if child.has_node(pointer.name):
+			child.modulate = "969696"
+			child.remove_child(pointer)
+			break
 
 func set_back(b: bool):
 	back_to = b
@@ -59,6 +64,7 @@ func _on_Resolution_pressed():
 	parent.add_child(resolution)
 
 func _on_Resolution_mouse_entered():
+	_remove_pointer()
 	$Menu/Resolution.modulate = "ffffff"
 	$Menu/Resolution.add_child(pointer)
 	selected_menu = 0
@@ -76,6 +82,7 @@ func _on_Volume_pressed():
 	# volume
 
 func _on_Volume_mouse_entered():
+	_remove_pointer()
 	$Menu/Volume.modulate = "ffffff"
 	$Menu/Volume.add_child(pointer)
 	selected_menu = 1
@@ -100,6 +107,7 @@ func _on_Back_pressed():
 		parent.add_child(load("res://scenes/menu/PauseScreen.tscn").instance())
 
 func _on_Back_mouse_entered():
+	_remove_pointer()
 	$Menu/Back.modulate = "ffffff"
 	$Menu/Back.add_child(pointer)
 	selected_menu = 2

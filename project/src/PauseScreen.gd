@@ -4,9 +4,7 @@ var selected_menu = 0
 var pointer
 
 func change_menu_color():
-	_on_ResumeButton_mouse_exited()
-	_on_OptionsButton_mouse_exited()
-	_on_BackToTitleButton_mouse_exited()
+	_remove_pointer()
 	
 	match selected_menu:
 		0:
@@ -15,6 +13,13 @@ func change_menu_color():
 			_on_OptionsButton_mouse_entered()
 		2:
 			_on_BackToTitleButton_mouse_entered()
+
+func _remove_pointer():
+	for child in $Menu.get_children():
+		if child.has_node(pointer.name):
+			child.modulate = "969696"
+			child.remove_child(pointer)
+			break
 
 func _ready():
 	pointer = $Pointer
@@ -48,6 +53,7 @@ func _on_ResumeButton_pressed():
 	queue_free()
 
 func _on_ResumeButton_mouse_entered():
+	_remove_pointer()
 	$Menu/ResumeButton.modulate = "ffffff"
 	$Menu/ResumeButton.add_child(pointer)
 	selected_menu = 0
@@ -67,6 +73,7 @@ func _on_OptionsButton_pressed():
 	parent.add_child(options)
 
 func _on_OptionsButton_mouse_entered():
+	_remove_pointer()
 	$Menu/OptionsButton.modulate = "ffffff"
 	$Menu/OptionsButton.add_child(pointer)
 	selected_menu = 1
@@ -84,6 +91,7 @@ func _on_BackToTitleButton_pressed():
 	parent.add_child(load("res://scenes/menu/StartScreen.tscn").instance())
 
 func _on_BackToTitleButton_mouse_entered():
+	_remove_pointer()
 	$Menu/BackToTitleButton.modulate = "ffffff"
 	$Menu/BackToTitleButton.add_child(pointer)
 	selected_menu = 2
