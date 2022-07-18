@@ -43,8 +43,9 @@ func _input(event):
 				_on_BackToTitleButton_pressed()
 
 func _on_ResumeButton_pressed():
-	get_tree().current_scene = get_tree().get_root().get_node("res://Main")
-	get_tree().get_root().remove_child(self)
+	var parent = get_parent()
+	parent.remove_child(self)
+	queue_free()
 
 func _on_ResumeButton_mouse_entered():
 	$Menu/ResumeButton.modulate = "ffffff"
@@ -62,7 +63,7 @@ func _on_OptionsButton_pressed():
 	queue_free()
 	
 	var options = load("res://scenes/menu/OptionScreen.tscn").instance()
-	options.set_back()
+	options.set_back(false)
 	parent.add_child(options)
 
 func _on_OptionsButton_mouse_entered():

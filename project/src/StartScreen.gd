@@ -87,7 +87,9 @@ func _on_OptionsButton_pressed():
 	parent.remove_child(self)
 	queue_free()
 	
-	parent.add_child(load("res://scenes/menu/OptionScreen.tscn").instance())
+	var options = load("res://scenes/menu/OptionScreen.tscn").instance()
+	options.set_back(true)
+	parent.add_child(options)
 
 func _on_OptionsButton_mouse_entered():
 	$Menu/OptionsButton.modulate = "ffffff"

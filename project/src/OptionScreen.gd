@@ -3,7 +3,7 @@ extends CenterContainer
 var selected_menu = 0
 var pointer
 
-var back_to: bool = true
+var back_to: bool
 
 func change_menu_color():
 	_on_Resolution_mouse_exited()
@@ -18,8 +18,8 @@ func change_menu_color():
 		2:
 			_on_Back_mouse_entered()
 
-func set_back():
-	back_to = not back_to
+func set_back(b: bool):
+	back_to = b
 
 func _ready():
 	pointer = $Pointer
@@ -50,10 +50,13 @@ func _input(event):
 
 func _on_Resolution_pressed():
 	var parent = get_parent()
+	var b = back_to
 	parent.remove_child(self)
 	queue_free()
 	
-	parent.add_child(load("res://scenes/menu/ResolutionPopup.tscn").instance())
+	var resolution = load("res://scenes/menu/ResolutionPopup.tscn").instance()
+	resolution.set_back(b)
+	parent.add_child(resolution)
 
 func _on_Resolution_mouse_entered():
 	$Menu/Resolution.modulate = "ffffff"
