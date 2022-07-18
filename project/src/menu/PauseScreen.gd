@@ -3,6 +3,19 @@ extends CenterContainer
 var selected_menu = 0
 var pointer
 
+var is_enabled = true
+var stacked_menu: Node
+
+func enable():
+	is_enabled = true
+	$Menu.show()
+	if is_instance_valid(stacked_menu):
+		stacked_menu.queue_free()
+
+func disable():
+	is_enabled = false
+	$Menu.hide()
+
 func change_menu_color():
 	_remove_pointer()
 	
@@ -48,9 +61,7 @@ func _input(event):
 				_on_BackToTitleButton_pressed()
 
 func _on_ResumeButton_pressed():
-	var parent = get_parent()
-	parent.remove_child(self)
-	queue_free()
+	get_parent().get_parent().resume()
 
 func _on_ResumeButton_mouse_entered():
 	_remove_pointer()
@@ -64,13 +75,9 @@ func _on_ResumeButton_mouse_exited():
 		$Menu/ResumeButton.remove_child(pointer)
 
 func _on_OptionsButton_pressed():
-	var parent = get_parent()
-	parent.remove_child(self)
-	queue_free()
-	
-	var options = load("res://scenes/menu/OptionScreen.tscn").instance()
-	options.set_back(false)
-	parent.add_child(options)
+	disable()
+	stacked_menu = load("res://scenes/menu/OptionScreen.tscn").instance()
+	add_child(stacked_menu)
 
 func _on_OptionsButton_mouse_entered():
 	_remove_pointer()
@@ -84,11 +91,7 @@ func _on_OptionsButton_mouse_exited():
 		$Menu/OptionsButton.remove_child(pointer)
 
 func _on_BackToTitleButton_pressed():
-	var parent = get_parent()
-	parent.remove_child(self)
-	queue_free()
-	
-	parent.add_child(load("res://scenes/menu/StartScreen.tscn").instance())
+	get_tree().change_scene("res://scenes/menu/StartScreen.tscn")
 
 func _on_BackToTitleButton_mouse_entered():
 	_remove_pointer()

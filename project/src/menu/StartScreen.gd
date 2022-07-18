@@ -3,6 +3,19 @@ extends CenterContainer
 var selected_menu = 0
 var pointer
 
+var is_enabled = true
+var stacked_menu: Node
+
+func enable():
+	is_enabled = true
+	$Menu.show()
+	if is_instance_valid(stacked_menu):
+		stacked_menu.queue_free()
+
+func disable():
+	is_enabled = false
+	$Menu.hide()
+
 func change_menu_color():
 	_remove_pointer()
 	
@@ -28,6 +41,8 @@ func _ready():
 	remove_child(pointer)
 
 func _input(event):
+	if not is_enabled:
+		return
 	if Input.is_action_just_pressed("ui_down"):
 		selected_menu = (selected_menu + 1) % 4;
 		change_menu_color()
@@ -53,11 +68,7 @@ func _input(event):
 				_on_QuitButton_pressed()
 
 func _on_NewGameButton_pressed():
-	var parent = get_parent()
-	parent.remove_child(self)
-	queue_free()
-	
-	parent.add_child(load("res://Main.tscn").instance())
+	get_tree().change_scene("res://Main.tscn")
 
 func _on_NewGameButton_mouse_entered():
 	_remove_pointer()
@@ -71,10 +82,7 @@ func _on_NewGameButton_mouse_exited():
 		$Menu/NewGameButton.remove_child(pointer)
 
 func _on_LoadGameButton_pressed():
-	var parent = get_parent()
-	parent.remove_child(self)
-	queue_free()
-	
+	pass
 	# load game
 
 func _on_LoadGameButton_mouse_entered():
@@ -89,13 +97,9 @@ func _on_LoadGameButton_mouse_exited():
 		$Menu/LoadGameButton.remove_child(pointer)
 
 func _on_OptionsButton_pressed():
-	var parent = get_parent()
-	parent.remove_child(self)
-	queue_free()
-	
-	var options = load("res://scenes/menu/OptionScreen.tscn").instance()
-	options.set_back(true)
-	parent.add_child(options)
+	disable()
+	stacked_menu = load("res://scenes/menu/OptionScreen.tscn").instance()
+	add_child(stacked_menu)
 
 func _on_OptionsButton_mouse_entered():
 	_remove_pointer()

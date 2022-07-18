@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://src/OptionScreen.gd" type="Script" id=1]
+[ext_resource path="res://src/menu/OptionScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/menu/label_volume.png" type="Texture" id=2]
 [ext_resource path="res://assets/menu/label_resolution.png" type="Texture" id=3]
 [ext_resource path="res://assets/menu/label_back.png" type="Texture" id=4]

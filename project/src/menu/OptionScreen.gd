@@ -93,18 +93,7 @@ func _on_Volume_mouse_exited():
 		$Menu/Volume.remove_child(pointer)
 
 func _on_Back_pressed():
-	if back_to:
-		var parent = get_parent()
-		parent.remove_child(self)
-		queue_free()
-		
-		parent.add_child(load("res://scenes/menu/StartScreen.tscn").instance())
-	else:
-		var parent = get_parent()
-		parent.remove_child(self)
-		queue_free()
-		
-		parent.add_child(load("res://scenes/menu/PauseScreen.tscn").instance())
+	get_parent().enable()
 
 func _on_Back_mouse_entered():
 	_remove_pointer()

@@ -6,6 +6,7 @@ var player
 var assistant
 
 var is_in_pause: bool = false
+var pause_screen: Node
 
 onready var health_bar = get_node("HUD/HealthBar")
 onready var mana_bar = get_node("HUD/ManaBar")
@@ -35,13 +36,19 @@ func _ready():
 	call_deferred("_load_level",loadlvl)
 
 func _input(event):
-	var parent = get_parent()
-	if not is_in_pause:
-		if Input.is_action_just_pressed("ui_accept"):
-			_hide_main(parent)
-	else:
-		if parent.get_child_count() == 3:
-			_show_main()
+	if Input.is_action_just_pressed("pause_toggle"):
+		if not is_in_pause:
+			is_in_pause = true
+			get_tree().paused = true
+			pause_screen = load("res://scenes/menu/PauseScreen.tscn").instance()
+			$HUD.add_child(pause_screen)
+		else:
+			resume()
+
+func resume():
+	is_in_pause = false
+	get_tree().paused = false
+	pause_screen.queue_free()
 
 func _hide_main(parent):
 	is_in_pause = not is_in_pause
