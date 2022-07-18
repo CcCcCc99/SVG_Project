@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/menu/pointer.png" type="Texture" id=1]
+[ext_resource path="res://src/PauseScreen.gd" type="Script" id=2]
+
+[node name="PauseScreen" type="CenterContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -177.0
+margin_top = -209.0
+margin_right = 177.0
+margin_bottom = 209.0
+script = ExtResource( 2 )
+
+[node name="Background" type="ColorRect" parent="."]
+margin_left = 177.0
+margin_top = 209.0
+margin_right = 177.0
+margin_bottom = 209.0
+color = Color( 0, 0, 0, 0.490196 )
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 177.0
+margin_top = 205.0
+margin_right = 177.0
+margin_bottom = 213.0
+
+[node name="ResumeButton" type="TextureButton" parent="Menu"]
+
+[node name="OptionsButton" type="TextureButton" parent="Menu"]
+margin_top = 4.0
+margin_bottom = 4.0
+
+[node name="BackToTitleButton" type="TextureButton" parent="Menu"]
+margin_top = 8.0
+margin_bottom = 8.0
+
+[node name="Pointer" type="Sprite" parent="."]
+position = Vector2( -50, 45 )
+texture = ExtResource( 1 )
+
+[connection signal="mouse_entered" from="Menu/ResumeButton" to="." method="_on_ResumeButton_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/ResumeButton" to="." method="_on_ResumeButton_mouse_exited"]
+[connection signal="pressed" from="Menu/ResumeButton" to="." method="_on_ResumeButton_pressed"]
+[connection signal="mouse_entered" from="Menu/OptionsButton" to="." method="_on_OptionsButton_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/OptionsButton" to="." method="_on_OptionsButton_mouse_exited"]
+[connection signal="pressed" from="Menu/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="mouse_entered" from="Menu/BackToTitleButton" to="." method="_on_BackToTitleButton_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/BackToTitleButton" to="." method="_on_BackToTitleButton_mouse_exited"]
+[connection signal="pressed" from="Menu/BackToTitleButton" to="." method="_on_BackToTitleButton_pressed"]

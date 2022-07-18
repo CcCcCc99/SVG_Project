@@ -32,6 +32,13 @@ func _ready():
 	mana_bar.set_player(assistant)
 	call_deferred("_load_level",loadlvl)
 
+func _input(event):
+	if Input.is_action_just_pressed("ui_accept"):
+		var pause = load("res://scenes/menu/PauseScreen.tscn").instance()
+		get_tree().get_root().add_child(pause)
+		get_tree().current_scene = pause
+		print_tree()
+
 func _load_level(l: int):
 	currentLevel = load(levels[l])
 	var room_scenes = currentLevel.get_rooms()

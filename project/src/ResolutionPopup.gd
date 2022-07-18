@@ -30,7 +30,6 @@ func _ready():
 	change_menu_color()
 
 func _input(event):
-	
 	if Input.is_action_just_pressed("ui_down"):
 		selected_menu = (selected_menu + 1) % 5;
 		change_menu_color()
@@ -63,12 +62,10 @@ func _on_Res1024x546_mouse_entered():
 	$Menu/Res1024x546.add_child(pointer)
 	selected_menu = 0
 
-
 func _on_Res1024x546_mouse_exited():
 	$Menu/Res1024x546.modulate = "969696"
 	if $Menu/Res1024x546.has_node(pointer.name):
 		$Menu/Res1024x546.remove_child(pointer)
-
 
 func _on_Res1280x720_pressed():
 	config.set_resolution(Vector2(1280, 720))
@@ -78,12 +75,10 @@ func _on_Res1280x720_mouse_entered():
 	$Menu/Res1280x720.add_child(pointer)
 	selected_menu = 1
 
-
 func _on_Res1280x720_mouse_exited():
 	$Menu/Res1280x720.modulate = "969696"
 	if $Menu/Res1280x720.has_node(pointer.name):
 		$Menu/Res1280x720.remove_child(pointer)
-
 
 func _on_Res1600x900_pressed():
 	config.set_resolution(Vector2(1600, 900))
@@ -93,38 +88,35 @@ func _on_Res1600x900_mouse_entered():
 	$Menu/Res1600x900.add_child(pointer)
 	selected_menu = 2
 
-
 func _on_Res1600x900_mouse_exited():
 	$Menu/Res1600x900.modulate = "969696"
 	if $Menu/Res1600x900.has_node(pointer.name):
 		$Menu/Res1600x900.remove_child(pointer)
 
-
 func _on_Res1920x1080_pressed():
 	config.set_resolution(Vector2(1920, 1080))
-
 
 func _on_Res1920x1080_mouse_entered():
 	$Menu/Res1920x1080.modulate = "ffffff"
 	$Menu/Res1920x1080.add_child(pointer)
 	selected_menu = 3
 
-
 func _on_Res1920x1080_mouse_exited():
 	$Menu/Res1920x1080.modulate = "969696"
 	if $Menu/Res1920x1080.has_node(pointer.name):
 		$Menu/Res1920x1080.remove_child(pointer)
 
-
 func _on_Back_pressed():
-	get_tree().change_scene("res://scenes/menu/OptionScreen.tscn")
-
+	var parent = get_parent()
+	parent.remove_child(self)
+	queue_free()
+	
+	parent.add_child(load("res://scenes/menu/OptionScreen.tscn").instance())
 
 func _on_Back_mouse_entered():
 	$Back.modulate = "ffffff"
 	$Back.add_child(pointer)
 	selected_menu = 4
-
 
 func _on_Back_mouse_exited():
 	$Back.modulate = "969696"
