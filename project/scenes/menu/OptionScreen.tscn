@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://src/OptionScreen.gd" type="Script" id=1]
+[ext_resource path="res://src/menu/OptionScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/menu/label_volume.png" type="Texture" id=2]
 [ext_resource path="res://assets/menu/label_resolution.png" type="Texture" id=3]
 [ext_resource path="res://assets/menu/label_back.png" type="Texture" id=4]
@@ -56,12 +56,12 @@ stretch_mode = 5
 position = Vector2( -50, 45 )
 texture = ExtResource( 5 )
 
-[connection signal="mouse_entered" from="Menu/Resolution" to="." method="_on_Resolution_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/Resolution" to="." method="_on_Resolution_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/Resolution" to="." method="_on_enter_button_number" binds= [ 0 ]]
+[connection signal="mouse_exited" from="Menu/Resolution" to="." method="_on_exited_button_number" binds= [ 0 ]]
 [connection signal="pressed" from="Menu/Resolution" to="." method="_on_Resolution_pressed"]
-[connection signal="mouse_entered" from="Menu/Volume" to="." method="_on_Volume_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/Volume" to="." method="_on_Volume_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/Volume" to="." method="_on_enter_button_number" binds= [ 1 ]]
+[connection signal="mouse_exited" from="Menu/Volume" to="." method="_on_exited_button_number" binds= [ 1 ]]
 [connection signal="pressed" from="Menu/Volume" to="." method="_on_Volume_pressed"]
-[connection signal="mouse_entered" from="Menu/Back" to="." method="_on_Back_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/Back" to="." method="_on_Back_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/Back" to="." method="_on_enter_button_number" binds= [ 2 ]]
+[connection signal="mouse_exited" from="Menu/Back" to="." method="_on_exited_button_number" binds= [ 2 ]]
 [connection signal="pressed" from="Menu/Back" to="." method="_on_Back_pressed"]

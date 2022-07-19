@@ -9,11 +9,13 @@
 [ext_resource path="res://assets/audio/fato_shadow_-_in_my_dreams.ogg" type="AudioStream" id=7]
 
 [node name="Main" type="Node"]
+pause_mode = 2
 script = ExtResource( 1 )
 player_scene = ExtResource( 2 )
 assistant_scene = ExtResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+pause_mode = 1
 current = true
 
 [node name="HUD" type="CanvasLayer" parent="."]
@@ -25,6 +27,7 @@ current = true
 [node name="ActionBar" parent="HUD" instance=ExtResource( 3 )]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 7 )
 autoplay = true
 bus = "Music"
