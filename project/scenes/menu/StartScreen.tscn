@@ -62,15 +62,15 @@ texture_normal = ExtResource( 3 )
 position = Vector2( -50, 45 )
 texture = ExtResource( 5 )
 
-[connection signal="mouse_entered" from="Menu/NewGameButton" to="." method="_on_NewGameButton_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/NewGameButton" to="." method="_on_NewGameButton_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/NewGameButton" to="." method="_on_enter_button_number" binds= [ 0 ]]
+[connection signal="mouse_exited" from="Menu/NewGameButton" to="." method="_on_exited_button_number" binds= [ 0 ]]
 [connection signal="pressed" from="Menu/NewGameButton" to="." method="_on_NewGameButton_pressed"]
-[connection signal="mouse_entered" from="Menu/LoadGameButton" to="." method="_on_LoadGameButton_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/LoadGameButton" to="." method="_on_LoadGameButton_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/LoadGameButton" to="." method="_on_enter_button_number" binds= [ 1 ]]
+[connection signal="mouse_exited" from="Menu/LoadGameButton" to="." method="_on_exited_button_number" binds= [ 1 ]]
 [connection signal="pressed" from="Menu/LoadGameButton" to="." method="_on_LoadGameButton_pressed"]
-[connection signal="mouse_entered" from="Menu/OptionsButton" to="." method="_on_OptionsButton_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/OptionsButton" to="." method="_on_OptionsButton_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/OptionsButton" to="." method="_on_enter_button_number" binds= [ 2 ]]
+[connection signal="mouse_exited" from="Menu/OptionsButton" to="." method="_on_exited_button_number" binds= [ 2 ]]
 [connection signal="pressed" from="Menu/OptionsButton" to="." method="_on_OptionsButton_pressed"]
-[connection signal="mouse_entered" from="Menu/QuitButton" to="." method="_on_QuitButton_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/QuitButton" to="." method="_on_QuitButton_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/QuitButton" to="." method="_on_enter_button_number" binds= [ 3 ]]
+[connection signal="mouse_exited" from="Menu/QuitButton" to="." method="_on_exited_button_number" binds= [ 3 ]]
 [connection signal="pressed" from="Menu/QuitButton" to="." method="_on_QuitButton_pressed"]

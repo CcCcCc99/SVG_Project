@@ -1,105 +1,25 @@
-extends CenterContainer
-
-var selected_menu = 0
-var pointer
-
-var is_enabled = true
-var stacked_menu: Node
-
-func enable():
-	is_enabled = true
-	$Menu.show()
-	if is_instance_valid(stacked_menu):
-		stacked_menu.queue_free()
-
-func disable():
-	is_enabled = false
-	$Menu.hide()
-
-func change_menu_color():
-	_remove_pointer()
-	
-	match selected_menu:
-		0:
-			_on_ResumeButton_mouse_entered()
-		1:
-			_on_OptionsButton_mouse_entered()
-		2:
-			_on_BackToTitleButton_mouse_entered()
-
-func _remove_pointer():
-	for child in $Menu.get_children():
-		if child.has_node(pointer.name):
-			child.modulate = "969696"
-			child.remove_child(pointer)
-			break
+extends Menu
 
 func _ready():
-	pointer = $Pointer
-	remove_child(pointer)
+	menu_buttons = $Menu.get_children()
 
-func _input(event):
-	if Input.is_action_just_pressed("ui_down"):
-		selected_menu = (selected_menu + 1) % 3;
-		change_menu_color()
-	elif Input.is_action_just_pressed("ui_up"):
-		if selected_menu > 0:
-			selected_menu = selected_menu - 1
-		else:
-			selected_menu = 2
-		change_menu_color()
-	elif Input.is_action_just_pressed("ui_accept"):
-		match selected_menu:
-			0:
-				# Resume game
-				_on_ResumeButton_pressed()
-			1:
-				# Options
-				_on_OptionsButton_pressed()
-			2:
-				# Back to title
-				_on_BackToTitleButton_pressed()
+func _press_button_number(num: int):
+	match selected_menu:
+		0:
+			_on_ResumeButton_pressed()
+		1:
+			_on_OptionsButton_pressed()
+		2:
+			_on_BackToTitleButton_pressed()
 
 func _on_ResumeButton_pressed():
 	get_parent().get_parent().resume()
-
-func _on_ResumeButton_mouse_entered():
-	_remove_pointer()
-	$Menu/ResumeButton.modulate = "ffffff"
-	$Menu/ResumeButton.add_child(pointer)
-	selected_menu = 0
-
-func _on_ResumeButton_mouse_exited():
-	$Menu/ResumeButton.modulate = "969696"
-	if $Menu/ResumeButton.has_node(pointer.name):
-		$Menu/ResumeButton.remove_child(pointer)
 
 func _on_OptionsButton_pressed():
 	disable()
 	stacked_menu = load("res://scenes/menu/OptionScreen.tscn").instance()
 	add_child(stacked_menu)
 
-func _on_OptionsButton_mouse_entered():
-	_remove_pointer()
-	$Menu/OptionsButton.modulate = "ffffff"
-	$Menu/OptionsButton.add_child(pointer)
-	selected_menu = 1
-
-func _on_OptionsButton_mouse_exited():
-	$Menu/OptionsButton.modulate = "969696"
-	if $Menu/OptionsButton.has_node(pointer.name):
-		$Menu/OptionsButton.remove_child(pointer)
-
 func _on_BackToTitleButton_pressed():
+	get_tree().paused = false
 	get_tree().change_scene("res://scenes/menu/StartScreen.tscn")
-
-func _on_BackToTitleButton_mouse_entered():
-	_remove_pointer()
-	$Menu/BackToTitleButton.modulate = "ffffff"
-	$Menu/BackToTitleButton.add_child(pointer)
-	selected_menu = 2
-
-func _on_BackToTitleButton_mouse_exited():
-	$Menu/BackToTitleButton.modulate = "969696"
-	if $Menu/BackToTitleButton.has_node(pointer.name):
-		$Menu/BackToTitleButton.remove_child(pointer)

@@ -1,107 +1,24 @@
-extends CenterContainer
-
-var selected_menu = 0
-var pointer
-
-var back_to: bool
-
-func change_menu_color():
-	_remove_pointer()
-	
-	match selected_menu:
-		0:
-			_on_Resolution_mouse_entered()
-		1:
-			_on_Volume_mouse_entered()
-		2:
-			_on_Back_mouse_entered()
-
-func _remove_pointer():
-	for child in $Menu.get_children():
-		if child.has_node(pointer.name):
-			child.modulate = "969696"
-			child.remove_child(pointer)
-			break
-
-func set_back(b: bool):
-	back_to = b
+extends Menu
 
 func _ready():
-	pointer = $Pointer
-	remove_child(pointer)
-	change_menu_color()
+	menu_buttons = $Menu.get_children()
 
-func _input(event):
-	if Input.is_action_just_pressed("ui_down"):
-		selected_menu = (selected_menu + 1) % 3;
-		change_menu_color()
-	elif Input.is_action_just_pressed("ui_up"):
-		if selected_menu > 0:
-			selected_menu = selected_menu - 1
-		else:
-			selected_menu = 2
-		change_menu_color()
-	elif Input.is_action_just_pressed("ui_accept"):
-		match selected_menu:
-			0:
-				# Resolution
-				_on_Resolution_pressed()
-			1:
-				# Volume
-				_on_Volume_pressed()
-			2:
-				# Back
-				_on_Back_pressed()
+func _press_button_number(num: int):
+	match selected_menu:
+		0:
+			_on_Resolution_pressed()
+		1:
+			_on_Volume_pressed()
+		2:
+			_on_Back_pressed()
 
 func _on_Resolution_pressed():
-	var parent = get_parent()
-	var b = back_to
-	parent.remove_child(self)
-	queue_free()
-	
-	var resolution = load("res://scenes/menu/ResolutionPopup.tscn").instance()
-	resolution.set_back(b)
-	parent.add_child(resolution)
-
-func _on_Resolution_mouse_entered():
-	_remove_pointer()
-	$Menu/Resolution.modulate = "ffffff"
-	$Menu/Resolution.add_child(pointer)
-	selected_menu = 0
-
-func _on_Resolution_mouse_exited():
-	$Menu/Resolution.modulate = "969696"
-	if $Menu/Resolution.has_node(pointer.name):
-		$Menu/Resolution.remove_child(pointer)
+	disable()
+	stacked_menu = load("res://scenes/menu/ResolutionPopup.tscn").instance()
+	add_child(stacked_menu)
 
 func _on_Volume_pressed():
-	var parent = get_parent()
-	parent.remove_child(self)
-	queue_free()
-	
-	# volume
-
-func _on_Volume_mouse_entered():
-	_remove_pointer()
-	$Menu/Volume.modulate = "ffffff"
-	$Menu/Volume.add_child(pointer)
-	selected_menu = 1
-
-func _on_Volume_mouse_exited():
-	$Menu/Volume.modulate = "969696"
-	if $Menu/Volume.has_node(pointer.name):
-		$Menu/Volume.remove_child(pointer)
+	pass # Replace with function body.
 
 func _on_Back_pressed():
 	get_parent().enable()
-
-func _on_Back_mouse_entered():
-	_remove_pointer()
-	$Menu/Back.modulate = "ffffff"
-	$Menu/Back.add_child(pointer)
-	selected_menu = 2
-
-func _on_Back_mouse_exited():
-	$Menu/Back.modulate = "969696"
-	if $Menu/Back.has_node(pointer.name):
-		$Menu/Back.remove_child(pointer)

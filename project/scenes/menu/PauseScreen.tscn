@@ -53,12 +53,12 @@ texture_normal = ExtResource( 5 )
 position = Vector2( -50, 45 )
 texture = ExtResource( 1 )
 
-[connection signal="mouse_entered" from="Menu/ResumeButton" to="." method="_on_ResumeButton_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/ResumeButton" to="." method="_on_ResumeButton_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/ResumeButton" to="." method="_on_enter_button_number" binds= [ 0 ]]
+[connection signal="mouse_exited" from="Menu/ResumeButton" to="." method="_on_exited_button_number" binds= [ 0 ]]
 [connection signal="pressed" from="Menu/ResumeButton" to="." method="_on_ResumeButton_pressed"]
-[connection signal="mouse_entered" from="Menu/OptionsButton" to="." method="_on_OptionsButton_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/OptionsButton" to="." method="_on_OptionsButton_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/OptionsButton" to="." method="_on_enter_button_number" binds= [ 1 ]]
+[connection signal="mouse_exited" from="Menu/OptionsButton" to="." method="_on_exited_button_number" binds= [ 1 ]]
 [connection signal="pressed" from="Menu/OptionsButton" to="." method="_on_OptionsButton_pressed"]
-[connection signal="mouse_entered" from="Menu/BackToTitleButton" to="." method="_on_BackToTitleButton_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/BackToTitleButton" to="." method="_on_BackToTitleButton_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/BackToTitleButton" to="." method="_on_enter_button_number" binds= [ 2 ]]
+[connection signal="mouse_exited" from="Menu/BackToTitleButton" to="." method="_on_exited_button_number" binds= [ 2 ]]
 [connection signal="pressed" from="Menu/BackToTitleButton" to="." method="_on_BackToTitleButton_pressed"]
