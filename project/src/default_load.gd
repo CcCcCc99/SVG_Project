@@ -1,11 +1,11 @@
 extends Node
 
-var music_volume: float
-var sfx_volume: float
-var master_volume: float
+var music_volume: float = 10
+var sfx_volume: float = 10
+var master_volume: float = 10
 
-var resolution: Vector2
-var fullscreen: bool
+var resolution: Vector2 = Vector2(1920,1080)
+var fullscreen: bool = false
 
 const config_path = "config"
 
@@ -32,6 +32,17 @@ func set_fullscreen(fs: bool) -> void:
 		OS.set_window_full_screen(fullscreen)
 		
 		_save_config()
+
+func set_volume(bus: String, value: int):
+	match bus:
+		"Master":
+			master_volume = value
+		"SFX":
+			sfx_volume = value
+		"Music":
+			music_volume = value
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), _volume_to_db(value))
+	_save_config()
 
 func _save_config() -> void:
 	var file = File.new()
