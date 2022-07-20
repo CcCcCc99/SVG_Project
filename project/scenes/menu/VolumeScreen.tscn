@@ -81,9 +81,9 @@ stretch_mode = 5
 position = Vector2( -50, 45 )
 texture = ExtResource( 7 )
 
-[connection signal="value_changed" from="Menu/Master" to="Menu/Master" method="_on_value_changed"]
-[connection signal="value_changed" from="Menu/SoundEffects" to="Menu/SoundEffects" method="_on_value_changed"]
-[connection signal="value_changed" from="Menu/BackgroundSound" to="Menu/BackgroundSound" method="_on_value_changed"]
+[connection signal="value_changed" from="Menu/Master" to="." method="_on_Master_value_changed"]
+[connection signal="value_changed" from="Menu/SoundEffects" to="." method="_on_SoundEffects_value_changed"]
+[connection signal="value_changed" from="Menu/BackgroundSound" to="." method="_on_BackgroundSound_value_changed"]
 [connection signal="mouse_entered" from="Menu/Back" to="." method="_on_enter_button_number" binds= [ 0 ]]
 [connection signal="mouse_exited" from="Menu/Back" to="." method="_on_exited_button_number" binds= [ 0 ]]
 [connection signal="pressed" from="Menu/Back" to="." method="_on_Back_pressed"]
