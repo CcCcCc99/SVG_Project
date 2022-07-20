@@ -18,7 +18,9 @@ func _on_Resolution_pressed():
 	add_child(stacked_menu)
 
 func _on_Volume_pressed():
-	pass # Replace with function body.
+	disable()
+	stacked_menu = load("res://scenes/menu/VolumeScreen.tscn").instance()
+	add_child(stacked_menu)
 
 func _on_Back_pressed():
 	get_parent().enable()
