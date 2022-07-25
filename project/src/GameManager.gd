@@ -5,6 +5,9 @@ export(PackedScene) var assistant_scene
 var player
 var assistant
 
+var is_in_pause: bool = false
+var pause_screen: Node
+
 onready var health_bar = get_node("HUD/HealthBar")
 onready var mana_bar = get_node("HUD/ManaBar")
 
@@ -30,6 +33,49 @@ func _ready():
 	health_bar.set_player(player)
 	mana_bar.set_player(assistant)
 	call_deferred("_load_level",loadlvl)
+
+func _input(event):
+	if Input.is_action_just_pressed("pause_toggle"):
+		if not is_in_pause:
+			is_in_pause = true
+			get_tree().paused = true
+			pause_screen = load("res://scenes/menu/PauseScreen.tscn").instance()
+			$HUD.add_child(pause_screen)
+		else:
+			resume()
+
+func resume():
+	is_in_pause = false
+	get_tree().paused = false
+	pause_screen.queue_free()
+
+func _hide_main(parent):
+	is_in_pause = not is_in_pause
+	
+	parent.add_child(load("res://scenes/menu/PauseScreen.tscn").instance())
+	
+	rooms[current_room].get_node("Objects").remove_child(player)
+	rooms[current_room].get_node("Objects").remove_child(assistant)
+	remove_child(rooms[current_room])
+	
+	health_bar.visible = false
+	mana_bar.visible = false
+	$HUD/ActionBar.visible = false
+	
+	$Camera2D.anchor_mode = 0
+
+func _show_main():
+	is_in_pause = not is_in_pause
+	
+	rooms[current_room].get_node("Objects").add_child(player)
+	rooms[current_room].get_node("Objects").add_child(assistant)
+	add_child(rooms[current_room])
+	
+	health_bar.visible = true
+	mana_bar.visible = true
+	$HUD/ActionBar.visible = true
+	
+	$Camera2D.anchor_mode = 1
 
 func _load_level(l: int):
 	currentLevel = load(levels[l])

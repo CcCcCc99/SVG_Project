@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/menu/label_back.png" type="Texture" id=1]
+[ext_resource path="res://src/menu/VolumeScreen.gd" type="Script" id=2]
+[ext_resource path="res://assets/menu/master.png" type="Texture" id=3]
+[ext_resource path="res://assets/menu/background_music.png" type="Texture" id=4]
+[ext_resource path="res://assets/menu/sound_effects.png" type="Texture" id=5]
+[ext_resource path="res://src/menu/SliderVolume.gd" type="Script" id=6]
+[ext_resource path="res://assets/menu/pointer.png" type="Texture" id=7]
+[ext_resource path="res://assets/menu/poof_menu_pausa.png" type="Texture" id=8]
+
+[node name="Volume" type="CenterContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -219.0
+margin_top = -215.5
+margin_right = 293.0
+margin_bottom = 242.5
+rect_pivot_offset = Vector2( -1336, -300.5 )
+script = ExtResource( 2 )
+
+[node name="Background" type="Sprite" parent="."]
+visible = false
+position = Vector2( 257.5, 158 )
+scale = Vector2( 1.86887, 1.77531 )
+texture = ExtResource( 8 )
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_right = 512.0
+margin_bottom = 458.0
+
+[node name="MasterText" type="TextureRect" parent="Menu"]
+margin_right = 512.0
+margin_bottom = 94.0
+texture = ExtResource( 3 )
+stretch_mode = 5
+
+[node name="Master" type="HSlider" parent="Menu"]
+margin_top = 98.0
+margin_right = 512.0
+margin_bottom = 114.0
+max_value = 10.0
+script = ExtResource( 6 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="SoundText" type="TextureRect" parent="Menu"]
+margin_top = 118.0
+margin_right = 512.0
+margin_bottom = 200.0
+texture = ExtResource( 5 )
+stretch_mode = 5
+
+[node name="SoundEffects" type="HSlider" parent="Menu"]
+margin_top = 204.0
+margin_right = 512.0
+margin_bottom = 220.0
+max_value = 10.0
+script = ExtResource( 6 )
+audio_bus_name = "SFX"
+
+[node name="BackgroundText" type="TextureRect" parent="Menu"]
+margin_top = 224.0
+margin_right = 512.0
+margin_bottom = 332.0
+texture = ExtResource( 4 )
+stretch_mode = 5
+
+[node name="BackgroundSound" type="HSlider" parent="Menu"]
+margin_top = 336.0
+margin_right = 512.0
+margin_bottom = 352.0
+max_value = 10.0
+script = ExtResource( 6 )
+audio_bus_name = "Music"
+
+[node name="Back" type="TextureButton" parent="Menu"]
+modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+margin_top = 356.0
+margin_right = 512.0
+margin_bottom = 458.0
+texture_normal = ExtResource( 1 )
+stretch_mode = 5
+
+[node name="Pointer" type="Sprite" parent="."]
+position = Vector2( -50, 45 )
+texture = ExtResource( 7 )
+
+[connection signal="value_changed" from="Menu/Master" to="." method="_on_Master_value_changed"]
+[connection signal="value_changed" from="Menu/SoundEffects" to="." method="_on_SoundEffects_value_changed"]
+[connection signal="value_changed" from="Menu/BackgroundSound" to="." method="_on_BackgroundSound_value_changed"]
+[connection signal="mouse_entered" from="Menu/Back" to="." method="_on_enter_button_number" binds= [ 0 ]]
+[connection signal="mouse_exited" from="Menu/Back" to="." method="_on_exited_button_number" binds= [ 0 ]]
+[connection signal="pressed" from="Menu/Back" to="." method="_on_Back_pressed"]
