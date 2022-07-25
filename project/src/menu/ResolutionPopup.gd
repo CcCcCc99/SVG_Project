@@ -3,6 +3,8 @@ extends Menu
 onready var config = get_node("/root/DefaultLoad")
 
 func _ready():
+	if get_parent().get_parent().name == "PauseScreen":
+		$Background.show()
 	menu_buttons = $VBox/Menu.get_children()
 	menu_buttons.append($VBox/Back)
 

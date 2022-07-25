@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/menu/ResolutionPopup.gd" type="Script" id=1]
 [ext_resource path="res://assets/menu/label_1920x1080.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/menu/label_1600x900.png" type="Texture" id=5]
 [ext_resource path="res://assets/menu/label_1024x546.png" type="Texture" id=6]
 [ext_resource path="res://assets/menu/label_back.png" type="Texture" id=7]
+[ext_resource path="res://assets/menu/poof_menu_pausa.png" type="Texture" id=8]
 
 [node name="ResolutionPopup" type="CenterContainer"]
 anchor_left = 0.5
@@ -19,16 +20,19 @@ margin_right = 298.5
 margin_bottom = 252.0
 script = ExtResource( 1 )
 
-[node name="Background" type="ColorRect" parent="."]
-margin_left = 298.0
-margin_top = 252.0
-margin_right = 298.0
-margin_bottom = 252.0
-color = Color( 0, 0, 0, 0.392157 )
+[node name="Background" type="Sprite" parent="."]
+visible = false
+position = Vector2( 257.5, 158 )
+scale = Vector2( 1.86887, 1.77531 )
+texture = ExtResource( 8 )
 
 [node name="VBox" type="VBoxContainer" parent="."]
 margin_right = 597.0
 margin_bottom = 504.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 7
+size_flags_vertical = 7
 alignment = 1
 
 [node name="Menu" type="GridContainer" parent="VBox"]
@@ -42,6 +46,8 @@ columns = 2
 modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
 margin_right = 224.0
 margin_bottom = 174.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
 texture_normal = ExtResource( 6 )
 
 [node name="Res1280x720" type="TextureButton" parent="VBox/Menu"]
@@ -71,7 +77,10 @@ modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
 margin_top = 402.0
 margin_right = 597.0
 margin_bottom = 504.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
 texture_normal = ExtResource( 7 )
+stretch_mode = 5
 
 [node name="Pointer" type="Sprite" parent="."]
 position = Vector2( -45, 80 )

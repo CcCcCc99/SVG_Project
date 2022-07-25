@@ -17,13 +17,6 @@ margin_right = 178.0
 margin_bottom = 157.0
 script = ExtResource( 1 )
 
-[node name="Background" type="ColorRect" parent="."]
-margin_left = 178.0
-margin_top = 157.0
-margin_right = 178.0
-margin_bottom = 157.0
-color = Color( 0, 0, 0, 0.490196 )
-
 [node name="Menu" type="VBoxContainer" parent="."]
 margin_right = 356.0
 margin_bottom = 314.0

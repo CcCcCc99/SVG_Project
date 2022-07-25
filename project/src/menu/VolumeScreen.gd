@@ -1,6 +1,8 @@
 extends Menu
 
 func _ready():
+	if get_parent().get_parent().name == "PauseScreen":
+		$Background.show()
 	menu_buttons.append($Menu/Back)
 
 func _press_button_number(num: int):
