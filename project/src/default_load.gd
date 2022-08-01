@@ -77,21 +77,24 @@ func save_game_state(state: GameState):
 	var file = File.new()
 	file.open(saving_path, File.WRITE)
 
-	file.store_var(state.hp, true)
-	file.store_var(state.max_hp, true)
-	file.store_var(state.mp, true)
-	file.store_var(state.max_mp, true)
-	file.store_var(state.slot_num, true)
+	file.store_var(state.hp)
+	file.store_var(state.max_hp)
+	file.store_var(state.mp)
+	file.store_var(state.max_mp)
+	file.store_var(state.slot_num)
 	
-	#file.store_var(state.action_bar, true)
-	#for i in 6:
-	#	file.store_var(state.action_bar[i], true)
+	for i in 6:
+		var sum: summon = state.action_bar[i]
+		if sum == null:
+			sum = summon.new("",-1)
+		file.store_var(sum.scene)
+		file.store_var(sum.mana_cost)
 	
-	file.store_var(state.check_point.room, true)
-	file.store_var(state.check_point.level, true)
-	file.store_var(state.check_point.position, true)
+	file.store_var(state.check_point.room)
+	file.store_var(state.check_point.level)
+	file.store_var(state.check_point.position)
 	
-	file.store_var(state.events, true)
+	file.store_var(state.events)
 
 	file.close()
 
@@ -100,24 +103,27 @@ func load_game_state() -> GameState:
 	file.open(saving_path, File.READ)
 	
 	var state: GameState = GameState.new()
-	state.hp = file.get_var(true)
-	state.max_hp = file.get_var(true)
-	state.mp = file.get_var(true)
-	state.max_mp = file.get_var(true)
-	state.slot_num = file.get_var(true)
+	state.hp = file.get_var()
+	state.max_hp = file.get_var()
+	state.mp = file.get_var()
+	state.max_mp = file.get_var()
+	state.slot_num = file.get_var()
 	
-	#state.action_bar = file.get_var(true)
 	var summons: Array
 	for i in 6:
-		summons.append(null)
-	
+		var scene = file.get_var()
+		var mana_cost = file.get_var()
+		var sum: summon = summon.new(scene, mana_cost)
+		if sum.mana_cost == -1:
+			sum = null
+		summons.append(sum)
 	state.action_bar = summons
 	
-	state.check_point.room = file.get_var(true)
-	state.check_point.level = file.get_var(true)
-	state.check_point.position = file.get_var(true)
+	state.check_point.room = file.get_var()
+	state.check_point.level = file.get_var()
+	state.check_point.position = file.get_var()
 	
-	state.events = file.get_var(true)
+	state.events = file.get_var()
 	
 	file.close()
 	return state

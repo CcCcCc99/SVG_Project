@@ -1,4 +1,4 @@
-extends Resource
+extends Reference
 class_name GameState
 
 var hp: int setget ,get_hp
@@ -51,6 +51,5 @@ func set_mp(mp: int, max_mp: int):
 
 func set_actionbar(slot_num: int, action_bar: Array):
 	self.slot_num = slot_num
-	self.action_bar.clear()
 	self.action_bar = action_bar
 

@@ -195,3 +195,4 @@ func load_savings():
 	print("hp: ", player.hp, ", mana: ", assistant.mana)
 	assistant.slot_number = saved_state.slot_num
 	assistant.set_summons(saved_state.get_action_bar()) 
+	assistant.update_grafics()
