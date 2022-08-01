@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource( 1 )
+lvl_num = -2
 start_room = 0
 boss_room = 1
 rooms = [ ExtResource( 3 ), ExtResource( 2 ) ]

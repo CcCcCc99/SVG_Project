@@ -8,4 +8,4 @@ top_room = 5
 bottom_room = 3
 
 [node name="Checkpoint" parent="Objects" index="0" instance=ExtResource( 2 )]
-position = Vector2( 3, 1 )
+position = Vector2( 463.611, -212.316 )

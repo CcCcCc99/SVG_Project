@@ -15,10 +15,12 @@ func _press_button_number(num: int):
 			_on_QuitButton_pressed()
 
 func _on_NewGameButton_pressed():
+	get_node("/root/DefaultLoad").load_mode = false
 	get_tree().change_scene("res://Main.tscn")
 
 func _on_LoadGameButton_pressed():
-	pass # Replace with function body.
+	get_node("/root/DefaultLoad").load_mode = true
+	get_tree().change_scene("res://Main.tscn")
 
 func _on_OptionsButton_pressed():
 	disable()

@@ -45,6 +45,7 @@ var mana: int = 0 setget set_mana, get_mana
 
 signal mana_changed(old_mana, new_mana)
 
+var slot_number: int setget set_slot_number, get_slot_number
 var action_bar setget set_actionbar
 
 func _ready():
@@ -55,15 +56,15 @@ var dialogue = preload("res://dialogues/Test.tres")
 func _process(delta):
 	if Input.is_action_just_released("debug1"):
 		DialogueManager.show_example_dialogue_balloon("Room2Test", dialogue)
-	var active: summon = summons[action_bar.current()]
-	if Input.is_action_just_pressed("summon") and is_instance_valid(active) and mana >= active.mana_cost:
-		var spawned = active.spawn(
+	#var active: summon = 
+	if Input.is_action_just_pressed("summon") and is_instance_valid(summons[action_bar.current()]) and mana >= summons[action_bar.current()].mana_cost:
+		var spawned = summons[action_bar.current()].spawn(
 			get_parent(),
 			get_global_mouse_position())
 		if spawned:
-			active.connect("reset", self, "_update_grafics")
-			summoned_mobs.append(active)
-			set_mana(mana - active.mana_cost)
+			summons[action_bar.current()].connect("reset", self, "_update_grafics")
+			summoned_mobs.append(summons[action_bar.current()])
+			set_mana(mana - summons[action_bar.current()].mana_cost)
 		_update_grafics()
 
 func _update_grafics():
@@ -83,6 +84,9 @@ func add_summon(sum, cost):
 	var t = summons[action_bar.current()].get_icon()
 	action_bar.set_slot(t)
 	_update_grafics()
+
+func set_summons(sums):
+	summons = sums
 
 func add_slot():
 	pass
@@ -111,3 +115,9 @@ func destroy_summons():
 		if is_instance_valid(mob):
 			mob.reset()
 			_update_grafics()
+
+func set_slot_number(num: int):
+	action_bar.slot_number = num
+
+func get_slot_number():
+	return action_bar.slot_number

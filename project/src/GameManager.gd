@@ -20,18 +20,23 @@ export var loadlvl = 0
 var rooms: Array
 var current_room: int
 
+var saved_state: GameState = GameState.new()
+
 func _init():
 	levels.append("res://levels/LvTutorial.tres")
 	levels.append("res://levels/TestLevel2.tres")
 
 func _ready():
-	$Camera2D.set_process_input(false)
 	player = player_scene.instance()
 	player.connect("is_dead", self, "_respawn")
 	assistant = assistant_scene.instance()
 	assistant.action_bar = $HUD/ActionBar
 	health_bar.set_player(player)
 	mana_bar.set_player(assistant)
+
+	if get_node("/root/DefaultLoad").load_mode:
+		load_savings()
+	$Camera2D.set_process_input(false)
 	call_deferred("_load_level",loadlvl)
 
 func _input(event):
@@ -84,7 +89,10 @@ func _load_level(l: int):
 		rooms.append(rs.instance())
 	var start = currentLevel.get_first_room()
 	boss_room = currentLevel.get_boss_room()
-	_load_room(start, null)
+	if get_node("/root/DefaultLoad").load_mode:
+		_load_room(player.checkpoint_room, null)
+	else:
+		_load_room(start, null)
 
 func _unload_level():
 	_unload_room()
@@ -96,9 +104,6 @@ func _switch_to_level(l: int):
 
 func _load_room(r: int, d):
 	current_room = r
-	rooms[r].get_node("Objects").add_child(player)
-	rooms[r].get_node("Objects").add_child(assistant)
-	rooms[r].connect("exited_room", self, "_going_trough_door")
 	add_child(rooms[r])
 	if d == null:
 		player.set_hp(player.max_hp)
@@ -112,6 +117,9 @@ func _load_room(r: int, d):
 	else:
 		$Camera2D.current = true
 	rooms[r].get_node("TimeToCheck").start()
+	rooms[r].get_node("Objects").add_child(player)
+	rooms[r].get_node("Objects").add_child(assistant)
+	rooms[r].connect("exited_room", self, "_going_trough_door")
 
 func _unload_room():
 	player.destroy_portals()
@@ -162,6 +170,24 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func load_summon(sum, cost):
 	assistant.add_summon(sum, cost)
 
- 
 func get_cost() -> int:
 	return assistant.get_current_cost()
+
+func save():
+	saved_state.set_hp(player.hp, player.max_hp)
+	saved_state.set_mp(assistant.mana, assistant.max_mana)
+	saved_state.set_actionbar(assistant.slot_number, assistant.summons)
+	saved_state.check_point = MapPosition.new(currentLevel.lvl_num, player.checkpoint_room, player.checkpoint_position)
+	get_node("/root/DefaultLoad").save_game_state(saved_state)
+
+func load_savings():
+	saved_state = get_node("/root/DefaultLoad").load_game_state()
+	loadlvl = saved_state.check_point.level
+	player.checkpoint_room = saved_state.check_point.room
+	player.checkpoint_position = saved_state.check_point.position
+	player.hp = saved_state.hp
+	player.max_hp = saved_state.max_hp
+	assistant.mana = saved_state.mp
+	assistant.max_mana = saved_state.max_mp
+	assistant.slot_number = saved_state.slot_num
+	assistant.set_summons(saved_state.get_action_bar()) 

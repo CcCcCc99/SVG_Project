@@ -8,7 +8,7 @@
 [ext_resource path="res://scenes/prefabs/Assistant.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/audio/fato_shadow_-_in_my_dreams.ogg" type="AudioStream" id=7]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "Fadein"
 tracks/0/type = "value"
 tracks/0/path = NodePath("HUD/ColorRect:modulate")
@@ -23,7 +23,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "Fadeout"
 length = 2.0
 tracks/0/type = "value"
@@ -39,7 +39,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("HUD/ColorRect:modulate:r")
@@ -94,7 +94,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "fast_Fadein"
 length = 0.1
 tracks/0/type = "value"
@@ -110,7 +110,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "fast_Fadeout"
 length = 0.1
 tracks/0/type = "value"
@@ -158,11 +158,10 @@ autoplay = true
 bus = "Music"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-reset_on_save = false
-anims/Fadein = SubResource( 3 )
-anims/Fadeout = SubResource( 4 )
-anims/RESET = SubResource( 2 )
-anims/fast_Fadein = SubResource( 5 )
-anims/fast_Fadeout = SubResource( 6 )
+anims/Fadein = SubResource( 1 )
+anims/Fadeout = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+anims/fast_Fadein = SubResource( 4 )
+anims/fast_Fadeout = SubResource( 5 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
