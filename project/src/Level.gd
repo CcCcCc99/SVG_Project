@@ -1,6 +1,8 @@
 extends Resource
 class_name Level
 
+export(int) var lvl_num
+
 export(int) var start_room
 export(int) var boss_room
 

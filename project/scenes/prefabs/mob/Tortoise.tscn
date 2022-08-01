@@ -43,7 +43,7 @@ height = 28.8621
 [node name="Tortoise" instance=ExtResource( 1 )]
 script = ExtResource( 7 )
 CORPSE = ExtResource( 6 )
-max_hp = 4
+max_hp = 5
 speed = 1000
 icon = ExtResource( 8 )
 shot_direction = Vector2( -1, 2 )
@@ -77,11 +77,7 @@ playing = true
 [node name="Cooldown" parent="." index="4"]
 wait_time = 20.0
 
-[node name="HitBox" type="Area2D" parent="." index="5" groups=[
-"Character",
-"Hitbox",
-"Mob",
-]]
+[node name="HitBox" type="Area2D" parent="." index="5" groups=["Character", "Hitbox", "Mob"]]
 script = ExtResource( 11 )
 
 [node name="Body" type="CollisionShape2D" parent="HitBox" index="0"]

@@ -11,7 +11,6 @@ var pause_screen: Node
 onready var health_bar = get_node("HUD/HealthBar")
 onready var mana_bar = get_node("HUD/ManaBar")
 
-#var testlLevel #= preload("res://levels/TestLevel.tres")
 var levels: Array
 var currentLevel
 var boss_room
@@ -21,18 +20,26 @@ export var loadlvl = 0
 var rooms: Array
 var current_room: int
 
+var saved_state: GameState = GameState.new()
+
 func _init():
-	levels.append("res://levels/TestLevel.tres")
+	levels.append("res://levels/LvTutorial.tres")
 	levels.append("res://levels/TestLevel2.tres")
 
 func _ready():
-	$Camera2D.set_process_input(false)
 	player = player_scene.instance()
 	player.connect("is_dead", self, "_respawn")
 	assistant = assistant_scene.instance()
 	assistant.action_bar = $HUD/ActionBar
 	health_bar.set_player(player)
 	mana_bar.set_player(assistant)
+
+	if get_node("/root/DefaultLoad").load_mode:
+		load_savings()
+	else:
+		player.set_hp(player.max_hp)
+		assistant.set_mana(assistant.max_mana)
+	$Camera2D.set_process_input(false)
 	call_deferred("_load_level",loadlvl)
 
 func _input(event):
@@ -85,28 +92,23 @@ func _load_level(l: int):
 		rooms.append(rs.instance())
 	var start = currentLevel.get_first_room()
 	boss_room = currentLevel.get_boss_room()
-	_load_room(start, null)
+	if get_node("/root/DefaultLoad").load_mode:
+		_load_room(player.checkpoint_room, null)
+	else:
+		_load_room(start, null)
 
 func _unload_level():
 	_unload_room()
 	rooms.clear()
-	#currentLevel.queue_free()
-	pass
 
 func _switch_to_level(l: int):
-	#call_deferred("_unload_room")
 	call_deferred("_unload_level")
 	call_deferred("_load_level", l)
 
 func _load_room(r: int, d):
 	current_room = r
-	rooms[r].get_node("Objects").add_child(player)
-	rooms[r].get_node("Objects").add_child(assistant)
-	rooms[r].connect("exited_room", self, "_switch_to_room")
 	add_child(rooms[r])
 	if d == null:
-		player.set_hp(player.max_hp)
-		assistant.set_mana(assistant.max_mana)
 		player.position = player.checkpoint_position
 	else:
 		rooms[r].set_player_position(player, assistant, d)
@@ -115,15 +117,19 @@ func _load_room(r: int, d):
 		rooms[r].get_node("Camera2D").current = true
 	else:
 		$Camera2D.current = true
+	rooms[r].get_node("TimeToCheck").start()
+	rooms[r].get_node("Objects").add_child(player)
+	rooms[r].get_node("Objects").add_child(assistant)
+	rooms[r].connect("exited_room", self, "_going_trough_door")
 
 func _unload_room():
 	player.destroy_portals()
 	assistant.destroy_summons()
+	rooms[current_room].close_doors()
 	rooms[current_room].get_node("Objects").remove_child(player)
 	rooms[current_room].get_node("Objects").remove_child(assistant)
-	rooms[current_room].disconnect("exited_room", self, "_switch_to_room")
+	rooms[current_room].disconnect("exited_room", self, "_going_trough_door")
 	remove_child(rooms[current_room])
-
 
 func _switch_to_room(r: int, d):
 	player.destroy_portals()
@@ -131,15 +137,62 @@ func _switch_to_room(r: int, d):
 	call_deferred("_unload_room")
 	call_deferred("_load_room", r, d)
 
+var destination_room
+var door_used
+
+func _going_trough_door(room, door):
+	$HUD/ColorRect.show()
+	$AnimationPlayer.play("fast_Fadeout")
+	destination_room = room
+	door_used = door
+
 func _respawn(room):
-	_unload_level()
-	_load_level(loadlvl)
-	_switch_to_room(room, null)
+	player.set_hp(player.max_hp)
+	assistant.set_mana(assistant.max_mana)
+	$HUD/ColorRect.show()
+	$AnimationPlayer.play("Fadeout")
+	destination_room = room
+	player = player_scene.instance()
+	player.connect("is_dead", self, "_respawn")
+	health_bar.set_player(player)
+	
+func _on_AnimationPlayer_animation_finished(anim_name):
+	$AnimationPlayer.stop()
+	match anim_name:
+		"Fadeout":
+			_unload_level()
+			_load_level(loadlvl)
+			_switch_to_room(destination_room, null)
+			$AnimationPlayer.play("Fadein")
+		"fast_Fadeout":
+			_switch_to_room(destination_room, door_used)
+			$AnimationPlayer.play("fast_Fadein")
+		_:
+			$HUD/ColorRect.hide()
 
 func load_summon(sum, cost):
 	assistant.add_summon(sum, cost)
 
- 
 func get_cost() -> int:
 	return assistant.get_current_cost()
 
+func save():
+	saved_state.set_hp(player.hp, player.max_hp)
+	saved_state.set_mp(assistant.mana, assistant.max_mana)
+	saved_state.set_actionbar(assistant.slot_number, assistant.summons)
+	saved_state.check_point = MapPosition.new(currentLevel.lvl_num, player.checkpoint_room, player.checkpoint_position)
+	get_node("/root/DefaultLoad").save_game_state(saved_state)
+
+func load_savings():
+	saved_state = get_node("/root/DefaultLoad").load_game_state()
+	loadlvl = saved_state.check_point.level
+	player.checkpoint_room = saved_state.check_point.room
+	player.checkpoint_position = saved_state.check_point.position
+	player.set_max_hp(saved_state.max_hp) 
+	player.set_hp(saved_state.hp)
+	assistant.set_max_mana(saved_state.max_mp)
+	assistant.set_mana(saved_state.mp)
+	print("hp: ", player.hp, ", mana: ", assistant.mana)
+	assistant.slot_number = saved_state.slot_num
+	assistant.set_summons(saved_state.get_action_bar()) 
+	assistant.update_grafics()

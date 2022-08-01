@@ -5,7 +5,6 @@ export var decelleration = Vector2(0.5, 0.5)
 var direction: Vector2 = Vector2.ZERO
 
 func _physics_process(delta):
-	print(linear_velocity)
 	if linear_velocity > Vector2.ZERO:
 		linear_velocity -= decelleration
 		if linear_velocity <= Vector2.ZERO:

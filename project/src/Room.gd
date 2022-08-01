@@ -21,13 +21,16 @@ signal completed
 
 func _ready() -> void:
 	doors = door_container.get_children()
-	_enable_doors()
+	enable_doors()
+	close_doors()
+
+func check_and_open():
 	if not closed:
-		_open_doors()
+		open_doors()
 	else:
 		num_enemies = _count_enemies()
 		if num_enemies == 0:
-			_open_doors()
+			open_doors()
 
 func _count_enemies() -> int:
 	var objs = $Objects.get_children()
@@ -38,7 +41,7 @@ func _count_enemies() -> int:
 			cont += 1
 	return cont
 
-func _enable_doors():
+func enable_doors():
 	_enable_door(LEFT, left_room)
 	_enable_door(RIGHT, right_room)
 	_enable_door(TOP, top_room)
@@ -50,19 +53,20 @@ func _enable_door(i: int, room):
 		doors[i].connect("entered", self, "_on_player_exit", [i])
 
 func _on_player_exit(next_room: int, door_used: int):
-	emit_signal("exited_room", next_room, door_used)
+	if doors[door_used].is_open():
+		emit_signal("exited_room", next_room, door_used)
 
 func _on_enemy_killed() -> void:
 	num_enemies -= 1
 	if num_enemies == 0:
-		_open_doors()
+		open_doors()
 		emit_signal("completed")
 
-func _open_doors() -> void:
+func open_doors() -> void:
 	for door in doors:
 		door.open()
 
-func _close_doors() -> void:
+func close_doors() -> void:
 	for door in doors:
 		door.close()
 
@@ -80,3 +84,5 @@ func set_player_position(player: Character, assistant: Node, door_used: int):
 		BOTTOM:
 			doors[TOP].set_player_position(player, assistant);
 
+func _on_TimeToCheck_timeout():
+	check_and_open()

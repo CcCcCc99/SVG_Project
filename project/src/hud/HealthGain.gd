@@ -6,7 +6,6 @@ export var limit = 30
 var direction: Vector2 = Vector2.ZERO
 
 func _physics_process(delta):
-	print(linear_velocity)
 	if linear_velocity.length() > 0:
 		linear_velocity *= decelleration
 		if linear_velocity.length() <= limit:

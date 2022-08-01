@@ -19,10 +19,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dialogue_manager/dialogue_resource.gd"
 }, {
+"base": "Reference",
+"class": "GameState",
+"language": "GDScript",
+"path": "res://src/game_state.gd"
+}, {
 "base": "Resource",
 "class": "Level",
 "language": "GDScript",
 "path": "res://src/Level.gd"
+}, {
+"base": "Resource",
+"class": "MapPosition",
+"language": "GDScript",
+"path": "res://src/map_position.gd"
 }, {
 "base": "CenterContainer",
 "class": "Menu",
@@ -58,18 +68,26 @@ _global_script_classes=[ {
 "class": "pickupable",
 "language": "GDScript",
 "path": "res://src/hud/HealthGain.gd"
+}, {
+"base": "Reference",
+"class": "summon",
+"language": "GDScript",
+"path": "res://src/summons.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
 "DialogueResource": "",
+"GameState": "",
 "Level": "",
+"MapPosition": "",
 "Menu": "",
 "Mob": "",
 "Pickupable": "",
 "Portal2D": "",
 "Room2D": "",
 "Shot": "",
-"pickupable": ""
+"pickupable": "",
+"summon": ""
 }
 
 [application]
