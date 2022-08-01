@@ -49,7 +49,7 @@ var slot_number: int setget set_slot_number, get_slot_number
 var action_bar setget set_actionbar
 
 func _ready():
-	set_mana(max_mana)
+	pass#set_mana(max_mana)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 var dialogue = preload("res://dialogues/Test.tres")

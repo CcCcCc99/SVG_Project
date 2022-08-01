@@ -36,6 +36,9 @@ func _ready():
 
 	if get_node("/root/DefaultLoad").load_mode:
 		load_savings()
+	else:
+		player.set_hp(player.max_hp)
+		assistant.set_mana(assistant.max_mana)
 	$Camera2D.set_process_input(false)
 	call_deferred("_load_level",loadlvl)
 
@@ -106,8 +109,6 @@ func _load_room(r: int, d):
 	current_room = r
 	add_child(rooms[r])
 	if d == null:
-		player.set_hp(player.max_hp)
-		assistant.set_mana(assistant.max_mana)
 		player.position = player.checkpoint_position
 	else:
 		rooms[r].set_player_position(player, assistant, d)
@@ -146,6 +147,8 @@ func _going_trough_door(room, door):
 	door_used = door
 
 func _respawn(room):
+	player.set_hp(player.max_hp)
+	assistant.set_mana(assistant.max_mana)
 	$HUD/ColorRect.show()
 	$AnimationPlayer.play("Fadeout")
 	destination_room = room
@@ -185,9 +188,10 @@ func load_savings():
 	loadlvl = saved_state.check_point.level
 	player.checkpoint_room = saved_state.check_point.room
 	player.checkpoint_position = saved_state.check_point.position
-	player.hp = saved_state.hp
-	player.max_hp = saved_state.max_hp
-	assistant.mana = saved_state.mp
-	assistant.max_mana = saved_state.max_mp
+	player.set_max_hp(saved_state.max_hp) 
+	player.set_hp(saved_state.hp)
+	assistant.set_max_mana(saved_state.max_mp)
+	assistant.set_mana(saved_state.mp)
+	print("hp: ", player.hp, ", mana: ", assistant.mana)
 	assistant.slot_number = saved_state.slot_num
 	assistant.set_summons(saved_state.get_action_bar()) 

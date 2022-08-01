@@ -82,7 +82,10 @@ func save_game_state(state: GameState):
 	file.store_var(state.mp, true)
 	file.store_var(state.max_mp, true)
 	file.store_var(state.slot_num, true)
-	file.store_var(state.action_bar, true)
+	
+	#file.store_var(state.action_bar, true)
+	#for i in 6:
+	#	file.store_var(state.action_bar[i], true)
 	
 	file.store_var(state.check_point.room, true)
 	file.store_var(state.check_point.level, true)
@@ -102,7 +105,13 @@ func load_game_state() -> GameState:
 	state.mp = file.get_var(true)
 	state.max_mp = file.get_var(true)
 	state.slot_num = file.get_var(true)
-	state.action_bar = file.get_var(true)
+	
+	#state.action_bar = file.get_var(true)
+	var summons: Array
+	for i in 6:
+		summons.append(null)
+	
+	state.action_bar = summons
 	
 	state.check_point.room = file.get_var(true)
 	state.check_point.level = file.get_var(true)

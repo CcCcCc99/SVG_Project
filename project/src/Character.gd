@@ -23,8 +23,11 @@ var state = NORMAL
 signal scaled_down
 signal scaled_up
 
+export var automated_hp: bool = true
+
 func _ready():
-	set_hp(max_hp)
+	if automated_hp:
+		set_hp(max_hp)
 	effect = POOF.instance()
 	corpse = CORPSE.instance()
 	effect.connect("animation_finished", self, "_end_effect")
