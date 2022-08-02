@@ -48,9 +48,11 @@ func _input(event):
 			is_in_pause = true
 			get_tree().paused = true
 			pause_screen = load("res://scenes/menu/PauseScreen.tscn").instance()
+			get_node("/root/AudioManager").add_music("res://assets/audio/fato_shadow_-_in_my_dreams.ogg", -5.0, 1.0)
 			$HUD.add_child(pause_screen)
 		else:
 			resume()
+			get_node("/root/AudioManager").resume_music()
 
 func resume():
 	is_in_pause = false
@@ -87,7 +89,7 @@ func _show_main():
 
 func _load_level(l: int):
 	currentLevel = load(levels[l])
-	get_node("/root/AudioManager").change_music("res://assets/audio/fato_shadow_-_in_my_dreams.ogg", -5.0, 1.0)
+	get_node("/root/AudioManager").change_music("res://assets/audio/Destroyed Sanctuary.mp3", -10.0, 1.0)
 	var room_scenes = currentLevel.get_rooms()
 	for rs in room_scenes:
 		rooms.append(rs.instance())

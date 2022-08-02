@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/43133969_cartoon-whoosh-zap-sweep-01.mp3-ecef329a66c9545dc2e1d7b6d3004460.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/43133969_cartoon-whoosh-zap-sweep-01.mp3"
+dest_files=[ "res://.import/43133969_cartoon-whoosh-zap-sweep-01.mp3-ecef329a66c9545dc2e1d7b6d3004460.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

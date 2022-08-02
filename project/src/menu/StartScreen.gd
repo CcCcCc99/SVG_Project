@@ -2,6 +2,7 @@ extends Menu
 
 func _ready():
 	menu_buttons = $Menu.get_children()
+	get_node("/root/AudioManager").change_music("res://assets/audio/fato_shadow_-_in_my_dreams.ogg", -5.0, 1.0)
 
 func _press_button_number(num: int):
 	match num:

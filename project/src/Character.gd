@@ -33,6 +33,7 @@ func _ready():
 	effect.connect("animation_finished", self, "_end_effect")
 	self.connect("scaled_down", self, "_teleport")
 	$InvincibilityTimer.connect("timeout", self, "_on_invincibility_timeout")
+	get_node("/root/AudioManager").add_effect("res://assets/audio/43133969_cartoon-whoosh-zap-sweep-01.mp3", -5.0, 1.75, false)
 
 # warning-ignore:unused_argument
 func _physics_process(delta):
