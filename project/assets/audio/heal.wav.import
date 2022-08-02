@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/poof_1.wav-3f6b5c30133f54425aab3734c30591c7.sample"
+path="res://.import/heal.wav-931ca7a754542f5b94f13b00622da730.sample"
 
 [deps]
 
-source_file="res://assets/audio/poof_1.wav"
-dest_files=[ "res://.import/poof_1.wav-3f6b5c30133f54425aab3734c30591c7.sample" ]
+source_file="res://assets/audio/heal.wav"
+dest_files=[ "res://.import/heal.wav-931ca7a754542f5b94f13b00622da730.sample" ]
 
 [params]
 
