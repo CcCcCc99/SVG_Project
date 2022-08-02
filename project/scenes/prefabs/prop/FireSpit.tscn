@@ -6,9 +6,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 30.1496
 
-[node name="FireSpit" type="Area2D" groups=[
-"Shot",
-]]
+[node name="FireSpit" type="Area2D" groups=["Shot"]]
 z_index = 1
 script = ExtResource( 1 )
 speed = 1300

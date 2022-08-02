@@ -7,7 +7,7 @@ var objects_array: Array
 func _on_hit(object):
 	if $Timer.time_left == 0:
 		if not object.is_in_group("Environment"):
-			get_node("/root/AudioManager").add_effect("res://assets/audio/wolf_monster.mp3", 0.0, 1.5)
+			get_node("/root/AudioManager").add_effect("res://assets/audio/wolf_monster.mp3", 0.0, 1.5, false)
 			if $AnimatedSprite.animation == "idle":
 				$AnimatedSprite.animation = "eat"
 				$AnimatedSprite.frame = 0

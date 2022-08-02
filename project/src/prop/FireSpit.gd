@@ -14,4 +14,3 @@ func set_pos_dir(pos: Vector2, dir: int, num: int):
 		1: y = 0
 		2: y = 1
 	.set_direction(Vector2(dir*2, y))
-	

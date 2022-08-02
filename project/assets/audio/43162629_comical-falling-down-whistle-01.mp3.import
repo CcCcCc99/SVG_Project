@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/43162629_comical-falling-down-whistle-01.mp3-3b5212f4d47f4fbe64afe6891ce0d468.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/43162629_comical-falling-down-whistle-01.mp3"
+dest_files=[ "res://.import/43162629_comical-falling-down-whistle-01.mp3-3b5212f4d47f4fbe64afe6891ce0d468.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

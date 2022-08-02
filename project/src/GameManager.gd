@@ -87,6 +87,7 @@ func _show_main():
 
 func _load_level(l: int):
 	currentLevel = load(levels[l])
+	get_node("/root/AudioManager").change_music("res://assets/audio/fato_shadow_-_in_my_dreams.ogg", -5.0, 1.0)
 	var room_scenes = currentLevel.get_rooms()
 	for rs in room_scenes:
 		rooms.append(rs.instance())
@@ -114,6 +115,7 @@ func _load_room(r: int, d):
 		rooms[r].set_player_position(player, assistant, d)
 	if r == boss_room:
 		$Camera2D.current = false
+		get_node("/root/AudioManager").change_music("res://assets/audio/hold the line.ogg", -5.0, 1.0)
 		rooms[r].get_node("Camera2D").current = true
 	else:
 		$Camera2D.current = true

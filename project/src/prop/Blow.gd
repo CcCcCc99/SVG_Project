@@ -5,7 +5,7 @@ export var push_distance = 8000
 var pushed_objs: Dictionary = {}
 
 func _ready():
-	get_node("/root/AudioManager").add_effect("res://assets/audio/short wind sound.wav", 10.0, 1.0)
+	get_node("/root/AudioManager").add_effect("res://assets/audio/short wind sound.wav", 10.0, 1.0, false)
 
 func _on_hit(body):
 	._on_hit(body)
