@@ -151,14 +151,16 @@ func _going_trough_door(room, door):
 	door_used = door
 
 func _respawn(room):
-	player.set_hp(player.max_hp)
 	assistant.set_mana(assistant.max_mana)
 	$HUD/ColorRect.show()
 	$AnimationPlayer.play("Fadeout")
 	destination_room = room
+	var cp = player.checkpoint_position
 	player = player_scene.instance()
 	player.connect("is_dead", self, "_respawn")
 	health_bar.set_player(player)
+	player.set_hp(player.max_hp)
+	player.checkpoint_position = cp
 	
 func _on_AnimationPlayer_animation_finished(anim_name):
 	$AnimationPlayer.stop()
@@ -196,7 +198,6 @@ func load_savings():
 	player.set_hp(saved_state.hp)
 	assistant.set_max_mana(saved_state.max_mp)
 	assistant.set_mana(saved_state.mp)
-	print("hp: ", player.hp, ", mana: ", assistant.mana)
 	assistant.slot_number = saved_state.slot_num
 	assistant.set_summons(saved_state.get_action_bar()) 
 	assistant.update_grafics()
