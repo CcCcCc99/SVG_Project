@@ -1,7 +1,5 @@
 extends Character
 
-onready var anim = $Animator
-
 var checkpoint_position: Vector2 = Vector2(0, 0)
 var checkpoint_room: int = 0
 
@@ -9,9 +7,21 @@ signal hp_changed(old_hp, new_hp)
 signal is_dead(room)
 
 func _process(delta):
-	#._process(delta)
 	# TODO sistemare questo scempio
-	anim.animate(get_direction() * speed * delta)
+	var animation
+	var dir = get_direction()
+	if dir.x > 0:
+		animation = "walk_right"
+	elif dir.x < 0:
+		animation = "walk_left"
+	elif dir.y != 0:
+		if dir.y > 0:
+			animation = "walk_down"
+		else:
+			animation = "walk_up"
+	else: 
+		animation = "idle"
+	$AnimatedSprite.animation = animation
 
 func set_hp(new_hp: int):
 	var old_hp = get_hp()
