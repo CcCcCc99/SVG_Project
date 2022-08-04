@@ -130,7 +130,8 @@ func _unload_room():
 	player.destroy_portals()
 	assistant.destroy_summons()
 	rooms[current_room].close_doors()
-	rooms[current_room].get_node("Objects").remove_child(player)
+	if rooms[current_room].get_node("Objects").has_node(player.name):
+		rooms[current_room].get_node("Objects").remove_child(player)
 	rooms[current_room].get_node("Objects").remove_child(assistant)
 	rooms[current_room].disconnect("exited_room", self, "_going_trough_door")
 	remove_child(rooms[current_room])
