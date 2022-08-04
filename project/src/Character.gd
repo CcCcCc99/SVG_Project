@@ -17,11 +17,11 @@ var alt_velocity = Vector2.ZERO
 var i = 0 # for animations
 
 var is_dead: bool = false
-var is_taking_damage = false
 var state = NORMAL
 
 signal scaled_down
 signal scaled_up
+var original_scale
 
 export var automated_hp: bool = true
 
@@ -47,8 +47,6 @@ func _physics_process(delta):
 		_scale_down()
 	elif state == SCALEUP:
 		_scale_up()
-	if is_taking_damage:
-		_animate_damage()
 
 func get_direction() -> Vector2:
 	return Vector2.ZERO
@@ -63,8 +61,7 @@ func is_normal() -> bool:
 	return state == NORMAL
 
 func _reset_animations():
-	scale.x = 1 if scale.x > 0 else -1
-	scale.y = 1 if scale.y > 0 else -1
+	scale = original_scale
 	visible = true
 	rotation = 0
 
@@ -76,20 +73,11 @@ func _reset_animations():
 func take_damage(damage: int):
 	if $InvincibilityTimer.is_stopped():
 		$InvincibilityTimer.start()
-		is_taking_damage = true
+		#is_taking_damage = true
+		$AnimationPlayer.play("Hit")
 		set_hp(hp - damage)
 		if hp <= 0:
 			 _spawn_death_effect()
-
-func _animate_damage():
-	scale = Vector2(clamp(abs(sin(i)), 0.5, 1), clamp(abs(cos(i)), 0.5, 1))
-	visible = int(i+100) % 2 == 0
-	i+=0.1
-
-func _on_invincibility_timeout():
-	is_taking_damage = false
-	_reset_animations()
-	$InvincibilityTimer.stop()
 
 func _spawn_death_effect():
 	add_child(effect)
@@ -112,6 +100,7 @@ var destination = null
 
 func teleport_to(dest: Portal2D):
 	if is_instance_valid(dest):
+		original_scale = scale
 		destination = dest.position
 		start_scaling_down()
 

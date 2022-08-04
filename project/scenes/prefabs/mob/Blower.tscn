@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/Mob.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/MobIA/Blower.gd" type="Script" id=2]
@@ -22,6 +22,36 @@ radius = 45.0666
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 41.5052, 21.9084 )
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color: hint_color = vec4(1.0);
+uniform float flash_modifier: hint_range(0.0, 1.0) = 0.0;
+
+void fragment() {
+	vec4 color = texture(TEXTURE,UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 0.0
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "attack",
+"speed": 5.0
+} ]
 
 [sub_resource type="Animation" id=5]
 resource_name = "scale_down"
@@ -71,19 +101,6 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5 )
 }
 
-[sub_resource type="SpriteFrames" id=7]
-animations = [ {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "attack",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "walk",
-"speed": 5.0
-} ]
-
 [node name="Blower" instance=ExtResource( 1 )]
 position = Vector2( 0, 1 )
 script = ExtResource( 2 )
@@ -123,22 +140,23 @@ shape = SubResource( 3 )
 position = Vector2( -0.642181, -14.8835 )
 shape = SubResource( 4 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
-anims/scale_down = SubResource( 5 )
-anims/scale_up = SubResource( 6 )
-
-[node name="AnimatedSprite" parent="." index="5"]
+[node name="AnimatedSprite" parent="." index="4"]
+material = SubResource( 8 )
 position = Vector2( 24.7882, -68.5299 )
 scale = Vector2( 0.34, 0.34 )
-frames = SubResource( 7 )
+frames = SubResource( 9 )
 animation = "attack"
 playing = true
 
-[node name="InvincibilityTimer" parent="." index="7"]
+[node name="InvincibilityTimer" parent="." index="6"]
 wait_time = 1.0
 
-[node name="Shadow" parent="." index="8"]
+[node name="Shadow" parent="." index="7"]
 scale = Vector2( 0.25, 0.25 )
+
+[node name="AnimationPlayer" parent="." index="8"]
+anims/scale_down = SubResource( 5 )
+anims/scale_up = SubResource( 6 )
 
 [connection signal="area_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
 [connection signal="body_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]

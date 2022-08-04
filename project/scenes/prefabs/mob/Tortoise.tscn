@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/Mob.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/prefabs/prop/LittleFriend.tscn" type="PackedScene" id=2]
@@ -20,6 +20,23 @@ length = 800.0
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 83.3938, 43.713 )
 
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color: hint_color = vec4(1.0);
+uniform float flash_modifier: hint_range(0.0, 1.0) = 0.0;
+
+void fragment() {
+	vec4 color = texture(TEXTURE,UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 0.0
+
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 5 ) ],
@@ -39,6 +56,9 @@ radius = 73.2186
 [sub_resource type="CapsuleShape2D" id=6]
 radius = 16.6954
 height = 28.8621
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 12, 42.5 )
 
 [node name="Tortoise" instance=ExtResource( 1 )]
 script = ExtResource( 7 )
@@ -68,6 +88,7 @@ position = Vector2( 4.83035, -61.8575 )
 shape = SubResource( 3 )
 
 [node name="AnimatedSprite" parent="." index="3"]
+material = SubResource( 8 )
 position = Vector2( 7, -129 )
 scale = Vector2( 0.45, 0.45 )
 frames = SubResource( 4 )
@@ -88,6 +109,10 @@ shape = SubResource( 5 )
 position = Vector2( -84.4459, -208.515 )
 rotation = 0.469494
 shape = SubResource( 6 )
+
+[node name="Neck" type="CollisionShape2D" parent="HitBox" index="2"]
+position = Vector2( -85, -137.5 )
+shape = SubResource( 9 )
 
 [node name="InvincibilityTimer" parent="." index="6"]
 wait_time = 1.0
