@@ -1,7 +1,5 @@
 extends Shot
 
-func _ready():
-	enemy = "PlayerAlly"
 
 func _on_hit(body):
 	._on_hit(body)

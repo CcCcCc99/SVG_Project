@@ -14,7 +14,6 @@ var direction: Vector2 = Vector2.ZERO
 var is_in_portal: bool = true
 
 var is_summoned: bool = false
-var enemy: String = "Character" setget set_enemy
 
 signal scaled_down
 signal scaled_up
@@ -35,15 +34,12 @@ func set_direction(dir: Vector2):
 	scale.x = -1 if dir.x > 0 else 1
 	scale.y = -1 if dir.y > 0 else 1
 
-func set_enemy(e: String):
-	enemy = e
-
 func _on_hit(body: Node):
 	if body.is_in_group("Environment"):
 		if is_shot:
 			queue_free()
 	
-	elif body.is_in_group(enemy):
+	elif body.is_in_group("Character"):
 		body.take_damage(damage)
 		
 	elif body.is_in_group("Portal"):
