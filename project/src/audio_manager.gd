@@ -22,6 +22,7 @@ func add_music(audio: String, volume: float, pitch: float) -> void:
 	music.set_stream(load(audio))
 	music.set_volume_db(volume)
 	music.set_pitch_scale(pitch)
+	music.set_bus("Music")
 	musics.add_child(music)
 	music.play()
 
