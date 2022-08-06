@@ -41,6 +41,7 @@ func _spit():
 		spit_dir *= -1
 		scale.x *= -1
 	$AnimatedSprite.animation = "spit"
+	get_node("/root/AudioManager").add_effect("res://assets/audio/foom_0.wav", 0.0, 1.0, false)
 	var spits: Array
 	for i in 3:
 		var sp = spit.instance()
@@ -88,6 +89,7 @@ func jump(delta):
 	$AnimatedSprite.position.y -= displacement
 	if $AnimatedSprite.position.y < -2000:
 		jumping_state = out_of_screen
+		get_node("/root/AudioManager").add_effect("res://assets/audio/43162629_comical-falling-down-whistle-01.mp3", 0.0, 1.5, false)
 		$Cooldown.start()
 
 func land(delta):
@@ -103,6 +105,7 @@ func land(delta):
 var current_shock: Node
 
 func start_earthquake():
+	get_node("/root/AudioManager").add_effect("res://assets/audio/43562384_floor-cracking-01.mp3", 0.0, 2.1, false)
 	current_shock = earthquake.instance()
 	current_shock.position = global_position
 	get_parent().add_child(current_shock)

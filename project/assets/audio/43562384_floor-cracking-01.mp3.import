@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/43562384_floor-cracking-01.mp3-569fb8622f88444d7e4440b269dd7299.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/43562384_floor-cracking-01.mp3"
+dest_files=[ "res://.import/43562384_floor-cracking-01.mp3-569fb8622f88444d7e4440b269dd7299.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

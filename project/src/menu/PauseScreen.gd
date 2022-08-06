@@ -14,6 +14,7 @@ func _press_button_number(num: int):
 
 func _on_ResumeButton_pressed():
 	get_parent().get_parent().resume()
+	get_node("/root/AudioManager").resume_music()
 
 func _on_OptionsButton_pressed():
 	disable()
@@ -23,3 +24,4 @@ func _on_OptionsButton_pressed():
 func _on_BackToTitleButton_pressed():
 	get_tree().paused = false
 	get_tree().change_scene("res://scenes/menu/StartScreen.tscn")
+	get_node("/root/AudioManager").resume_music()

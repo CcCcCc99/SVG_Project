@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Destroyed Sanctuary.mp3-0ea4a13e36d524da79f17a803100830f.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Destroyed Sanctuary.mp3"
+dest_files=[ "res://.import/Destroyed Sanctuary.mp3-0ea4a13e36d524da79f17a803100830f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
