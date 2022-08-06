@@ -23,55 +23,24 @@ radius = 45.0666
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 41.5052, 21.9084 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "scale_down"
-length = 0.5
-tracks/0/type = "bezier"
-tracks/0/path = NodePath(".:scale:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath(".:scale:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
 
-[sub_resource type="Animation" id=6]
-resource_name = "scale_up"
-length = 0.5
-tracks/0/type = "bezier"
-tracks/0/path = NodePath(".:scale:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 0.1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath(".:scale:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 0.1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
-}
+uniform vec4 flash_color: hint_color = vec4(1.0);
+uniform float flash_modifier: hint_range(0.0, 1.0) = 0.0;
 
-[sub_resource type="SpriteFrames" id=7]
+void fragment() {
+	vec4 color = texture(TEXTURE,UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 0.0
+
+[sub_resource type="SpriteFrames" id=9]
 animations = [ {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
@@ -123,21 +92,15 @@ shape = SubResource( 3 )
 position = Vector2( -0.642181, -14.8835 )
 shape = SubResource( 4 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
-anims/scale_down = SubResource( 5 )
-anims/scale_up = SubResource( 6 )
-
-[node name="AnimatedSprite" parent="." index="5"]
+[node name="AnimatedSprite" parent="." index="4"]
+material = SubResource( 8 )
 position = Vector2( 24.7882, -68.5299 )
 scale = Vector2( 0.34, 0.34 )
-frames = SubResource( 7 )
+frames = SubResource( 9 )
 animation = "attack"
 playing = true
 
-[node name="InvincibilityTimer" parent="." index="7"]
-wait_time = 1.0
-
-[node name="Shadow" parent="." index="8"]
+[node name="Shadow" parent="." index="7"]
 scale = Vector2( 0.25, 0.25 )
 
 [connection signal="area_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]

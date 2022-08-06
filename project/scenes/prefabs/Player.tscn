@@ -1,17 +1,50 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/player/Player.gd" type="Script" id=2]
 [ext_resource path="res://scenes/prefabs/prop/Portalgun.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/animations/PlayerOldBody.tres" type="SpriteFrames" id=4]
-[ext_resource path="res://assets/animations/PlayerOldHead.tres" type="SpriteFrames" id=5]
-[ext_resource path="res://assets/animations/PlayerOldLegs.tres" type="SpriteFrames" id=6]
+[ext_resource path="res://assets/sprites/player/base/pgavanti.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/player/base/pgavanti_cammina1.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/player/base/pgavanti_cammina2.png" type="Texture" id=6]
 [ext_resource path="res://scenes/corps/MainCharCorpse.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/player/PlayerAnimator.gd" type="Script" id=15]
+[ext_resource path="res://assets/sprites/player/base/pgdietro_cammina2.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/player/base/pglato1.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/player/base/pgdietro_cammina1.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/player/base/pglato2.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/player/base/pgsinistra1.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/player/base/pgsinistra2.png" type="Texture" id=13]
 [ext_resource path="res://src/utility/Hitbox.gd" type="Script" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18.2024, 26.3791 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 5.0
+} ]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 43.5115
@@ -27,27 +60,14 @@ automated_hp = false
 position = Vector2( -0.445465, -20.9907 )
 shape = SubResource( 1 )
 
-[node name="Animator" type="Node2D" parent="." index="2"]
-position = Vector2( 7.51965, -114.984 )
+[node name="AnimatedSprite" parent="." index="1"]
+position = Vector2( 7.52, -114.984 )
 scale = Vector2( 0.6, 0.6 )
-script = ExtResource( 15 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Body" type="AnimatedSprite" parent="Animator" index="0"]
-frames = ExtResource( 4 )
-animation = "front"
-
-[node name="Head" type="AnimatedSprite" parent="Animator" index="1"]
-frames = ExtResource( 5 )
-animation = "front"
-
-[node name="Legs" type="AnimatedSprite" parent="Animator" index="2"]
-frames = ExtResource( 6 )
+frames = SubResource( 3 )
 animation = "idle"
+playing = true
 
-[node name="Hitbox" type="Area2D" parent="." index="3" groups=["Character", "Hitbox", "Player", "PlayerAlly"]]
+[node name="Hitbox" type="Area2D" parent="." index="2" groups=["Character", "Hitbox", "Player", "PlayerAlly"]]
 script = ExtResource( 20 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox" index="0"]
@@ -57,10 +77,7 @@ polygon = PoolVector2Array( 1.5, -158.5, -26, -29, 25.5, -27.5 )
 position = Vector2( 5, -204 )
 shape = SubResource( 2 )
 
-[node name="Portalgun" parent="." index="4" instance=ExtResource( 3 )]
+[node name="Portalgun" parent="." index="3" instance=ExtResource( 3 )]
 
-[node name="InvincibilityTimer" parent="." index="5"]
-wait_time = 1.2
-
-[node name="Shadow" parent="." index="6"]
+[node name="Shadow" parent="." index="5"]
 scale = Vector2( 0.2, 0.2 )

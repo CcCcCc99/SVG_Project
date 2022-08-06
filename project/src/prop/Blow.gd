@@ -24,11 +24,12 @@ func _release_character(c: Character):
 
 func _process(delta):
 	if not pushed_objs.empty():
+		var push_speed = speed + 1000
 		var characters = pushed_objs.keys()
 		for c in characters:
 			if is_instance_valid(c):
-				c.alt_velocity = direction * speed * 20
-				pushed_objs[c] += direction.x * speed * 20 * delta
-				if abs(pushed_objs[c]) >= push_distance:
+				c.alt_velocity = direction * push_speed * 20
+				pushed_objs[c] += direction.x * push_speed * 20 * delta
+				if abs(pushed_objs[c]) >= push_distance*1000:
 					_release_character(c)
 	

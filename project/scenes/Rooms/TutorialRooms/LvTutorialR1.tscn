@@ -1,17 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/prefabs/mob/Tortoise.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/prefabs/prop/PortalReward.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Rooms/RoomGenericTutorial.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/prefabs/traps/BatSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/prefabs/prop/Poof.tscn" type="PackedScene" id=5]
 
 [node name="Room" instance=ExtResource( 3 )]
 top_room = 2
 bottom_room = 0
 
-[node name="Tortoise" parent="Objects" index="0" instance=ExtResource( 1 )]
-position = Vector2( 577.805, 236.23 )
-scale = Vector2( 0.8, 0.8 )
+[node name="Tortoise" parent="Objects" index="0" groups=["Character"] instance=ExtResource( 1 )]
+position = Vector2( 506, 216 )
+POOF = ExtResource( 5 )
 
 [node name="PortalReward" parent="Objects" index="1" instance=ExtResource( 2 )]
 visible = false
