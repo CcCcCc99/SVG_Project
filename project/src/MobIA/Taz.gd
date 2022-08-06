@@ -1,17 +1,27 @@
 extends Mob
 
 export var direction: Vector2
+var last_env: Node
+var prev_dir: Vector2
 
-func get_direction():
+func _ready():
+	prev_dir = direction
+	if direction.x > 0:
+		scale.x *= -1
+
+func get_direction() -> Vector2:
+	var dir
 	match ia_state:
 		WALK:
 			_walk()
-			return direction
+			dir = direction
 		ATTACK:
 			_tornado_attack()
-			return _follow_player()
-
-var last_env: Node
+			dir = _follow_player()
+	if prev_dir.x != dir.x:
+		scale.x *= -1
+		prev_dir = dir
+	return dir
 
 func _on_BodyChecker_body_entered(body):
 	._on_BodyChecker_body_entered(body)
