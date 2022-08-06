@@ -48,9 +48,11 @@ func _input(event):
 			is_in_pause = true
 			get_tree().paused = true
 			pause_screen = load("res://scenes/menu/PauseScreen.tscn").instance()
+			get_node("/root/AudioManager").add_music("res://assets/audio/fato_shadow_-_in_my_dreams.ogg", -5.0, 1.0)
 			$HUD.add_child(pause_screen)
 		else:
 			resume()
+			get_node("/root/AudioManager").resume_music()
 
 func resume():
 	is_in_pause = false
@@ -87,6 +89,7 @@ func _show_main():
 
 func _load_level(l: int):
 	currentLevel = load(levels[l])
+	get_node("/root/AudioManager").change_music("res://assets/audio/Destroyed Sanctuary.mp3", -10.0, 1.0)
 	var room_scenes = currentLevel.get_rooms()
 	for rs in room_scenes:
 		rooms.append(rs.instance())
@@ -114,6 +117,7 @@ func _load_room(r: int, d):
 		rooms[r].set_player_position(player, assistant, d)
 	if r == boss_room:
 		$Camera2D.current = false
+		get_node("/root/AudioManager").change_music("res://assets/audio/hold the line.ogg", -5.0, 1.0)
 		rooms[r].get_node("Camera2D").current = true
 	else:
 		$Camera2D.current = true
@@ -126,7 +130,8 @@ func _unload_room():
 	player.destroy_portals()
 	assistant.destroy_summons()
 	rooms[current_room].close_doors()
-	rooms[current_room].get_node("Objects").remove_child(player)
+	if rooms[current_room].get_node("Objects").has_node(player.name):
+		rooms[current_room].get_node("Objects").remove_child(player)
 	rooms[current_room].get_node("Objects").remove_child(assistant)
 	rooms[current_room].disconnect("exited_room", self, "_going_trough_door")
 	remove_child(rooms[current_room])
@@ -147,14 +152,16 @@ func _going_trough_door(room, door):
 	door_used = door
 
 func _respawn(room):
-	player.set_hp(player.max_hp)
 	assistant.set_mana(assistant.max_mana)
 	$HUD/ColorRect.show()
 	$AnimationPlayer.play("Fadeout")
 	destination_room = room
+	var cp = player.checkpoint_position
 	player = player_scene.instance()
 	player.connect("is_dead", self, "_respawn")
 	health_bar.set_player(player)
+	player.set_hp(player.max_hp)
+	player.checkpoint_position = cp
 	
 func _on_AnimationPlayer_animation_finished(anim_name):
 	$AnimationPlayer.stop()
@@ -192,7 +199,6 @@ func load_savings():
 	player.set_hp(saved_state.hp)
 	assistant.set_max_mana(saved_state.max_mp)
 	assistant.set_mana(saved_state.mp)
-	print("hp: ", player.hp, ", mana: ", assistant.mana)
 	assistant.slot_number = saved_state.slot_num
 	assistant.set_summons(saved_state.get_action_bar()) 
 	assistant.update_grafics()
