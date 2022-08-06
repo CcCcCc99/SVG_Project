@@ -39,30 +39,30 @@ shader_param/flash_modifier = 0.0
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": false,
-"name": "jump_up",
-"speed": 6.0
+"name": "jumping",
+"speed": 1.0
 }, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": " idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
 "loop": false,
-"name": "jumping",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "spit",
-"speed": 5.0
+"name": "jump_up",
+"speed": 6.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": false,
 "name": "jump_down",
 "speed": 6.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "spit",
+"speed": 5.0
 } ]
 
 [sub_resource type="CircleShape2D" id=4]
@@ -98,9 +98,6 @@ playing = true
 [node name="Cooldown" parent="." index="3"]
 wait_time = 2.0
 one_shot = true
-
-[node name="InvincibilityTimer" parent="." index="4"]
-wait_time = 0.7
 
 [node name="HitBox" type="Area2D" parent="." index="5" groups=["Boss", "Character", "Hitbox", "Mob"]]
 collision_layer = 2
