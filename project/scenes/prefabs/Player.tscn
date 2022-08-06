@@ -25,24 +25,24 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 10 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "walk_up",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 11 ) ],
 "loop": true,
-"name": "walk_left",
+"name": "walk_right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "walk_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "walk_left",
 "speed": 5.0
 } ]
 
@@ -78,9 +78,6 @@ position = Vector2( 5, -204 )
 shape = SubResource( 2 )
 
 [node name="Portalgun" parent="." index="3" instance=ExtResource( 3 )]
-
-[node name="InvincibilityTimer" parent="." index="4"]
-wait_time = 1.2
 
 [node name="Shadow" parent="." index="5"]
 scale = Vector2( 0.2, 0.2 )

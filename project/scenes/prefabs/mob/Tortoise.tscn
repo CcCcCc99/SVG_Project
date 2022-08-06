@@ -93,6 +93,7 @@ position = Vector2( 7, -129 )
 scale = Vector2( 0.45, 0.45 )
 frames = SubResource( 4 )
 animation = "walk"
+frame = 1
 playing = true
 
 [node name="Cooldown" parent="." index="4"]
@@ -115,7 +116,7 @@ position = Vector2( -85, -137.5 )
 shape = SubResource( 9 )
 
 [node name="InvincibilityTimer" parent="." index="6"]
-wait_time = 1.0
+wait_time = 0.6
 
 [node name="Shadow" parent="." index="7"]
 position = Vector2( -2.3811, -27.3826 )

@@ -32,7 +32,7 @@ func _ready():
 	corpse = CORPSE.instance()
 	effect.connect("animation_finished", self, "_end_effect")
 	self.connect("scaled_down", self, "_teleport")
-	$InvincibilityTimer.connect("timeout", self, "_on_invincibility_timeout")
+	$DMG_AnimationPlayer.play("RESET")
 
 # warning-ignore:unused_argument
 func _physics_process(delta):
@@ -71,10 +71,10 @@ func _reset_animations():
 # Manage damage
 
 func take_damage(damage: int):
-	if $InvincibilityTimer.is_stopped():
+	if $InvincibilityTimer.is_stopped() and damage > 0:
 		$InvincibilityTimer.start()
 		#is_taking_damage = true
-		$AnimationPlayer.play("Hit")
+		$DMG_AnimationPlayer.play("Hit")
 		set_hp(hp - damage)
 		if hp <= 0:
 			 _spawn_death_effect()
