@@ -29,7 +29,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Level.gd"
 }, {
-"base": "Reference",
+"base": "Area2D",
+"class": "Lever",
+"language": "GDScript",
+"path": "res://src/prop/Lever.gd"
+}, {
+"base": "Resource",
 "class": "MapPosition",
 "language": "GDScript",
 "path": "res://src/map_position.gd"
@@ -79,6 +84,7 @@ _global_script_class_icons={
 "DialogueResource": "",
 "GameState": "",
 "Level": "",
+"Lever": "",
 "MapPosition": "",
 "Menu": "",
 "Mob": "",
