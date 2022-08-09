@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Level.gd"
 }, {
-"base": "Reference",
+"base": "Resource",
 "class": "MapPosition",
 "language": "GDScript",
 "path": "res://src/map_position.gd"

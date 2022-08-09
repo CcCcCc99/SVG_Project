@@ -7,6 +7,7 @@
 
 [node name="PortalReward" type="Node2D"]
 scale = Vector2( 0.8, 0.8 )
+z_index = -1
 script = ExtResource( 2 )
 healthScene = ExtResource( 3 )
 manaScene = ExtResource( 4 )
