@@ -46,3 +46,4 @@ func _on_BodyChecker_body_entered(body):
 	elif body.is_in_group(enemy) and not body.is_in_group("Hitbox"):
 		if body != self:
 			body.take_damage(contact_damage)
+			print(contact_damage)
