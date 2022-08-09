@@ -7,10 +7,14 @@
 [node name="Room" instance=ExtResource( 1 )]
 
 [node name="Player" parent="Objects" index="0" instance=ExtResource( 2 )]
-position = Vector2( -202, 202 )
+position = Vector2( 618, 365 )
 
 [node name="Taz" parent="Objects" index="1" instance=ExtResource( 5 )]
-position = Vector2( -240, -138 )
+position = Vector2( -507, -113 )
+
+[node name="Taz2" parent="Objects" index="2" instance=ExtResource( 5 )]
+position = Vector2( 667, -181 )
+direction = Vector2( -1, 2 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="6"]
 current = true

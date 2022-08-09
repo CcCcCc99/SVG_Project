@@ -6,7 +6,15 @@ var last_env: Node
 var prev_dir: Vector2
 var target: Character = null
 
+var walk_speed: float
+var walk_dmg: int
+export var attack_dmg: int
+export var attack_speed: float
+
 func _ready():
+	walk_speed = speed
+	walk_dmg = contact_damage
+	_get_up()
 	prev_dir = direction
 	if direction.x > 0:
 		scale.x *= -1
@@ -29,7 +37,8 @@ func get_direction() -> Vector2:
 func _on_BodyChecker_body_entered(body):
 	last_env = body
 	if body.is_in_group("Character") and not body.is_in_group("Hitbox") and body != self:
-		ia_state = IDLE
+		if ia_state == ATTACK:
+			body.take_damage(attack_dmg)
 		_fall()
 	._on_BodyChecker_body_entered(body)
 
@@ -45,28 +54,47 @@ func _bounce(horizontal):
 	else:
 		direction.y *= -1
 
+func _walk():
+	i += 0.08
+	$AnimatedSprite.position.y += sin(i)
+
 func _fall():
+	ia_state = IDLE
+	contact_damage = 0
 	$AnimatedSprite.hide()
 	$Shadow.hide()
 	$FallenMode.show()
 	$FallenShadow.show()
 	$Fall_AnimationPlayer.play("FallBack")
+	$Cooldown.start()
+	$TriggerAttack/Raycast.disabled = true
+	target = null
 
-func _walk():
+func _get_up():
+	ia_state = WALK
+	speed = walk_speed
+	contact_damage = walk_dmg
+	$AnimatedSprite.animation = "idle"
 	$AnimatedSprite.show()
 	$Shadow.show()
 	$FallenMode.hide()
 	$FallenShadow.hide()
-	i += 0.08
-	$AnimatedSprite.position.y += sin(i)
+	$TriggerAttack/Raycast.disabled = false
 
 func _follow_player() -> Vector2:
 	return position.direction_to(target.position)
 
 func _on_TriggerAttack_enemy_spotted(body):
+	if ia_state == IDLE:
+		return
 	ia_state = ATTACK
+	speed = attack_speed
+	contact_damage = 0
 	$AnimatedSprite.animation = "spin"
 	if body.is_in_group("Hitbox"):
 		target = body.get_character()
 	else:
 		target = body
+
+func _on_Cooldown_timeout():
+	_get_up()

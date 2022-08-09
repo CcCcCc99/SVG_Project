@@ -8,6 +8,8 @@ radius = 52.0
 height = 118.0
 
 [node name="TazCorpse" instance=ExtResource( 2 )]
+summon = "res://scenes/prefabs/mob/Taz.tscn"
+cost = 4
 
 [node name="Shadow" parent="." index="0"]
 scale = Vector2( 0.57, 0.48 )
