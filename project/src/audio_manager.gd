@@ -10,7 +10,7 @@ func _ready() -> void:
 	add_child(m)
 	musics = m
 
-func add_effect(audio: String, volume: float, pitch: float, loop: bool):
+func add_effect(audio: String, volume: float, pitch: float, loop: bool) -> Node:
 	var new_effect = effect.instance()
 	add_child(new_effect)
 	new_effect.set_effect(audio, volume, pitch, loop)
