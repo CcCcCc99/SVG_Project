@@ -10,10 +10,11 @@ func _ready() -> void:
 	add_child(m)
 	musics = m
 
-func add_effect(audio: String, volume: float, pitch: float, loop: bool) -> void:
+func add_effect(audio: String, volume: float, pitch: float, loop: bool):
 	var new_effect = effect.instance()
 	add_child(new_effect)
 	new_effect.set_effect(audio, volume, pitch, loop)
+	return new_effect
 
 func add_music(audio: String, volume: float, pitch: float) -> void:
 	if musics.get_child_count() != 0:

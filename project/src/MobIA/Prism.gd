@@ -5,9 +5,6 @@ export var laser_dmg = 2
 
 export(PackedScene) var raycast
 
-func _ready():
-	get_node("/root/AudioManager").add_effect("res://assets/audio/43398755_beep-06.mp3", -25.0, 0.5, true)
-
 func get_direction():
 	match ia_state:
 		WALK:
