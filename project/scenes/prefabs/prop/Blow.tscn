@@ -30,6 +30,7 @@ push_distance = 35
 position = Vector2( -27.5003, -14.592 )
 scale = Vector2( 0.34, 0.34 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
