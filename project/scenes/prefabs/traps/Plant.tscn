@@ -27,7 +27,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 182.5, 106 )
+extents = Vector2( 204, 106 )
 
 [node name="Plant" type="Area2D"]
 z_index = 1
@@ -39,7 +39,7 @@ animation = "idle"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -73.5, -25 )
+position = Vector2( -52, -25 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -49,7 +49,7 @@ texture = ExtResource( 2 )
 wait_time = 1.5
 one_shot = true
 
-[connection signal="area_entered" from="." to="." method="_on_hit"]
-[connection signal="body_entered" from="." to="." method="_on_hit"]
+[connection signal="area_entered" from="." to="." method="_on_detect"]
+[connection signal="body_entered" from="." to="." method="_on_detect"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
