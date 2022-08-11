@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/echelon.mp3-ec4ee15459f8841dc0d4f27a3245819b.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/echelon.mp3"
+dest_files=[ "res://.import/echelon.mp3-ec4ee15459f8841dc0d4f27a3245819b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

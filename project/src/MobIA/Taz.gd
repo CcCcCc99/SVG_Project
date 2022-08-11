@@ -11,6 +11,9 @@ var walk_dmg: int
 export var attack_dmg: int
 export var attack_speed: float
 
+var is_spinning: bool = false
+var spin_effect: Node
+
 func _ready():
 	walk_speed = speed
 	walk_dmg = contact_damage
@@ -38,6 +41,9 @@ func _on_BodyChecker_body_entered(body):
 	last_env = body
 	if body.is_in_group("Character") and not body.is_in_group("Hitbox") and body != self:
 		if ia_state == ATTACK:
+			is_spinning = false
+			spin_effect.end_effect()
+			get_node("/root/AudioManager").add_effect("res://assets/audio/43133285_cartoon-impact-bang-04.mp3", -5.0, 1.0, false)
 			body.take_damage(attack_dmg)
 		_fall()
 	._on_BodyChecker_body_entered(body)
@@ -88,6 +94,9 @@ func _on_TriggerAttack_enemy_spotted(body):
 	if ia_state == IDLE:
 		return
 	ia_state = ATTACK
+	if not is_spinning:
+		is_spinning = true
+		spin_effect = get_node("/root/AudioManager").add_effect("res://assets/audio/43133577_cartoon-spin-01.mp3", -5.0, 1.0, false)
 	speed = attack_speed
 	contact_damage = 0
 	$AnimatedSprite.animation = "spin"
