@@ -54,7 +54,7 @@ func _input(event):
 			resume()
 			get_node("/root/AudioManager").resume_music()
 	
-	if Input.is_action_just_pressed("take_soul"):
+	if Input.is_action_just_pressed("debug1"):
 		_unload_level()
 		_load_level(1)
 
