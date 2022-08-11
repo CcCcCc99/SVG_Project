@@ -19,7 +19,6 @@ position = Vector2( -622, 337 )
 
 [node name="BombSpawner" parent="Objects" index="3" instance=ExtResource( 5 )]
 position = Vector2( 564, 256 )
-frame = 0
 
 [node name="Taz" parent="Objects" index="4" instance=ExtResource( 2 )]
 position = Vector2( -460, -177 )
