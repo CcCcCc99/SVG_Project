@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Rooms/RoomGenericSciFi.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/prefabs/prop/Checkpoint.tscn" type="PackedScene" id=2]
+
+[node name="Room" instance=ExtResource( 1 )]
+left_room = 3
+right_room = 8
+top_room = 5
+bottom_room = 1
+
+[node name="Checkpoint" parent="Objects" index="0" instance=ExtResource( 2 )]
+position = Vector2( 555, 265 )

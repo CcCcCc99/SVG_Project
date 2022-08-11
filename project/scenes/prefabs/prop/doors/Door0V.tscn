@@ -7,14 +7,14 @@
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 1 ) ],
-"loop": true,
+"loop": false,
 "name": "close",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [ ExtResource( 2 ) ],
-"loop": true,
+"loop": false,
 "name": "open",
-"speed": 5.0
+"speed": 1.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -23,9 +23,7 @@ extents = Vector2( 107, 116 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 132, 119 )
 
-[node name="Door0V" groups=[
-"VerticalEnvironment",
-] instance=ExtResource( 3 )]
+[node name="Door0V" groups=["VerticalEnvironment"] instance=ExtResource( 3 )]
 is_vertical = true
 
 [node name="AnimatedSprite" parent="." index="0"]

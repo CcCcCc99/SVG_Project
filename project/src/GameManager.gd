@@ -24,7 +24,7 @@ var saved_state: GameState = GameState.new()
 
 func _init():
 	levels.append("res://levels/LvTutorial.tres")
-	levels.append("res://levels/TestLevel2.tres")
+	levels.append("res://levels/Lv1SciFi.tres")
 
 func _ready():
 	player = player_scene.instance()

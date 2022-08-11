@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/prefabs/mob/Prism.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/prefabs/prop/FluidContainerPink.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/prefabs/prop/FluidContainerGreen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Rooms/RoomGenericSciFi.tscn" type="PackedScene" id=4]
+
+[node name="Room" instance=ExtResource( 4 )]
+top_room = 2
+bottom_room = 0
+
+[node name="FluidContainer" parent="Objects" index="0" instance=ExtResource( 3 )]
+position = Vector2( -619, -49 )
+
+[node name="FluidContainer2" parent="Objects" index="1" instance=ExtResource( 2 )]
+position = Vector2( 529, -69 )
+
+[node name="Prism" parent="Objects" index="2" instance=ExtResource( 1 )]
+position = Vector2( 1, -225 )

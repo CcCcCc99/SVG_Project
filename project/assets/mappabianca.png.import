@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/portachiusa_orizzontale.png-33f527eb6c76ad61c9b7c8d67b2f6966.stex"
+path="res://.import/mappabianca.png-bdbe1e07d53453e2debb16ab7b406baf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portachiusa_orizzontale.png"
-dest_files=[ "res://.import/portachiusa_orizzontale.png-33f527eb6c76ad61c9b7c8d67b2f6966.stex" ]
+source_file="res://assets/mappabianca.png"
+dest_files=[ "res://.import/mappabianca.png-bdbe1e07d53453e2debb16ab7b406baf.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
