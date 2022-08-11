@@ -40,6 +40,7 @@ func _on_hit(body: Node):
 			queue_free()
 	
 	elif body.is_in_group("Character"):
+		print(damage)
 		body.take_damage(damage)
 		
 	elif body.is_in_group("Portal"):

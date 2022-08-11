@@ -29,4 +29,10 @@ bomb = ExtResource( 4 )
 wait_time = 10.0
 autostart = true
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 3.75, -2.5, -8.75, -58.75, 85, 55, 182.5, 60, 175, 176.25, 76.25, 173.75, 33.75, 131.25, -107.5, 126.25, -155, 67.5, -15, 45, -8.75, -51.25, 82.5, -2.5, 181.25, 55 )
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
