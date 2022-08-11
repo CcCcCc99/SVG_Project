@@ -21,7 +21,6 @@ colors = [ Color( 0.937255, 0.596078, 0.984314, 1 ), Color( 0.364706, 0.913725, 
 scale = Vector2( 0.52, 0.52 )
 frames = ExtResource( 1 )
 frame = 3
-
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
