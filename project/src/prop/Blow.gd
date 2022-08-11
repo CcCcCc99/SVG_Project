@@ -35,4 +35,3 @@ func _process(delta):
 				pushed_objs[c] += direction.x * push_speed * 20 * delta
 				if abs(pushed_objs[c]) >= push_distance*1000:
 					_release_character(c)
-	

@@ -4,21 +4,24 @@
 [ext_resource path="res://src/prop/Web.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 157.458
+radius = 114.28
 
 [node name="Web" type="Area2D"]
+z_index = -1
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 36, -4 )
+position = Vector2( 18, -4 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -14, 9 )
+position = Vector2( -4, 3 )
+scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 
 [connection signal="body_entered" from="." to="." method="_on_Web_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

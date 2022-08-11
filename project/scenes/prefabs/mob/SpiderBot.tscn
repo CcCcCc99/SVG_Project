@@ -47,7 +47,11 @@ position = Vector2( -3, -40 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
 animation = "walk"
+frame = 1
 playing = true
+
+[node name="Cooldown" parent="." index="3"]
+one_shot = true
 
 [node name="Shadow" parent="." index="5"]
 position = Vector2( -6, -45 )
@@ -68,4 +72,6 @@ rotation = -1.5708
 shape = SubResource( 2 )
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
+[connection signal="area_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
+[connection signal="body_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
 [connection signal="enemy_spotted" from="TriggerAttack" to="." method="_on_TriggerAttack_enemy_spotted"]

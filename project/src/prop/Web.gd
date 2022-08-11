@@ -1,13 +1,14 @@
 extends Area2D
 
-var velocity
-var tempbody
+var target: Character = null
 
 func _on_Web_body_entered(body):
 	$Timer.start()
-	tempbody = body
-	velocity = body.velocity
-	body.velocity = 0
+	if body.is_in_group("Character"):
+		body.incapacitate()
+	target = body
 
 func _on_Timer_timeout():
-	tempbody.velocity = velocity
+	if target.is_in_group("Character"):
+		target.back_to_normal()
+	target = null
