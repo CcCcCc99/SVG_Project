@@ -14,3 +14,4 @@ position = Vector2( 554.583, 273.874 )
 [node name="Tortoise" parent="Objects" index="1" instance=ExtResource( 3 )]
 position = Vector2( -556.989, -114.621 )
 flip = true
+shot_direction = Vector2( 1, 2 )

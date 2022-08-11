@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/prefabs/mob/Prism.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Rooms/RoomGenericTutorial.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/prefabs/Player.tscn" type="PackedScene" id=3]
+
+[node name="Room" instance=ExtResource( 2 )]
+
+[node name="Player" parent="Objects" index="0" instance=ExtResource( 3 )]
+position = Vector2( -340, 232 )
+
+[node name="Prism" parent="Objects" index="1" instance=ExtResource( 1 )]
+position = Vector2( -296, -124 )
+
+[node name="Camera2D" type="Camera2D" parent="." index="6"]
+current = true

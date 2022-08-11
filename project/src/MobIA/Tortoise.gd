@@ -28,6 +28,7 @@ func get_direction():
 			$AnimatedSprite.animation = "walk"
 			if direction.x != previous_direction.x and previous_direction.x != 0:
 				scale.x *= -1
+				shot_direction.x *= -1
 			previous_direction = direction
 			return direction
 		IDLE:

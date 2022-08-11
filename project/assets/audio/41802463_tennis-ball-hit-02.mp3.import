@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/41802463_tennis-ball-hit-02.mp3-9f86d6c868be202216ea7588ad04aae1.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/41802463_tennis-ball-hit-02.mp3"
+dest_files=[ "res://.import/41802463_tennis-ball-hit-02.mp3-9f86d6c868be202216ea7588ad04aae1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
