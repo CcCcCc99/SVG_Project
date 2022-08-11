@@ -14,6 +14,7 @@ func _on_hit(body):
 			._on_hit(body)
 
 func _bounce(horizontal):
+	get_node("/root/AudioManager").add_effect("res://assets/audio/41802463_tennis-ball-hit-02.mp3", -3.0, 1.2, false)
 	if horizontal:
 		direction.x *= -1
 		$AnimatedSprite.flip_h = not $AnimatedSprite.flip_h
