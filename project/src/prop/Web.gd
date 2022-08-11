@@ -9,6 +9,7 @@ func _on_Web_body_entered(body):
 	target = body
 
 func _on_Timer_timeout():
-	if target.is_in_group("Character"):
-		target.back_to_normal()
+	if is_instance_valid(target):
+		if target.is_in_group("Character"):
+			target.back_to_normal()
 	target = null
