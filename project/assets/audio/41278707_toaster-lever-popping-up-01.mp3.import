@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/41278707_toaster-lever-popping-up-01.mp3-e47cb9a4d31d02a639cc4d618e5af659.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/41278707_toaster-lever-popping-up-01.mp3"
+dest_files=[ "res://.import/41278707_toaster-lever-popping-up-01.mp3-e47cb9a4d31d02a639cc4d618e5af659.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

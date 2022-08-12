@@ -42,7 +42,8 @@ func _on_BodyChecker_body_entered(body):
 	if body.is_in_group("Character") and not body.is_in_group("Hitbox") and body != self:
 		if ia_state == ATTACK:
 			is_spinning = false
-			spin_effect.end_effect()
+			if is_instance_valid(spin_effect):
+				spin_effect.end_effect()
 			get_node("/root/AudioManager").add_effect("res://assets/audio/43133285_cartoon-impact-bang-04.mp3", -5.0, 1.0, false)
 			body.take_damage(attack_dmg)
 		_fall()
