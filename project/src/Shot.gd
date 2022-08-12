@@ -11,8 +11,6 @@ export var damage = 1
 
 var direction: Vector2 = Vector2.ZERO
 
-var is_in_portal: bool = true
-
 var is_summoned: bool = false
 
 signal scaled_down

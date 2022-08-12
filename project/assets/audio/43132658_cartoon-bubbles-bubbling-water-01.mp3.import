@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/43132658_cartoon-bubbles-bubbling-water-01.mp3-323ad93f76726dc8705b721c71aa2c27.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/43132658_cartoon-bubbles-bubbling-water-01.mp3"
+dest_files=[ "res://.import/43132658_cartoon-bubbles-bubbling-water-01.mp3-323ad93f76726dc8705b721c71aa2c27.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

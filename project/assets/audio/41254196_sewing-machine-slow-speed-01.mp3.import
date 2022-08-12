@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/41254196_sewing-machine-slow-speed-01.mp3-c547d83d3981a2946e97eaef24202131.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/41254196_sewing-machine-slow-speed-01.mp3"
+dest_files=[ "res://.import/41254196_sewing-machine-slow-speed-01.mp3-c547d83d3981a2946e97eaef24202131.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

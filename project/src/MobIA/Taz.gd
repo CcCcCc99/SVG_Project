@@ -44,9 +44,9 @@ func _on_BodyChecker_body_entered(body):
 			is_spinning = false
 			if is_instance_valid(spin_effect):
 				spin_effect.end_effect()
-			get_node("/root/AudioManager").add_effect("res://assets/audio/43133285_cartoon-impact-bang-04.mp3", -5.0, 1.0, false)
 			body.take_damage(attack_dmg)
 		_fall()
+		get_node("/root/AudioManager").add_effect("res://assets/audio/43133285_cartoon-impact-bang-04.mp3", -5.0, 1.0, false)
 	._on_BodyChecker_body_entered(body)
 
 func _on_collision_environment():
