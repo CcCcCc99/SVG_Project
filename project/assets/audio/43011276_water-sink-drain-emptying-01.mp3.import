@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/43011276_water-sink-drain-emptying-01.mp3-3946173b6fb36db8a28e282db62e1340.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/43011276_water-sink-drain-emptying-01.mp3"
+dest_files=[ "res://.import/43011276_water-sink-drain-emptying-01.mp3-3946173b6fb36db8a28e282db62e1340.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

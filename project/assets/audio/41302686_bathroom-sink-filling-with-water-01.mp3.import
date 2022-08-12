@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/41302686_bathroom-sink-filling-with-water-01.mp3-92b0215678be14b8ce9bf853c117c1b1.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/41302686_bathroom-sink-filling-with-water-01.mp3"
+dest_files=[ "res://.import/41302686_bathroom-sink-filling-with-water-01.mp3-92b0215678be14b8ce9bf853c117c1b1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
