@@ -6,10 +6,13 @@ var is_stopped = true
 
 func _on_hit(body):
 	if not is_stopped:
+		var dim: int = get_overlapping_bodies().size()
 		if body.is_in_group("VerticalEnvironment"):
-			_bounce(false)
+			if dim == 1:
+				_bounce(false)
 		elif body.is_in_group("HorizontalEnvironment"):
-			_bounce(true)
+			if dim == 1:
+				_bounce(true)
 		else:
 			._on_hit(body)
 
