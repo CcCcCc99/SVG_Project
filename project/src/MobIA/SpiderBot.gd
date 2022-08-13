@@ -42,4 +42,5 @@ func _on_TriggerAttack_enemy_spotted(body):
 
 func _on_Cooldown_timeout():
 	_spit_web(target)
+	get_node("/root/AudioManager").add_effect("res://assets/audio/43133811_cartoon-whip-light-crack-whoosh-01.mp3", 0.0, 1.5, false)
 	ia_state = WALK
