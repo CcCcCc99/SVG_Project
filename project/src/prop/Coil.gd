@@ -5,6 +5,7 @@ export var off_color: Color
 export (Array, String) var line_num
 
 func checkline(neighbors: Array):
+	print(neighbors)
 	for i in line_num.size():
 		var line = "Line" + line_num[i]
 		var coil = "Coil" + neighbors[i] + "/AnimatedSprite"
