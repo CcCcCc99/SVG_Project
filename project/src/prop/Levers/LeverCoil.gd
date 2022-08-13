@@ -3,12 +3,14 @@ extends Lever
 export (Array, String) var coil_num
 
 func _activate():
+	print("Leva: " + self.name)
 	for x in coil_num:
 		var coil = "Coil" + x + "/AnimatedSprite"
 		var line = "Coil" + x
 		checkcoil(coil, line)
 
 func _deactivate():
+	print("Leva: " + self.name)
 	for x in coil_num:
 		var coil = "Coil" + x + "/AnimatedSprite"
 		var line = "Coil" + x
