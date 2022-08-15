@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/prefabs/mob/Taz.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Rooms/RoomGenericSciFi.tscn" type="PackedScene" id=2]
+
+[node name="Room" instance=ExtResource( 2 )]
+right_room = 5
+bottom_room = 3
+
+[node name="Taz" parent="Objects" index="0" instance=ExtResource( 1 )]
+position = Vector2( -548, -158 )
+
+[node name="Taz2" parent="Objects" index="1" instance=ExtResource( 1 )]
+position = Vector2( 480, -32 )
+direction = Vector2( -1, 2.3 )

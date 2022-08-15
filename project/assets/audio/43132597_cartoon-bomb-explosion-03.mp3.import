@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/43132597_cartoon-bomb-explosion-03.mp3-048c733c8d05e14d90621995ad3d2e6b.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/43132597_cartoon-bomb-explosion-03.mp3"
+dest_files=[ "res://.import/43132597_cartoon-bomb-explosion-03.mp3-048c733c8d05e14d90621995ad3d2e6b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

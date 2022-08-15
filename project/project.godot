@@ -34,7 +34,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Level.gd"
 }, {
-"base": "Reference",
+"base": "Area2D",
+"class": "Lever",
+"language": "GDScript",
+"path": "res://src/prop/Lever.gd"
+}, {
+"base": "Resource",
 "class": "MapPosition",
 "language": "GDScript",
 "path": "res://src/map_position.gd"
@@ -85,6 +90,7 @@ _global_script_class_icons={
 "Event": "",
 "GameState": "",
 "Level": "",
+"Lever": "",
 "MapPosition": "",
 "Menu": "",
 "Mob": "",
@@ -188,7 +194,6 @@ action_bar_right={
 take_soul={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":3,"pressed":false,"doubleclick":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 pause_toggle={

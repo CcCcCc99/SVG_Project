@@ -24,7 +24,7 @@ var saved_state: GameState = GameState.new()
 
 func _init():
 	levels.append("res://levels/LvTutorial.tres")
-	levels.append("res://levels/TestLevel2.tres")
+	levels.append("res://levels/Lv1SciFi.tres")
 
 func _ready():
 	player = player_scene.instance()
@@ -53,6 +53,10 @@ func _input(event):
 		else:
 			resume()
 			get_node("/root/AudioManager").resume_music()
+	
+	if Input.is_action_just_pressed("debug1"):
+		_unload_level()
+		_load_level(1)
 
 func resume():
 	is_in_pause = false
@@ -89,7 +93,7 @@ func _show_main():
 
 func _load_level(l: int):
 	currentLevel = load(levels[l])
-	get_node("/root/AudioManager").change_music("res://assets/audio/Destroyed Sanctuary.mp3", -10.0, 1.0)
+	_set_music(l)
 	var room_scenes = currentLevel.get_rooms()
 	for rs in room_scenes:
 		rooms.append(rs.instance())
@@ -99,6 +103,12 @@ func _load_level(l: int):
 		_load_room(player.checkpoint_room, null)
 	else:
 		_load_room(start, null)
+
+func _set_music(l: int):
+	if l == 0:
+		get_node("/root/AudioManager").change_music("res://assets/audio/Destroyed Sanctuary.mp3", -10.0, 1.0)
+	elif l == 1:
+		get_node("/root/AudioManager").change_music("res://assets/audio/echelon.mp3", -10.0, 1.0)
 
 func _unload_level():
 	_unload_room()

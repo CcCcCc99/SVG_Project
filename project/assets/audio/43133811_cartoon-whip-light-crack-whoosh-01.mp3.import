@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/43133811_cartoon-whip-light-crack-whoosh-01.mp3-a6c16466367d9d341e865013a393975c.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/43133811_cartoon-whip-light-crack-whoosh-01.mp3"
+dest_files=[ "res://.import/43133811_cartoon-whip-light-crack-whoosh-01.mp3-a6c16466367d9d341e865013a393975c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

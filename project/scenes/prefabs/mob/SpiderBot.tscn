@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://assets/sprites/spiderbot/cammina2.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/spiderbot/attacco1.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/spiderbot/cammina1.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Mob.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/MobIA/SpiderBot.gd" type="Script" id=5]
+[ext_resource path="res://src/utility/TriggerAttack.gd" type="Script" id=6]
+[ext_resource path="res://scenes/corps/SpiderBotCorpse.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/prefabs/prop/Web.tscn" type="PackedScene" id=8]
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 44.0114
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color: hint_color = vec4(1.0);
+uniform float flash_modifier: hint_range(0.0, 1.0) = 0.0;
+
+void fragment() {
+	vec4 color = texture(TEXTURE,UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 7 )
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 0.0
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "attack",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "walk",
+"speed": 4.0
+} ]
+
+[sub_resource type="RayShape2D" id=2]
+length = 400.0
+
+[node name="SpiderBot" instance=ExtResource( 4 )]
+script = ExtResource( 5 )
+CORPSE = ExtResource( 7 )
+max_hp = 5
+speed = 4000
+web = ExtResource( 8 )
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2( -6, -53 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyChecker" index="0"]
+position = Vector2( -8, -48 )
+shape = SubResource( 4 )
+
+[node name="AnimatedSprite" parent="." index="2"]
+material = SubResource( 5 )
+position = Vector2( -3, -40 )
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 6 )
+animation = "walk"
+playing = true
+
+[node name="Cooldown" parent="." index="3"]
+one_shot = true
+
+[node name="Shadow" parent="." index="5"]
+position = Vector2( -6, -45 )
+scale = Vector2( 0.3, 0.5 )
+
+[node name="TriggerAttack" type="Area2D" parent="." index="7"]
+position = Vector2( 1, 23 )
+rotation = 1.5708
+collision_layer = 2
+collision_mask = 3
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Raycast" type="CollisionShape2D" parent="TriggerAttack" index="0"]
+rotation = -1.5708
+shape = SubResource( 2 )
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
+[connection signal="area_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
+[connection signal="body_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
+[connection signal="enemy_spotted" from="TriggerAttack" to="." method="_on_TriggerAttack_enemy_spotted"]
