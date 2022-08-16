@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/prefabs/mob/Prism.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/prefabs/prop/FluidContainerPink.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/prefabs/prop/FluidContainerGreen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Rooms/RoomGenericSciFi.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/prefabs/prop/Lever.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/event.gd" type="Script" id=6]
 [ext_resource path="res://src/prop/Levers/LeverLine.gd" type="Script" id=7]
 [ext_resource path="res://scenes/prefabs/prop/Sink.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/prop/Sink.gd" type="Script" id=9]
@@ -22,10 +21,6 @@ position = Vector2( 529, -69 )
 
 [node name="Prism" parent="Objects" index="2" instance=ExtResource( 1 )]
 position = Vector2( 1, -225 )
-flip = false
-contact_damage = 1
-is_summoned = false
-laser_dmg = 2
 
 [node name="LeverGreen" parent="Objects" index="3" instance=ExtResource( 5 )]
 position = Vector2( -502, -67 )
@@ -46,8 +41,5 @@ default_color = Color( 0.482353, 0.482353, 0.482353, 1 )
 [node name="Sink" parent="Objects" index="6" instance=ExtResource( 8 )]
 position = Vector2( -39, 227 )
 script = ExtResource( 9 )
-
-[node name="LeverEvent" type="Node" parent="Events" index="0"]
-script = ExtResource( 6 )
 
 [connection signal="used" from="Objects/LeverGreen" to="Objects/Sink" method="_on_Lever_used"]

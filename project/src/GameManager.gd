@@ -94,9 +94,13 @@ func _show_main():
 func _load_level(l: int):
 	currentLevel = load(levels[l])
 	_set_music(l)
+
 	var room_scenes = currentLevel.get_rooms()
 	for rs in room_scenes:
 		rooms.append(rs.instance())
+	for i in rooms.size():
+		rooms[i].pos = MapPosition.new(l, i, Vector2(0,0))
+
 	var start = currentLevel.get_first_room()
 	boss_room = currentLevel.get_boss_room()
 	if get_node("/root/DefaultLoad").load_mode:
@@ -145,6 +149,10 @@ func _unload_room():
 	rooms[current_room].get_node("Objects").remove_child(assistant)
 	rooms[current_room].disconnect("exited_room", self, "_going_trough_door")
 	remove_child(rooms[current_room])
+	var room_events: Dictionary = rooms[current_room].get_events()
+	for e in room_events:
+		saved_state.events[e] = room_events[e]
+	print(saved_state.events)
 
 func _switch_to_room(r: int, d):
 	player.destroy_portals()
