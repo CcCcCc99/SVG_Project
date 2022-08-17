@@ -151,10 +151,7 @@ func _unload_room():
 	rooms[current_room].get_node("Objects").remove_child(assistant)
 	rooms[current_room].disconnect("exited_room", self, "_going_trough_door")
 	remove_child(rooms[current_room])
-	var room_events: Dictionary = rooms[current_room].get_events()
-	for e in room_events:
-		saved_state.events[e] = room_events[e]
-	print(saved_state.events)
+	_update_events()
 
 func _switch_to_room(r: int, d):
 	player.destroy_portals()
@@ -203,7 +200,13 @@ func load_summon(sum, cost):
 func get_cost() -> int:
 	return assistant.get_current_cost()
 
+func _update_events():
+	var room_events: Dictionary = rooms[current_room].get_events()
+	for e in room_events:
+		saved_state.events[e] = room_events[e]
+
 func save():
+	_update_events()
 	saved_state.set_hp(player.hp, player.max_hp)
 	saved_state.set_mp(assistant.mana, assistant.max_mana)
 	saved_state.set_actionbar(assistant.slot_number, assistant.summons)
