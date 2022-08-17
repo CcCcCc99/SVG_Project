@@ -12,6 +12,8 @@ export var right_room: int = -1
 export var top_room: int = -1
 export var bottom_room: int = -1
 
+var pos: MapPosition
+
 var doors
 
 enum {LEFT = 0, RIGHT = 1, TOP = 2, BOTTOM = 3}
@@ -40,6 +42,21 @@ func _count_enemies() -> int:
 			o.connect("killed", self, "_on_enemy_killed")
 			cont += 1
 	return cont
+
+func get_events() -> Dictionary:
+	var events = $Events.get_children()
+	var to_save: Dictionary = {}
+	for e in events:
+		if e.is_ever_used:
+			to_save[e.get_event_string()] = e.activated
+	return to_save
+
+func load_events(events_state: Dictionary):
+	var events = $Events.get_children()
+	for e in events:
+		var key = e.get_event_string()
+		if events_state.has(key):
+			e.load_event(events_state[key])
 
 func enable_doors():
 	_enable_door(LEFT, left_room)

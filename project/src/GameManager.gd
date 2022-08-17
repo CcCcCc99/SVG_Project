@@ -94,9 +94,13 @@ func _show_main():
 func _load_level(l: int):
 	currentLevel = load(levels[l])
 	_set_music(l)
+
 	var room_scenes = currentLevel.get_rooms()
 	for rs in room_scenes:
 		rooms.append(rs.instance())
+	for i in rooms.size():
+		rooms[i].pos = MapPosition.new(l, i, Vector2(0,0))
+
 	var start = currentLevel.get_first_room()
 	boss_room = currentLevel.get_boss_room()
 	if get_node("/root/DefaultLoad").load_mode:
@@ -131,6 +135,8 @@ func _load_room(r: int, d):
 		rooms[r].get_node("Camera2D").current = true
 	else:
 		$Camera2D.current = true
+	
+	rooms[r].load_events(saved_state.events)
 	rooms[r].get_node("TimeToCheck").start()
 	rooms[r].get_node("Objects").add_child(player)
 	rooms[r].get_node("Objects").add_child(assistant)
@@ -145,6 +151,7 @@ func _unload_room():
 	rooms[current_room].get_node("Objects").remove_child(assistant)
 	rooms[current_room].disconnect("exited_room", self, "_going_trough_door")
 	remove_child(rooms[current_room])
+	_update_events()
 
 func _switch_to_room(r: int, d):
 	player.destroy_portals()
@@ -193,7 +200,13 @@ func load_summon(sum, cost):
 func get_cost() -> int:
 	return assistant.get_current_cost()
 
+func _update_events():
+	var room_events: Dictionary = rooms[current_room].get_events()
+	for e in room_events:
+		saved_state.events[e] = room_events[e]
+
 func save():
+	_update_events()
 	saved_state.set_hp(player.hp, player.max_hp)
 	saved_state.set_mp(assistant.mana, assistant.max_mana)
 	saved_state.set_actionbar(assistant.slot_number, assistant.summons)

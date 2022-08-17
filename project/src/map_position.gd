@@ -1,4 +1,4 @@
-extends Resource
+extends Reference
 class_name MapPosition
 
 export var level: int
