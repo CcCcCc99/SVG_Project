@@ -51,6 +51,13 @@ func get_events() -> Dictionary:
 			to_save[e.get_event_string()] = e.activated
 	return to_save
 
+func load_events(events_state: Dictionary):
+	var events = $Events.get_children()
+	for e in events:
+		var key = e.get_event_string()
+		if events_state.has(key):
+			e.load_event(events_state[key])
+
 func enable_doors():
 	_enable_door(LEFT, left_room)
 	_enable_door(RIGHT, right_room)

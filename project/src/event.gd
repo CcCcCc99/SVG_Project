@@ -11,6 +11,10 @@ func _ready():
 func get_map_pos() -> MapPosition:
 	return position
 
+func load_event(status: bool):
+	is_ever_used = true
+	activated = status
+
 func get_event_string() -> String:
 	var s: String = ""
 	s += str(position.level) + "-"

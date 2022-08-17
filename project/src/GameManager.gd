@@ -135,6 +135,8 @@ func _load_room(r: int, d):
 		rooms[r].get_node("Camera2D").current = true
 	else:
 		$Camera2D.current = true
+	
+	rooms[r].load_events(saved_state.events)
 	rooms[r].get_node("TimeToCheck").start()
 	rooms[r].get_node("Objects").add_child(player)
 	rooms[r].get_node("Objects").add_child(assistant)
