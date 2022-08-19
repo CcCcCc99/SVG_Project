@@ -32,6 +32,11 @@ func _process(delta):
 		_spawn_portal(direction)
 
 func _spawn_portal(direction: Vector2):
+	if $RayCast2D.is_colliding():
+		var coll = $RayCast2D.get_collider()
+		if coll.is_in_group("PortalBracker"):
+			return
+	
 	var p = portal.instance()
 	p.set_color(colors[portal_number])
 	p.position = direction*distance + global_position
