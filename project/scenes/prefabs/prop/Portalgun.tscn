@@ -26,3 +26,7 @@ position = Vector2( 79.006, 1.161 )
 rotation = 1.52367
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 1 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 120, 0 )

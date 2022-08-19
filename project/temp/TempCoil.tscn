@@ -11,7 +11,7 @@
 closed = false
 
 [node name="Player" parent="Objects" index="0" instance=ExtResource( 4 )]
-position = Vector2( 618, 365 )
+position = Vector2( 485, 263 )
 
 [node name="Coil1" parent="Objects" index="1" instance=ExtResource( 1 )]
 position = Vector2( 240, 24 )
@@ -102,10 +102,10 @@ is_on = true
 coil_num = [ "3", "7" ]
 
 [node name="Laser5" parent="Objects" index="18" instance=ExtResource( 3 )]
-points = PoolVector2Array( 251, -66, 459, -363 )
+points = PoolVector2Array( 251, -66, 458, -362 )
 
 [node name="Laser6" parent="Objects" index="19" instance=ExtResource( 3 )]
-points = PoolVector2Array( 459, -364, 684, -196 )
+points = PoolVector2Array( 684, -192, 460, -362 )
 
 [node name="Laser7" parent="Objects" index="20" instance=ExtResource( 3 )]
 position = Vector2( -418, 120 )
