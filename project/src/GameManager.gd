@@ -22,6 +22,9 @@ var current_room: int
 
 var saved_state: GameState = GameState.new()
 
+func test_dialogue():
+	print("Ciao dal dialogo")
+
 func _init():
 	levels.append("res://levels/LvTutorial.tres")
 	levels.append("res://levels/Lv1SciFi.tres")
@@ -127,6 +130,7 @@ func _load_room(r: int, d):
 	add_child(rooms[r])
 	if d == null:
 		player.position = player.checkpoint_position
+		assistant.position = Vector2(200,20)
 	else:
 		rooms[r].set_player_position(player, assistant, d)
 	if r == boss_room:
@@ -140,6 +144,7 @@ func _load_room(r: int, d):
 	rooms[r].get_node("TimeToCheck").start()
 	rooms[r].get_node("Objects").add_child(player)
 	rooms[r].get_node("Objects").add_child(assistant)
+	rooms[r].start_events()
 	rooms[r].connect("exited_room", self, "_going_trough_door")
 
 func _unload_room():
@@ -225,3 +230,6 @@ func load_savings():
 	assistant.slot_number = saved_state.slot_num
 	assistant.set_summons(saved_state.get_action_bar()) 
 	assistant.update_grafics()
+
+func fadein():
+	$AnimationPlayer.play("Fadein")

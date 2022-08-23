@@ -1,0 +1,666 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+syntax_version = 2
+raw_text = "~ Presentation
+do incapacitate()
+do close_doors()
+???: Si svegli!
+???: Mi sente? Si svegli!!!
+do fadein()
+Ferdinando: Emm ...
+- Cosa succede?!
+- Dove mi trovo?
+- Chi sei tu?
+
+???: Sembra che l'esperimento sia stato compromesso. Le dimensioni stanno collidendo.
+Ferdinando:
+- ...
+- Va bene, ma tu chi saresti?
+
+???: Dobbiamo tornare al mio laboratorio immediatamente! Mi aiuterai ad affrontare i mostri?
+Ferdinando:
+- Va bene, ti aiuterò.
+	???: Sapevo di poter contare su di te.
+- No, prima dimmi chi sei.
+	???: Vedrai che te la caverai benissimo.
+
+???: Vedi quel portale blu? Ti consiglio di entrarci.
+???: In questo modo una copia della tua anima sarà sempre in grado di ritornare nel caso ti accadesse qualcosa.
+Ferdinando: 
+- Come sarebbe a dire \"accadesse qualcosa\"?
+- Figurati, cosa potrebbe mai succedermi.
+do back_to_normal()
+do finished_dialogue()
+
+~ Portals
+do incapacitate()
+???: Ecco, prendi questo guanto. Potrai usarlo per generare dei portali a corto raggio.
+Ferdinando: ...
+Ferdinando: Ok.
+do back_to_normal()
+do give_portal_gun()
+do save()
+TUTORIAL: *click sinistro del mouse per piazzare un portale*
+
+Voce da una radio: HELENA, COSA HAI COMBINATO?!
+Helena: IO NON HO FATTO NIENTE, È COLPA DEI ROBOT DEL LABORATORIO CHE SONO INSORTI.
+Voce da una radio: Ma tu stai bene?
+Helena: Sì, adesso risolviamo tutto. Vedrai.
+
+Ferdinando: Quindi ti chiami Helena.
+Helena: Sì, il mio nome è dott.essa Helena Wissenschaftler e lavoro al laboratorio <nome del laboratorio>.
+Helena: Noi facciamo ricerche sui portali ed i loro utilizzi.
+Helena: Considerando quello che è successo ne incontreremo molti sulla nostra strada.
+do open_doors()
+
+
+~ Summon
+
+Helena: Adesso che il nemico è morto, possiamo usare il potere dei portali a nostro vantaggio.
+Helena: Ho creato un dispositivo che simula il comportamento del portale blu per un tempo limitato.
+Helena: Possiamo, quindi, usare l'anima di quella tartaruga per evocarne una copia.
+Helena: Però attenzione a non abusarne, ho una quantità di energia limitata. I miei sensori possono leggere quanta energia serve per ogni evocazione.
+TUTORIAL: *click con rotella del mouse sul cadavere per prenderne l'anima, click destro per evocare*
+Helena: Oh guarda, è apparso un portal giallo: emette diversi tipi di energia."
+errors = [  ]
+titles = {
+"Portals": "32",
+"Presentation": "1",
+"Summon": "55"
+}
+lines = {
+"0": {
+"next_id": "1",
+"text": "Presentation",
+"type": "title"
+},
+"1": {
+"mutation": {
+"args": [  ],
+"function": "incapacitate"
+},
+"next_id": "2",
+"type": "mutation"
+},
+"11": {
+"character": "???",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "12",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Sembra che l'esperimento sia stato compromesso. Le dimensioni stanno collidendo.",
+"time": null,
+"translation_key": "Sembra che l'esperimento sia stato compromesso. Le dimensioni stanno collidendo.",
+"type": "dialogue"
+},
+"12": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "13",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Ferdinando:",
+"time": null,
+"translation_key": "Ferdinando:",
+"type": "dialogue"
+},
+"13": {
+"next_id": "16",
+"next_id_after": "16",
+"replacements": [  ],
+"responses": PoolStringArray( "13", "14" ),
+"text": "...",
+"translation_key": "...",
+"type": "response"
+},
+"14": {
+"next_id": "16",
+"next_id_after": "16",
+"replacements": [  ],
+"text": "Va bene, ma tu chi saresti?",
+"translation_key": "Va bene, ma tu chi saresti?",
+"type": "response"
+},
+"16": {
+"character": "???",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "17",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Dobbiamo tornare al mio laboratorio immediatamente! Mi aiuterai ad affrontare i mostri?",
+"time": null,
+"translation_key": "Dobbiamo tornare al mio laboratorio immediatamente! Mi aiuterai ad affrontare i mostri?",
+"type": "dialogue"
+},
+"17": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "18",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Ferdinando:",
+"time": null,
+"translation_key": "Ferdinando:",
+"type": "dialogue"
+},
+"18": {
+"next_id": "19",
+"next_id_after": "23",
+"replacements": [  ],
+"responses": PoolStringArray( "18", "20" ),
+"text": "Va bene, ti aiuterò.",
+"translation_key": "Va bene, ti aiuterò.",
+"type": "response"
+},
+"19": {
+"character": "???",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "23",
+"parent_id": "18",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Sapevo di poter contare su di te.",
+"time": null,
+"translation_key": "Sapevo di poter contare su di te.",
+"type": "dialogue"
+},
+"2": {
+"mutation": {
+"args": [  ],
+"function": "close_doors"
+},
+"next_id": "3",
+"type": "mutation"
+},
+"20": {
+"next_id": "21",
+"next_id_after": "23",
+"replacements": [  ],
+"text": "No, prima dimmi chi sei.",
+"translation_key": "No, prima dimmi chi sei.",
+"type": "response"
+},
+"21": {
+"character": "???",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "23",
+"parent_id": "20",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Vedrai che te la caverai benissimo.",
+"time": null,
+"translation_key": "Vedrai che te la caverai benissimo.",
+"type": "dialogue"
+},
+"23": {
+"character": "???",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "24",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Vedi quel portale blu? Ti consiglio di entrarci.",
+"time": null,
+"translation_key": "Vedi quel portale blu? Ti consiglio di entrarci.",
+"type": "dialogue"
+},
+"24": {
+"character": "???",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "25",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "In questo modo una copia della tua anima sarà sempre in grado di ritornare nel caso ti accadesse qualcosa.",
+"time": null,
+"translation_key": "In questo modo una copia della tua anima sarà sempre in grado di ritornare nel caso ti accadesse qualcosa.",
+"type": "dialogue"
+},
+"25": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "26",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Ferdinando:",
+"time": null,
+"translation_key": "Ferdinando:",
+"type": "dialogue"
+},
+"26": {
+"next_id": "28",
+"next_id_after": "28",
+"replacements": [  ],
+"responses": PoolStringArray( "26", "27" ),
+"text": "Come sarebbe a dire \"accadesse qualcosa\"?",
+"translation_key": "Come sarebbe a dire \"accadesse qualcosa\"?",
+"type": "response"
+},
+"27": {
+"next_id": "28",
+"next_id_after": "28",
+"replacements": [  ],
+"text": "Figurati, cosa potrebbe mai succedermi.",
+"translation_key": "Figurati, cosa potrebbe mai succedermi.",
+"type": "response"
+},
+"28": {
+"mutation": {
+"args": [  ],
+"function": "back_to_normal"
+},
+"next_id": "29",
+"type": "mutation"
+},
+"29": {
+"mutation": {
+"args": [  ],
+"function": "finished_dialogue"
+},
+"next_id": "end",
+"type": "mutation"
+},
+"3": {
+"character": "???",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "4",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Si svegli!",
+"time": null,
+"translation_key": "Si svegli!",
+"type": "dialogue"
+},
+"31": {
+"next_id": "32",
+"text": "Portals",
+"type": "title"
+},
+"32": {
+"mutation": {
+"args": [  ],
+"function": "incapacitate"
+},
+"next_id": "33",
+"type": "mutation"
+},
+"33": {
+"character": "???",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "34",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Ecco, prendi questo guanto. Potrai usarlo per generare dei portali a corto raggio.",
+"time": null,
+"translation_key": "Ecco, prendi questo guanto. Potrai usarlo per generare dei portali a corto raggio.",
+"type": "dialogue"
+},
+"34": {
+"character": "Ferdinando",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "35",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "...",
+"time": null,
+"translation_key": "...",
+"type": "dialogue"
+},
+"35": {
+"character": "Ferdinando",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "36",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Ok.",
+"time": null,
+"translation_key": "Ok.",
+"type": "dialogue"
+},
+"36": {
+"mutation": {
+"args": [  ],
+"function": "back_to_normal"
+},
+"next_id": "37",
+"type": "mutation"
+},
+"37": {
+"mutation": {
+"args": [  ],
+"function": "give_portal_gun"
+},
+"next_id": "38",
+"type": "mutation"
+},
+"38": {
+"mutation": {
+"args": [  ],
+"function": "save"
+},
+"next_id": "39",
+"type": "mutation"
+},
+"39": {
+"character": "TUTORIAL",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "41",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "*click sinistro del mouse per piazzare un portale*",
+"time": null,
+"translation_key": "*click sinistro del mouse per piazzare un portale*",
+"type": "dialogue"
+},
+"4": {
+"character": "???",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "5",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Mi sente? Si svegli!!!",
+"time": null,
+"translation_key": "Mi sente? Si svegli!!!",
+"type": "dialogue"
+},
+"41": {
+"character": "Voce da una radio",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "42",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "HELENA, COSA HAI COMBINATO?!",
+"time": null,
+"translation_key": "HELENA, COSA HAI COMBINATO?!",
+"type": "dialogue"
+},
+"42": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "43",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "IO NON HO FATTO NIENTE, È COLPA DEI ROBOT DEL LABORATORIO CHE SONO INSORTI.",
+"time": null,
+"translation_key": "IO NON HO FATTO NIENTE, È COLPA DEI ROBOT DEL LABORATORIO CHE SONO INSORTI.",
+"type": "dialogue"
+},
+"43": {
+"character": "Voce da una radio",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "44",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Ma tu stai bene?",
+"time": null,
+"translation_key": "Ma tu stai bene?",
+"type": "dialogue"
+},
+"44": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "46",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Sì, adesso risolviamo tutto. Vedrai.",
+"time": null,
+"translation_key": "Sì, adesso risolviamo tutto. Vedrai.",
+"type": "dialogue"
+},
+"46": {
+"character": "Ferdinando",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "47",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Quindi ti chiami Helena.",
+"time": null,
+"translation_key": "Quindi ti chiami Helena.",
+"type": "dialogue"
+},
+"47": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "48",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Sì, il mio nome è dott.essa Helena Wissenschaftler e lavoro al laboratorio <nome del laboratorio>.",
+"time": null,
+"translation_key": "Sì, il mio nome è dott.essa Helena Wissenschaftler e lavoro al laboratorio <nome del laboratorio>.",
+"type": "dialogue"
+},
+"48": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "49",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Noi facciamo ricerche sui portali ed i loro utilizzi.",
+"time": null,
+"translation_key": "Noi facciamo ricerche sui portali ed i loro utilizzi.",
+"type": "dialogue"
+},
+"49": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "50",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Considerando quello che è successo ne incontreremo molti sulla nostra strada.",
+"time": null,
+"translation_key": "Considerando quello che è successo ne incontreremo molti sulla nostra strada.",
+"type": "dialogue"
+},
+"5": {
+"mutation": {
+"args": [  ],
+"function": "fadein"
+},
+"next_id": "6",
+"type": "mutation"
+},
+"50": {
+"mutation": {
+"args": [  ],
+"function": "open_doors"
+},
+"next_id": "end",
+"type": "mutation"
+},
+"53": {
+"next_id": "55",
+"text": "Summon",
+"type": "title"
+},
+"55": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "56",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Adesso che il nemico è morto, possiamo usare il potere dei portali a nostro vantaggio.",
+"time": null,
+"translation_key": "Adesso che il nemico è morto, possiamo usare il potere dei portali a nostro vantaggio.",
+"type": "dialogue"
+},
+"56": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "57",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Ho creato un dispositivo che simula il comportamento del portale blu per un tempo limitato.",
+"time": null,
+"translation_key": "Ho creato un dispositivo che simula il comportamento del portale blu per un tempo limitato.",
+"type": "dialogue"
+},
+"57": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "58",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Possiamo, quindi, usare l'anima di quella tartaruga per evocarne una copia.",
+"time": null,
+"translation_key": "Possiamo, quindi, usare l'anima di quella tartaruga per evocarne una copia.",
+"type": "dialogue"
+},
+"58": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "59",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Però attenzione a non abusarne, ho una quantità di energia limitata. I miei sensori possono leggere quanta energia serve per ogni evocazione.",
+"time": null,
+"translation_key": "Però attenzione a non abusarne, ho una quantità di energia limitata. I miei sensori possono leggere quanta energia serve per ogni evocazione.",
+"type": "dialogue"
+},
+"59": {
+"character": "TUTORIAL",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "60",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "*click con rotella del mouse sul cadavere per prenderne l'anima, click destro per evocare*",
+"time": null,
+"translation_key": "*click con rotella del mouse sul cadavere per prenderne l'anima, click destro per evocare*",
+"type": "dialogue"
+},
+"6": {
+"character": "Ferdinando",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "7",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Emm ...",
+"time": null,
+"translation_key": "Emm ...",
+"type": "dialogue"
+},
+"60": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Oh guarda, è apparso un portal giallo: emette diversi tipi di energia.",
+"time": null,
+"translation_key": "Oh guarda, è apparso un portal giallo: emette diversi tipi di energia.",
+"type": "dialogue"
+},
+"7": {
+"next_id": "11",
+"next_id_after": "11",
+"replacements": [  ],
+"responses": PoolStringArray( "7", "8", "9" ),
+"text": "Cosa succede?!",
+"translation_key": "Cosa succede?!",
+"type": "response"
+},
+"8": {
+"next_id": "11",
+"next_id_after": "11",
+"replacements": [  ],
+"text": "Dove mi trovo?",
+"translation_key": "Dove mi trovo?",
+"type": "response"
+},
+"9": {
+"next_id": "11",
+"next_id_after": "11",
+"replacements": [  ],
+"text": "Chi sei tu?",
+"translation_key": "Chi sei tu?",
+"type": "response"
+}
+}

@@ -128,7 +128,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray(  )
+enabled=PoolStringArray( "res://addons/dialogue_manager/plugin.cfg" )
 
 [input]
 

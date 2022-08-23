@@ -9,6 +9,7 @@ var previous_portal = null
 var portal_number = 0
 
 func _ready():
+	$RayCast2D.add_exception(get_parent())
 	_update_bracelet()
 
 func _update_bracelet():
@@ -34,6 +35,7 @@ func _process(delta):
 func _spawn_portal(direction: Vector2):
 	if $RayCast2D.is_colliding():
 		var coll = $RayCast2D.get_collider()
+		print(coll.name)
 		if coll.is_in_group("PortalBracker"):
 			return
 	

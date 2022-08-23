@@ -15,7 +15,8 @@ func _deactivate():
 		checkcoil(coil, line)
 
 func checkcoil(coil: String, line: String):
-	if get_parent().get_node(coil).animation == "on":
+	#if get_parent().get_node(coil).animation == "on":
+	if not is_on:
 		get_parent().get_node(coil).animation = "off"
 	else:
 		get_parent().get_node(coil).animation = "on"

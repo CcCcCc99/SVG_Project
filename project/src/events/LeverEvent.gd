@@ -11,4 +11,5 @@ func _ready():
 func load_event(status: bool):
 	.load_event(status)
 	lever.is_on = status
+	lever.check_lever_status()
 	lever.update_grafic()

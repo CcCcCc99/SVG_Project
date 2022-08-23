@@ -4,6 +4,7 @@ class_name Event
 var position: MapPosition setget , get_map_pos
 var is_ever_used: bool = false
 export var activated: bool = false
+export var auto_start: bool = false
 
 func _ready():
 	position = get_parent().get_parent().pos

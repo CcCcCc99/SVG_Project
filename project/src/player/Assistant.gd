@@ -15,8 +15,8 @@ var action_bar setget set_actionbar
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 var dialogue = preload("res://dialogues/Test.tres")
 func _process(delta):
-	if Input.is_action_just_released("debug1"):
-		DialogueManager.show_example_dialogue_balloon("Room2Test", dialogue)
+	if Input.is_action_just_released("debug2"):
+		DialogueManager.show_example_dialogue_balloon("Test2", dialogue)
 	#var active: summon = 
 	if Input.is_action_just_pressed("summon") and is_instance_valid(summons[action_bar.current()]) and mana >= summons[action_bar.current()].mana_cost:
 		var spawned = summons[action_bar.current()].spawn(

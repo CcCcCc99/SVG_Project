@@ -4,7 +4,7 @@
 [ext_resource path="res://src/prop/Checkpoint.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 95.0
+radius = 66.9999
 height = 78.0
 
 [node name="Checkpoint" type="Area2D"]
