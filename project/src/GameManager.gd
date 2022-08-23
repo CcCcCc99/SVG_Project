@@ -107,6 +107,7 @@ func _load_level(l: int):
 	var start = currentLevel.get_first_room()
 	boss_room = currentLevel.get_boss_room()
 	if get_node("/root/DefaultLoad").load_mode:
+		get_node("/root/DefaultLoad").load_mode = false
 		_load_room(player.checkpoint_room, null)
 	else:
 		_load_room(start, null)

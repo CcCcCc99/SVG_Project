@@ -7,14 +7,14 @@
 radius = 66.9999
 height = 78.0
 
-[node name="Checkpoint" type="Area2D"]
+[node name="Checkpoint" type="Area2D" groups=["Environment", "Portal"]]
 z_index = -1
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 modulate = Color( 0, 0.835294, 1, 1 )
 frames = ExtResource( 1 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

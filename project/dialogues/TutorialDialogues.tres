@@ -59,18 +59,27 @@ do open_doors()
 
 
 ~ Summon
-
 Helena: Adesso che il nemico è morto, possiamo usare il potere dei portali a nostro vantaggio.
 Helena: Ho creato un dispositivo che simula il comportamento del portale blu per un tempo limitato.
-Helena: Possiamo, quindi, usare l'anima di quella tartaruga per evocarne una copia.
+Helena: Possiamo, quindi, usare l'anima di quella cosa per evocarne una copia.
 Helena: Però attenzione a non abusarne, ho una quantità di energia limitata. I miei sensori possono leggere quanta energia serve per ogni evocazione.
 TUTORIAL: *click con rotella del mouse sul cadavere per prenderne l'anima, click destro per evocare*
-Helena: Oh guarda, è apparso un portal giallo: emette diversi tipi di energia."
+Helena: Oh guarda, è apparso un portal giallo: emette diversi tipi di energia.
+
+~ Boss
+*L'ENERGIA DEI PORTALI CRESCE IN TE*
+Helena: Visto? Lo sapevo che per te non sarebbe stato difficile.
+Helena: Questo mostro ha rilasciato molta energia morendo. Le mie tecnologie si sono potenziate ed anche tu mi sembri più in salute.
+Helena: Tutta quell'energia ha anche aperto un portale grigio, vuol dire che non porta da nessuna parte.
+Helena: Adesso crerò un interferenza che ci permetterà di usarlo, lo imposto sulla frequenza della mia dimensione.
+do activate_portal()
+"
 errors = [  ]
 titles = {
+"Boss": "62",
 "Portals": "32",
 "Presentation": "1",
-"Summon": "55"
+"Summon": "54"
 }
 lines = {
 "0": {
@@ -536,9 +545,23 @@ lines = {
 "type": "mutation"
 },
 "53": {
-"next_id": "55",
+"next_id": "54",
 "text": "Summon",
 "type": "title"
+},
+"54": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "55",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Adesso che il nemico è morto, possiamo usare il potere dei portali a nostro vantaggio.",
+"time": null,
+"translation_key": "Adesso che il nemico è morto, possiamo usare il potere dei portali a nostro vantaggio.",
+"type": "dialogue"
 },
 "55": {
 "character": "Helena",
@@ -549,9 +572,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Adesso che il nemico è morto, possiamo usare il potere dei portali a nostro vantaggio.",
+"text": "Ho creato un dispositivo che simula il comportamento del portale blu per un tempo limitato.",
 "time": null,
-"translation_key": "Adesso che il nemico è morto, possiamo usare il potere dei portali a nostro vantaggio.",
+"translation_key": "Ho creato un dispositivo che simula il comportamento del portale blu per un tempo limitato.",
 "type": "dialogue"
 },
 "56": {
@@ -563,9 +586,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Ho creato un dispositivo che simula il comportamento del portale blu per un tempo limitato.",
+"text": "Possiamo, quindi, usare l'anima di quella cosa per evocarne una copia.",
 "time": null,
-"translation_key": "Ho creato un dispositivo che simula il comportamento del portale blu per un tempo limitato.",
+"translation_key": "Possiamo, quindi, usare l'anima di quella cosa per evocarne una copia.",
 "type": "dialogue"
 },
 "57": {
@@ -577,13 +600,13 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Possiamo, quindi, usare l'anima di quella tartaruga per evocarne una copia.",
+"text": "Però attenzione a non abusarne, ho una quantità di energia limitata. I miei sensori possono leggere quanta energia serve per ogni evocazione.",
 "time": null,
-"translation_key": "Possiamo, quindi, usare l'anima di quella tartaruga per evocarne una copia.",
+"translation_key": "Però attenzione a non abusarne, ho una quantità di energia limitata. I miei sensori possono leggere quanta energia serve per ogni evocazione.",
 "type": "dialogue"
 },
 "58": {
-"character": "Helena",
+"character": "TUTORIAL",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "59",
@@ -591,23 +614,23 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Però attenzione a non abusarne, ho una quantità di energia limitata. I miei sensori possono leggere quanta energia serve per ogni evocazione.",
+"text": "*click con rotella del mouse sul cadavere per prenderne l'anima, click destro per evocare*",
 "time": null,
-"translation_key": "Però attenzione a non abusarne, ho una quantità di energia limitata. I miei sensori possono leggere quanta energia serve per ogni evocazione.",
+"translation_key": "*click con rotella del mouse sul cadavere per prenderne l'anima, click destro per evocare*",
 "type": "dialogue"
 },
 "59": {
-"character": "TUTORIAL",
+"character": "Helena",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "60",
+"next_id": "end",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "*click con rotella del mouse sul cadavere per prenderne l'anima, click destro per evocare*",
+"text": "Oh guarda, è apparso un portal giallo: emette diversi tipi di energia.",
 "time": null,
-"translation_key": "*click con rotella del mouse sul cadavere per prenderne l'anima, click destro per evocare*",
+"translation_key": "Oh guarda, è apparso un portal giallo: emette diversi tipi di energia.",
 "type": "dialogue"
 },
 "6": {
@@ -624,19 +647,87 @@ lines = {
 "translation_key": "Emm ...",
 "type": "dialogue"
 },
-"60": {
-"character": "Helena",
-"character_replacements": [  ],
+"61": {
+"next_id": "62",
+"text": "Boss",
+"type": "title"
+},
+"62": {
+"character": "",
 "inline_mutations": [  ],
-"next_id": "",
+"next_id": "63",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Oh guarda, è apparso un portal giallo: emette diversi tipi di energia.",
+"text": "*L'ENERGIA DEI PORTALI CRESCE IN TE*",
 "time": null,
-"translation_key": "Oh guarda, è apparso un portal giallo: emette diversi tipi di energia.",
+"translation_key": "*L'ENERGIA DEI PORTALI CRESCE IN TE*",
 "type": "dialogue"
+},
+"63": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "64",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Visto? Lo sapevo che per te non sarebbe stato difficile.",
+"time": null,
+"translation_key": "Visto? Lo sapevo che per te non sarebbe stato difficile.",
+"type": "dialogue"
+},
+"64": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "65",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Questo mostro ha rilasciato molta energia morendo. Le mie tecnologie si sono potenziate ed anche tu mi sembri più in salute.",
+"time": null,
+"translation_key": "Questo mostro ha rilasciato molta energia morendo. Le mie tecnologie si sono potenziate ed anche tu mi sembri più in salute.",
+"type": "dialogue"
+},
+"65": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "66",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Tutta quell'energia ha anche aperto un portale grigio, vuol dire che non porta da nessuna parte.",
+"time": null,
+"translation_key": "Tutta quell'energia ha anche aperto un portale grigio, vuol dire che non porta da nessuna parte.",
+"type": "dialogue"
+},
+"66": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "67",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Adesso crerò un interferenza che ci permetterà di usarlo, lo imposto sulla frequenza della mia dimensione.",
+"time": null,
+"translation_key": "Adesso crerò un interferenza che ci permetterà di usarlo, lo imposto sulla frequenza della mia dimensione.",
+"type": "dialogue"
+},
+"67": {
+"mutation": {
+"args": [  ],
+"function": "activate_portal"
+},
+"next_id": "",
+"type": "mutation"
 },
 "7": {
 "next_id": "11",

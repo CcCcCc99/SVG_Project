@@ -1,29 +1,23 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/prefabs/mob/Tortoise.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/prefabs/prop/PortalReward.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Rooms/RoomGenericTutorial.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/prefabs/traps/BatSpawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/events/SummonDialogueEvent.gd" type="Script" id=5]
-[ext_resource path="res://scenes/Event.tscn" type="PackedScene" id=6]
 
 [node name="Room" instance=ExtResource( 3 )]
-top_room = 2
-bottom_room = 0
+right_room = 3
+bottom_room = 1
 
 [node name="Tortoise" parent="Objects" index="0" instance=ExtResource( 1 )]
-position = Vector2( 506, 216 )
+position = Vector2( 415, 205 )
 
 [node name="PortalReward" parent="Objects" index="1" instance=ExtResource( 2 )]
 visible = false
-position = Vector2( 401.005, -291.174 )
-number_of_mana = 0
+position = Vector2( 585, 302 )
+number_of_mana = 2
 
-[node name="BatSpawner" parent="." index="5" instance=ExtResource( 4 )]
-position = Vector2( 723.578, -303.996 )
+[node name="BatSpawner" parent="Objects" index="2" instance=ExtResource( 4 )]
+position = Vector2( -681, 354 )
+flipx = false
 flipy = false
-
-[node name="SummonDialogueEvent" parent="Events" index="0" instance=ExtResource( 6 )]
-script = ExtResource( 5 )
-
-[connection signal="completed" from="." to="Events/SummonDialogueEvent" method="activate"]
