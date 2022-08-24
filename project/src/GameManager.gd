@@ -6,6 +6,7 @@ var player
 var assistant
 
 var is_in_pause: bool = false
+var in_respawn_phase: bool = false
 var pause_screen: Node
 
 onready var health_bar = get_node("HUD/HealthBar")
@@ -175,6 +176,8 @@ func _going_trough_door(room, door):
 	door_used = door
 
 func _respawn(room):
+	in_respawn_phase = true
+	load_savings()
 	assistant.set_mana(assistant.max_mana)
 	$HUD/ColorRect.show()
 	$AnimationPlayer.play("Fadeout")
@@ -182,8 +185,8 @@ func _respawn(room):
 	var cp = player.checkpoint_position
 	player = player_scene.instance()
 	player.connect("is_dead", self, "_respawn")
+	player.set_max_hp(player.max_hp)
 	health_bar.set_player(player)
-	player.set_hp(player.max_hp)
 	player.checkpoint_position = cp
 	
 func _on_AnimationPlayer_animation_finished(anim_name):
@@ -212,6 +215,9 @@ func _update_events():
 		saved_state.events[e] = room_events[e]
 
 func save():
+	if in_respawn_phase:
+		in_respawn_phase = false
+		return
 	_update_events()
 	saved_state.set_hp(player.hp, player.max_hp)
 	saved_state.set_mp(assistant.mana, assistant.max_mana)

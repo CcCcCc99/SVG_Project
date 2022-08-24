@@ -62,8 +62,8 @@ func _bounce(horizontal):
 		direction.y *= -1
 
 func _walk():
-	i += 0.08
-	$AnimatedSprite.position.y += sin(i)
+	j += 0.08
+	$AnimatedSprite.position.y += sin(j)
 
 func _fall():
 	ia_state = IDLE

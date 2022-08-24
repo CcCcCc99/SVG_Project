@@ -68,6 +68,7 @@ Helena: Oh guarda, è apparso un portal giallo: emette diversi tipi di energia.
 
 ~ Boss
 *L'ENERGIA DEI PORTALI CRESCE IN TE*
+do save()
 Helena: Visto? Lo sapevo che per te non sarebbe stato difficile.
 Helena: Questo mostro ha rilasciato molta energia morendo. Le mie tecnologie si sono potenziate ed anche tu mi sembri più in salute.
 Helena: Tutta quell'energia ha anche aperto un portale grigio, vuol dire che non porta da nessuna parte.
@@ -666,18 +667,12 @@ lines = {
 "type": "dialogue"
 },
 "63": {
-"character": "Helena",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "64",
-"pauses": {
+"mutation": {
+"args": [  ],
+"function": "save"
 },
-"replacements": [  ],
-"speeds": [  ],
-"text": "Visto? Lo sapevo che per te non sarebbe stato difficile.",
-"time": null,
-"translation_key": "Visto? Lo sapevo che per te non sarebbe stato difficile.",
-"type": "dialogue"
+"next_id": "64",
+"type": "mutation"
 },
 "64": {
 "character": "Helena",
@@ -688,9 +683,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Questo mostro ha rilasciato molta energia morendo. Le mie tecnologie si sono potenziate ed anche tu mi sembri più in salute.",
+"text": "Visto? Lo sapevo che per te non sarebbe stato difficile.",
 "time": null,
-"translation_key": "Questo mostro ha rilasciato molta energia morendo. Le mie tecnologie si sono potenziate ed anche tu mi sembri più in salute.",
+"translation_key": "Visto? Lo sapevo che per te non sarebbe stato difficile.",
 "type": "dialogue"
 },
 "65": {
@@ -702,9 +697,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Tutta quell'energia ha anche aperto un portale grigio, vuol dire che non porta da nessuna parte.",
+"text": "Questo mostro ha rilasciato molta energia morendo. Le mie tecnologie si sono potenziate ed anche tu mi sembri più in salute.",
 "time": null,
-"translation_key": "Tutta quell'energia ha anche aperto un portale grigio, vuol dire che non porta da nessuna parte.",
+"translation_key": "Questo mostro ha rilasciato molta energia morendo. Le mie tecnologie si sono potenziate ed anche tu mi sembri più in salute.",
 "type": "dialogue"
 },
 "66": {
@@ -716,12 +711,26 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
+"text": "Tutta quell'energia ha anche aperto un portale grigio, vuol dire che non porta da nessuna parte.",
+"time": null,
+"translation_key": "Tutta quell'energia ha anche aperto un portale grigio, vuol dire che non porta da nessuna parte.",
+"type": "dialogue"
+},
+"67": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "68",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
 "text": "Adesso crerò un interferenza che ci permetterà di usarlo, lo imposto sulla frequenza della mia dimensione.",
 "time": null,
 "translation_key": "Adesso crerò un interferenza che ci permetterà di usarlo, lo imposto sulla frequenza della mia dimensione.",
 "type": "dialogue"
 },
-"67": {
+"68": {
 "mutation": {
 "args": [  ],
 "function": "activate_portal"

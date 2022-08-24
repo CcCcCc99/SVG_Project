@@ -9,6 +9,7 @@ script = ExtResource( 2 )
 info = ExtResource( 3 )
 
 [node name="Shadow" parent="." instance=ExtResource( 1 )]
+visible = false
 
 [node name="Sprite" type="Sprite" parent="."]
 

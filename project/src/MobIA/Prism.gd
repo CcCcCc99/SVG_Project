@@ -23,8 +23,8 @@ func _on_collision_environment():
 func _walk():
 	$AnimatedSprite.show()
 	$AttackMode.hide()
-	i += 0.08
-	$AnimatedSprite.position.y += sin(i)
+	j += 0.08
+	$AnimatedSprite.position.y += sin(j)
 
 func _laser_attack():
 	$AttackMode.show()
