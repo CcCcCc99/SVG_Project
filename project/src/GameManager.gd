@@ -177,18 +177,15 @@ func _going_trough_door(room, door):
 
 func _respawn(room):
 	in_respawn_phase = true
-	load_savings()
-	assistant.set_mana(assistant.max_mana)
+	get_node("Room/Objects").remove_child(player)
 	$HUD/ColorRect.show()
 	$AnimationPlayer.play("Fadeout")
 	destination_room = room
-	var cp = player.checkpoint_position
-	player = player_scene.instance()
-	player.connect("is_dead", self, "_respawn")
-	player.set_max_hp(player.max_hp)
+	load_savings()
 	health_bar.set_player(player)
-	player.checkpoint_position = cp
-	
+	player.set_hp(player.max_hp)
+	assistant.set_mana(assistant.max_mana)
+
 func _on_AnimationPlayer_animation_finished(anim_name):
 	$AnimationPlayer.stop()
 	match anim_name:

@@ -34,7 +34,10 @@ func set_max_hp(new_max_hp: int):
 	set_hp(new_max_hp)
 
 func _end_effect():
-	._end_effect()
+	effect.queue_free()
+	_spawn_corpse()
+	effect = POOF.instance()
+	effect.connect("animation_finished", self, "_end_effect")
 	destroy_portals()
 	emit_signal("is_dead", checkpoint_room)
 

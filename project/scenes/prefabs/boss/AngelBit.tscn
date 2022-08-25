@@ -122,7 +122,7 @@ polygon = PoolVector2Array( -65, -181, -4, -56, 50, -201, -1, -264 )
 [node name="Position2D" type="Position2D" parent="Body" index="3"]
 position = Vector2( -86, 88 )
 
-[node name="Cooldown" parent="." index="3"]
+[node name="Cooldown" parent="." index="4"]
 wait_time = 0.1
 
 [node name="WingsAnimator" type="AnimationPlayer" parent="." index="7"]
