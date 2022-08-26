@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/sprites/vortice3.png" type="Texture" id=1]
+[ext_resource path="res://scenes/prefabs/prop/ChangeLevelPortal.gd" type="Script" id=2]
+[ext_resource path="res://assets/sprites/pozza.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/vortice2.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/vortice1.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 184.98, 139.218 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 1 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 58.1378
+
+[node name="Puddle" type="Area2D"]
+z_index = -2
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 24, 46 )
+rotation = 0.280998
+scale = Vector2( 1, 1 )
+shape = SubResource( 1 )
+
+[node name="Portal" type="Area2D" parent="."]
+position = Vector2( 56, 19 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+active_color = Color( 1, 1, 1, 1 )
+inactive_color = Color( 0, 0, 0, 0 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Portal"]
+scale = Vector2( 0.65, 0.65 )
+frames = SubResource( 2 )
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
+position = Vector2( -2, 21 )
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="Portal" to="Portal" method="_on_Portal_body_entered"]

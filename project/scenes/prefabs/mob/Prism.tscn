@@ -47,6 +47,7 @@ height = 67.6389
 script = ExtResource( 5 )
 CORPSE = ExtResource( 6 )
 speed = 5000
+can_fly = true
 icon = ExtResource( 7 )
 raycast = ExtResource( 4 )
 

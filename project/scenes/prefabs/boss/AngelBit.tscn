@@ -83,6 +83,7 @@ tracks/0/keys = {
 [node name="AngelBit" groups=["Boss"] instance=ExtResource( 1 )]
 position = Vector2( 1135, 625 )
 script = ExtResource( 3 )
+can_fly = true
 fly = ExtResource( 7 )
 fly_number = 5
 

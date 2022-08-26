@@ -38,3 +38,5 @@ number_of_mana = 0
 
 [node name="SummonDialogueEvent" parent="Events" index="0" instance=ExtResource( 5 )]
 script = ExtResource( 6 )
+
+[connection signal="completed" from="." to="Events/SummonDialogueEvent" method="activate"]

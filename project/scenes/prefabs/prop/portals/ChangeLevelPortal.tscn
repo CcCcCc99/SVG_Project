@@ -9,6 +9,3 @@ scale = Vector2( 3, 3 )
 script = ExtResource( 2 )
 active_color = Color( 1, 0, 0, 1 )
 inactive_color = Color( 0.305882, 0.305882, 0.305882, 1 )
-
-[node name="Animation" parent="." index="0"]
-frame = 0

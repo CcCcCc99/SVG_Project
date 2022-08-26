@@ -47,18 +47,20 @@ position = Vector2( 7.52, -114.984 )
 scale = Vector2( 0.6, 0.6 )
 frames = ExtResource( 4 )
 animation = "walk_right"
-frame = 1
 playing = true
 
 [node name="Hitbox" type="Area2D" parent="." index="2" groups=["Character", "Hitbox", "Player", "PlayerAlly"]]
 script = ExtResource( 20 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox" index="0"]
-polygon = PoolVector2Array( 1.5, -158.5, -26, -29, 25.5, -27.5 )
+[node name="HitboxHead" type="Area2D" parent="Hitbox" index="0" groups=["Character", "Head", "Hitbox", "Player", "PlayerAlly"]]
+script = ExtResource( 20 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="1"]
+[node name="Head" type="CollisionShape2D" parent="Hitbox/HitboxHead" index="0"]
 position = Vector2( 5, -204 )
 shape = SubResource( 2 )
+
+[node name="Body" type="CollisionPolygon2D" parent="Hitbox" index="1"]
+polygon = PoolVector2Array( 1.5, -158.5, -26, -29, 25.5, -27.5 )
 
 [node name="Portalgun" parent="." index="3" instance=ExtResource( 3 )]
 

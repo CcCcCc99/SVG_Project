@@ -24,9 +24,9 @@ func _on_hit(body):
 			if is_instance_valid(c):
 				_release_character(c)
 	elif body.is_in_group("Character"):
-		if body.is_in_group("Hitbox"):
+		if body.is_in_group("Hitbox") and not body.is_in_group("Head"):
 			body = body.get_character()
-		_push_character(body)
+			_push_character(body)
 	._on_hit(body)
 
 func _push_character(c: Character):

@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/Rooms/RoomGenericSciFi.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/prefabs/prop/objects/WetSuitStand.tscn" type="PackedScene" id=2]
 
 [node name="Room" instance=ExtResource( 1 )]
 right_room = 3
+
+[node name="WetSuitStand" parent="Objects" index="0" instance=ExtResource( 2 )]
+position = Vector2( -764, 11 )
