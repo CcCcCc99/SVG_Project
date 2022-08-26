@@ -6,6 +6,7 @@
 [node name="Corpse" instance=ExtResource( 2 )]
 
 [node name="Shadow" parent="." index="0"]
+visible = true
 position = Vector2( -3, -27 )
 scale = Vector2( 0.25, 0.4 )
 

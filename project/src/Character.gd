@@ -23,6 +23,7 @@ signal scaled_down
 signal scaled_up
 var original_scale
 
+export var can_fly: bool = false
 export var automated_hp: bool = true
 
 func _ready():

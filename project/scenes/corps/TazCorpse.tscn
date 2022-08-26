@@ -12,6 +12,7 @@ summon = "res://scenes/prefabs/mob/Taz.tscn"
 cost = 4
 
 [node name="Shadow" parent="." index="0"]
+visible = true
 scale = Vector2( 0.57, 0.48 )
 
 [node name="Sprite" parent="." index="1"]

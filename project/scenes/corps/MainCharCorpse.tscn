@@ -10,6 +10,7 @@ extents = Vector2( 36.3019, 88.7146 )
 summon = "res://scenes/prefabs/Player.tscn"
 
 [node name="Shadow" parent="." index="0"]
+visible = true
 position = Vector2( 9.24987, -13.8747 )
 scale = Vector2( 0.482489, 0.273907 )
 

@@ -12,6 +12,7 @@ summon = "res://scenes/prefabs/mob/Tortoise.tscn"
 cost = 3
 
 [node name="Shadow" parent="." index="0"]
+visible = true
 scale = Vector2( 0.443759, 0.466811 )
 
 [node name="Sprite" parent="." index="1"]

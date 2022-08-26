@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/sprites/blower/walk1.png" type="Texture" id=5]
 [ext_resource path="res://src/utility/TriggerAttack.gd" type="Script" id=6]
 [ext_resource path="res://assets/sprites/blower/attack2.png" type="Texture" id=7]
-[ext_resource path="res://scenes/prefabs/prop/Blow.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/prefabs/prop/shots/Blow.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/corps/BlowerCorpse.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/sprites/blower/BlowerIcon.png" type="Texture" id=10]
 

@@ -12,6 +12,7 @@ summon = "res://scenes/prefabs/mob/Prism.tscn"
 cost = 3
 
 [node name="Shadow" parent="." index="0"]
+visible = true
 position = Vector2( 1.19055, -9.12756 )
 scale = Vector2( 0.576747, 0.458932 )
 

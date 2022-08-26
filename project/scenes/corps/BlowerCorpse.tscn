@@ -12,6 +12,7 @@ summon = "res://scenes/prefabs/mob/Blower.tscn"
 cost = 2
 
 [node name="Shadow" parent="." index="0"]
+visible = true
 position = Vector2( 8.34276, -10.6787 )
 scale = Vector2( 0.3, 0.3 )
 

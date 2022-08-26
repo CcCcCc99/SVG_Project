@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/sprites/angelbit/senzaali.png" type="Texture" id=4]
 [ext_resource path="res://src/utility/Hitbox.gd" type="Script" id=5]
 [ext_resource path="res://assets/sprites/angelbit/sportello.png" type="Texture" id=6]
-[ext_resource path="res://scenes/prefabs/prop/Fly.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/prefabs/prop/shots/Fly.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 45.0

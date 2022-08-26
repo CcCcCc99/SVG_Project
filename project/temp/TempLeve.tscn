@@ -4,8 +4,8 @@
 [ext_resource path="res://scenes/prefabs/prop/Lever.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Rooms/RoomGenericTutorial.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/prefabs/prop/Sink.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/prefabs/prop/FluidContainerGreen.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/prefabs/prop/FluidContainerPink.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/prefabs/prop/decorations/FluidContainerGreen.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/prefabs/prop/decorations/FluidContainerPink.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/prop/Levers/LeverLine.gd" type="Script" id=7]
 [ext_resource path="res://src/prop/Sink.gd" type="Script" id=8]
 

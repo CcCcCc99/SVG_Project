@@ -8,8 +8,8 @@
 [ext_resource path="res://assets/sprites/pong/mobicaughtyou.png" type="Texture" id=6]
 [ext_resource path="res://src/boss/Pong.gd" type="Script" id=7]
 [ext_resource path="res://src/utility/Hitbox.gd" type="Script" id=9]
-[ext_resource path="res://scenes/prefabs/prop/FireSpit.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/prefabs/prop/Earthquake.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/prefabs/prop/shots/FireSpit.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/prefabs/prop/shots/Earthquake.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 42.6252

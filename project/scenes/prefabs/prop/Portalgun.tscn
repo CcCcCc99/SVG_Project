@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/sprites/player/bracciale.png" type="Texture" id=1]
 [ext_resource path="res://src/player/Portalgun.gd" type="Script" id=2]
-[ext_resource path="res://scenes/prefabs/prop/Portal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/prefabs/prop/portals/Portal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sprites/player/guanto.png" type="Texture" id=4]
 
 [node name="Portalgun" type="Node2D"]
