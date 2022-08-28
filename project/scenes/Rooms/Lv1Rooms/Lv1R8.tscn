@@ -1,10 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Rooms/RoomGenericSciFi.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/prefabs/prop/portals/Puddle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/prefabs/prop/objects/WetSuit.tscn" type="PackedScene" id=3]
 
 [node name="Room" instance=ExtResource( 1 )]
 left_room = 2
 
 [node name="Puddle" parent="Objects" index="0" instance=ExtResource( 2 )]
 position = Vector2( 405, -45 )
+suit = ExtResource( 3 )
+
+[connection signal="body_exited" from="Objects/Puddle" to="Objects/Puddle" method="_on_Puddle_body_exited"]

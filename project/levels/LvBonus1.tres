@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://src/Level.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Rooms/RoomGenericUnderWater.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+lvl_num = 2
+start_room = 0
+boss_room = -1
+rooms = [ ExtResource( 2 ) ]

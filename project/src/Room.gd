@@ -49,7 +49,6 @@ func get_events() -> Dictionary:
 	for e in events:
 		if e.is_ever_used:
 			to_save[e.get_event_string()] = e.activated
-	print(to_save)
 	return to_save
 
 func load_events(events_state: Dictionary):

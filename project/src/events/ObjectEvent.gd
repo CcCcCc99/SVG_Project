@@ -3,12 +3,13 @@ extends Event
 export var stand_name: String
 var stand: Node
 
-func start():
+func _ready():
 	stand = get_parent().get_parent().get_node("Objects/"+stand_name)
+	print(stand)
 
 func activate():
 	is_ever_used = true
-	activated = true
+	activated = false
 
 func load_event(status: bool):
 	.load_event(status)

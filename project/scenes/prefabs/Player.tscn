@@ -46,7 +46,7 @@ material = SubResource( 5 )
 position = Vector2( 7.52, -114.984 )
 scale = Vector2( 0.6, 0.6 )
 frames = ExtResource( 4 )
-animation = "walk_right"
+animation = "idle"
 playing = true
 
 [node name="Hitbox" type="Area2D" parent="." index="2" groups=["Character", "Hitbox", "Player", "PlayerAlly"]]

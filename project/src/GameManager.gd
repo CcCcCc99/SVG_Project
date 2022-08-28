@@ -23,12 +23,10 @@ var current_room: int
 
 var saved_state: GameState = GameState.new()
 
-func test_dialogue():
-	print("Ciao dal dialogo")
-
 func _init():
 	levels.append("res://levels/LvTutorial.tres")
 	levels.append("res://levels/Lv1SciFi.tres")
+	levels.append("res://levels/LvBonus1.tres")
 
 func _ready():
 	player = player_scene.instance()
@@ -132,7 +130,7 @@ func _load_room(r: int, d):
 	add_child(rooms[r])
 	if d == null:
 		player.position = player.checkpoint_position
-		assistant.position = Vector2(200,20)
+		assistant.position = Vector2(-200,20)
 	else:
 		rooms[r].set_player_position(player, assistant, d)
 	if r == boss_room:

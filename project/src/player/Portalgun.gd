@@ -35,7 +35,6 @@ func _process(delta):
 func _spawn_portal(direction: Vector2):
 	if $RayCast2D.is_colliding():
 		var coll = $RayCast2D.get_collider()
-		print(coll.name)
 		if coll.is_in_group("PortalBracker"):
 			return
 	

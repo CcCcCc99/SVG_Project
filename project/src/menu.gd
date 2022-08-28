@@ -61,4 +61,3 @@ func _input(event):
 
 func _press_button_number(num: int):
 	var button = menu_buttons[num]
-	print("Pressed ", button.name)
