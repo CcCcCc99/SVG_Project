@@ -15,10 +15,14 @@ Nathan: Here are some choices.
 	Nathan: You picked the second one.
 - Start again => Room2Test
 - End the conversation => END
-Nathan: For more information about conditional dialogue, mutations, and all the fun stuff, see the online documentation."
+Nathan: For more information about conditional dialogue, mutations, and all the fun stuff, see the online documentation.
+
+~ Test2
+Nathan: Un altro dialogo."
 errors = [  ]
 titles = {
-"Room2Test": "2"
+"Room2Test": "2",
+"Test2": "13"
 }
 lines = {
 "0": {
@@ -30,14 +34,33 @@ lines = {
 "character": "Nathan",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "",
+"next_id": "end",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
 "text": "For more information about conditional dialogue, mutations, and all the fun stuff, see the online documentation.",
 "time": null,
-"translation_key": "For more information about conditional dialogue, mutations, and all the fun stuff, see the online documentation.",
+"translation_key": "t4b7859588a",
+"type": "dialogue"
+},
+"12": {
+"next_id": "13",
+"text": "Test2",
+"type": "title"
+},
+"13": {
+"character": "Nathan",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Un altro dialogo.",
+"time": null,
+"translation_key": "te3d7fd8b8b",
 "type": "dialogue"
 },
 "2": {
@@ -51,7 +74,7 @@ lines = {
 "speeds": [  ],
 "text": "This is some dialogue.",
 "time": null,
-"translation_key": "This is some dialogue.",
+"translation_key": "tb726d06c82",
 "type": "dialogue"
 },
 "3": {
@@ -65,7 +88,7 @@ lines = {
 "speeds": [  ],
 "text": "Here are some choices.",
 "time": null,
-"translation_key": "Here are some choices.",
+"translation_key": "td9f4ac53a4",
 "type": "dialogue"
 },
 "4": {
@@ -74,7 +97,7 @@ lines = {
 "replacements": [  ],
 "responses": PoolStringArray( "4", "6", "8", "9" ),
 "text": "First one",
-"translation_key": "First one",
+"translation_key": "ta1647b7565",
 "type": "response"
 },
 "5": {
@@ -89,7 +112,7 @@ lines = {
 "speeds": [  ],
 "text": "You picked the first one.",
 "time": null,
-"translation_key": "You picked the first one.",
+"translation_key": "t94734f30c4",
 "type": "dialogue"
 },
 "6": {
@@ -97,7 +120,7 @@ lines = {
 "next_id_after": "10",
 "replacements": [  ],
 "text": "Second one",
-"translation_key": "Second one",
+"translation_key": "t13eed2908a",
 "type": "response"
 },
 "7": {
@@ -112,7 +135,7 @@ lines = {
 "speeds": [  ],
 "text": "You picked the second one.",
 "time": null,
-"translation_key": "You picked the second one.",
+"translation_key": "tef72acefec",
 "type": "dialogue"
 },
 "8": {
@@ -120,7 +143,7 @@ lines = {
 "next_id_after": "10",
 "replacements": [  ],
 "text": "Start again",
-"translation_key": "Start again",
+"translation_key": "tf2be17b391",
 "type": "response"
 },
 "9": {
@@ -128,7 +151,7 @@ lines = {
 "next_id_after": "10",
 "replacements": [  ],
 "text": "End the conversation",
-"translation_key": "End the conversation",
+"translation_key": "tae637c74bd",
 "type": "response"
 }
 }

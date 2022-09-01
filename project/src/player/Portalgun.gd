@@ -9,6 +9,7 @@ var previous_portal = null
 var portal_number = 0
 
 func _ready():
+	$RayCast2D.add_exception(get_parent())
 	_update_bracelet()
 
 func _update_bracelet():

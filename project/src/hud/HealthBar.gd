@@ -17,6 +17,7 @@ var player
 
 func set_player(p: Character) -> void:
 	player = p
+	#_change_health_bar(0, player.hp)
 	player.connect("hp_changed", self, "_change_health_bar")
 
 func _add_hearts() -> void:

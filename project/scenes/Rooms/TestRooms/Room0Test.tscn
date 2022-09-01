@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/prefabs/mob/Blower.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/prefabs/traps/Plant.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/prefabs/prop/PortalReward.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/prefabs/prop/Checkpoint.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/prefabs/prop/portals/Checkpoint.tscn" type="PackedScene" id=5]
 
 [node name="Room" instance=ExtResource( 1 )]
 right_room = 1

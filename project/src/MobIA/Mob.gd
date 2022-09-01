@@ -2,6 +2,7 @@ extends Character
 class_name Mob
 
 enum {IDLE, WALK, ATTACK}
+var j: float = 0
 
 var ia_state = WALK
 export(bool) var flip = false

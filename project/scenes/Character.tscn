@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/Character.gd" type="Script" id=1]
 [ext_resource path="res://scenes/prefabs/prop/Poof.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/prefabs/prop/Shadow.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/shaders/character_shader.tres" type="Material" id=4]
+[ext_resource path="res://scenes/Corpse.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Hit"
@@ -39,6 +40,7 @@ tracks/0/keys = {
 [node name="Character" type="KinematicBody2D" groups=["Character"]]
 script = ExtResource( 1 )
 POOF = ExtResource( 2 )
+CORPSE = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 

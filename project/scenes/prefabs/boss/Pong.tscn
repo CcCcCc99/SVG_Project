@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/Mob.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/pong/salto2.png" type="Texture" id=2]
@@ -7,10 +7,9 @@
 [ext_resource path="res://assets/sprites/pong/mobattacca.png" type="Texture" id=5]
 [ext_resource path="res://assets/sprites/pong/mobicaughtyou.png" type="Texture" id=6]
 [ext_resource path="res://src/boss/Pong.gd" type="Script" id=7]
-[ext_resource path="res://scenes/Corpse.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/utility/Hitbox.gd" type="Script" id=9]
-[ext_resource path="res://scenes/prefabs/prop/FireSpit.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/prefabs/prop/Earthquake.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/prefabs/prop/shots/FireSpit.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/prefabs/prop/shots/Earthquake.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 42.6252
@@ -39,6 +38,16 @@ shader_param/flash_modifier = 0.0
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "jump_up",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "jump_down",
+"speed": 6.0
+}, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": " idle",
@@ -53,16 +62,6 @@ animations = [ {
 "loop": true,
 "name": "spit",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ) ],
-"loop": false,
-"name": "jump_down",
-"speed": 6.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
-"loop": false,
-"name": "jump_up",
-"speed": 6.0
 } ]
 
 [sub_resource type="CircleShape2D" id=4]
@@ -70,7 +69,6 @@ radius = 141.391
 
 [node name="Pong" groups=["Boss"] instance=ExtResource( 1 )]
 script = ExtResource( 7 )
-CORPSE = ExtResource( 8 )
 max_hp = 10
 speed = 5000
 jump_speed = 4000

@@ -18,7 +18,6 @@ func _set_points():
 	points[1] -= pos_offset
 	segment.set_a(self.points[0] + hit_offset)
 	segment.set_b(self.points[1] + hit_offset)
-	print(points)
 
 func turn_on():
 	modulate = Color.white

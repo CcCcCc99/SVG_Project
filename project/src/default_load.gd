@@ -16,6 +16,10 @@ func _ready() -> void:
 	_load_config()
 	_set_config()
 
+func _input(event):
+	if event.is_action_pressed("fullscreen"):
+		set_fullscreen(not fullscreen)
+
 func _volume_to_db(volume: float) -> float:
 	return log(volume / 10) * 20
 
@@ -32,7 +36,7 @@ func set_fullscreen(fs: bool) -> void:
 	if fullscreen != fs:
 		fullscreen = fs
 		
-		OS.set_window_full_screen(fullscreen)
+		OS.window_fullscreen = fullscreen
 		
 		_save_config()
 

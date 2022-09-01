@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/prefabs/mob/Prism.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/prefabs/prop/FluidContainerPink.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/prefabs/prop/FluidContainerGreen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/prefabs/prop/decorations/FluidContainerPink.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/prefabs/prop/decorations/FluidContainerGreen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Rooms/RoomGenericSciFi.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/prefabs/prop/Lever.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/prop/Levers/LeverLine.gd" type="Script" id=7]

@@ -6,6 +6,7 @@ var player
 var assistant
 
 var is_in_pause: bool = false
+var in_respawn_phase: bool = false
 var pause_screen: Node
 
 onready var health_bar = get_node("HUD/HealthBar")
@@ -25,6 +26,7 @@ var saved_state: GameState = GameState.new()
 func _init():
 	levels.append("res://levels/LvTutorial.tres")
 	levels.append("res://levels/Lv1SciFi.tres")
+	levels.append("res://levels/LvBonus1.tres")
 
 func _ready():
 	player = player_scene.instance()
@@ -104,6 +106,7 @@ func _load_level(l: int):
 	var start = currentLevel.get_first_room()
 	boss_room = currentLevel.get_boss_room()
 	if get_node("/root/DefaultLoad").load_mode:
+		get_node("/root/DefaultLoad").load_mode = false
 		_load_room(player.checkpoint_room, null)
 	else:
 		_load_room(start, null)
@@ -127,6 +130,7 @@ func _load_room(r: int, d):
 	add_child(rooms[r])
 	if d == null:
 		player.position = player.checkpoint_position
+		assistant.position = Vector2(-200,20)
 	else:
 		rooms[r].set_player_position(player, assistant, d)
 	if r == boss_room:
@@ -140,6 +144,7 @@ func _load_room(r: int, d):
 	rooms[r].get_node("TimeToCheck").start()
 	rooms[r].get_node("Objects").add_child(player)
 	rooms[r].get_node("Objects").add_child(assistant)
+	rooms[r].start_events()
 	rooms[r].connect("exited_room", self, "_going_trough_door")
 
 func _unload_room():
@@ -169,17 +174,16 @@ func _going_trough_door(room, door):
 	door_used = door
 
 func _respawn(room):
-	assistant.set_mana(assistant.max_mana)
+	in_respawn_phase = true
+	get_node("Room/Objects").remove_child(player)
 	$HUD/ColorRect.show()
 	$AnimationPlayer.play("Fadeout")
 	destination_room = room
-	var cp = player.checkpoint_position
-	player = player_scene.instance()
-	player.connect("is_dead", self, "_respawn")
+	load_savings()
 	health_bar.set_player(player)
 	player.set_hp(player.max_hp)
-	player.checkpoint_position = cp
-	
+	assistant.set_mana(assistant.max_mana)
+
 func _on_AnimationPlayer_animation_finished(anim_name):
 	$AnimationPlayer.stop()
 	match anim_name:
@@ -206,6 +210,9 @@ func _update_events():
 		saved_state.events[e] = room_events[e]
 
 func save():
+	if in_respawn_phase:
+		in_respawn_phase = false
+		return
 	_update_events()
 	saved_state.set_hp(player.hp, player.max_hp)
 	saved_state.set_mp(assistant.mana, assistant.max_mana)
@@ -225,3 +232,6 @@ func load_savings():
 	assistant.slot_number = saved_state.slot_num
 	assistant.set_summons(saved_state.get_action_bar()) 
 	assistant.update_grafics()
+
+func fadein():
+	$AnimationPlayer.play("Fadein")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/player/Assistant.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/assistant/discussione.png" type="Texture" id=2]
+[ext_resource path="res://scenes/prefabs/prop/Shadow.tscn" type="PackedScene" id=3]
 
-[node name="Assistant" type="Node2D"]
+[node name="Assistant" type="Node2D" groups=["Environment"]]
 script = ExtResource( 1 )
 max_mana = 5
 
@@ -20,3 +21,7 @@ position = Vector2( -38.0572, -92.4768 )
 
 [node name="RightBaloonPosition" type="Position2D" parent="."]
 position = Vector2( 80.6349, -76.8552 )
+
+[node name="Shadow" parent="." instance=ExtResource( 3 )]
+position = Vector2( -1.00001, 10 )
+scale = Vector2( 0.264844, 0.307813 )

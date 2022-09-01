@@ -13,11 +13,7 @@ var slot_number: int setget set_slot_number, get_slot_number
 var action_bar setget set_actionbar
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-var dialogue = preload("res://dialogues/Test.tres")
 func _process(delta):
-	if Input.is_action_just_released("debug1"):
-		DialogueManager.show_example_dialogue_balloon("Room2Test", dialogue)
-	#var active: summon = 
 	if Input.is_action_just_pressed("summon") and is_instance_valid(summons[action_bar.current()]) and mana >= summons[action_bar.current()].mana_cost:
 		var spawned = summons[action_bar.current()].spawn(
 			get_parent(),
@@ -51,7 +47,9 @@ func set_summons(sums):
 	summons = sums
 
 func add_slot():
-	pass
+	summons_number += 1
+	set_slot_number(summons_number)
+	update_grafics()
 
 func set_mana(new_mana: int):
 	var old_mana = get_mana()
@@ -79,7 +77,8 @@ func destroy_summons():
 			update_grafics()
 
 func set_slot_number(num: int):
-	action_bar.slot_number = num
+	slot_number = num
+	action_bar.set_num(slot_number)
 
 func get_slot_number():
 	return action_bar.slot_number

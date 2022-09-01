@@ -4,7 +4,7 @@ var target: Character = null
 
 func _on_Web_body_entered(body):
 	$Timer.start()
-	if body.is_in_group("Character"):
+	if body.is_in_group("Character") and not body.can_fly:
 		body.incapacitate()
 	target = body
 

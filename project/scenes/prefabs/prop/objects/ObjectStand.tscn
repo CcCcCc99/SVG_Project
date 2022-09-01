@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/prop/ObjectStand.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/prop/piedistallo.png" type="Texture" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 33.0
+height = 56.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "Floating"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Object:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -40 ), Vector2( 0, -55 ), Vector2( 0, -40 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Object:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -50 ) ]
+}
+
+[node name="ObjectStand" type="Area2D" groups=["Environment"]]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1, -9 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="Stand" type="Sprite" parent="."]
+position = Vector2( 8, -81 )
+scale = Vector2( 0.4, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="Object" type="Node2D" parent="."]
+position = Vector2( 0, -50 )
+
+[node name="Sprite" type="Sprite" parent="Object"]
+position = Vector2( 0, -34 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Floating"
+anims/Floating = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+
+[connection signal="body_entered" from="." to="." method="_on_ObjectStand_body_entered"]

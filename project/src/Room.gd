@@ -58,6 +58,12 @@ func load_events(events_state: Dictionary):
 		if events_state.has(key):
 			e.load_event(events_state[key])
 
+func start_events():
+	var events = $Events.get_children()
+	for e in events:
+		if e.auto_start:
+			e.start()
+
 func enable_doors():
 	_enable_door(LEFT, left_room)
 	_enable_door(RIGHT, right_room)

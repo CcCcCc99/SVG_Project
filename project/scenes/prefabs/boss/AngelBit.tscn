@@ -1,0 +1,133 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://scenes/Mob.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/sprites/angelbit/ali.png" type="Texture" id=2]
+[ext_resource path="res://src/boss/AngelBit.gd" type="Script" id=3]
+[ext_resource path="res://assets/sprites/angelbit/senzaali.png" type="Texture" id=4]
+[ext_resource path="res://src/utility/Hitbox.gd" type="Script" id=5]
+[ext_resource path="res://assets/sprites/angelbit/sportello.png" type="Texture" id=6]
+[ext_resource path="res://scenes/prefabs/prop/shots/Fly.tscn" type="PackedScene" id=7]
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 45.0
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 49, 76.5 )
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color: hint_color = vec4(1.0);
+uniform float flash_modifier: hint_range(0.0, 1.0) = 0.0;
+
+void fragment() {
+	vec4 color = texture(TEXTURE,UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 0.0
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "attack",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 79.0
+height = 36.0
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Wings:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Wings"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Wings:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1 ), Vector2( 0.9, 1 ), Vector2( 1.5, 1 ), Vector2( 1, 1 ) ]
+}
+
+[node name="AngelBit" groups=["Boss"] instance=ExtResource( 1 )]
+position = Vector2( 1135, 625 )
+script = ExtResource( 3 )
+can_fly = true
+fly = ExtResource( 7 )
+fly_number = 5
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyChecker" index="0"]
+position = Vector2( 0.999999, -29.5 )
+rotation = 3.14159
+shape = SubResource( 5 )
+
+[node name="Body" type="Node2D" parent="." index="2"]
+position = Vector2( 26, -266 )
+
+[node name="Wings" type="Sprite" parent="Body" index="0"]
+texture = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Body" index="1"]
+material = SubResource( 8 )
+frames = SubResource( 1 )
+animation = "idle"
+
+[node name="HitBox" type="Area2D" parent="Body" index="2" groups=["Boss", "Character", "Hitbox", "Mob"]]
+position = Vector2( -24, 219 )
+collision_layer = 2
+collision_mask = 63
+script = ExtResource( 5 )
+
+[node name="Head" type="CollisionShape2D" parent="Body/HitBox" index="0"]
+position = Vector2( 0, -333 )
+rotation = 1.5708
+shape = SubResource( 6 )
+
+[node name="Body" type="CollisionPolygon2D" parent="Body/HitBox" index="1"]
+polygon = PoolVector2Array( -65, -181, -4, -56, 50, -201, -1, -264 )
+
+[node name="Position2D" type="Position2D" parent="Body" index="3"]
+position = Vector2( -86, 88 )
+
+[node name="Cooldown" parent="." index="4"]
+wait_time = 0.1
+
+[node name="WingsAnimator" type="AnimationPlayer" parent="." index="7"]
+anims/RESET = SubResource( 2 )
+anims/Wings = SubResource( 3 )
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]

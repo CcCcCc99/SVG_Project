@@ -1,18 +1,10 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/player/Player.gd" type="Script" id=2]
 [ext_resource path="res://scenes/prefabs/prop/Portalgun.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/sprites/player/base/pgavanti.png" type="Texture" id=4]
-[ext_resource path="res://assets/sprites/player/base/pgavanti_cammina1.png" type="Texture" id=5]
-[ext_resource path="res://assets/sprites/player/base/pgavanti_cammina2.png" type="Texture" id=6]
+[ext_resource path="res://assets/animations/PlayerDefaultAnimations.tres" type="SpriteFrames" id=4]
 [ext_resource path="res://scenes/corps/MainCharCorpse.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/sprites/player/base/pgdietro_cammina2.png" type="Texture" id=8]
-[ext_resource path="res://assets/sprites/player/base/pglato1.png" type="Texture" id=9]
-[ext_resource path="res://assets/sprites/player/base/pgdietro_cammina1.png" type="Texture" id=10]
-[ext_resource path="res://assets/sprites/player/base/pglato2.png" type="Texture" id=11]
-[ext_resource path="res://assets/sprites/player/base/pgsinistra1.png" type="Texture" id=12]
-[ext_resource path="res://assets/sprites/player/base/pgsinistra2.png" type="Texture" id=13]
 [ext_resource path="res://src/utility/Hitbox.gd" type="Script" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -35,34 +27,6 @@ shader = SubResource( 7 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
 
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "walk_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "walk_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "walk_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 5.0
-} ]
-
 [sub_resource type="CircleShape2D" id=2]
 radius = 43.5115
 
@@ -81,19 +45,22 @@ shape = SubResource( 1 )
 material = SubResource( 5 )
 position = Vector2( 7.52, -114.984 )
 scale = Vector2( 0.6, 0.6 )
-frames = SubResource( 3 )
+frames = ExtResource( 4 )
 animation = "idle"
 playing = true
 
 [node name="Hitbox" type="Area2D" parent="." index="2" groups=["Character", "Hitbox", "Player", "PlayerAlly"]]
 script = ExtResource( 20 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox" index="0"]
-polygon = PoolVector2Array( 1.5, -158.5, -26, -29, 25.5, -27.5 )
+[node name="HitboxHead" type="Area2D" parent="Hitbox" index="0" groups=["Character", "Head", "Hitbox", "Player", "PlayerAlly"]]
+script = ExtResource( 20 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="1"]
+[node name="Head" type="CollisionShape2D" parent="Hitbox/HitboxHead" index="0"]
 position = Vector2( 5, -204 )
 shape = SubResource( 2 )
+
+[node name="Body" type="CollisionPolygon2D" parent="Hitbox" index="1"]
+polygon = PoolVector2Array( 1.5, -158.5, -26, -29, 25.5, -27.5 )
 
 [node name="Portalgun" parent="." index="3" instance=ExtResource( 3 )]
 

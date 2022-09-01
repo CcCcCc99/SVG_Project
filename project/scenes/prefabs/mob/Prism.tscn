@@ -8,9 +8,6 @@
 [ext_resource path="res://scenes/corps/PrismCorpse.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/sprites/prism/PrismIcon.png" type="Texture" id=7]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 38, 38 )
-
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 49, 76.5 )
 
@@ -50,6 +47,7 @@ height = 67.6389
 script = ExtResource( 5 )
 CORPSE = ExtResource( 6 )
 speed = 5000
+can_fly = true
 icon = ExtResource( 7 )
 raycast = ExtResource( 4 )
 
@@ -67,9 +65,6 @@ material = SubResource( 8 )
 position = Vector2( -53.603, -193.596 )
 scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 1 )
-
-[node name="InvincibilityTimer" parent="." index="4"]
-wait_time = 0.7
 
 [node name="AttackMode" type="Area2D" parent="." index="5"]
 position = Vector2( -5, -192 )
