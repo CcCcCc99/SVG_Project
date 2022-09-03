@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/Mob.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/angelbit/ali.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://src/utility/Hitbox.gd" type="Script" id=5]
 [ext_resource path="res://assets/sprites/angelbit/sportello.png" type="Texture" id=6]
 [ext_resource path="res://scenes/prefabs/prop/shots/Fly.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/utility/Hitbox.gd" type="Script" id=8]
+[ext_resource path="res://src/utility/TriggerAttack.gd" type="Script" id=9]
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 45.0
@@ -80,23 +82,29 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.5, 1 ), Vector2( 0.9, 1 ), Vector2( 1.5, 1 ), Vector2( 1, 1 ) ]
 }
 
-[node name="AngelBit" groups=["Boss"] instance=ExtResource( 1 )]
-position = Vector2( 1135, 625 )
+[sub_resource type="CircleShape2D" id=9]
+radius = 283.933
+
+[node name="AngelBit" groups=["Boss", "IgnorePortal"] instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-can_fly = true
+max_hp = 8
+speed = 30000
 fly = ExtResource( 7 )
 fly_number = 5
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource( 4 )
 
+[node name="BodyChecker" parent="." index="1" groups=["Boss"]]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyChecker" index="0"]
 position = Vector2( 0.999999, -29.5 )
 rotation = 3.14159
 shape = SubResource( 5 )
 
-[node name="Body" type="Node2D" parent="." index="2"]
+[node name="Body" type="Node2D" parent="." index="2" groups=["Hitbox"]]
 position = Vector2( 26, -266 )
+script = ExtResource( 8 )
 
 [node name="Wings" type="Sprite" parent="Body" index="0"]
 texture = ExtResource( 2 )
@@ -106,7 +114,7 @@ material = SubResource( 8 )
 frames = SubResource( 1 )
 animation = "idle"
 
-[node name="HitBox" type="Area2D" parent="Body" index="2" groups=["Boss", "Character", "Hitbox", "Mob"]]
+[node name="HitBox" type="Area2D" parent="Body" index="2" groups=["Boss", "Character", "Hitbox", "IgnorePortal", "Mob"]]
 position = Vector2( -24, 219 )
 collision_layer = 2
 collision_mask = 63
@@ -120,14 +128,42 @@ shape = SubResource( 6 )
 [node name="Body" type="CollisionPolygon2D" parent="Body/HitBox" index="1"]
 polygon = PoolVector2Array( -65, -181, -4, -56, 50, -201, -1, -264 )
 
-[node name="Position2D" type="Position2D" parent="Body" index="3"]
+[node name="SpawnPoint" type="Position2D" parent="Body" index="3"]
 position = Vector2( -86, 88 )
 
 [node name="Cooldown" parent="." index="4"]
-wait_time = 0.1
+wait_time = 2.3
+one_shot = true
 
 [node name="WingsAnimator" type="AnimationPlayer" parent="." index="7"]
 anims/RESET = SubResource( 2 )
 anims/Wings = SubResource( 3 )
 
+[node name="AttackTimer" type="Timer" parent="." index="9"]
+wait_time = 0.1
+
+[node name="Node2D" type="Node2D" parent="." index="10"]
+
+[node name="RayCast2D" type="RayCast2D" parent="Node2D" index="0"]
+rotation = -1.5708
+enabled = true
+cast_to = Vector2( 0, 2000 )
+
+[node name="TriggerAttack" type="Area2D" parent="." index="11" groups=["Boss"]]
+position = Vector2( -2, -89 )
+rotation = 1.5708
+collision_layer = 2
+collision_mask = 3
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Raycast" type="CollisionShape2D" parent="TriggerAttack" index="0"]
+shape = SubResource( 9 )
+
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
+[connection signal="area_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
+[connection signal="body_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
+[connection signal="enemy_spotted" from="TriggerAttack" to="." method="_on_TriggerAttack_enemy_spotted"]

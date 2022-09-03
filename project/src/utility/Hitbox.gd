@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 func take_damage(damage: int):
 	get_character().take_damage(damage)

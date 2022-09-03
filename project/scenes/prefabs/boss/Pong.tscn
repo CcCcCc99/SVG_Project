@@ -38,21 +38,6 @@ shader_param/flash_modifier = 0.0
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
-"loop": false,
-"name": "jump_up",
-"speed": 6.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ) ],
-"loop": false,
-"name": "jump_down",
-"speed": 6.0
-}, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": " idle",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": false,
 "name": "jumping",
@@ -62,12 +47,27 @@ animations = [ {
 "loop": true,
 "name": "spit",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "jump_down",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "jump_up",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": " idle",
+"speed": 5.0
 } ]
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 141.391
 
-[node name="Pong" groups=["Boss"] instance=ExtResource( 1 )]
+[node name="Pong" groups=["Boss", "IgnorePortal"] instance=ExtResource( 1 )]
 script = ExtResource( 7 )
 max_hp = 10
 speed = 5000
@@ -97,7 +97,7 @@ playing = true
 wait_time = 2.0
 one_shot = true
 
-[node name="HitBox" type="Area2D" parent="." index="5" groups=["Boss", "Character", "Hitbox", "Mob"]]
+[node name="HitBox" type="Area2D" parent="." index="5" groups=["Boss", "Character", "Hitbox", "IgnorePortal", "Mob"]]
 collision_layer = 2
 collision_mask = 63
 script = ExtResource( 9 )

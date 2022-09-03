@@ -11,7 +11,6 @@ func _ready():
 func _on_Timer_timeout():
 	if not is_instance_valid(actual_bomb):
 		var b = bomb.instance()
-		b.position.x = global_position.x - 40
-		b.position.y = global_position.y + 60
+		b.position = $Position2D.global_position
 		get_parent().add_child(b)
 		actual_bomb = b

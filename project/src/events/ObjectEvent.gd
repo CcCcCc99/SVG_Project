@@ -5,7 +5,6 @@ var stand: Node
 
 func _ready():
 	stand = get_parent().get_parent().get_node("Objects/"+stand_name)
-	print(stand)
 
 func activate():
 	is_ever_used = true

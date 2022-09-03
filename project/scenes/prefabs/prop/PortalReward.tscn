@@ -16,5 +16,5 @@ manaScene = ExtResource( 4 )
 modulate = Color( 0.886275, 0.811765, 0.2, 1 )
 scale = Vector2( 0.52, 0.52 )
 frames = ExtResource( 1 )
-frame = 3
+frame = 1
 playing = true

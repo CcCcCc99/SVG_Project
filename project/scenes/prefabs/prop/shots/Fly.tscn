@@ -14,7 +14,7 @@ animations = [ {
 
 [sub_resource type="CircleShape2D" id=2]
 
-[node name="Fly" type="Area2D"]
+[node name="Fly" type="Area2D" groups=["Shot"]]
 script = ExtResource( 2 )
 is_shot = true
 speed = 200
@@ -23,14 +23,20 @@ speed = 200
 position = Vector2( 15, 1 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
 
-[node name="Timer" type="Timer" parent="."]
+[node name="FollowTimer" type="Timer" parent="."]
 one_shot = true
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[node name="EndTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_hit"]
+[connection signal="body_entered" from="." to="." method="_on_hit"]
+[connection signal="timeout" from="FollowTimer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="EndTimer" to="." method="_on_EndTimer_timeout"]

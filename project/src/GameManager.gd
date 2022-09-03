@@ -55,10 +55,6 @@ func _input(event):
 		else:
 			resume()
 			get_node("/root/AudioManager").resume_music()
-	
-	if Input.is_action_just_pressed("debug1"):
-		_unload_level()
-		_load_level(1)
 
 func resume():
 	is_in_pause = false
