@@ -100,6 +100,10 @@ func _spawn_corpse():
 var destination = null
 
 func teleport_to(dest: Portal2D):
+	print(original_scale, scale)
+	if original_scale != null:
+		if original_scale != scale:
+			return
 	if is_instance_valid(dest):
 		original_scale = scale
 		destination = dest.position
