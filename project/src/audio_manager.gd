@@ -35,3 +35,23 @@ func change_music(audio: String, volume: float, pitch: float) -> void:
 func resume_music() -> void:
 	musics.get_child(1).queue_free()
 	musics.get_child(0).set_stream_paused(false)
+
+func end_effects() -> void:
+	if get_child_count() != 1:
+		var i = 1
+		var number_of_children = get_child_count()
+		while i < number_of_children:
+			if get_child(i).get_room() == null:
+				get_child(i).queue_free()
+			else:
+				get_child(i).deactivate()
+			i += 1
+
+func reactivate_effects(room: int) -> void:
+	if get_child_count() != 1:
+		var i = 1
+		var number_of_children = get_child_count()
+		while i < number_of_children:
+			if get_child(i).get_room() == room:
+				get_child(i).reactivate()
+			i += 1

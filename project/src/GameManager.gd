@@ -142,6 +142,7 @@ func _load_room(r: int, d):
 	rooms[r].get_node("Objects").add_child(assistant)
 	rooms[r].start_events()
 	rooms[r].connect("exited_room", self, "_going_trough_door")
+	get_node("/root/AudioManager").reactivate_effects(current_room)
 
 func _unload_room():
 	player.destroy_portals()
@@ -152,6 +153,7 @@ func _unload_room():
 	rooms[current_room].get_node("Objects").remove_child(assistant)
 	rooms[current_room].disconnect("exited_room", self, "_going_trough_door")
 	remove_child(rooms[current_room])
+	get_node("/root/AudioManager").end_effects()
 	_update_events()
 
 func _switch_to_room(r: int, d):
