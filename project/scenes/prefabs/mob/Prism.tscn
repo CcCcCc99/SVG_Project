@@ -46,6 +46,7 @@ height = 67.6389
 [node name="Prism" instance=ExtResource( 2 )]
 script = ExtResource( 5 )
 CORPSE = ExtResource( 6 )
+max_hp = 1
 speed = 5000
 can_fly = true
 icon = ExtResource( 7 )
