@@ -100,7 +100,6 @@ func _spawn_corpse():
 var destination = null
 
 func teleport_to(dest: Portal2D):
-	print(original_scale, scale)
 	if original_scale != null:
 		if original_scale != scale:
 			return
@@ -138,6 +137,8 @@ func start_scaling_up():
 	state = SCALEUP
 
 func incapacitate():
+	if state == SCALEUP or state == SCALEDOWN:
+		return
 	state = INCAPACITATED
 
 func back_to_normal():
