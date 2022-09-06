@@ -31,28 +31,34 @@ position = Vector2( 665, 349 )
 position = Vector2( -777, -262 )
 
 [node name="crepa" type="Area2D" parent="Objects" index="4"]
+position = Vector2( 510, -13 )
 z_index = -1
 script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Crepa3" type="Sprite" parent="Objects/crepa" index="0"]
-position = Vector2( 507, -5 )
 texture = ExtResource( 5 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Objects/crepa" index="1"]
-position = Vector2( 745, -135 )
+position = Vector2( 241, -129 )
 polygon = PoolVector2Array( -5, 2, -12, -73, -60, -81, -76, -44, -103, -65, -118, -66, -149, -89, -189, -56, -244, -78, -240, -52, -269, -39, -301, -48, -341, -21, -379, -35, -406, -24, -408, -10, -374, 16, -421, 55, -445, 31, -461, 73, -469, 127, -457, 128, -450, 179, -380, 204, -363, 237, -415, 212, -429, 262, -378, 297, -379, 319, -333, 328, -319, 341, -263, 263, -237, 332, -186, 331, -169, 353, -131, 338, -100, 359, -65, 342, -41, 377, -13, 366, -9, 324, -31, 302, -32, 248, -68, 243, -88, 214, -135, 227, -154, 192, -172, 187, -186, 202, -178, 258, -206, 253, -219, 196, -260, 199, -258, 155, -313, 118, -293, 82, -245, 91, -214, 55, -171, 82, -130, 86, -119, 82, -133, 45, -108, 26, -74, 59, -39, -3, -13, 2 )
 
 [node name="crepa2" type="Area2D" parent="Objects" index="5"]
-position = Vector2( -1024, -25 )
+position = Vector2( -356, -195 )
 z_index = -1
 script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Crepa3" type="Sprite" parent="Objects/crepa2" index="0"]
-position = Vector2( 705, -178 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 7 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Objects/crepa2" index="1"]
+position = Vector2( -712, 179 )
 polygon = PoolVector2Array( 671, -223, 689, -239, 700, -258, 759, -271, 781, -271, 770, -252, 765, -239, 784, -235, 786, -216, 803, -208, 795, -181, 765, -182, 746, -152, 714, -158, 698, -185, 678, -181 )
 
 [node name="CoilLever" parent="Objects" index="6" instance=ExtResource( 6 )]
