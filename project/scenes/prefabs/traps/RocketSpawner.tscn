@@ -5,7 +5,8 @@
 [ext_resource path="res://assets/sprites/prop/spawner.png" type="Texture" id=3]
 
 [node name="RocketSpawner" type="Sprite"]
-scale = Vector2( 0.3, 0.3 )
+rotation = 3.14159
+scale = Vector2( 0.4, 0.4 )
 z_index = -1
 texture = ExtResource( 3 )
 script = ExtResource( 2 )

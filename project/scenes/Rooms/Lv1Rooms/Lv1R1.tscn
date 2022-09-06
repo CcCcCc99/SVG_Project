@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/prefabs/mob/Prism.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/prefabs/prop/decorations/FluidContainerPink.tscn" type="PackedScene" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://assets/decorations/armadio.png" type="Texture" id=6]
 [ext_resource path="res://src/prop/Levers/LeverLine.gd" type="Script" id=7]
 [ext_resource path="res://scenes/prefabs/prop/Sink.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/prop/Sink.gd" type="Script" id=9]
 [ext_resource path="res://assets/decorations/vaso.png" type="Texture" id=10]
 [ext_resource path="res://assets/decorations/qualcosa1.png" type="Texture" id=11]
 
@@ -80,7 +79,8 @@ default_color = Color( 0.482353, 0.482353, 0.482353, 1 )
 
 [node name="Sink" parent="Objects" index="8" instance=ExtResource( 8 )]
 position = Vector2( -39, 227 )
-script = ExtResource( 9 )
+leverpinkname = "Pink"
+levergreenname = "Green"
 
 [node name="Armadio" type="Sprite" parent="." index="5"]
 position = Vector2( 831, -307 )

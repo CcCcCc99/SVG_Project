@@ -1,11 +1,14 @@
 extends Node2D
 
+export (String) var leverpinkname
+export (String) var levergreenname
+
 var water: Node
 var empty: Node
 
 func _on_Lever_used():
-	var pink = get_parent().get_node("LeverPink").is_on
-	var green = get_parent().get_node("LeverGreen").is_on
+	var pink = get_parent().get_node("Lever" + leverpinkname).is_on
+	var green = get_parent().get_node("Lever" + levergreenname).is_on
 	if pink:
 		if green:
 			$AnimatedSprite.animation = "mix"

@@ -24,7 +24,7 @@ speed = 500
 POOF = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.3, 0.3 )
+scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 1 )
 animation = "run"
 frame = 2
