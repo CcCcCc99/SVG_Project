@@ -37,6 +37,7 @@ func _reset_animations():
 	._reset_animations()
 	if flip:
 		scale.x = -1
+		scale.y = 1
 
 func _on_collision_environment():
 	pass
