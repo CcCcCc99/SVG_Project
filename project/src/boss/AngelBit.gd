@@ -1,6 +1,7 @@
 extends Mob
 
 var initial_body_pos: Vector2
+export var energy_ball: PackedScene
 export var fly: PackedScene
 export var fly_number: int
 
@@ -73,16 +74,21 @@ func _spawn_fly():
 	get_parent().add_child(f)
 
 func _on_AttackTimer_timeout():
-	_spawn_fly()
+	if in_rage:
+		pass#_shoot()
+	else:
+		_spawn_fly()
 	count += 1
-	if count >= 5:
+	
+	if count >= 8 and in_rage:
+		count = 0
+	elif count >= 5 and not in_rage:
 		$Body.position = initial_body_pos
 		ia_state = WALK
 		$Body.position = initial_body_pos
 		count = 0
 		$AttackTimer.stop()
 		$Cooldown.start()
-
 
 func _on_Cooldown_timeout():
 	$Body.position = initial_body_pos
@@ -93,6 +99,9 @@ func _on_TriggerAttack_enemy_spotted(body):
 		j = 0
 		ia_state = ATTACK
 		$AttackTimer.start()
+		if in_rage:
+			$AttackTimer.wait_time = 0.6
+			spawn_energy()
 	else:
 		first_spot = true
 
@@ -100,3 +109,12 @@ func rage():
 	speed *= 2.5
 	modulate = Color.red
 	in_rage = true
+
+func spawn_energy():
+	var points = $SpawnPoints.get_children()
+	for p in points:
+		var eb = energy_ball.instance()
+		#eb.set_direction()
+		eb.position = p.global
+		add_child(eb)
+
