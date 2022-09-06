@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scenes/prefabs/traps/Bat.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/prefabs/traps/Rocket.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/traps/BatSpawner.gd" type="Script" id=2]
 [ext_resource path="res://assets/sprites/prop/spawner.png" type="Texture" id=3]
 
