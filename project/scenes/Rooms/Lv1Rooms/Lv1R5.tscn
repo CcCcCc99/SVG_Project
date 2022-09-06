@@ -1,20 +1,29 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Rooms/RoomGenericSciFi.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/prefabs/mob/SpiderBot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/prefabs/prop/decorations/FluidContainerGreen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/prefabs/prop/decorations/FluidContainerPink.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/decorations/targhettabossliv1.png" type="Texture" id=5]
 
 [node name="Room" instance=ExtResource( 1 )]
 left_room = 4
 top_room = 6
 bottom_room = 2
 
+[node name="Targhettabossliv1" type="Sprite" parent="." index="1"]
+position = Vector2( 144, -486 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionUp" parent="CollisionsVerticals" index="0"]
+polygon = PoolVector2Array( -960, -541, -780, -391, -59, -434, -81, -514, 77, -514, 68, -434, 724, -391, 961, -539, 143.771, -539.851 )
+
 [node name="SpiderBot" parent="Objects" index="0" instance=ExtResource( 2 )]
-position = Vector2( 0, -431 )
+position = Vector2( -619, -426 )
 
 [node name="SpiderBot2" parent="Objects" index="1" instance=ExtResource( 2 )]
-position = Vector2( 0, 431 )
+position = Vector2( 595, 434 )
 scale = Vector2( 1, -1 )
 
 [node name="FluidContainer" parent="Objects" index="2" instance=ExtResource( 3 )]
