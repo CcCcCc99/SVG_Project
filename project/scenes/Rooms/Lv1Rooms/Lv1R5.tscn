@@ -17,6 +17,14 @@ left_room = 4
 top_room = 6
 bottom_room = 2
 
+[node name="Targhettabossliv1" type="Sprite" parent="." index="1"]
+position = Vector2( 144, -486 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionUp" parent="CollisionsVerticals" index="0"]
+polygon = PoolVector2Array( -960, -541, -780, -391, -59, -434, -81, -514, 77, -514, 68, -434, 724, -391, 961, -539, 143.771, -539.851 )
+
 [node name="SpiderBot" parent="Objects" index="0" instance=ExtResource( 2 )]
 position = Vector2( -633, -431 )
 
