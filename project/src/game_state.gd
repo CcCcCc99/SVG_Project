@@ -1,6 +1,8 @@
 extends Reference
 class_name GameState
 
+var name: String
+
 var hp: int setget ,get_hp
 var max_hp: int setget ,get_max_hp
 
