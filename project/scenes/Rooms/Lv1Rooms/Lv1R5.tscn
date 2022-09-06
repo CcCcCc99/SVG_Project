@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Rooms/RoomGenericSciFi.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/prefabs/mob/SpiderBot.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://src/prop/Levers/LeverLine.gd" type="Script" id=9]
 [ext_resource path="res://scenes/prefabs/prop/Sink.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/Rooms/Lv1Rooms/crepa.gd" type="Script" id=11]
+[ext_resource path="res://assets/decorations/targhettabossliv1.png" type="Texture" id=12]
 
 [node name="Room" instance=ExtResource( 1 )]
 left_room = 4
@@ -20,7 +21,7 @@ bottom_room = 2
 [node name="Targhettabossliv1" type="Sprite" parent="." index="1"]
 position = Vector2( 144, -486 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 5 )
+texture = ExtResource( 12 )
 
 [node name="CollisionUp" parent="CollisionsVerticals" index="0"]
 polygon = PoolVector2Array( -960, -541, -780, -391, -59, -434, -81, -514, 77, -514, 68, -434, 724, -391, 961, -539, 143.771, -539.851 )

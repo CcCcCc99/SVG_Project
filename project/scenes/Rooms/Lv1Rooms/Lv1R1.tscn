@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/prefabs/mob/Prism.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/prefabs/prop/decorations/FluidContainerPink.tscn" type="PackedScene" id=2]
@@ -24,7 +24,7 @@ top_room = 2
 bottom_room = 0
 
 [node name="Qualcosa1" type="Sprite" parent="Objects" index="0"]
-position = Vector2( -1456, -136 )
+position = Vector2( -1506, -150 )
 scale = Vector2( -1, 1 )
 texture = ExtResource( 11 )
 offset = Vector2( -1999.41, -60.3121 )
@@ -86,7 +86,7 @@ points = PoolVector2Array( 144, -304, 552, -304, 552, 176, 24, 176 )
 default_color = Color( 0.482353, 0.482353, 0.482353, 1 )
 
 [node name="Sink" parent="Objects" index="8" instance=ExtResource( 8 )]
-position = Vector2( -39, 227 )
+position = Vector2( 142, -191 )
 leverpinkname = "Pink"
 levergreenname = "Green"
 
