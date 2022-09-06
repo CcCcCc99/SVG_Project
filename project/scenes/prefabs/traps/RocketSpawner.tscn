@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/prefabs/traps/Bat.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/traps/BatSpawner.gd" type="Script" id=2]
+[ext_resource path="res://assets/sprites/prop/spawner.png" type="Texture" id=3]
+
+[node name="RocketSpawner" type="Sprite"]
+scale = Vector2( 0.3, 0.3 )
+z_index = -1
+texture = ExtResource( 3 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+bat = ExtResource( 1 )
+flipx = true
+flipy = true
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
