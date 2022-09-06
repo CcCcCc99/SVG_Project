@@ -112,6 +112,9 @@ func _set_music(l: int):
 		get_node("/root/AudioManager").change_music("res://assets/audio/Destroyed Sanctuary.mp3", -10.0, 1.0)
 	elif l == 1:
 		get_node("/root/AudioManager").change_music("res://assets/audio/echelon.mp3", -10.0, 1.0)
+	elif l == 2:
+		get_node("/root/AudioManager").change_music("res://assets/audio/Cleyton RX - Underwater.mp3", 0.0, 1.0)
+	# da aggiungere altre musiche
 
 func _unload_level():
 	_unload_room()
