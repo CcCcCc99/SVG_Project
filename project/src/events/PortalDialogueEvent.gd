@@ -22,3 +22,7 @@ func activate(body):
 		var room = get_parent().get_parent()
 		DialogueManager.game_states = [self, room, player]
 		DialogueManager.show_example_dialogue_balloon("Portals", file)
+
+func finished_dialogue():
+	get_parent().get_parent().open_doors()
+	get_node("/root/AudioManager").add_effect("res://assets/audio/42972454_door-opening-05.mp3", 0.0, 1.0, false)

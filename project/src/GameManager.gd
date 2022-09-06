@@ -112,6 +112,9 @@ func _set_music(l: int):
 		get_node("/root/AudioManager").change_music("res://assets/audio/Destroyed Sanctuary.mp3", -10.0, 1.0)
 	elif l == 1:
 		get_node("/root/AudioManager").change_music("res://assets/audio/echelon.mp3", -10.0, 1.0)
+	elif l == 2:
+		get_node("/root/AudioManager").change_music("res://assets/audio/Cleyton RX - Underwater.mp3", 0.0, 1.0)
+	# da aggiungere altre musiche
 
 func _unload_level():
 	_unload_room()
@@ -142,6 +145,7 @@ func _load_room(r: int, d):
 	rooms[r].get_node("Objects").add_child(assistant)
 	rooms[r].start_events()
 	rooms[r].connect("exited_room", self, "_going_trough_door")
+	get_node("/root/AudioManager").reactivate_effects(current_room)
 
 func _unload_room():
 	player.destroy_portals()
@@ -152,6 +156,7 @@ func _unload_room():
 	rooms[current_room].get_node("Objects").remove_child(assistant)
 	rooms[current_room].disconnect("exited_room", self, "_going_trough_door")
 	remove_child(rooms[current_room])
+	get_node("/root/AudioManager").end_effects()
 	_update_events()
 
 func _switch_to_room(r: int, d):

@@ -9,8 +9,11 @@ var stacked_menu: Node
 
 var menu_buttons: Array # da inizializzare nel ready delle classi figlie
 
+var is_just_reactivated = false
+
 func enable():
 	is_enabled = true
+	is_just_reactivated = true
 	$Menu.show()
 	if is_instance_valid(stacked_menu):
 		stacked_menu.queue_free()
@@ -48,13 +51,19 @@ func change_menu_color():
 	_on_enter_button_number(selected_menu)
 
 func _input(event):
+	if is_just_reactivated:
+		is_just_reactivated = false
+		return
 	if not is_enabled:
 		return
 	if Input.is_action_just_pressed("ui_down"):
 		selected_menu = (selected_menu + 1) % menu_buttons.size()
 		change_menu_color()
 	elif Input.is_action_just_pressed("ui_up"):
-		selected_menu = (selected_menu - 1) % menu_buttons.size()
+		if selected_menu == 0:
+			selected_menu = menu_buttons.size() - 1
+		else:
+			selected_menu = (selected_menu - 1) % menu_buttons.size()
 		change_menu_color()
 	elif Input.is_action_just_pressed("ui_accept"):
 		_press_button_number(selected_menu)

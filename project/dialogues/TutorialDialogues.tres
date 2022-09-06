@@ -59,7 +59,7 @@ Helena: Sì, adesso risolviamo tutto. Vedrai.
 Helena: Sì, il mio nome è dott.essa Helena Wissenschaftler e lavoro al laboratorio <nome del laboratorio>.
 Helena: Noi facciamo ricerche sui portali ed i loro utilizzi.
 Helena: Considerando quello che è successo ne incontreremo molti sulla nostra strada.
-do open_doors()
+do finished_dialogue()
 
 
 ~ Summon
@@ -661,7 +661,7 @@ lines = {
 "54": {
 "mutation": {
 "args": [  ],
-"function": "open_doors"
+"function": "finished_dialogue"
 },
 "next_id": "end",
 "type": "mutation"

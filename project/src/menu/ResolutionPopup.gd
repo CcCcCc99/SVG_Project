@@ -19,7 +19,7 @@ func _press_button_number(num: int):
 		3:
 			_on_Res1920x1080_pressed()
 		4:
-			_on_Res1920x1080_pressed()
+			_on_Back_pressed()
 
 func _on_Res1024x546_pressed():
 	config.set_resolution(Vector2(1024, 546))

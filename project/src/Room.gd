@@ -83,6 +83,7 @@ func _on_enemy_killed() -> void:
 	num_enemies -= 1
 	if num_enemies == 0:
 		open_doors()
+		get_node("/root/AudioManager").add_effect("res://assets/audio/42972454_door-opening-05.mp3", 0.0, 1.0, false)
 		emit_signal("completed")
 
 func open_doors() -> void:
