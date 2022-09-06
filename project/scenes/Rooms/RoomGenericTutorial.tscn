@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/room.png" type="Texture" id=4]
 
 [node name="Room" instance=ExtResource( 1 )]
+closed = false
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 4 )
