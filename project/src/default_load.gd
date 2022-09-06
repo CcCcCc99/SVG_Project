@@ -81,6 +81,8 @@ func save_game_state(state: GameState):
 	var file = File.new()
 	file.open(saving_path, File.WRITE)
 
+	file.store_var(state.name)
+
 	file.store_var(state.hp)
 	file.store_var(state.max_hp)
 	file.store_var(state.mp)
@@ -107,6 +109,8 @@ func load_game_state() -> GameState:
 	file.open(saving_path, File.READ)
 	
 	var state: GameState = GameState.new()
+	state.name = file.get_var()
+
 	state.hp = file.get_var()
 	state.max_hp = file.get_var()
 	state.mp = file.get_var()
