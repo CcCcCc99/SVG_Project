@@ -239,7 +239,6 @@ func ask_name():
 	$HUD.add_child(stacked_menu)
 
 func save_name(name: String):
-	DefaultLoad.player_name = name
 	saved_state.name = name
 	var file = preload("res://dialogues/TutorialDialogues.tres")
 	DialogueManager.game_states = [$Room, $Room/Events/PresentationEvent, player]
