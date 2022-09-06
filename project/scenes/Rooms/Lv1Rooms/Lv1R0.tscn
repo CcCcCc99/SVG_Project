@@ -1,15 +1,46 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/prefabs/prop/portals/Checkpoint.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Rooms/RoomGenericSciFi.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/prefabs/prop/portals/ChangeLevelPortal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/decorations/scrivaniapc2.png" type="Texture" id=4]
+[ext_resource path="res://assets/decorations/targhettalabliv1.png" type="Texture" id=5]
 
 [node name="Room" instance=ExtResource( 2 )]
 top_room = 1
 
 [node name="Checkpoint" parent="Objects" index="0" instance=ExtResource( 1 )]
-position = Vector2( -541, -231 )
+position = Vector2( -615, -143 )
 
 [node name="Portal" parent="Objects" index="1" instance=ExtResource( 3 )]
 position = Vector2( 16, 332 )
 scale = Vector2( 1.2, 1.2 )
+
+[node name="Scrivaniapc2" type="Sprite" parent="Objects" index="2"]
+position = Vector2( -630, -352 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 4 )
+
+[node name="CollisionVertivals" type="StaticBody2D" parent="Objects/Scrivaniapc2" index="0" groups=["Environment", "VerticalEnvironment"]]
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Top" type="CollisionPolygon2D" parent="Objects/Scrivaniapc2/CollisionVertivals" index="0"]
+polygon = PoolVector2Array( -314.286, 104.762, -161.905, 57.1429, 138.095, 61.9048, 247.619, 128.571 )
+
+[node name="Bottom" type="CollisionPolygon2D" parent="Objects/Scrivaniapc2/CollisionVertivals" index="1"]
+polygon = PoolVector2Array( -295.238, 280.952, 242.857, 285.714, 242.857, 257.143, -290.476, 238.095 )
+
+[node name="CollisionHorizontals" type="StaticBody2D" parent="Objects/Scrivaniapc2" index="1" groups=["Environment", "HorizontalEnvironment"]]
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Left" type="CollisionPolygon2D" parent="Objects/Scrivaniapc2/CollisionHorizontals" index="0"]
+polygon = PoolVector2Array( 242.857, 285.714, 271.429, 90.4762, 180.953, 90.4762 )
+
+[node name="Right" type="CollisionPolygon2D" parent="Objects/Scrivaniapc2/CollisionHorizontals" index="1"]
+polygon = PoolVector2Array( -285.714, 271.429, -304.762, 90.4762, -271.428, 71.4286, -190.476, 104.762 )
+
+[node name="Targhettalabliv1" type="Sprite" parent="." index="7"]
+position = Vector2( 148, -484 )
+scale = Vector2( 0.3, 0.3 )
+z_index = -1
+texture = ExtResource( 5 )

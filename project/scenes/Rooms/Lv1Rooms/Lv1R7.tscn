@@ -1,15 +1,170 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Rooms/RoomGenericSciFi.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/prefabs/prop/objects/WetSuitStand.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Event.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/events/ObjectEvent.gd" type="Script" id=4]
+[ext_resource path="res://scenes/prefabs/prop/WallLaser.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/prefabs/prop/Coil.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/prefabs/prop/CoilLever.tscn" type="PackedScene" id=7]
 
 [node name="Room" instance=ExtResource( 1 )]
 right_room = 3
 
-[node name="WetSuitStand" parent="Objects" index="0" instance=ExtResource( 2 )]
+[node name="Coil1" parent="Objects" index="0" instance=ExtResource( 6 )]
+position = Vector2( -800, -130 )
+laser_num = [ "1" ]
+neighbors = [ "3" ]
+
+[node name="Coil2" parent="Objects" index="1" instance=ExtResource( 6 )]
+position = Vector2( -800, 130 )
+laser_num = [ "3" ]
+neighbors = [ "4" ]
+
+[node name="Coil3" parent="Objects" index="2" instance=ExtResource( 6 )]
+position = Vector2( -620, -130 )
+laser_num = [ "1", "2", "10" ]
+neighbors = [ "1", "4", "7" ]
+
+[node name="Coil4" parent="Objects" index="3" instance=ExtResource( 6 )]
+position = Vector2( -620, 130 )
+laser_num = [ "2", "3", "15" ]
+neighbors = [ "3", "2", "11" ]
+
+[node name="Laser1" parent="Objects" index="4" instance=ExtResource( 5 )]
+position = Vector2( 6, -254 )
+points = PoolVector2Array( -789, 39, -611, 39 )
+
+[node name="Laser2" parent="Objects" index="5" instance=ExtResource( 5 )]
+position = Vector2( -606, -215 )
+points = PoolVector2Array( 0, 0, 0, 260 )
+
+[node name="Laser3" parent="Objects" index="6" instance=ExtResource( 5 )]
+points = PoolVector2Array( -789, 39, -611, 39 )
+
+[node name="CoilLever" parent="Objects" index="7" instance=ExtResource( 7 )]
+position = Vector2( -703, 302 )
+coil_num = [ "2" ]
+
+[node name="WetSuitStand" parent="Objects" index="8" instance=ExtResource( 2 )]
 position = Vector2( -764, 11 )
+
+[node name="Coil5" parent="Objects" index="9" instance=ExtResource( 6 )]
+position = Vector2( -150, -160 )
+laser_num = [ "4", "9", "11" ]
+neighbors = [ "6", "7", "12" ]
+
+[node name="Coil6" parent="Objects" index="10" instance=ExtResource( 6 )]
+position = Vector2( 150, -160 )
+laser_num = [ "4", "5", "12" ]
+neighbors = [ "5", "8", "13" ]
+
+[node name="Coil7" parent="Objects" index="11" instance=ExtResource( 6 )]
+position = Vector2( -340, 0 )
+laser_num = [ "8", "9", "10" ]
+neighbors = [ "3", "5", "9" ]
+
+[node name="Coil8" parent="Objects" index="12" instance=ExtResource( 6 )]
+position = Vector2( 340, 0 )
+laser_num = [ "5", "6", "13" ]
+neighbors = [ "6", "10", "14" ]
+
+[node name="Coil9" parent="Objects" index="13" instance=ExtResource( 6 )]
+position = Vector2( -150, 160 )
+laser_num = [ "7", "8" ]
+neighbors = [ "7", "10" ]
+
+[node name="Coil10" parent="Objects" index="14" instance=ExtResource( 6 )]
+position = Vector2( 150, 160 )
+laser_num = [ "6", "7", "14" ]
+neighbors = [ "8", "9", "15" ]
+
+[node name="Laser4" parent="Objects" index="15" instance=ExtResource( 5 )]
+position = Vector2( 6, 10 )
+points = PoolVector2Array( -142, -254, 157, -254 )
+
+[node name="Laser5" parent="Objects" index="16" instance=ExtResource( 5 )]
+position = Vector2( 163, -243 )
+points = PoolVector2Array( 0, -3, 191, 156 )
+
+[node name="Laser6" parent="Objects" index="17" instance=ExtResource( 5 )]
+points = PoolVector2Array( 350, -89, 161, 70 )
+
+[node name="Laser7" parent="Objects" index="18" instance=ExtResource( 5 )]
+points = PoolVector2Array( 161, 69, -141, 69 )
+
+[node name="Laser8" parent="Objects" index="19" instance=ExtResource( 5 )]
+points = PoolVector2Array( -138, 71, -329, -89 )
+
+[node name="Laser9" parent="Objects" index="20" instance=ExtResource( 5 )]
+points = PoolVector2Array( -328, -92, -140, -252 )
+
+[node name="Coil11" parent="Objects" index="21" instance=ExtResource( 6 )]
+position = Vector2( -502, 367 )
+laser_num = [ "15" ]
+neighbors = [ "4" ]
+
+[node name="Coil12" parent="Objects" index="22" instance=ExtResource( 6 )]
+position = Vector2( -265, -394 )
+laser_num = [ "11" ]
+neighbors = [ "5" ]
+
+[node name="Coil13" parent="Objects" index="23" instance=ExtResource( 6 )]
+position = Vector2( 265, -394 )
+laser_num = [ "12" ]
+neighbors = [ "6" ]
+
+[node name="Coil14" parent="Objects" index="24" instance=ExtResource( 6 )]
+position = Vector2( 735, -250 )
+laser_num = [ "13" ]
+neighbors = [ "8" ]
+
+[node name="Coil15" parent="Objects" index="25" instance=ExtResource( 6 )]
+position = Vector2( 502, 393 )
+laser_num = [ "14" ]
+neighbors = [ "10" ]
+
+[node name="Laser10" parent="Objects" index="26" instance=ExtResource( 5 )]
+points = PoolVector2Array( -604, -217, -330, -88 )
+
+[node name="Laser11" parent="Objects" index="27" instance=ExtResource( 5 )]
+points = PoolVector2Array( -142, -253, -255, -483 )
+
+[node name="Laser12" parent="Objects" index="28" instance=ExtResource( 5 )]
+points = PoolVector2Array( 160, -249, 277, -481 )
+
+[node name="Laser13" parent="Objects" index="29" instance=ExtResource( 5 )]
+points = PoolVector2Array( 353, -89, 747, -338 )
+
+[node name="Laser14" parent="Objects" index="30" instance=ExtResource( 5 )]
+points = PoolVector2Array( 160, 70, 513, 302 )
+
+[node name="Laser15" parent="Objects" index="31" instance=ExtResource( 5 )]
+points = PoolVector2Array( -610, 40, -489, 276 )
+
+[node name="CoilLever2" parent="Objects" index="32" instance=ExtResource( 7 )]
+position = Vector2( 608, 387 )
+coil_num = [ "15" ]
+
+[node name="CoilLever3" parent="Objects" index="33" instance=ExtResource( 7 )]
+position = Vector2( -463, -272 )
+coil_num = [ "11" ]
+
+[node name="CoilLever4" parent="Objects" index="34" instance=ExtResource( 7 )]
+position = Vector2( -160, -385 )
+coil_num = [ "12" ]
+
+[node name="CoilLever5" parent="Objects" index="35" instance=ExtResource( 7 )]
+position = Vector2( -211, 196 )
+coil_num = [ "9", "15" ]
+
+[node name="CoilLever6" parent="Objects" index="36" instance=ExtResource( 7 )]
+position = Vector2( 336, -361 )
+coil_num = [ "8", "13" ]
+
+[node name="CoilLever7" parent="Objects" index="37" instance=ExtResource( 7 )]
+position = Vector2( 252, 10 )
+coil_num = [ "8" ]
 
 [node name="WetSuitEvent" parent="Events" index="0" instance=ExtResource( 3 )]
 script = ExtResource( 4 )

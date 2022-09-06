@@ -2,9 +2,9 @@
 
 [ext_resource path="res://assets/menu/pointer.png" type="Texture" id=1]
 [ext_resource path="res://src/menu/PauseScreen.gd" type="Script" id=2]
-[ext_resource path="res://assets/menu/label_options.png" type="Texture" id=3]
-[ext_resource path="res://assets/menu/label_resume.png" type="Texture" id=4]
-[ext_resource path="res://assets/menu/label_quit.png" type="Texture" id=5]
+[ext_resource path="res://assets/menu/ita_opzioni.png" type="Texture" id=3]
+[ext_resource path="res://assets/menu/ita_riprendi.png" type="Texture" id=4]
+[ext_resource path="res://assets/menu/ita_esci.png" type="Texture" id=5]
 [ext_resource path="res://assets/menu/poof_menu_pausa.png" type="Texture" id=6]
 
 [node name="PauseScreen" type="CenterContainer"]
@@ -24,28 +24,28 @@ scale = Vector2( 1.28988, 1.1999 )
 texture = ExtResource( 6 )
 
 [node name="Menu" type="VBoxContainer" parent="."]
-margin_top = 53.0
-margin_right = 356.0
-margin_bottom = 364.0
+margin_top = 47.0
+margin_right = 357.0
+margin_bottom = 370.0
 
 [node name="ResumeButton" type="TextureButton" parent="Menu"]
 modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
-margin_right = 356.0
-margin_bottom = 101.0
+margin_right = 357.0
+margin_bottom = 105.0
 texture_normal = ExtResource( 4 )
 
 [node name="OptionsButton" type="TextureButton" parent="Menu"]
 modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
-margin_top = 105.0
-margin_right = 356.0
-margin_bottom = 206.0
+margin_top = 109.0
+margin_right = 357.0
+margin_bottom = 214.0
 texture_normal = ExtResource( 3 )
 
 [node name="BackToTitleButton" type="TextureButton" parent="Menu"]
 modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
-margin_top = 210.0
-margin_right = 356.0
-margin_bottom = 311.0
+margin_top = 218.0
+margin_right = 357.0
+margin_bottom = 323.0
 texture_normal = ExtResource( 5 )
 
 [node name="Pointer" type="Sprite" parent="."]

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/menu/res_vol_poof.png" type="Texture" id=1]
 [ext_resource path="res://assets/GochiHand-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/menu/label_quit.png" type="Texture" id=3]
+[ext_resource path="res://assets/menu/ita_ok.png" type="Texture" id=3]
 [ext_resource path="res://src/menu/NamePopUp.gd" type="Script" id=4]
 [ext_resource path="res://assets/menu/pointer.png" type="Texture" id=5]
 
