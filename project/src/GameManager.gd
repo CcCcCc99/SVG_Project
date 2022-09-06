@@ -117,6 +117,7 @@ func _set_music(l: int):
 	# da aggiungere altre musiche
 
 func _unload_level():
+	get_node("/root/AudioManager").end_effects()
 	_unload_room()
 	rooms.clear()
 
@@ -156,7 +157,7 @@ func _unload_room():
 	rooms[current_room].get_node("Objects").remove_child(assistant)
 	rooms[current_room].disconnect("exited_room", self, "_going_trough_door")
 	remove_child(rooms[current_room])
-	get_node("/root/AudioManager").end_effects()
+	get_node("/root/AudioManager").deactivate_effects()
 	_update_events()
 
 func _switch_to_room(r: int, d):

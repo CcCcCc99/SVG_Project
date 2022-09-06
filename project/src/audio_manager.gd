@@ -41,6 +41,14 @@ func end_effects() -> void:
 		var i = 1
 		var number_of_children = get_child_count()
 		while i < number_of_children:
+			get_child(i).queue_free()
+			i += 1
+
+func deactivate_effects() -> void:
+	if get_child_count() != 1:
+		var i = 1
+		var number_of_children = get_child_count()
+		while i < number_of_children:
 			if get_child(i).get_room() == null:
 				get_child(i).queue_free()
 			else:

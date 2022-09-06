@@ -1,11 +1,14 @@
 extends Node2D
 
+var pink: bool = false
+var green: bool = false
+
 var water: Node
 var empty: Node
 
 func _on_Lever_used():
-	var pink = get_parent().get_node("LeverPink").is_on
-	var green = get_parent().get_node("LeverGreen").is_on
+	pink = get_parent().get_node("LeverPink").is_on
+	green = get_parent().get_node("LeverGreen").is_on
 	if pink:
 		if green:
 			$AnimatedSprite.animation = "mix"
@@ -28,3 +31,14 @@ func _on_Lever_used():
 			$AnimatedSprite.animation = "empty"
 			water.end_effect()
 			empty = get_node("/root/AudioManager").add_effect("res://assets/audio/43011276_water-sink-drain-emptying-01.mp3", -3.0, 1.5, false)
+
+func _on_Area2D_body_entered(body):
+	if body.is_in_group("Character"):
+		if pink and green:
+			body.take_damage(1)
+			$Smoke.playing = true
+			$Smoke.show()
+
+func _on_Smoke_animation_finished():
+	$Smoke.playing = false
+	$Smoke.hide()
