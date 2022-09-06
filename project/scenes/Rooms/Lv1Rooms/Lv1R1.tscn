@@ -20,7 +20,7 @@ position = Vector2( -619, -49 )
 position = Vector2( 529, -69 )
 
 [node name="Prism" parent="Objects" index="2" instance=ExtResource( 1 )]
-position = Vector2( 1, -225 )
+position = Vector2( -422, -234 )
 
 [node name="LeverGreen" parent="Objects" index="3" instance=ExtResource( 5 )]
 position = Vector2( -502, -67 )

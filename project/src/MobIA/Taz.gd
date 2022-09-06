@@ -94,6 +94,8 @@ func _follow_player() -> Vector2:
 func _on_TriggerAttack_enemy_spotted(body):
 	if ia_state == IDLE:
 		return
+	if $Cooldown.is_stopped():
+		$Cooldown.start()
 	ia_state = ATTACK
 	if not is_spinning:
 		is_spinning = true

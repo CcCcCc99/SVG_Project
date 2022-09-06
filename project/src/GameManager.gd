@@ -236,3 +236,15 @@ func load_savings():
 
 func fadein():
 	$AnimationPlayer.play("Fadein")
+
+var stacked_menu
+
+func ask_name():
+	var stacked_menu = load("res://scenes/menu/NamePopUp.tscn").instance()
+	$HUD.add_child(stacked_menu)
+
+func save_name(name: String):
+	saved_state.name = name
+	var file = preload("res://dialogues/TutorialDialogues.tres")
+	DialogueManager.game_states = [$Room, $Room/Events/PresentationEvent, player]
+	DialogueManager.show_example_dialogue_balloon("Quest", file)
