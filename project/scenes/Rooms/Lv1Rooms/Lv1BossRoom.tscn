@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Rooms/RoomGenericSciFi.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/prefabs/boss/AngelBit.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/sprites/prop/tavolo.png" type="Texture" id=8]
 [ext_resource path="res://src/events/AngelRage.gd" type="Script" id=9]
 [ext_resource path="res://scenes/Event.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/prefabs/traps/Bomb.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 116, 66.5 )
@@ -79,7 +80,7 @@ coil_num = [ "3", "4" ]
 position = Vector2( 1010, 65 )
 coil_num = [ "4", "3" ]
 
-[node name="Obstacle" type="StaticBody2D" parent="Objects" index="12"]
+[node name="Obstacle" type="StaticBody2D" parent="Objects" index="12" groups=["Environment"]]
 position = Vector2( 550, 24 )
 __meta__ = {
 "_edit_group_": true
@@ -93,7 +94,7 @@ texture = ExtResource( 8 )
 position = Vector2( 23, 25.5 )
 shape = SubResource( 1 )
 
-[node name="Obstacle2" type="StaticBody2D" parent="Objects" index="13"]
+[node name="Obstacle2" type="StaticBody2D" parent="Objects" index="13" groups=["Environment"]]
 position = Vector2( 358, 19 )
 __meta__ = {
 "_edit_group_": true
@@ -107,7 +108,7 @@ texture = ExtResource( 8 )
 position = Vector2( 23, 25.5 )
 shape = SubResource( 1 )
 
-[node name="Obstacle5" type="StaticBody2D" parent="Objects" index="14"]
+[node name="Obstacle5" type="StaticBody2D" parent="Objects" index="14" groups=["Environment"]]
 position = Vector2( -569, 62 )
 __meta__ = {
 "_edit_group_": true
@@ -121,7 +122,7 @@ texture = ExtResource( 8 )
 position = Vector2( 23, 25.5 )
 shape = SubResource( 1 )
 
-[node name="Obstacle4" type="StaticBody2D" parent="Objects" index="15"]
+[node name="Obstacle4" type="StaticBody2D" parent="Objects" index="15" groups=["Environment"]]
 position = Vector2( -760, 58 )
 __meta__ = {
 "_edit_group_": true
@@ -135,7 +136,7 @@ texture = ExtResource( 8 )
 position = Vector2( 23, 25.5 )
 shape = SubResource( 1 )
 
-[node name="Obstacle3" type="StaticBody2D" parent="Objects" index="16"]
+[node name="Obstacle3" type="StaticBody2D" parent="Objects" index="16" groups=["Environment"]]
 position = Vector2( 19, -590 )
 __meta__ = {
 "_edit_group_": true
@@ -149,7 +150,7 @@ texture = ExtResource( 8 )
 position = Vector2( 23, 25.5 )
 shape = SubResource( 1 )
 
-[node name="Obstacle6" type="StaticBody2D" parent="Objects" index="17"]
+[node name="Obstacle6" type="StaticBody2D" parent="Objects" index="17" groups=["Environment"]]
 position = Vector2( 222, -587 )
 __meta__ = {
 "_edit_group_": true
@@ -168,6 +169,18 @@ position = Vector2( -1062, -551 )
 rotation = 3.14159
 scale = Vector2( 0.8, -0.8 )
 frame = 1
+
+[node name="Bomb" parent="Objects" index="19" instance=ExtResource( 11 )]
+position = Vector2( 216, 132 )
+
+[node name="Bomb2" parent="Objects" index="20" instance=ExtResource( 11 )]
+position = Vector2( -1207, -159 )
+
+[node name="Bomb3" parent="Objects" index="21" instance=ExtResource( 11 )]
+position = Vector2( -1174, -258 )
+
+[node name="Bomb4" parent="Objects" index="22" instance=ExtResource( 11 )]
+position = Vector2( -380, 147 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="5"]
 zoom = Vector2( 1.5, 1.5 )

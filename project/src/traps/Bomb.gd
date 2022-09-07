@@ -21,11 +21,7 @@ func _end_effect():
 	self.queue_free()
 
 func _on_Bomb_body_entered(body):
-	_on_Bomb_area_entered(body)
-
-func _on_Bomb_area_entered(area):
-	if not area.is_in_group("Player"):
-		._on_hit(area)
-	if area.is_in_group("Character") and not area.is_in_group("Player"):
+	._on_hit(body)
+	if body.is_in_group("Character"):
 		_spawn_death_effect()
 		get_node("/root/AudioManager").add_effect("res://assets/audio/43132597_cartoon-bomb-explosion-03.mp3", 0.0, 1.0, false)

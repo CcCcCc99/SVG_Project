@@ -103,19 +103,27 @@ func _on_TriggerAttack_enemy_spotted(body):
 		first_spot = true
 
 func rage():
-	speed *= 2.5
+	speed *= 2.3
 	modulate = Color.red
 	in_rage = true
 
 func _spawn_energy():
 	var points = $SpawnPoints.get_children()
+	energy_array.clear()
 	for p in points:
 		var eb = energy_ball.instance()
-		eb.set_direction(Vector2.UP.rotated(-Vector2.UP.angle_to_point(p.position)))
 		eb.position = p.global_position
 		energy_array.append(eb)
 		get_parent().add_child(eb)
 
 func _shoot(i: int):
-	energy_array[i].speed = 1000
-	
+	if is_instance_valid(energy_array[i]):
+		var dir = energy_array[i].position.direction_to(player.position)
+		energy_array[i].set_direction(dir)
+		energy_array[i].speed = 1000
+
+func _end_effect():
+	for eb in energy_array:
+		if is_instance_valid(eb):
+			eb.queue_free()
+	._end_effect()
