@@ -41,7 +41,7 @@ radius = 151.686
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 7 ) ],
-"loop": false,
+"loop": true,
 "name": "fumo",
 "speed": 5.0
 } ]
@@ -89,6 +89,6 @@ scale = Vector2( 0.65, 0.65 )
 frames = SubResource( 4 )
 animation = "fumo"
 frame = 3
+playing = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="animation_finished" from="Smoke" to="." method="_on_Smoke_animation_finished"]
