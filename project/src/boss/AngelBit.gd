@@ -1,10 +1,12 @@
 extends Mob
 
 var initial_body_pos: Vector2
+export var energy_ball: PackedScene
 export var fly: PackedScene
 export var fly_number: int
 
 var count: int = 0
+var energy_array: Array
 var player
 
 var last_flip: bool
@@ -17,15 +19,6 @@ func _ready():
 	player = get_parent().get_parent().get_parent().player
 	$WingsAnimator.play("Wings")
 	initial_body_pos = $Body.position
-
-func _process(delta):
-	if Input.is_action_just_pressed("debug1"):
-		j = 0
-		ia_state = ATTACK
-		$AttackTimer.start()
-	if Input.is_action_just_pressed("debug2"):
-		$Body.position = initial_body_pos
-		ia_state = WALK
 
 func _physics_process(delta):
 	._physics_process(delta)
@@ -49,7 +42,8 @@ func get_direction():
 			_walk()
 			return -position.direction_to(player.position)
 		ATTACK:
-			_open_door()
+			if not in_rage:
+				_open_door()
 			return Vector2.ZERO
 
 func _walk():
@@ -73,9 +67,17 @@ func _spawn_fly():
 	get_parent().add_child(f)
 
 func _on_AttackTimer_timeout():
-	_spawn_fly()
+	if in_rage:
+		_shoot(count)
+	else:
+		_spawn_fly()
 	count += 1
-	if count >= 5:
+	
+	if count >= 8 and in_rage:
+		count = 0
+		ia_state = IDLE
+		$AttackTimer.stop()
+	elif count >= 5 and not in_rage:
 		$Body.position = initial_body_pos
 		ia_state = WALK
 		$Body.position = initial_body_pos
@@ -83,16 +85,20 @@ func _on_AttackTimer_timeout():
 		$AttackTimer.stop()
 		$Cooldown.start()
 
-
 func _on_Cooldown_timeout():
 	$Body.position = initial_body_pos
 	ia_state = IDLE
 
 func _on_TriggerAttack_enemy_spotted(body):
+	if ia_state == ATTACK:
+		return
 	if body == player and first_spot:
 		j = 0
 		ia_state = ATTACK
 		$AttackTimer.start()
+		if in_rage:
+			$AttackTimer.wait_time = 0.6
+			_spawn_energy()
 	else:
 		first_spot = true
 
@@ -100,3 +106,16 @@ func rage():
 	speed *= 2.5
 	modulate = Color.red
 	in_rage = true
+
+func _spawn_energy():
+	var points = $SpawnPoints.get_children()
+	for p in points:
+		var eb = energy_ball.instance()
+		eb.set_direction(Vector2.UP.rotated(-Vector2.UP.angle_to_point(p.position)))
+		eb.position = p.global_position
+		energy_array.append(eb)
+		get_parent().add_child(eb)
+
+func _shoot(i: int):
+	energy_array[i].speed = 1000
+	

@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/prop/shots/EnergyBall.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/angelbit/sferaenergia1.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/angelbit/sferaenergia2.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/angelbit/sferaenergia3.png" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 35.0143
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[node name="EnergyBall" type="Area2D" groups=["Shot"]]
+z_index = 1
+script = ExtResource( 1 )
+is_shot = true
+speed = 0
+damage = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 3, 3 )
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 2 )
+frame = 1
+playing = true
+
+[connection signal="area_entered" from="." to="." method="_on_hit"]
+[connection signal="body_entered" from="." to="." method="_on_hit"]

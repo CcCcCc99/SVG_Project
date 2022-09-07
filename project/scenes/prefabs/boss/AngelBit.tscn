@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/sprites/angelbit/ali.png" type="Texture" id=2]
 [ext_resource path="res://src/boss/AngelBit.gd" type="Script" id=3]
 [ext_resource path="res://assets/sprites/angelbit/senzaali.png" type="Texture" id=4]
-[ext_resource path="res://src/utility/Hitbox.gd" type="Script" id=5]
+[ext_resource path="res://scenes/prefabs/prop/shots/EnergyBall.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/sprites/angelbit/sportello.png" type="Texture" id=6]
 [ext_resource path="res://scenes/prefabs/prop/shots/Fly.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/utility/Hitbox.gd" type="Script" id=8]
@@ -86,9 +86,11 @@ tracks/0/keys = {
 radius = 283.933
 
 [node name="AngelBit" groups=["Boss", "IgnorePortal"] instance=ExtResource( 1 )]
+position = Vector2( 920, 670 )
 script = ExtResource( 3 )
 max_hp = 8
 speed = 30000
+energy_ball = ExtResource( 5 )
 fly = ExtResource( 7 )
 fly_number = 5
 
@@ -118,9 +120,12 @@ animation = "idle"
 position = Vector2( -24, 219 )
 collision_layer = 2
 collision_mask = 63
-script = ExtResource( 5 )
+script = ExtResource( 8 )
 
-[node name="Head" type="CollisionShape2D" parent="Body/HitBox" index="0"]
+[node name="HitboxHead" type="Area2D" parent="Body/HitBox" index="0" groups=["Boss", "Character", "Head", "Hitbox", "IgnorePortal", "Mob"]]
+script = ExtResource( 8 )
+
+[node name="Head" type="CollisionShape2D" parent="Body/HitBox/HitboxHead" index="0"]
 position = Vector2( 0, -333 )
 rotation = 1.5708
 shape = SubResource( 6 )
@@ -132,7 +137,7 @@ polygon = PoolVector2Array( -65, -181, -4, -56, 50, -201, -1, -264 )
 position = Vector2( -86, 88 )
 
 [node name="Cooldown" parent="." index="4"]
-wait_time = 2.3
+wait_time = 1.8
 one_shot = true
 
 [node name="WingsAnimator" type="AnimationPlayer" parent="." index="7"]
@@ -150,6 +155,7 @@ enabled = true
 cast_to = Vector2( 0, 2000 )
 
 [node name="TriggerAttack" type="Area2D" parent="." index="11" groups=["Boss"]]
+visible = false
 position = Vector2( -2, -89 )
 rotation = 1.5708
 collision_layer = 2
@@ -161,6 +167,32 @@ __meta__ = {
 
 [node name="Raycast" type="CollisionShape2D" parent="TriggerAttack" index="0"]
 shape = SubResource( 9 )
+
+[node name="SpawnPoints" type="Node2D" parent="." index="12"]
+
+[node name="Pos1" type="Position2D" parent="SpawnPoints" index="0"]
+position = Vector2( -128, -256 )
+
+[node name="Pos2" type="Position2D" parent="SpawnPoints" index="1"]
+position = Vector2( -128, -192 )
+
+[node name="Pos3" type="Position2D" parent="SpawnPoints" index="2"]
+position = Vector2( -64, -144 )
+
+[node name="Pos4" type="Position2D" parent="SpawnPoints" index="3"]
+position = Vector2( 64, -144 )
+
+[node name="Pos5" type="Position2D" parent="SpawnPoints" index="4"]
+position = Vector2( 128, -192 )
+
+[node name="Pos6" type="Position2D" parent="SpawnPoints" index="5"]
+position = Vector2( 128, -256 )
+
+[node name="Pos7" type="Position2D" parent="SpawnPoints" index="6"]
+position = Vector2( 64, -304 )
+
+[node name="Pos8" type="Position2D" parent="SpawnPoints" index="7"]
+position = Vector2( -64, -304 )
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]

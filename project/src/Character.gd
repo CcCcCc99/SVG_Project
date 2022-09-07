@@ -27,6 +27,7 @@ export var can_fly: bool = false
 export var automated_hp: bool = true
 
 func _ready():
+	$AnimatedSprite.material = $AnimatedSprite.material.duplicate()
 	if automated_hp:
 		set_hp(max_hp)
 	effect = POOF.instance()
