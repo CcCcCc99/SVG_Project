@@ -19,7 +19,7 @@ extents = Vector2( 116, 66.5 )
 radius = 52.0
 height = 124.0
 
-[node name="Room" instance=ExtResource( 4 )]
+[node name="Room2" instance=ExtResource( 4 )]
 top_room = 2
 bottom_room = 0
 
@@ -58,6 +58,8 @@ position = Vector2( 112, 248 )
 
 [node name="Prism" parent="Objects" index="3" instance=ExtResource( 1 )]
 position = Vector2( -422, -234 )
+collision_layer = 2
+collision_mask = 63
 
 [node name="LeverGreen" parent="Objects" index="4" instance=ExtResource( 5 )]
 position = Vector2( -583, -96 )

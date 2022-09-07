@@ -33,10 +33,14 @@ scale = Vector2( 1.5, 1.5 )
 
 [node name="AngelBit" parent="Objects" index="0" instance=ExtResource( 5 )]
 position = Vector2( 987, -443 )
+collision_layer = 2
+collision_mask = 63
 speed = 10000
 
 [node name="AngelBit2" parent="Objects" index="1" instance=ExtResource( 5 )]
 position = Vector2( -1046, 506 )
+collision_layer = 2
+collision_mask = 63
 speed = 10000
 
 [node name="Coil1" parent="Objects" index="2" instance=ExtResource( 8 )]
@@ -177,7 +181,6 @@ __meta__ = {
 
 [node name="Scrivaniapc2" type="Sprite" parent="Objects/Obstacle3" index="0"]
 position = Vector2( 11.4286, -175.714 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 12 )
 
 [node name="CollisionVertivals" type="StaticBody2D" parent="Objects/Obstacle3/Scrivaniapc2" index="0" groups=["Environment", "VerticalEnvironment"]]

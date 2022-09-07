@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/Rooms/RoomGenericSciFi.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/prefabs/mob/SpiderBot.tscn" type="PackedScene" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://scenes/prefabs/prop/Lever.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/prop/Levers/LeverLine.gd" type="Script" id=9]
 [ext_resource path="res://scenes/prefabs/prop/Sink.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/Rooms/Lv1Rooms/crepa.gd" type="Script" id=11]
 [ext_resource path="res://assets/decorations/targhettabossliv1.png" type="Texture" id=12]
 
 [node name="Room" instance=ExtResource( 1 )]
@@ -28,10 +27,14 @@ polygon = PoolVector2Array( -960, -541, -780, -391, -59, -434, -81, -514, 77, -5
 
 [node name="SpiderBot" parent="Objects" index="0" instance=ExtResource( 2 )]
 position = Vector2( -633, -431 )
+collision_layer = 2
+collision_mask = 63
 
 [node name="SpiderBot2" parent="Objects" index="1" instance=ExtResource( 2 )]
 position = Vector2( 616, 429 )
 scale = Vector2( 1, -1 )
+collision_layer = 2
+collision_mask = 63
 
 [node name="FluidContainerGreen" parent="Objects" index="2" instance=ExtResource( 3 )]
 position = Vector2( 665, 349 )
@@ -39,10 +42,11 @@ position = Vector2( 665, 349 )
 [node name="FluidContainerPink" parent="Objects" index="3" instance=ExtResource( 4 )]
 position = Vector2( -777, -262 )
 
-[node name="crepa" type="Area2D" parent="Objects" index="4"]
+[node name="crepa" type="StaticBody2D" parent="Objects" index="4"]
 position = Vector2( 510, -13 )
 z_index = -1
-script = ExtResource( 11 )
+collision_layer = 2
+collision_mask = 2
 __meta__ = {
 "_edit_group_": true
 }
@@ -54,10 +58,11 @@ texture = ExtResource( 5 )
 position = Vector2( 241, -129 )
 polygon = PoolVector2Array( -5, 2, -12, -73, -60, -81, -76, -44, -103, -65, -118, -66, -149, -89, -189, -56, -244, -78, -240, -52, -269, -39, -301, -48, -341, -21, -379, -35, -406, -24, -408, -10, -374, 16, -421, 55, -445, 31, -461, 73, -469, 127, -457, 128, -450, 179, -380, 204, -363, 237, -415, 212, -429, 262, -378, 297, -379, 319, -333, 328, -319, 341, -263, 263, -237, 332, -186, 331, -169, 353, -131, 338, -100, 359, -65, 342, -41, 377, -13, 366, -9, 324, -31, 302, -32, 248, -68, 243, -88, 214, -135, 227, -154, 192, -172, 187, -186, 202, -178, 258, -206, 253, -219, 196, -260, 199, -258, 155, -313, 118, -293, 82, -245, 91, -214, 55, -171, 82, -130, 86, -119, 82, -133, 45, -108, 26, -74, 59, -39, -3, -13, 2 )
 
-[node name="crepa2" type="Area2D" parent="Objects" index="5"]
+[node name="crepa2" type="StaticBody2D" parent="Objects" index="5"]
 position = Vector2( -356, -195 )
 z_index = -1
-script = ExtResource( 11 )
+collision_layer = 2
+collision_mask = 2
 __meta__ = {
 "_edit_group_": true
 }
@@ -140,6 +145,3 @@ default_color = Color( 0.482353, 0.482353, 0.482353, 1 )
 z_index = -1
 points = PoolVector2Array( -778, -287, -550, -288, -549, 139, 212, 140, 211, 366, -318, 366, -315, 289 )
 default_color = Color( 0.482353, 0.482353, 0.482353, 1 )
-
-[connection signal="body_entered" from="Objects/crepa" to="Objects/crepa" method="_on_crepa_body_entered"]
-[connection signal="body_entered" from="Objects/crepa2" to="Objects/crepa2" method="_on_crepa_body_entered"]

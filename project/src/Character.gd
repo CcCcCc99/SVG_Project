@@ -23,7 +23,7 @@ signal scaled_down
 signal scaled_up
 var original_scale
 
-export var can_fly: bool = false
+export var can_fly: bool = false setget set_can_fly
 export var automated_hp: bool = true
 
 func _ready():
@@ -35,6 +35,15 @@ func _ready():
 	effect.connect("animation_finished", self, "_end_effect")
 	self.connect("scaled_down", self, "_teleport")
 	$DMG_AnimationPlayer.play("RESET")
+	_set_character_layers()
+
+func set_can_fly(cf: bool):
+	can_fly = cf
+	_set_character_layers()
+
+func _set_character_layers():
+	set_collision_layer_bit(1, not can_fly)
+	set_collision_mask_bit(1, not can_fly)
 
 # warning-ignore:unused_argument
 func _physics_process(delta):
