@@ -17,6 +17,7 @@ animations = [ {
 } ]
 
 [node name="EnergyBall" type="Area2D" groups=["Shot"]]
+z_index = 1
 script = ExtResource( 1 )
 is_shot = true
 speed = 0
@@ -29,7 +30,7 @@ shape = SubResource( 1 )
 position = Vector2( 3, 3 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 2 )
-frame = 2
+frame = 1
 playing = true
 
 [connection signal="area_entered" from="." to="." method="_on_hit"]

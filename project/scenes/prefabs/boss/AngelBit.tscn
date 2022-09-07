@@ -86,6 +86,7 @@ tracks/0/keys = {
 radius = 283.933
 
 [node name="AngelBit" groups=["Boss", "IgnorePortal"] instance=ExtResource( 1 )]
+position = Vector2( 920, 670 )
 script = ExtResource( 3 )
 max_hp = 8
 speed = 30000
@@ -136,7 +137,7 @@ polygon = PoolVector2Array( -65, -181, -4, -56, 50, -201, -1, -264 )
 position = Vector2( -86, 88 )
 
 [node name="Cooldown" parent="." index="4"]
-wait_time = 2.3
+wait_time = 1.8
 one_shot = true
 
 [node name="WingsAnimator" type="AnimationPlayer" parent="." index="7"]
@@ -167,7 +168,7 @@ __meta__ = {
 [node name="Raycast" type="CollisionShape2D" parent="TriggerAttack" index="0"]
 shape = SubResource( 9 )
 
-[node name="SpawnPoints" type="Node" parent="." index="12"]
+[node name="SpawnPoints" type="Node2D" parent="." index="12"]
 
 [node name="Pos1" type="Position2D" parent="SpawnPoints" index="0"]
 position = Vector2( -128, -256 )
