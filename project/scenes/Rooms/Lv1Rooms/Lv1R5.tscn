@@ -145,3 +145,8 @@ default_color = Color( 0.482353, 0.482353, 0.482353, 1 )
 z_index = -1
 points = PoolVector2Array( -778, -287, -550, -288, -549, 139, 212, 140, 211, 366, -318, 366, -315, 289 )
 default_color = Color( 0.482353, 0.482353, 0.482353, 1 )
+
+[connection signal="used" from="Objects/LeverGreen" to="Objects/Sink" method="_on_Lever_used"]
+[connection signal="used" from="Objects/LeverGreen1" to="Objects/Sink1" method="_on_Lever_used"]
+[connection signal="used" from="Objects/LeverPink" to="Objects/Sink" method="_on_Lever_used"]
+[connection signal="used" from="Objects/LeverPink1" to="Objects/Sink1" method="_on_Lever_used"]
