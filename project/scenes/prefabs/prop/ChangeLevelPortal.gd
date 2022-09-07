@@ -1,6 +1,8 @@
 extends Area2D
 
 export var to_level = 0
+export var to_room = 0
+export var to_door = 0
 
 export var active: bool = true
 export var go_back: bool = false
@@ -25,4 +27,4 @@ func _on_room_clear():
 
 func _on_Portal_body_entered(body):
 	if active and body.is_in_group("Player"):
-		get_tree().root.get_node("Main")._switch_to_level(to_level)
+		get_tree().root.get_node("Main")._switch_to_level(to_level, to_room, to_door)

@@ -81,6 +81,7 @@ func _get_up():
 	ia_state = WALK
 	speed = walk_speed
 	contact_damage = walk_dmg
+	is_spinning = false
 	$AnimatedSprite.animation = "idle"
 	$AnimatedSprite.show()
 	$Shadow.show()
@@ -110,3 +111,5 @@ func _on_TriggerAttack_enemy_spotted(body):
 
 func _on_Cooldown_timeout():
 	_get_up()
+	if is_instance_valid(spin_effect):
+		spin_effect.end_effect()

@@ -3,6 +3,7 @@ extends Node
 var effect = preload("res://scenes/Effect.tscn")
 
 var musics
+var actual_audio = null
 
 func _ready() -> void:
 	var m = Node.new()
@@ -29,8 +30,22 @@ func add_music(audio: String, volume: float, pitch: float) -> void:
 
 func change_music(audio: String, volume: float, pitch: float) -> void:
 	if musics.get_child_count() != 0:
-		musics.get_child(0).queue_free()
-	add_music(audio, volume, pitch)
+		var actual_music = musics.get_child(0)
+		if actual_audio != null:
+			if actual_audio == audio:
+				return
+			else:
+				actual_audio = audio
+		else:
+			actual_audio = audio
+		
+		actual_music.stop()
+		actual_music.set_stream(load(audio))
+		actual_music.set_volume_db(volume)
+		actual_music.set_pitch_scale(pitch)
+		actual_music.play()
+	else:
+		add_music(audio, volume, pitch)
 
 func resume_music() -> void:
 	musics.get_child(1).queue_free()

@@ -40,6 +40,7 @@ __meta__ = {
 "_edit_group_": true
 }
 to_level = 2
+to_door = -1
 active_color = Color( 1, 1, 1, 1 )
 inactive_color = Color( 0, 0, 0, 0 )
 

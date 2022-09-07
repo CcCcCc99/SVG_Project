@@ -84,6 +84,8 @@ polygon = PoolVector2Array( 960, -539, 744, -403, 771, -65, 922, -88, 927, 95, 7
 position = Vector2( -670, 264 )
 scale = Vector2( 1.2, 1.2 )
 to_level = 1
+to_room = 8
+to_door = -1
 
 [node name="WaterEffect" type="ColorRect" parent="." index="8"]
 material = SubResource( 2 )
