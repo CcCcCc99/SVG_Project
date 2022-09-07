@@ -20,6 +20,7 @@ export var loadlvl = 0
 
 var rooms: Array
 var current_room: int
+var current_level: int
 
 var saved_state: GameState = GameState.new()
 
@@ -91,7 +92,7 @@ func _show_main():
 
 func _load_level(l: int):
 	currentLevel = load(levels[l])
-	_set_music(l)
+	current_level = l
 
 	var room_scenes = currentLevel.get_rooms()
 	for rs in room_scenes:
@@ -114,16 +115,24 @@ func _set_music(l: int):
 		get_node("/root/AudioManager").change_music("res://assets/audio/echelon.mp3", -10.0, 1.0)
 	elif l == 2:
 		get_node("/root/AudioManager").change_music("res://assets/audio/Cleyton RX - Underwater.mp3", 0.0, 1.0)
-	# da aggiungere altre musiche
+	# da aggiungere altre colonne sonore
+
+func _set_boss_music(l: int):
+	if l == 0:
+		get_node("/root/AudioManager").change_music("res://assets/audio/hold the line.ogg", -5.0, 1.0)
+	elif l == 1:
+		pass
+	# da aggiungere altre musiche per i boss
 
 func _unload_level():
 	get_node("/root/AudioManager").end_effects()
 	_unload_room()
 	rooms.clear()
 
-func _switch_to_level(l: int):
+func _switch_to_level(l: int, r: int, d):
 	call_deferred("_unload_level")
 	call_deferred("_load_level", l)
+	call_deferred("_switch_to_room", r, d)
 
 func _load_room(r: int, d):
 	current_room = r
@@ -131,14 +140,18 @@ func _load_room(r: int, d):
 	if d == null:
 		player.position = player.checkpoint_position
 		assistant.position = Vector2(-200,20)
+	elif d == -1:
+		player.position = Vector2(0, 0)
+		assistant.position = Vector2(-200,20)
 	else:
 		rooms[r].set_player_position(player, assistant, d)
 	if r == boss_room:
 		$Camera2D.current = false
-		get_node("/root/AudioManager").change_music("res://assets/audio/hold the line.ogg", -5.0, 1.0)
+		_set_boss_music(current_level)
 		rooms[r].get_node("Camera2D").current = true
 	else:
 		$Camera2D.current = true
+		_set_music(current_level)
 	
 	rooms[r].load_events(saved_state.events)
 	rooms[r].get_node("TimeToCheck").start()

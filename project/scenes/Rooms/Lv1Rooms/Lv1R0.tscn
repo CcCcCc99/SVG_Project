@@ -13,3 +13,5 @@ position = Vector2( -541, -231 )
 [node name="Portal" parent="Objects" index="1" instance=ExtResource( 3 )]
 position = Vector2( 16, 332 )
 scale = Vector2( 1.2, 1.2 )
+to_room = 5
+to_door = 2

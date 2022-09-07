@@ -41,6 +41,7 @@ flipy = false
 
 [node name="GotoNextLvl" parent="Objects" index="2" instance=ExtResource( 3 )]
 to_level = 1
+to_door = -1
 active = false
 
 [node name="Pong" parent="Objects" index="3" instance=ExtResource( 4 )]

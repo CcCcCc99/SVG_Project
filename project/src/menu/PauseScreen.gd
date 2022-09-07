@@ -3,6 +3,10 @@ extends Menu
 func _ready():
 	menu_buttons = $Menu.get_children()
 
+func _input(event):
+	if event.is_action_pressed("fullscreen"):
+		get_node("/root/DefaultLoad").set_fullscreen(not get_node("/root/DefaultLoad").fullscreen)
+
 func _press_button_number(num: int):
 	match selected_menu:
 		0:
