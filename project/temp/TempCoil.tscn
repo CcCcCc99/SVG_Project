@@ -1,118 +1,18 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scenes/prefabs/prop/Coil.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/prefabs/prop/CoilLever.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/prefabs/prop/WallLaser.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/prefabs/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Rooms/RoomGenericTutorial.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/prop/Levers/LeverCoil.gd" type="Script" id=6]
+[ext_resource path="res://scenes/prefabs/traps/RocketSpawner.tscn" type="PackedScene" id=6]
 
 [node name="Room" instance=ExtResource( 5 )]
 closed = false
 
-[node name="Player" parent="Objects" index="0" instance=ExtResource( 4 )]
-position = Vector2( 485, 263 )
+[node name="RocketSpawner" parent="Objects" index="0" instance=ExtResource( 6 )]
+position = Vector2( 608, 16 )
+flipy = false
 
-[node name="Coil1" parent="Objects" index="1" instance=ExtResource( 1 )]
-position = Vector2( 240, 24 )
-laser_num = [ "2", "3", "5" ]
-neighbors = [ "2", "3", "5" ]
-
-[node name="CoilLever1" parent="Objects" index="2" instance=ExtResource( 2 )]
-position = Vector2( 344, 8 )
-script = ExtResource( 6 )
-is_on = true
-coil_num = [ "2", "3", "5", "1" ]
-
-[node name="Coil2" parent="Objects" index="3" instance=ExtResource( 1 )]
-position = Vector2( -24, -168 )
-laser_num = [ "1", "2" ]
-neighbors = [ "4", "1" ]
-
-[node name="CoilLever2" parent="Objects" index="4" instance=ExtResource( 2 )]
-position = Vector2( 64, -168 )
-script = ExtResource( 6 )
-is_on = true
-coil_num = [ "4", "1", "2" ]
-
-[node name="Coil3" parent="Objects" index="5" instance=ExtResource( 1 )]
-position = Vector2( 8, 264 )
-laser_num = [ "3", "4", "7" ]
-neighbors = [ "1", "4", "7" ]
-
-[node name="CoilLever3" parent="Objects" index="6" instance=ExtResource( 2 )]
-position = Vector2( 96, 256 )
-script = ExtResource( 6 )
-is_on = true
-coil_num = [ "1", "4", "7", "3" ]
-
-[node name="Coil4" parent="Objects" index="7" instance=ExtResource( 1 )]
-position = Vector2( -264, 32 )
-laser_num = [ "1", "4" ]
-neighbors = [ "2", "3" ]
-
-[node name="CoilLever4" parent="Objects" index="8" instance=ExtResource( 2 )]
-position = Vector2( -358, 3 )
-script = ExtResource( 6 )
-is_on = true
-coil_num = [ "2", "3", "4" ]
-
-[node name="Laser2" parent="Objects" index="9" instance=ExtResource( 3 )]
-points = PoolVector2Array( -11, -256, 252, -64 )
-
-[node name="Laser3" parent="Objects" index="10" instance=ExtResource( 3 )]
-points = PoolVector2Array( 17, 173, 247, -58 )
-
-[node name="Laser4" parent="Objects" index="11" instance=ExtResource( 3 )]
-position = Vector2( 3.27586, 5 )
-scale = Vector2( 0.993103, 1 )
-points = PoolVector2Array( -256.042, -57, 19.8611, 178 )
-
-[node name="Coil5" parent="Objects" index="12" instance=ExtResource( 1 )]
-position = Vector2( 448, -272 )
-laser_num = [ "5", "6" ]
-neighbors = [ "1", "6" ]
-
-[node name="CoilLever5" parent="Objects" index="13" instance=ExtResource( 2 )]
-position = Vector2( 536, -288 )
-script = ExtResource( 6 )
-is_on = true
-coil_num = [ "1", "6", "5" ]
-
-[node name="Coil6" parent="Objects" index="14" instance=ExtResource( 1 )]
-position = Vector2( 672, -104 )
-laser_num = [ "6" ]
-neighbors = [ "5" ]
-
-[node name="CoilLever6" parent="Objects" index="15" instance=ExtResource( 2 )]
-position = Vector2( 592, -120 )
-script = ExtResource( 6 )
-is_on = true
-coil_num = [ "5", "6" ]
-
-[node name="Coil7" parent="Objects" index="16" instance=ExtResource( 1 )]
-position = Vector2( -440, 336 )
-laser_num = [ "7" ]
-neighbors = [ "3" ]
-
-[node name="CoilLever7" parent="Objects" index="17" instance=ExtResource( 2 )]
-position = Vector2( -520, 312 )
-script = ExtResource( 6 )
-is_on = true
-coil_num = [ "3", "7" ]
-
-[node name="Laser5" parent="Objects" index="18" instance=ExtResource( 3 )]
-points = PoolVector2Array( 251, -66, 458, -362 )
-
-[node name="Laser6" parent="Objects" index="19" instance=ExtResource( 3 )]
-points = PoolVector2Array( 684, -192, 460, -362 )
-
-[node name="Laser7" parent="Objects" index="20" instance=ExtResource( 3 )]
-position = Vector2( -418, 120 )
-points = PoolVector2Array( -7, 128, 440, 58 )
-
-[node name="Laser1" parent="Objects" index="21" instance=ExtResource( 3 )]
-points = PoolVector2Array( -251, -58, -13, -259 )
+[node name="Player" parent="Objects" index="1" instance=ExtResource( 4 )]
+position = Vector2( 568, -168 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="6"]
 current = true

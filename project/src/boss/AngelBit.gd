@@ -34,7 +34,7 @@ func get_direction():
 	match ia_state:
 		IDLE: 
 			_walk()
-			if $Node2D/RayCast2D.get_collider() == player:
+			if ($Node2D/RayCast2D.get_collider() == player and not in_rage) or in_rage:
 				return position.direction_to(player.position)
 			else:
 				return Vector2.ZERO
