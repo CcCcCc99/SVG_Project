@@ -60,14 +60,14 @@ position = Vector2( 112, 248 )
 position = Vector2( -422, -234 )
 
 [node name="LeverGreen" parent="Objects" index="4" instance=ExtResource( 5 )]
-position = Vector2( -584, -96 )
+position = Vector2( -583, -96 )
 script = ExtResource( 7 )
 on_color = Color( 0.588235, 0.976471, 0.862745, 1 )
 off_color = Color( 0.482353, 0.482353, 0.482353, 1 )
 line_name = "Green"
 
 [node name="LeverPink" parent="Objects" index="5" instance=ExtResource( 5 )]
-position = Vector2( 40, 264 )
+position = Vector2( 165, 269 )
 script = ExtResource( 7 )
 on_color = Color( 0.937255, 0.596078, 0.984314, 1 )
 off_color = Color( 0.482353, 0.482353, 0.482353, 1 )

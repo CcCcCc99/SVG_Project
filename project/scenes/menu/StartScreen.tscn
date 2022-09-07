@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/menu/ita_caricapartita.png" type="Texture" id=3]
 [ext_resource path="res://assets/menu/ita_esci.png" type="Texture" id=4]
 [ext_resource path="res://assets/menu/pointer.png" type="Texture" id=5]
-[ext_resource path="res://assets/menu/label_newgame.png" type="Texture" id=6]
+[ext_resource path="res://assets/menu/ita_nuovapartita.png" type="Texture" id=6]
 [ext_resource path="res://assets/menu/sfondo_menu3.png" type="Texture" id=7]
 
 [node name="StartScreen" type="CenterContainer"]
@@ -25,35 +25,33 @@ texture = ExtResource( 7 )
 
 [node name="Menu" type="VBoxContainer" parent="."]
 margin_right = 360.0
-margin_bottom = 430.0
+margin_bottom = 432.0
 
 [node name="NewGameButton" type="TextureButton" parent="Menu"]
 modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
 margin_right = 360.0
-margin_bottom = 103.0
+margin_bottom = 105.0
 texture_normal = ExtResource( 6 )
 
 [node name="LoadGameButton" type="TextureButton" parent="Menu"]
 modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
-margin_top = 107.0
+margin_top = 109.0
 margin_right = 360.0
-margin_bottom = 212.0
+margin_bottom = 214.0
 texture_normal = ExtResource( 3 )
-texture_hover = ExtResource( 3 )
-texture_focused = ExtResource( 3 )
 
 [node name="OptionsButton" type="TextureButton" parent="Menu"]
 modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
-margin_top = 216.0
+margin_top = 218.0
 margin_right = 360.0
-margin_bottom = 321.0
+margin_bottom = 323.0
 texture_normal = ExtResource( 2 )
 
 [node name="QuitButton" type="TextureButton" parent="Menu"]
 modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
-margin_top = 325.0
+margin_top = 327.0
 margin_right = 360.0
-margin_bottom = 430.0
+margin_bottom = 432.0
 texture_normal = ExtResource( 4 )
 
 [node name="Pointer" type="Sprite" parent="."]
