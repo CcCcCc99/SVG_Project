@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/Rooms/RoomGenericSciFi.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/prefabs/prop/portals/Checkpoint.tscn" type="PackedScene" id=2]
@@ -8,6 +8,12 @@
 [ext_resource path="res://scenes/prefabs/prop/Coil.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/prefabs/prop/WallLaser.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/prefabs/prop/objects/FlyingDiamondStand.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/decorations/scrivaniapc2.png" type="Texture" id=9]
+[ext_resource path="res://assets/decorations/vaso.png" type="Texture" id=10]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 52.0
+height = 124.0
 
 [node name="Room" instance=ExtResource( 1 )]
 left_room = 3
@@ -62,3 +68,43 @@ position = Vector2( 401, -274 )
 [node name="LeverEvent" type="Node" parent="Events" index="0"]
 script = ExtResource( 3 )
 lever_name = "LeverDoor"
+
+[node name="Scrivaniapc2" type="Sprite" parent="." index="7"]
+position = Vector2( 773, 271 )
+rotation = 1.5708
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 9 )
+
+[node name="CollisionVertivals" type="StaticBody2D" parent="Scrivaniapc2" index="0" groups=["Environment", "VerticalEnvironment"]]
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Top" type="CollisionPolygon2D" parent="Scrivaniapc2/CollisionVertivals" index="0"]
+polygon = PoolVector2Array( -314.286, 104.762, -161.905, 57.1429, 138.095, 61.9048, 247.619, 128.571 )
+
+[node name="Bottom" type="CollisionPolygon2D" parent="Scrivaniapc2/CollisionVertivals" index="1"]
+polygon = PoolVector2Array( -295.238, 280.952, 242.857, 285.714, 242.857, 257.143, -290.476, 238.095 )
+
+[node name="CollisionHorizontals" type="StaticBody2D" parent="Scrivaniapc2" index="1" groups=["Environment", "HorizontalEnvironment"]]
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Left" type="CollisionPolygon2D" parent="Scrivaniapc2/CollisionHorizontals" index="0"]
+polygon = PoolVector2Array( 242.857, 285.714, 271.429, 90.4762, 180.953, 90.4762 )
+
+[node name="Right" type="CollisionPolygon2D" parent="Scrivaniapc2/CollisionHorizontals" index="1"]
+polygon = PoolVector2Array( -285.714, 271.429, -304.762, 90.4762, -271.428, 71.4286, -190.476, 104.762 )
+
+[node name="Vaso" type="Sprite" parent="." index="8"]
+position = Vector2( -749, 246 )
+scale = Vector2( 0.5, 0.5 )
+z_index = 1
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="StaticBody2D" parent="Vaso" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vaso/Area2D" index="0"]
+position = Vector2( -20, 188 )
+rotation = 1.5708
+shape = SubResource( 1 )

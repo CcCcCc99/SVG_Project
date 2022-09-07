@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/menu/label_1280x720.png" type="Texture" id=4]
 [ext_resource path="res://assets/menu/label_1600x900.png" type="Texture" id=5]
 [ext_resource path="res://assets/menu/label_1024x546.png" type="Texture" id=6]
-[ext_resource path="res://assets/menu/label_back.png" type="Texture" id=7]
+[ext_resource path="res://assets/menu/ita_indietro.png" type="Texture" id=7]
 [ext_resource path="res://assets/menu/poof_menu_pausa.png" type="Texture" id=8]
 
 [node name="ResolutionPopup" type="CenterContainer"]
@@ -28,7 +28,7 @@ texture = ExtResource( 8 )
 
 [node name="VBox" type="VBoxContainer" parent="."]
 margin_right = 597.0
-margin_bottom = 504.0
+margin_bottom = 507.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 7
@@ -76,7 +76,7 @@ texture_normal = ExtResource( 2 )
 modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
 margin_top = 402.0
 margin_right = 597.0
-margin_bottom = 504.0
+margin_bottom = 507.0
 size_flags_horizontal = 7
 size_flags_vertical = 7
 texture_normal = ExtResource( 7 )

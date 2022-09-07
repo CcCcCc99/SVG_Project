@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/prefabs/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/prefabs/prop/Lever.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://scenes/prefabs/prop/decorations/FluidContainerGreen.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/prefabs/prop/decorations/FluidContainerPink.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/prop/Levers/LeverLine.gd" type="Script" id=7]
-[ext_resource path="res://src/prop/Sink.gd" type="Script" id=8]
 
 [node name="Room" instance=ExtResource( 3 )]
 closed = false
@@ -17,7 +16,8 @@ position = Vector2( 618, 365 )
 
 [node name="Sink" parent="Objects" index="1" instance=ExtResource( 4 )]
 position = Vector2( -6, 50 )
-script = ExtResource( 8 )
+leverpinkname = "Pink"
+levergreenname = "Green"
 
 [node name="Lever" parent="Objects" index="2" instance=ExtResource( 2 )]
 position = Vector2( -2, 364 )

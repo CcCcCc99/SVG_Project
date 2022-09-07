@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://scenes/Rooms/RoomGenericSciFi.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/prefabs/boss/AngelBit.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/prefabs/prop/Coil.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/prefabs/prop/WallLaser.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/prefabs/prop/CoilLever.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/prefabs/traps/BombSpawner.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/sprites/prop/macchinariorotto.png" type="Texture" id=7]
-[ext_resource path="res://assets/sprites/prop/tavolo.png" type="Texture" id=8]
+[ext_resource path="res://scenes/prefabs/prop/WallLaser.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Rooms/RoomGenericSciFi.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/prefabs/prop/CoilLever.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/prefabs/traps/BombSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/prefabs/boss/AngelBit.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/sprites/prop/macchinariorotto.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/prop/tavolo.png" type="Texture" id=7]
+[ext_resource path="res://scenes/prefabs/prop/Coil.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/events/AngelRage.gd" type="Script" id=9]
 [ext_resource path="res://scenes/Event.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/prefabs/traps/Bomb.tscn" type="PackedScene" id=11]
@@ -15,7 +15,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 116, 66.5 )
 
-[node name="Room" instance=ExtResource( 1 )]
+[node name="Room" instance=ExtResource( 2 )]
 bottom_room = 5
 
 [node name="Sprite" parent="." index="0"]
@@ -30,53 +30,53 @@ scale = Vector2( 1.5, 1.5 )
 [node name="CollisionsHorizontals" parent="." index="3"]
 scale = Vector2( 1.5, 1.5 )
 
-[node name="AngelBit" parent="Objects" index="0" instance=ExtResource( 2 )]
+[node name="AngelBit" parent="Objects" index="0" instance=ExtResource( 5 )]
 position = Vector2( 987, -443 )
 speed = 10000
 
-[node name="AngelBit2" parent="Objects" index="1" instance=ExtResource( 2 )]
+[node name="AngelBit2" parent="Objects" index="1" instance=ExtResource( 5 )]
 position = Vector2( -1046, 506 )
 speed = 10000
 
-[node name="Coil1" parent="Objects" index="2" instance=ExtResource( 3 )]
+[node name="Coil1" parent="Objects" index="2" instance=ExtResource( 8 )]
 position = Vector2( -199, 607 )
 laser_num = [ "1" ]
 neighbors = [ "2" ]
 
-[node name="Coil2" parent="Objects" index="3" instance=ExtResource( 3 )]
+[node name="Coil2" parent="Objects" index="3" instance=ExtResource( 8 )]
 position = Vector2( -198, -587 )
 laser_num = [ "1" ]
 neighbors = [ "1" ]
 
-[node name="Coil3" parent="Objects" index="4" instance=ExtResource( 3 )]
+[node name="Coil3" parent="Objects" index="4" instance=ExtResource( 8 )]
 position = Vector2( -1232, 14 )
 laser_num = [ "2" ]
 neighbors = [ "4" ]
 
-[node name="Coil4" parent="Objects" index="5" instance=ExtResource( 3 )]
+[node name="Coil4" parent="Objects" index="5" instance=ExtResource( 8 )]
 position = Vector2( 1087, 14 )
 laser_num = [ "2" ]
 neighbors = [ "3" ]
 
-[node name="Laser1" parent="Objects" index="6" instance=ExtResource( 4 )]
+[node name="Laser1" parent="Objects" index="6" instance=ExtResource( 1 )]
 points = PoolVector2Array( -187, -677, -187, 515 )
 
-[node name="Laser2" parent="Objects" index="7" instance=ExtResource( 4 )]
+[node name="Laser2" parent="Objects" index="7" instance=ExtResource( 1 )]
 points = PoolVector2Array( -1219, -77, 1101, -77 )
 
-[node name="CoilLever1" parent="Objects" index="8" instance=ExtResource( 5 )]
+[node name="CoilLever1" parent="Objects" index="8" instance=ExtResource( 3 )]
 position = Vector2( -275, 561 )
 coil_num = [ "1", "2" ]
 
-[node name="CoilLever2" parent="Objects" index="9" instance=ExtResource( 5 )]
+[node name="CoilLever2" parent="Objects" index="9" instance=ExtResource( 3 )]
 position = Vector2( -121, -560 )
 coil_num = [ "2", "1" ]
 
-[node name="CoilLever3" parent="Objects" index="10" instance=ExtResource( 5 )]
+[node name="CoilLever3" parent="Objects" index="10" instance=ExtResource( 3 )]
 position = Vector2( -1174, -41 )
 coil_num = [ "3", "4" ]
 
-[node name="CoilLever4" parent="Objects" index="11" instance=ExtResource( 5 )]
+[node name="CoilLever4" parent="Objects" index="11" instance=ExtResource( 3 )]
 position = Vector2( 1010, 65 )
 coil_num = [ "4", "3" ]
 
@@ -88,7 +88,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Objects/Obstacle" index="0"]
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Obstacle" index="1"]
 position = Vector2( 23, 25.5 )
@@ -102,7 +102,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Objects/Obstacle2" index="0"]
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Obstacle2" index="1"]
 position = Vector2( 23, 25.5 )
@@ -116,7 +116,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Objects/Obstacle5" index="0"]
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Obstacle5" index="1"]
 position = Vector2( 23, 25.5 )
@@ -130,7 +130,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Objects/Obstacle4" index="0"]
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Obstacle4" index="1"]
 position = Vector2( 23, 25.5 )
@@ -144,7 +144,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Objects/Obstacle3" index="0"]
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Obstacle3" index="1"]
 position = Vector2( 23, 25.5 )
@@ -158,13 +158,13 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Objects/Obstacle6" index="0"]
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Obstacle6" index="1"]
 position = Vector2( 23, 25.5 )
 shape = SubResource( 1 )
 
-[node name="BombSpawner" parent="Objects" index="18" instance=ExtResource( 6 )]
+[node name="BombSpawner" parent="Objects" index="18" instance=ExtResource( 4 )]
 position = Vector2( -1062, -551 )
 rotation = 3.14159
 scale = Vector2( 0.8, -0.8 )

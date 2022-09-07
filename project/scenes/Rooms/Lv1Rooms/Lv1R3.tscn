@@ -22,7 +22,7 @@ position = Vector2( -625, 353 )
 
 [node name="BombSpawner" parent="Objects" index="3" instance=ExtResource( 5 )]
 position = Vector2( 565, 251 )
-frame = 0
+frame = 1
 
 [node name="SpiderBot" parent="Objects" index="4" instance=ExtResource( 3 )]
 position = Vector2( 0, -431 )

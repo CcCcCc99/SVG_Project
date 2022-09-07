@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/menu/StartScreen.gd" type="Script" id=1]
-[ext_resource path="res://assets/menu/label_loadgame.png" type="Texture" id=2]
-[ext_resource path="res://assets/menu/label_quit.png" type="Texture" id=3]
-[ext_resource path="res://assets/menu/label_options.png" type="Texture" id=4]
+[ext_resource path="res://assets/menu/ita_opzioni.png" type="Texture" id=2]
+[ext_resource path="res://assets/menu/ita_caricapartita.png" type="Texture" id=3]
+[ext_resource path="res://assets/menu/ita_esci.png" type="Texture" id=4]
 [ext_resource path="res://assets/menu/pointer.png" type="Texture" id=5]
 [ext_resource path="res://assets/menu/label_newgame.png" type="Texture" id=6]
 [ext_resource path="res://assets/menu/sfondo_menu3.png" type="Texture" id=7]
@@ -24,37 +24,37 @@ position = Vector2( 177, 209 )
 texture = ExtResource( 7 )
 
 [node name="Menu" type="VBoxContainer" parent="."]
-margin_right = 355.0
-margin_bottom = 419.0
+margin_right = 360.0
+margin_bottom = 430.0
 
 [node name="NewGameButton" type="TextureButton" parent="Menu"]
 modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
-margin_right = 355.0
+margin_right = 360.0
 margin_bottom = 103.0
 texture_normal = ExtResource( 6 )
 
 [node name="LoadGameButton" type="TextureButton" parent="Menu"]
 modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
 margin_top = 107.0
-margin_right = 355.0
-margin_bottom = 209.0
-texture_normal = ExtResource( 2 )
-texture_hover = ExtResource( 2 )
-texture_focused = ExtResource( 2 )
+margin_right = 360.0
+margin_bottom = 212.0
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
+texture_focused = ExtResource( 3 )
 
 [node name="OptionsButton" type="TextureButton" parent="Menu"]
 modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
-margin_top = 213.0
-margin_right = 355.0
-margin_bottom = 314.0
-texture_normal = ExtResource( 4 )
+margin_top = 216.0
+margin_right = 360.0
+margin_bottom = 321.0
+texture_normal = ExtResource( 2 )
 
 [node name="QuitButton" type="TextureButton" parent="Menu"]
 modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
-margin_top = 318.0
-margin_right = 355.0
-margin_bottom = 419.0
-texture_normal = ExtResource( 3 )
+margin_top = 325.0
+margin_right = 360.0
+margin_bottom = 430.0
+texture_normal = ExtResource( 4 )
 
 [node name="Pointer" type="Sprite" parent="."]
 position = Vector2( -50, 45 )
