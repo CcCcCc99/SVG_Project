@@ -25,3 +25,4 @@ func _on_BackToTitleButton_pressed():
 	get_tree().paused = false
 	get_tree().change_scene("res://scenes/menu/StartScreen.tscn")
 	get_node("/root/AudioManager").resume_music()
+	get_node("/root/AudioManager").end_effects()
