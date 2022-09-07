@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/prefabs/prop/WallLaser.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Rooms/RoomGenericSciFi.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://src/events/AngelRage.gd" type="Script" id=9]
 [ext_resource path="res://scenes/Event.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/prefabs/traps/Bomb.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/decorations/scrivaniapc2.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 116, 66.5 )
@@ -136,22 +137,8 @@ texture = ExtResource( 7 )
 position = Vector2( 23, 25.5 )
 shape = SubResource( 1 )
 
-[node name="Obstacle3" type="StaticBody2D" parent="Objects" index="16" groups=["Environment"]]
-position = Vector2( 19, -590 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Objects/Obstacle3" index="0"]
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 7 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Obstacle3" index="1"]
-position = Vector2( 23, 25.5 )
-shape = SubResource( 1 )
-
-[node name="Obstacle6" type="StaticBody2D" parent="Objects" index="17" groups=["Environment"]]
-position = Vector2( 222, -587 )
+[node name="Obstacle6" type="StaticBody2D" parent="Objects" index="16" groups=["Environment"]]
+position = Vector2( 236, -612 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -164,23 +151,52 @@ texture = ExtResource( 6 )
 position = Vector2( 23, 25.5 )
 shape = SubResource( 1 )
 
-[node name="BombSpawner" parent="Objects" index="18" instance=ExtResource( 4 )]
+[node name="BombSpawner" parent="Objects" index="17" instance=ExtResource( 4 )]
 position = Vector2( -1062, -551 )
 rotation = 3.14159
 scale = Vector2( 0.8, -0.8 )
-frame = 1
 
-[node name="Bomb" parent="Objects" index="19" instance=ExtResource( 11 )]
+[node name="Bomb" parent="Objects" index="18" instance=ExtResource( 11 )]
 position = Vector2( 216, 132 )
 
-[node name="Bomb2" parent="Objects" index="20" instance=ExtResource( 11 )]
+[node name="Bomb2" parent="Objects" index="19" instance=ExtResource( 11 )]
 position = Vector2( -1207, -159 )
 
-[node name="Bomb3" parent="Objects" index="21" instance=ExtResource( 11 )]
+[node name="Bomb3" parent="Objects" index="20" instance=ExtResource( 11 )]
 position = Vector2( -1174, -258 )
 
-[node name="Bomb4" parent="Objects" index="22" instance=ExtResource( 11 )]
+[node name="Bomb4" parent="Objects" index="21" instance=ExtResource( 11 )]
 position = Vector2( -380, 147 )
+
+[node name="Obstacle3" type="Node2D" parent="Objects" index="22"]
+position = Vector2( 19, -525 )
+scale = Vector2( 0.7, 0.7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Scrivaniapc2" type="Sprite" parent="Objects/Obstacle3" index="0"]
+position = Vector2( 11.4286, -175.714 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 12 )
+
+[node name="CollisionVertivals" type="StaticBody2D" parent="Objects/Obstacle3/Scrivaniapc2" index="0" groups=["Environment", "VerticalEnvironment"]]
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Top" type="CollisionPolygon2D" parent="Objects/Obstacle3/Scrivaniapc2/CollisionVertivals" index="0"]
+polygon = PoolVector2Array( -314.286, 104.762, -161.905, 57.1429, 138.095, 61.9048, 247.619, 128.571 )
+
+[node name="Bottom" type="CollisionPolygon2D" parent="Objects/Obstacle3/Scrivaniapc2/CollisionVertivals" index="1"]
+polygon = PoolVector2Array( -295.238, 280.952, 242.857, 285.714, 242.857, 257.143, -290.476, 238.095 )
+
+[node name="CollisionHorizontals" type="StaticBody2D" parent="Objects/Obstacle3/Scrivaniapc2" index="1" groups=["Environment", "HorizontalEnvironment"]]
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Left" type="CollisionPolygon2D" parent="Objects/Obstacle3/Scrivaniapc2/CollisionHorizontals" index="0"]
+polygon = PoolVector2Array( 242.857, 285.714, 271.429, 90.4762, 180.953, 90.4762 )
+
+[node name="Right" type="CollisionPolygon2D" parent="Objects/Obstacle3/Scrivaniapc2/CollisionHorizontals" index="1"]
+polygon = PoolVector2Array( -285.714, 271.429, -304.762, 90.4762, -271.428, 71.4286, -190.476, 104.762 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="5"]
 zoom = Vector2( 1.5, 1.5 )
