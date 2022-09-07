@@ -256,6 +256,7 @@ var stacked_menu
 func ask_name():
 	var stacked_menu = load("res://scenes/menu/NamePopUp.tscn").instance()
 	$HUD.add_child(stacked_menu)
+	get_node("/root/DefaultLoad").is_blocked = true
 
 func save_name(name: String):
 	saved_state.name = name
