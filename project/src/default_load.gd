@@ -1,5 +1,7 @@
 extends Node
 
+var is_blocked: bool = false
+
 var load_mode: bool = false
 
 var music_volume: float = 10
@@ -17,8 +19,9 @@ func _ready() -> void:
 	_set_config()
 
 func _input(event):
-	if event.is_action_pressed("fullscreen"):
-		set_fullscreen(not fullscreen)
+	if not is_blocked:
+		if event.is_action_pressed("fullscreen"):
+			set_fullscreen(not fullscreen)
 
 func _volume_to_db(volume: float) -> float:
 	return log(volume / 10) * 20

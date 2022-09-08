@@ -238,6 +238,7 @@ polygon = PoolVector2Array( -133.333, 48.3334, -183.333, 73.3334, -156.667, 125,
 position = Vector2( -1062, -551 )
 rotation = 3.14159
 scale = Vector2( 0.8, -0.8 )
+frame = 1
 
 [node name="Bomb" parent="Objects" index="18" instance=ExtResource( 11 )]
 position = Vector2( 216, 153 )

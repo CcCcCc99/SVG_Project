@@ -36,6 +36,5 @@ func _on_hit(body):
 	if not body.is_in_group("Shot"):
 		queue_free()
 
-
 func _on_EndTimer_timeout():
 	queue_free()

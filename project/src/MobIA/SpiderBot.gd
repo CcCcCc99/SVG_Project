@@ -5,6 +5,9 @@ export(PackedScene) var web
 var direction = Vector2.LEFT
 var target: Vector2
 
+var web_array: Array
+var number_of_webs: int = 0
+
 func _ready():
 	ia_state = WALK
 
@@ -28,6 +31,14 @@ func _change_direction() -> Vector2:
 
 func _spit_web(pos: Vector2):
 	var w = web.instance()
+	if number_of_webs == 7:
+		var first_web = web_array[0]
+		web_array.pop_front()
+		web_array.push_back(w)
+		first_web.queue_free()
+	else:
+		web_array.push_back(w)
+		number_of_webs += 1
 	if is_summoned:
 		w.is_summoned = true
 	w.position = pos

@@ -22,6 +22,8 @@ func _ready():
 		max_hp *= 2
 		set_hp(max_hp)
 		get_node("/root/AudioManager").add_effect("res://assets/audio/43133969_cartoon-whoosh-zap-sweep-01.mp3", -5.0, 1.75, false)
+		if has_node("TriggerAttack"):
+			$TriggerAttack.enemy = "Mob"
 	else:
 		enemy = "PlayerAlly"
 
