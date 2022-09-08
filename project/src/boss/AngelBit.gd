@@ -64,6 +64,13 @@ func _spawn_fly():
 	else:
 		f.set_direction(Vector2.LEFT)
 	f.target = player
+	# generate audio for the flies
+	var audio = AudioStreamPlayer.new()
+	audio.set_stream(load("res://assets/audio/Laser 1.mp3"))
+	audio.set_volume_db(-17.5)
+	audio.set_pitch_scale(1.5)
+	audio.play()
+	f.add_child(audio)
 	get_parent().add_child(f)
 
 func _on_AttackTimer_timeout():

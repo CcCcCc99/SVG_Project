@@ -13,3 +13,4 @@ func _on_ok_pressed():
 	if name != "":
 		get_parent().get_parent().save_name(name)
 		queue_free()
+		get_node("/root/DefaultLoad").is_blocked = false

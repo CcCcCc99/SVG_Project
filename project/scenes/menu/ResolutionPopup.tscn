@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/menu/ResolutionPopup.gd" type="Script" id=1]
 [ext_resource path="res://assets/menu/label_1920x1080.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/menu/label_1024x546.png" type="Texture" id=6]
 [ext_resource path="res://assets/menu/ita_indietro.png" type="Texture" id=7]
 [ext_resource path="res://assets/menu/poof_menu_pausa.png" type="Texture" id=8]
+[ext_resource path="res://assets/menu/fullscreenita.png" type="Texture" id=9]
 
 [node name="ResolutionPopup" type="CenterContainer"]
 anchor_left = 0.5
@@ -28,7 +29,7 @@ texture = ExtResource( 8 )
 
 [node name="VBox" type="VBoxContainer" parent="."]
 margin_right = 597.0
-margin_bottom = 507.0
+margin_bottom = 687.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 7
@@ -72,11 +73,18 @@ margin_right = 597.0
 margin_bottom = 398.0
 texture_normal = ExtResource( 2 )
 
-[node name="Back" type="TextureButton" parent="VBox"]
+[node name="Fullscreen" type="CheckBox" parent="VBox"]
 modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
 margin_top = 402.0
 margin_right = 597.0
-margin_bottom = 507.0
+margin_bottom = 578.0
+icon = ExtResource( 9 )
+
+[node name="Back" type="TextureButton" parent="VBox"]
+modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+margin_top = 582.0
+margin_right = 597.0
+margin_bottom = 687.0
 size_flags_horizontal = 7
 size_flags_vertical = 7
 texture_normal = ExtResource( 7 )
@@ -98,6 +106,9 @@ texture = ExtResource( 3 )
 [connection signal="mouse_entered" from="VBox/Menu/Res1920x1080" to="." method="_on_enter_button_number" binds= [ 3 ]]
 [connection signal="mouse_exited" from="VBox/Menu/Res1920x1080" to="." method="_on_exited_button_number" binds= [ 3 ]]
 [connection signal="pressed" from="VBox/Menu/Res1920x1080" to="." method="_on_Res1920x1080_pressed"]
-[connection signal="mouse_entered" from="VBox/Back" to="." method="_on_enter_button_number" binds= [ 4 ]]
-[connection signal="mouse_exited" from="VBox/Back" to="." method="_on_exited_button_number" binds= [ 4 ]]
+[connection signal="mouse_entered" from="VBox/Fullscreen" to="." method="_on_enter_button_number" binds= [ 4 ]]
+[connection signal="mouse_exited" from="VBox/Fullscreen" to="." method="_on_exited_button_number" binds= [ 4 ]]
+[connection signal="pressed" from="VBox/Fullscreen" to="." method="_on_Fullscreen_pressed"]
+[connection signal="mouse_entered" from="VBox/Back" to="." method="_on_enter_button_number" binds= [ 5 ]]
+[connection signal="mouse_exited" from="VBox/Back" to="." method="_on_exited_button_number" binds= [ 5 ]]
 [connection signal="pressed" from="VBox/Back" to="." method="_on_Back_pressed"]
