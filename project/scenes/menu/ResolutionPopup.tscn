@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/menu/ResolutionPopup.gd" type="Script" id=1]
 [ext_resource path="res://assets/menu/label_1920x1080.png" type="Texture" id=2]
@@ -8,7 +8,9 @@
 [ext_resource path="res://assets/menu/label_1024x546.png" type="Texture" id=6]
 [ext_resource path="res://assets/menu/ita_indietro.png" type="Texture" id=7]
 [ext_resource path="res://assets/menu/poof_menu_pausa.png" type="Texture" id=8]
-[ext_resource path="res://assets/menu/fullscreenita.png" type="Texture" id=9]
+[ext_resource path="res://assets/hud/fullhp.png" type="Texture" id=9]
+[ext_resource path="res://assets/hud/cuoreVuoto.png" type="Texture" id=10]
+[ext_resource path="res://DynamicFontHand.tres" type="DynamicFont" id=11]
 
 [node name="ResolutionPopup" type="CenterContainer"]
 anchor_left = 0.5
@@ -16,20 +18,23 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -298.5
-margin_top = -252.0
+margin_top = -313.0
 margin_right = 298.5
-margin_bottom = 252.0
+margin_bottom = 313.0
+use_top_left = true
 script = ExtResource( 1 )
 
 [node name="Background" type="Sprite" parent="."]
 visible = false
-position = Vector2( 257.5, 158 )
-scale = Vector2( 1.86887, 1.77531 )
+position = Vector2( -28.5, -104.25 )
+scale = Vector2( 1.99987, 2.05419 )
 texture = ExtResource( 8 )
 
 [node name="VBox" type="VBoxContainer" parent="."]
-margin_right = 597.0
-margin_bottom = 687.0
+margin_left = -299.0
+margin_top = -302.0
+margin_right = 298.0
+margin_bottom = 301.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 7
@@ -77,21 +82,24 @@ texture_normal = ExtResource( 2 )
 modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
 margin_top = 402.0
 margin_right = 597.0
-margin_bottom = 578.0
-icon = ExtResource( 9 )
+margin_bottom = 494.0
+custom_fonts/font = ExtResource( 11 )
+custom_icons/checked = ExtResource( 9 )
+custom_icons/unchecked = ExtResource( 10 )
+text = "Schermo Intero"
 
 [node name="Back" type="TextureButton" parent="VBox"]
 modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
-margin_top = 582.0
+margin_top = 498.0
 margin_right = 597.0
-margin_bottom = 687.0
+margin_bottom = 603.0
 size_flags_horizontal = 7
 size_flags_vertical = 7
 texture_normal = ExtResource( 7 )
 stretch_mode = 5
 
 [node name="Pointer" type="Sprite" parent="."]
-position = Vector2( -45, 80 )
+position = Vector2( -45, 45 )
 texture = ExtResource( 3 )
 
 [connection signal="mouse_entered" from="VBox/Menu/Res1024x546" to="." method="_on_enter_button_number" binds= [ 0 ]]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/sprites/traps/bombe/spawnerbombe2.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/traps/bombe/spawnerbombe1.png" type="Texture" id=2]
@@ -12,6 +12,9 @@ animations = [ {
 "name": "default",
 "speed": 3.0
 } ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 80.0098
 
 [node name="BombSpawner" type="AnimatedSprite" groups=["Environment"]]
 scale = Vector2( 0.8, 0.8 )
@@ -44,5 +47,11 @@ polygon = PoolVector2Array( -252.083, 114.583, -243.75, 156.25, -172.917, 212.5,
 
 [node name="Right" type="CollisionPolygon2D" parent="CollisionHorizontals"]
 polygon = PoolVector2Array( 308.333, 0, 295.833, 295.833, 268.75, 297.917, 285.417, 10.4167 )
+
+[node name="InternalShape" type="StaticBody2D" parent="." groups=["Environment"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InternalShape"]
+position = Vector2( 96.25, 72.5 )
+shape = SubResource( 2 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

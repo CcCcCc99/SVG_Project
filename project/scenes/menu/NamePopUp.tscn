@@ -5,10 +5,7 @@
 [ext_resource path="res://assets/menu/ita_ok.png" type="Texture" id=3]
 [ext_resource path="res://src/menu/NamePopUp.gd" type="Script" id=4]
 [ext_resource path="res://assets/menu/pointer.png" type="Texture" id=5]
-
-[sub_resource type="DynamicFont" id=2]
-size = 71
-font_data = ExtResource( 2 )
+[ext_resource path="res://DynamicFontHand.tres" type="DynamicFont" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 81
@@ -42,7 +39,7 @@ margin_left = -232.0
 margin_top = -165.0
 margin_right = 225.0
 margin_bottom = -81.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 6 )
 text = "Come ti chiami?"
 
 [node name="TextEdit" type="TextEdit" parent="Control"]

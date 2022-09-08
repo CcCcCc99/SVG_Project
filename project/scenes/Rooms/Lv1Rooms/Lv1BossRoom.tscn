@@ -56,7 +56,7 @@ laser_num = [ "2" ]
 neighbors = [ "4" ]
 
 [node name="Coil4" parent="Objects" index="5" instance=ExtResource( 8 )]
-position = Vector2( 1087, 14 )
+position = Vector2( 1109, 14 )
 laser_num = [ "2" ]
 neighbors = [ "3" ]
 
@@ -64,6 +64,8 @@ neighbors = [ "3" ]
 points = PoolVector2Array( -187, -677, -187, 515 )
 
 [node name="Laser2" parent="Objects" index="7" instance=ExtResource( 1 )]
+position = Vector2( 12.4551, 5 )
+scale = Vector2( 1.00771, 1 )
 points = PoolVector2Array( -1219, -77, 1101, -77 )
 
 [node name="CoilLever1" parent="Objects" index="8" instance=ExtResource( 3 )]
@@ -238,7 +240,6 @@ polygon = PoolVector2Array( -133.333, 48.3334, -183.333, 73.3334, -156.667, 125,
 position = Vector2( -1062, -551 )
 rotation = 3.14159
 scale = Vector2( 0.8, -0.8 )
-frame = 1
 
 [node name="Bomb" parent="Objects" index="18" instance=ExtResource( 11 )]
 position = Vector2( 216, 153 )
