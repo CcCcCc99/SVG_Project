@@ -4,6 +4,8 @@ var rng = RandomNumberGenerator.new()
 var follow_mode: bool = false
 var target = null
 
+signal is_dead
+
 func _init():
 	rng.randomize()
 
@@ -32,9 +34,13 @@ func _on_Timer_timeout():
 func _on_hit(body):
 	if body.is_in_group("Boss"):
 		return
+	if body.is_in_group("Environment"):
+		emit_signal("is_dead")
 	._on_hit(body)
-	if not body.is_in_group("Shot"):
+	if not body.is_in_group("Shot") and not body.is_in_group("Environment"):
 		queue_free()
+		emit_signal("is_dead")
 
 func _on_EndTimer_timeout():
 	queue_free()
+	emit_signal("is_dead")

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/39725682_laser-ray-gun-shot-05.mp3-21d499fc5a7809fccc0f51d6870faab9.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/39725682_laser-ray-gun-shot-05.mp3"
+dest_files=[ "res://.import/39725682_laser-ray-gun-shot-05.mp3-21d499fc5a7809fccc0f51d6870faab9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
