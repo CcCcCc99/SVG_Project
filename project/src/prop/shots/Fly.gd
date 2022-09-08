@@ -35,7 +35,20 @@ func _on_hit(body):
 	._on_hit(body)
 	if not body.is_in_group("Shot"):
 		queue_free()
-
+		if is_instance_valid(get_parent().get_node("AngelBit")):
+			var first = get_parent().get_node("AngelBit").fly_array.front()
+			if first != null:
+				get_parent().get_node("AngelBit").fly_array.pop_front()
+				first.end_effect()
+			else:
+				get_node("/root/AudioManager").end_effects()
 
 func _on_EndTimer_timeout():
 	queue_free()
+	if is_instance_valid(get_parent().get_node("AngelBit")):
+		var first = get_parent().get_node("AngelBit").fly_array.front()
+		if first != null:
+			get_parent().get_node("AngelBit").fly_array.pop_front()
+			first.end_effect()
+		else:
+			get_node("/root/AudioManager").end_effects()

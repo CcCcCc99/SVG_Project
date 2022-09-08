@@ -4,6 +4,7 @@ var effect = preload("res://scenes/Effect.tscn")
 
 var musics
 var actual_audio = null
+var actual_pitch: float = 0
 
 func _ready() -> void:
 	var m = Node.new()
@@ -33,11 +34,14 @@ func change_music(audio: String, volume: float, pitch: float) -> void:
 		var actual_music = musics.get_child(0)
 		if actual_audio != null:
 			if actual_audio == audio:
-				return
+				if actual_pitch == pitch:
+					return
 			else:
 				actual_audio = audio
+				actual_pitch = pitch
 		else:
 			actual_audio = audio
+			actual_pitch = pitch
 		
 		actual_music.stop()
 		actual_music.set_stream(load(audio))

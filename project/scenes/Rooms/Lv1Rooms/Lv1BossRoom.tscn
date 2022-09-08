@@ -155,6 +155,7 @@ shape = SubResource( 1 )
 position = Vector2( -1062, -551 )
 rotation = 3.14159
 scale = Vector2( 0.8, -0.8 )
+frame = 1
 
 [node name="Bomb" parent="Objects" index="18" instance=ExtResource( 11 )]
 position = Vector2( 216, 132 )
@@ -177,7 +178,6 @@ __meta__ = {
 
 [node name="Scrivaniapc2" type="Sprite" parent="Objects/Obstacle3" index="0"]
 position = Vector2( 11.4286, -175.714 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 12 )
 
 [node name="CollisionVertivals" type="StaticBody2D" parent="Objects/Obstacle3/Scrivaniapc2" index="0" groups=["Environment", "VerticalEnvironment"]]
