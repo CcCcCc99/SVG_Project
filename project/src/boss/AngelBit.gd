@@ -8,6 +8,9 @@ var fly_effects: Array
 
 var count: int = 0
 var energy_array: Array
+var count_shoot: int = 0
+var count_bool_shoot: bool = true
+var pitch_shoot: float = 0.67
 var player
 
 var last_flip: bool
@@ -124,6 +127,17 @@ func _shoot(i: int):
 		var dir = energy_array[i].position.direction_to(player.position)
 		energy_array[i].set_direction(dir)
 		energy_array[i].speed = 1000
+		if count_bool_shoot:
+			count_shoot += 1
+			pitch_shoot += 0.33
+			if count_shoot == 3:
+				count_bool_shoot = false
+		else:
+			count_shoot -= 1
+			pitch_shoot -= 0.33
+			if count_shoot == 0:
+				count_bool_shoot = true
+		get_node("/root/AudioManager").add_effect("res://assets/audio/39725682_laser-ray-gun-shot-05.mp3", 0.0, pitch_shoot, false)
 
 func _end_effect():
 	for eb in energy_array:
