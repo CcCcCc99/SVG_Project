@@ -15,18 +15,19 @@ do fadein()
 do ask_name()
 
 ~ Quest
-{{saved_state.name}}: Emm ...
+{{saved_state.name}}: Emm ... 
+(seleziona risposta)
 - Cosa succede?!
 - Dove mi trovo?
 - Chi sei tu?
 
 ???: Sembra che l'esperimento sia stato compromesso. Le dimensioni stanno collidendo.
-{{saved_state.name}}: 
+{{saved_state.name}}: (seleziona risposta)
 - ...
 - Va bene, ma tu chi saresti?
 
 ???: Dobbiamo tornare al mio laboratorio immediatamente! Mi aiuterai ad affrontare i mostri?
-{{saved_state.name}}: 
+{{saved_state.name}}: (seleziona risposta)
 - Va bene, ti aiuterò.
 	???: Sapevo di poter contare su di te.
 - No, prima dimmi chi sei.
@@ -34,7 +35,7 @@ do ask_name()
 
 ???: Vedi quel portale blu? Ti consiglio di entrarci.
 ???: In questo modo una copia della tua anima sarà sempre in grado di ritornare nel caso ti accadesse qualcosa.
-{{saved_state.name}}:  
+{{saved_state.name}}: (seleziona risposta)
 - Come sarebbe a dire \"accadesse qualcosa\"?
 - Figurati, cosa potrebbe mai succedermi.
 do back_to_normal()
@@ -81,11 +82,11 @@ do activate_portal()
 "
 errors = [  ]
 titles = {
-"Boss": "66",
-"Portals": "36",
+"Boss": "67",
+"Portals": "37",
 "Presentation": "1",
 "Quest": "10",
-"Summon": "58"
+"Summon": "59"
 }
 lines = {
 "0": {
@@ -127,35 +128,48 @@ lines = {
 "type": "dialogue"
 },
 "11": {
-"next_id": "15",
-"next_id_after": "15",
+"character": "",
+"inline_mutations": [  ],
+"next_id": "12",
+"pauses": {
+},
 "replacements": [  ],
-"responses": PoolStringArray( "11", "12", "13" ),
+"speeds": [  ],
+"text": "(seleziona risposta)",
+"time": null,
+"translation_key": "(seleziona risposta)",
+"type": "dialogue"
+},
+"12": {
+"next_id": "16",
+"next_id_after": "16",
+"replacements": [  ],
+"responses": PoolStringArray( "12", "13", "14" ),
 "text": "Cosa succede?!",
 "translation_key": "Cosa succede?!",
 "type": "response"
 },
-"12": {
-"next_id": "15",
-"next_id_after": "15",
+"13": {
+"next_id": "16",
+"next_id_after": "16",
 "replacements": [  ],
 "text": "Dove mi trovo?",
 "translation_key": "Dove mi trovo?",
 "type": "response"
 },
-"13": {
-"next_id": "15",
-"next_id_after": "15",
+"14": {
+"next_id": "16",
+"next_id_after": "16",
 "replacements": [  ],
 "text": "Chi sei tu?",
 "translation_key": "Chi sei tu?",
 "type": "response"
 },
-"15": {
+"16": {
 "character": "???",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "16",
+"next_id": "17",
 "pauses": {
 },
 "replacements": [  ],
@@ -165,13 +179,9 @@ lines = {
 "translation_key": "Sembra che l'esperimento sia stato compromesso. Le dimensioni stanno collidendo.",
 "type": "dialogue"
 },
-"16": {
-"character": "",
-"inline_mutations": [  ],
-"next_id": "17",
-"pauses": {
-},
-"replacements": [ {
+"17": {
+"character": "{{saved_state.name}}",
+"character_replacements": [ {
 "expression": [ {
 "type": "variable",
 "value": "saved_state"
@@ -183,24 +193,29 @@ lines = {
 } ],
 "value_in_text": "{{saved_state.name}}"
 } ],
+"inline_mutations": [  ],
+"next_id": "18",
+"pauses": {
+},
+"replacements": [  ],
 "speeds": [  ],
-"text": "{{saved_state.name}}:",
+"text": "(seleziona risposta)",
 "time": null,
-"translation_key": "{{saved_state.name}}:",
+"translation_key": "(seleziona risposta)",
 "type": "dialogue"
 },
-"17": {
-"next_id": "20",
-"next_id_after": "20",
+"18": {
+"next_id": "21",
+"next_id_after": "21",
 "replacements": [  ],
-"responses": PoolStringArray( "17", "18" ),
+"responses": PoolStringArray( "18", "19" ),
 "text": "...",
 "translation_key": "...",
 "type": "response"
 },
-"18": {
-"next_id": "20",
-"next_id_after": "20",
+"19": {
+"next_id": "21",
+"next_id_after": "21",
 "replacements": [  ],
 "text": "Va bene, ma tu chi saresti?",
 "translation_key": "Va bene, ma tu chi saresti?",
@@ -214,11 +229,11 @@ lines = {
 "next_id": "3",
 "type": "mutation"
 },
-"20": {
+"21": {
 "character": "???",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "21",
+"next_id": "22",
 "pauses": {
 },
 "replacements": [  ],
@@ -228,13 +243,9 @@ lines = {
 "translation_key": "Dobbiamo tornare al mio laboratorio immediatamente! Mi aiuterai ad affrontare i mostri?",
 "type": "dialogue"
 },
-"21": {
-"character": "",
-"inline_mutations": [  ],
-"next_id": "22",
-"pauses": {
-},
-"replacements": [ {
+"22": {
+"character": "{{saved_state.name}}",
+"character_replacements": [ {
 "expression": [ {
 "type": "variable",
 "value": "saved_state"
@@ -246,27 +257,32 @@ lines = {
 } ],
 "value_in_text": "{{saved_state.name}}"
 } ],
+"inline_mutations": [  ],
+"next_id": "23",
+"pauses": {
+},
+"replacements": [  ],
 "speeds": [  ],
-"text": "{{saved_state.name}}:",
+"text": "(seleziona risposta)",
 "time": null,
-"translation_key": "{{saved_state.name}}:",
+"translation_key": "(seleziona risposta)",
 "type": "dialogue"
 },
-"22": {
-"next_id": "23",
-"next_id_after": "27",
+"23": {
+"next_id": "24",
+"next_id_after": "28",
 "replacements": [  ],
-"responses": PoolStringArray( "22", "24" ),
+"responses": PoolStringArray( "23", "25" ),
 "text": "Va bene, ti aiuterò.",
 "translation_key": "Va bene, ti aiuterò.",
 "type": "response"
 },
-"23": {
+"24": {
 "character": "???",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "27",
-"parent_id": "22",
+"next_id": "28",
+"parent_id": "23",
 "pauses": {
 },
 "replacements": [  ],
@@ -276,20 +292,20 @@ lines = {
 "translation_key": "Sapevo di poter contare su di te.",
 "type": "dialogue"
 },
-"24": {
-"next_id": "25",
-"next_id_after": "27",
+"25": {
+"next_id": "26",
+"next_id_after": "28",
 "replacements": [  ],
 "text": "No, prima dimmi chi sei.",
 "translation_key": "No, prima dimmi chi sei.",
 "type": "response"
 },
-"25": {
+"26": {
 "character": "???",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "27",
-"parent_id": "24",
+"next_id": "28",
+"parent_id": "25",
 "pauses": {
 },
 "replacements": [  ],
@@ -297,20 +313,6 @@ lines = {
 "text": "Vedrai che te la caverai benissimo.",
 "time": null,
 "translation_key": "Vedrai che te la caverai benissimo.",
-"type": "dialogue"
-},
-"27": {
-"character": "???",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "28",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Vedi quel portale blu? Ti consiglio di entrarci.",
-"time": null,
-"translation_key": "Vedi quel portale blu? Ti consiglio di entrarci.",
 "type": "dialogue"
 },
 "28": {
@@ -322,33 +324,23 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "In questo modo una copia della tua anima sarà sempre in grado di ritornare nel caso ti accadesse qualcosa.",
+"text": "Vedi quel portale blu? Ti consiglio di entrarci.",
 "time": null,
-"translation_key": "In questo modo una copia della tua anima sarà sempre in grado di ritornare nel caso ti accadesse qualcosa.",
+"translation_key": "Vedi quel portale blu? Ti consiglio di entrarci.",
 "type": "dialogue"
 },
 "29": {
-"character": "",
+"character": "???",
+"character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "30",
 "pauses": {
 },
-"replacements": [ {
-"expression": [ {
-"type": "variable",
-"value": "saved_state"
-}, {
-"type": "dot"
-}, {
-"type": "variable",
-"value": "name"
-} ],
-"value_in_text": "{{saved_state.name}}"
-} ],
+"replacements": [  ],
 "speeds": [  ],
-"text": "{{saved_state.name}}:",
+"text": "In questo modo una copia della tua anima sarà sempre in grado di ritornare nel caso ti accadesse qualcosa.",
 "time": null,
-"translation_key": "{{saved_state.name}}:",
+"translation_key": "In questo modo una copia della tua anima sarà sempre in grado di ritornare nel caso ti accadesse qualcosa.",
 "type": "dialogue"
 },
 "3": {
@@ -366,66 +358,6 @@ lines = {
 "type": "dialogue"
 },
 "30": {
-"next_id": "32",
-"next_id_after": "32",
-"replacements": [  ],
-"responses": PoolStringArray( "30", "31" ),
-"text": "Come sarebbe a dire \"accadesse qualcosa\"?",
-"translation_key": "Come sarebbe a dire \"accadesse qualcosa\"?",
-"type": "response"
-},
-"31": {
-"next_id": "32",
-"next_id_after": "32",
-"replacements": [  ],
-"text": "Figurati, cosa potrebbe mai succedermi.",
-"translation_key": "Figurati, cosa potrebbe mai succedermi.",
-"type": "response"
-},
-"32": {
-"mutation": {
-"args": [  ],
-"function": "back_to_normal"
-},
-"next_id": "33",
-"type": "mutation"
-},
-"33": {
-"mutation": {
-"args": [  ],
-"function": "finished_dialogue"
-},
-"next_id": "end",
-"type": "mutation"
-},
-"35": {
-"next_id": "36",
-"text": "Portals",
-"type": "title"
-},
-"36": {
-"mutation": {
-"args": [  ],
-"function": "incapacitate"
-},
-"next_id": "37",
-"type": "mutation"
-},
-"37": {
-"character": "???",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "38",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Ecco, prendi questo guanto. Potrai usarlo per generare dei portali a corto raggio.",
-"time": null,
-"translation_key": "Ecco, prendi questo guanto. Potrai usarlo per generare dei portali a corto raggio.",
-"type": "dialogue"
-},
-"38": {
 "character": "{{saved_state.name}}",
 "character_replacements": [ {
 "expression": [ {
@@ -440,14 +372,74 @@ lines = {
 "value_in_text": "{{saved_state.name}}"
 } ],
 "inline_mutations": [  ],
+"next_id": "31",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "(seleziona risposta)",
+"time": null,
+"translation_key": "(seleziona risposta)",
+"type": "dialogue"
+},
+"31": {
+"next_id": "33",
+"next_id_after": "33",
+"replacements": [  ],
+"responses": PoolStringArray( "31", "32" ),
+"text": "Come sarebbe a dire \"accadesse qualcosa\"?",
+"translation_key": "Come sarebbe a dire \"accadesse qualcosa\"?",
+"type": "response"
+},
+"32": {
+"next_id": "33",
+"next_id_after": "33",
+"replacements": [  ],
+"text": "Figurati, cosa potrebbe mai succedermi.",
+"translation_key": "Figurati, cosa potrebbe mai succedermi.",
+"type": "response"
+},
+"33": {
+"mutation": {
+"args": [  ],
+"function": "back_to_normal"
+},
+"next_id": "34",
+"type": "mutation"
+},
+"34": {
+"mutation": {
+"args": [  ],
+"function": "finished_dialogue"
+},
+"next_id": "end",
+"type": "mutation"
+},
+"36": {
+"next_id": "37",
+"text": "Portals",
+"type": "title"
+},
+"37": {
+"mutation": {
+"args": [  ],
+"function": "incapacitate"
+},
+"next_id": "38",
+"type": "mutation"
+},
+"38": {
+"character": "???",
+"character_replacements": [  ],
+"inline_mutations": [  ],
 "next_id": "39",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "...",
+"text": "Ecco, prendi questo guanto. Potrai usarlo per generare dei portali a corto raggio.",
 "time": null,
-"translation_key": "...",
+"translation_key": "Ecco, prendi questo guanto. Potrai usarlo per generare dei portali a corto raggio.",
 "type": "dialogue"
 },
 "39": {
@@ -470,9 +462,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Ok.",
+"text": "...",
 "time": null,
-"translation_key": "Ok.",
+"translation_key": "...",
 "type": "dialogue"
 },
 "4": {
@@ -490,17 +482,34 @@ lines = {
 "type": "dialogue"
 },
 "40": {
-"mutation": {
-"args": [  ],
-"function": "back_to_normal"
-},
+"character": "{{saved_state.name}}",
+"character_replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "saved_state"
+}, {
+"type": "dot"
+}, {
+"type": "variable",
+"value": "name"
+} ],
+"value_in_text": "{{saved_state.name}}"
+} ],
+"inline_mutations": [  ],
 "next_id": "41",
-"type": "mutation"
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Ok.",
+"time": null,
+"translation_key": "Ok.",
+"type": "dialogue"
 },
 "41": {
 "mutation": {
 "args": [  ],
-"function": "give_portal_gun"
+"function": "back_to_normal"
 },
 "next_id": "42",
 "type": "mutation"
@@ -508,16 +517,24 @@ lines = {
 "42": {
 "mutation": {
 "args": [  ],
-"function": "save"
+"function": "give_portal_gun"
 },
 "next_id": "43",
 "type": "mutation"
 },
 "43": {
+"mutation": {
+"args": [  ],
+"function": "save"
+},
+"next_id": "44",
+"type": "mutation"
+},
+"44": {
 "character": "TUTORIAL",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "45",
+"next_id": "46",
 "pauses": {
 },
 "replacements": [  ],
@@ -527,11 +544,11 @@ lines = {
 "translation_key": "*click sinistro del mouse per piazzare un portale*",
 "type": "dialogue"
 },
-"45": {
+"46": {
 "character": "Voce da una radio",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "46",
+"next_id": "47",
 "pauses": {
 },
 "replacements": [  ],
@@ -541,11 +558,11 @@ lines = {
 "translation_key": "HELENA, COSA HAI COMBINATO?!",
 "type": "dialogue"
 },
-"46": {
+"47": {
 "character": "Helena",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "47",
+"next_id": "48",
 "pauses": {
 },
 "replacements": [  ],
@@ -555,11 +572,11 @@ lines = {
 "translation_key": "IO NON HO FATTO NIENTE, È COLPA DEI ROBOT DEL LABORATORIO CHE SONO INSORTI.",
 "type": "dialogue"
 },
-"47": {
+"48": {
 "character": "Voce da una radio",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "48",
+"next_id": "49",
 "pauses": {
 },
 "replacements": [  ],
@@ -569,11 +586,11 @@ lines = {
 "translation_key": "Ma tu stai bene?",
 "type": "dialogue"
 },
-"48": {
+"49": {
 "character": "Helena",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "50",
+"next_id": "51",
 "pauses": {
 },
 "replacements": [  ],
@@ -591,7 +608,7 @@ lines = {
 "next_id": "6",
 "type": "mutation"
 },
-"50": {
+"51": {
 "character": "{{saved_state.name}}",
 "character_replacements": [ {
 "expression": [ {
@@ -606,7 +623,7 @@ lines = {
 "value_in_text": "{{saved_state.name}}"
 } ],
 "inline_mutations": [  ],
-"next_id": "51",
+"next_id": "52",
 "pauses": {
 },
 "replacements": [  ],
@@ -614,20 +631,6 @@ lines = {
 "text": "Quindi ti chiami Helena.",
 "time": null,
 "translation_key": "Quindi ti chiami Helena.",
-"type": "dialogue"
-},
-"51": {
-"character": "Helena",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "52",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Sì, il mio nome è dott.essa Helena Wissenschaftler e lavoro al laboratorio <nome del laboratorio>.",
-"time": null,
-"translation_key": "Sì, il mio nome è dott.essa Helena Wissenschaftler e lavoro al laboratorio <nome del laboratorio>.",
 "type": "dialogue"
 },
 "52": {
@@ -639,9 +642,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Noi facciamo ricerche sui portali ed i loro utilizzi.",
+"text": "Sì, il mio nome è dott.essa Helena Wissenschaftler e lavoro al laboratorio <nome del laboratorio>.",
 "time": null,
-"translation_key": "Noi facciamo ricerche sui portali ed i loro utilizzi.",
+"translation_key": "Sì, il mio nome è dott.essa Helena Wissenschaftler e lavoro al laboratorio <nome del laboratorio>.",
 "type": "dialogue"
 },
 "53": {
@@ -653,12 +656,26 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
+"text": "Noi facciamo ricerche sui portali ed i loro utilizzi.",
+"time": null,
+"translation_key": "Noi facciamo ricerche sui portali ed i loro utilizzi.",
+"type": "dialogue"
+},
+"54": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "55",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
 "text": "Considerando quello che è successo ne incontreremo molti sulla nostra strada.",
 "time": null,
 "translation_key": "Considerando quello che è successo ne incontreremo molti sulla nostra strada.",
 "type": "dialogue"
 },
-"54": {
+"55": {
 "mutation": {
 "args": [  ],
 "function": "finished_dialogue"
@@ -666,24 +683,10 @@ lines = {
 "next_id": "end",
 "type": "mutation"
 },
-"57": {
-"next_id": "58",
+"58": {
+"next_id": "59",
 "text": "Summon",
 "type": "title"
-},
-"58": {
-"character": "Helena",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "59",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Adesso che il nemico è morto, possiamo usare il potere dei portali a nostro vantaggio.",
-"time": null,
-"translation_key": "Adesso che il nemico è morto, possiamo usare il potere dei portali a nostro vantaggio.",
-"type": "dialogue"
 },
 "59": {
 "character": "Helena",
@@ -694,9 +697,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Ho creato un dispositivo che simula il comportamento del portale blu per un tempo limitato.",
+"text": "Adesso che il nemico è morto, possiamo usare il potere dei portali a nostro vantaggio.",
 "time": null,
-"translation_key": "Ho creato un dispositivo che simula il comportamento del portale blu per un tempo limitato.",
+"translation_key": "Adesso che il nemico è morto, possiamo usare il potere dei portali a nostro vantaggio.",
 "type": "dialogue"
 },
 "6": {
@@ -722,9 +725,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Possiamo, quindi, usare l'anima di quella cosa per evocarne una copia.",
+"text": "Ho creato un dispositivo che simula il comportamento del portale blu per un tempo limitato.",
 "time": null,
-"translation_key": "Possiamo, quindi, usare l'anima di quella cosa per evocarne una copia.",
+"translation_key": "Ho creato un dispositivo che simula il comportamento del portale blu per un tempo limitato.",
 "type": "dialogue"
 },
 "61": {
@@ -736,16 +739,30 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
+"text": "Possiamo, quindi, usare l'anima di quella cosa per evocarne una copia.",
+"time": null,
+"translation_key": "Possiamo, quindi, usare l'anima di quella cosa per evocarne una copia.",
+"type": "dialogue"
+},
+"62": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "63",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
 "text": "Però attenzione a non abusarne, ho una quantità di energia limitata. I miei sensori possono leggere quanta energia serve per ogni evocazione.",
 "time": null,
 "translation_key": "Però attenzione a non abusarne, ho una quantità di energia limitata. I miei sensori possono leggere quanta energia serve per ogni evocazione.",
 "type": "dialogue"
 },
-"62": {
+"63": {
 "character": "TUTORIAL",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "63",
+"next_id": "64",
 "pauses": {
 },
 "replacements": [  ],
@@ -755,7 +772,7 @@ lines = {
 "translation_key": "*click con rotella del mouse sul cadavere per prenderne l'anima, click destro per evocare*",
 "type": "dialogue"
 },
-"63": {
+"64": {
 "character": "Helena",
 "character_replacements": [  ],
 "inline_mutations": [  ],
@@ -769,15 +786,15 @@ lines = {
 "translation_key": "Oh guarda, è apparso un portal giallo: emette diversi tipi di energia.",
 "type": "dialogue"
 },
-"65": {
-"next_id": "66",
+"66": {
+"next_id": "67",
 "text": "Boss",
 "type": "title"
 },
-"66": {
+"67": {
 "character": "",
 "inline_mutations": [  ],
-"next_id": "67",
+"next_id": "68",
 "pauses": {
 },
 "replacements": [  ],
@@ -787,27 +804,13 @@ lines = {
 "translation_key": "*L'ENERGIA DEI PORTALI CRESCE IN TE*",
 "type": "dialogue"
 },
-"67": {
+"68": {
 "mutation": {
 "args": [  ],
 "function": "save"
 },
-"next_id": "68",
-"type": "mutation"
-},
-"68": {
-"character": "Helena",
-"character_replacements": [  ],
-"inline_mutations": [  ],
 "next_id": "69",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Visto? Lo sapevo che per te non sarebbe stato difficile.",
-"time": null,
-"translation_key": "Visto? Lo sapevo che per te non sarebbe stato difficile.",
-"type": "dialogue"
+"type": "mutation"
 },
 "69": {
 "character": "Helena",
@@ -818,9 +821,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Questo mostro ha rilasciato molta energia morendo. Le mie tecnologie si sono potenziate ed anche tu mi sembri più in salute.",
+"text": "Visto? Lo sapevo che per te non sarebbe stato difficile.",
 "time": null,
-"translation_key": "Questo mostro ha rilasciato molta energia morendo. Le mie tecnologie si sono potenziate ed anche tu mi sembri più in salute.",
+"translation_key": "Visto? Lo sapevo che per te non sarebbe stato difficile.",
 "type": "dialogue"
 },
 "7": {
@@ -840,9 +843,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Tutta quell'energia ha anche aperto un portale grigio, vuol dire che non porta da nessuna parte.",
+"text": "Questo mostro ha rilasciato molta energia morendo. Le mie tecnologie si sono potenziate ed anche tu mi sembri più in salute.",
 "time": null,
-"translation_key": "Tutta quell'energia ha anche aperto un portale grigio, vuol dire che non porta da nessuna parte.",
+"translation_key": "Questo mostro ha rilasciato molta energia morendo. Le mie tecnologie si sono potenziate ed anche tu mi sembri più in salute.",
 "type": "dialogue"
 },
 "71": {
@@ -854,12 +857,26 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
+"text": "Tutta quell'energia ha anche aperto un portale grigio, vuol dire che non porta da nessuna parte.",
+"time": null,
+"translation_key": "Tutta quell'energia ha anche aperto un portale grigio, vuol dire che non porta da nessuna parte.",
+"type": "dialogue"
+},
+"72": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "73",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
 "text": "Adesso creerò un interferenza che ci permetterà di usarlo, lo imposto sulla frequenza della mia dimensione.",
 "time": null,
 "translation_key": "Adesso creerò un interferenza che ci permetterà di usarlo, lo imposto sulla frequenza della mia dimensione.",
 "type": "dialogue"
 },
-"72": {
+"73": {
 "mutation": {
 "args": [  ],
 "function": "activate_portal"
