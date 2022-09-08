@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/sprites/traps/bombe/spawnerbombe2.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/traps/bombe/spawnerbombe1.png" type="Texture" id=2]
@@ -13,9 +13,6 @@ animations = [ {
 "speed": 3.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 101.081, 59.6285 )
-
 [node name="BombSpawner" type="AnimatedSprite" groups=["Environment"]]
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 1 )
@@ -27,20 +24,25 @@ bomb = ExtResource( 4 )
 wait_time = 10.0
 autostart = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["IgnorePortal"]]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PoolVector2Array( 3.75, -2.5, -8.75, -58.75, 85, 55, 182.5, 60, 175, 176.25, 76.25, 173.75, 33.75, 131.25, -107.5, 126.25, -155, 67.5, -15, 45, -8.75, -51.25, 82.5, -2.5, 188.75, -7.5, 181.25, 55 )
-
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( -208.75, 130 )
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="." groups=["Environment"]]
+[node name="CollisionVertivals" type="StaticBody2D" parent="." groups=["Environment", "IgnorePortal", "VerticalEnvironment"]]
+scale = Vector2( 0.6, 0.6 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2( 73.7584, 80.4994 )
-rotation = 0.301942
-scale = Vector2( 1, 1 )
-shape = SubResource( 2 )
+[node name="Top" type="CollisionPolygon2D" parent="CollisionVertivals"]
+polygon = PoolVector2Array( -27.0833, 66.6667, -20.8333, 2.08333, 304.167, -4.16667, 306.25, 79.1667, -250, 110.417, -231.25, 85.4167 )
+
+[node name="Bottom" type="CollisionPolygon2D" parent="CollisionVertivals"]
+polygon = PoolVector2Array( -195.833, 191.667, -172.917, 210.417, -72.9167, 220.833, 58.3333, 218.75, 137.5, 295.833, 295.833, 295.833, 295.833, 235.417, 47.9167, 183.333 )
+
+[node name="CollisionHorizontals" type="StaticBody2D" parent="." groups=["Environment", "HorizontalEnvironment", "IgnorePortal"]]
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Left" type="CollisionPolygon2D" parent="CollisionHorizontals"]
+polygon = PoolVector2Array( -252.083, 114.583, -243.75, 156.25, -172.917, 212.5, -241.667, 100 )
+
+[node name="Right" type="CollisionPolygon2D" parent="CollisionHorizontals"]
+polygon = PoolVector2Array( 308.333, 0, 295.833, 295.833, 268.75, 297.917, 285.417, 10.4167 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
