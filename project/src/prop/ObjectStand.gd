@@ -13,6 +13,7 @@ func _on_ObjectStand_body_entered(body):
 		remove_object()
 		if is_instance_valid(object) and not body.has_node("FlyingDiamond"):
 			body.add_child(object.instance())
+			body.get_node("FlyingDiamond").active = true
 		emit_signal("object_collected")
 
 func remove_object():
