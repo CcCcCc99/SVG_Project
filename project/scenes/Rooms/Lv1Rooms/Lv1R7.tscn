@@ -14,12 +14,34 @@ right_room = 3
 [node name="Node2D" type="Node2D" parent="." index="1"]
 z_index = -1
 
-[node name="Line2D" type="Line2D" parent="Node2D" index="0"]
-points = PoolVector2Array( 670, -310, 324, -281, -84, -167, -619, -137 )
+[node name="CableSolution" type="Line2D" parent="Node2D" index="0"]
+z_index = -2
+points = PoolVector2Array( 672, -368, 672, -24, 112, -24, 112, -224, -88, -224, -88, -136, -624, -136 )
+default_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+
+[node name="CableDoor1" type="Line2D" parent="Node2D" index="1"]
+position = Vector2( -631.346, 0 )
+z_index = -2
+points = PoolVector2Array( 1111.35, 248, 271.346, 248, 271.346, -272, 807.346, -272, 807.346, -184, 479.346, -184, 479.346, 8, 1039.35, 8 )
+default_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+
+[node name="CableDoor2" type="Line2D" parent="Node2D" index="2"]
+z_index = -2
+points = PoolVector2Array( 480, -264, 584, -264, 584, 336, -112, 336, -112, -40, -664, -40, -664, 256 )
+default_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+
+[node name="CableTrap1" type="Line2D" parent="Node2D" index="3"]
+z_index = -2
+points = PoolVector2Array( 384, -128, 16, -128, 16, -376, -312, -376, -312, 184, 216, 184, 216, -400, 264, -400 )
+default_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+
+[node name="CableTrap2" type="Line2D" parent="Node2D" index="4"]
+z_index = -2
+points = PoolVector2Array( -248, -408, -160, -408, -160, -312, 344, -312, 344, 368, -504, 368, -504, -80 )
 default_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 
 [node name="WetSuitStand" parent="Objects" index="0" instance=ExtResource( 2 )]
-position = Vector2( -764, 11 )
+position = Vector2( -764, 32 )
 
 [node name="Coil1" parent="Objects" index="1" instance=ExtResource( 6 )]
 position = Vector2( -800, -130 )
@@ -33,72 +55,114 @@ neighbors = [ "4" ]
 
 [node name="Coil3" parent="Objects" index="3" instance=ExtResource( 6 )]
 position = Vector2( -620, -130 )
-laser_num = [ "1", "2", "10" ]
-neighbors = [ "1", "4", "7" ]
+laser_num = [ "1", "2" ]
+neighbors = [ "1", "4" ]
 
 [node name="Coil4" parent="Objects" index="4" instance=ExtResource( 6 )]
 position = Vector2( -620, 130 )
 laser_num = [ "2", "3", "15" ]
 neighbors = [ "3", "2", "11" ]
 
-[node name="Laser1" parent="Objects" index="5" instance=ExtResource( 5 )]
-position = Vector2( 6, -254 )
-points = PoolVector2Array( -789, 39, -611, 39 )
+[node name="Laser1" parent="Objects" index="5" groups=["VerticalEnvironment"] instance=ExtResource( 5 )]
+position = Vector2( 0, -120 )
+points = PoolVector2Array( -784, -96, -608, -96 )
 
-[node name="Laser2" parent="Objects" index="6" instance=ExtResource( 5 )]
-position = Vector2( -606, -215 )
-points = PoolVector2Array( 0, 0, 0, 260 )
+[node name="Laser2" parent="Objects" index="6" groups=["HorizontalEnvironment"] instance=ExtResource( 5 )]
+position = Vector2( -604, 2 )
+points = PoolVector2Array( -2, -216, -2, 40 )
 
-[node name="Laser3" parent="Objects" index="7" instance=ExtResource( 5 )]
-points = PoolVector2Array( -789, 39, -611, 39 )
+[node name="Laser3" parent="Objects" index="7" groups=["VerticalEnvironment"] instance=ExtResource( 5 )]
+position = Vector2( 2, 136 )
+points = PoolVector2Array( -786, -88, -610, -88 )
 
 [node name="CoilLever" parent="Objects" index="8" instance=ExtResource( 7 )]
-position = Vector2( 672, -304 )
+position = Vector2( 672, -350.666 )
 coil_num = [ "3" ]
 
-[node name="Coil5" parent="Objects" index="9" instance=ExtResource( 6 )]
-position = Vector2( -241, 121 )
+[node name="CoilLever2" parent="Objects" index="9" instance=ExtResource( 7 )]
+position = Vector2( 391, 24 )
+coil_num = [ "12" ]
 
-[node name="Coil6" parent="Objects" index="10" instance=ExtResource( 6 )]
+[node name="CoilLever3" parent="Objects" index="10" instance=ExtResource( 7 )]
+position = Vector2( 391, -112 )
+coil_num = [ "8" ]
+
+[node name="CoilLever4" parent="Objects" index="11" instance=ExtResource( 7 )]
+position = Vector2( -664, 260 )
+coil_num = [ "9" ]
+
+[node name="CoilLever5" parent="Objects" index="12" instance=ExtResource( 7 )]
+position = Vector2( -496, -75 )
+coil_num = [ "7" ]
+
+[node name="Coil5" parent="Objects" index="13" instance=ExtResource( 6 )]
+position = Vector2( -243, 124 )
+laser_num = [ "6", "4" ]
+neighbors = [ "7", "6" ]
+
+[node name="Coil6" parent="Objects" index="14" instance=ExtResource( 6 )]
 position = Vector2( 262, 121 )
+laser_num = [ "9", "4", "5" ]
+neighbors = [ "5", "8" ]
 
-[node name="Coil7" parent="Objects" index="11" instance=ExtResource( 6 )]
-position = Vector2( -240, -410 )
+[node name="Coil7" parent="Objects" index="15" instance=ExtResource( 6 )]
+position = Vector2( -247, -413 )
+laser_num = [ "6" ]
+neighbors = [ "5" ]
 
-[node name="Coil8" parent="Objects" index="12" instance=ExtResource( 6 )]
+[node name="Coil8" parent="Objects" index="16" instance=ExtResource( 6 )]
 position = Vector2( 262, -407 )
+laser_num = [ "5" ]
+neighbors = [ "6" ]
 
-[node name="Laser4" parent="Objects" index="13" instance=ExtResource( 5 )]
-position = Vector2( 3, 50 )
-points = PoolVector2Array( -230, -15, 273, -15 )
+[node name="Laser4" parent="Objects" index="17" instance=ExtResource( 5 )]
+position = Vector2( 0, 128 )
+points = PoolVector2Array( -232, -90, 280, -90 )
 
-[node name="Laser5" parent="Objects" index="14" instance=ExtResource( 5 )]
+[node name="Laser5" parent="Objects" index="18" groups=["HorizontalEnvironment"] instance=ExtResource( 5 )]
 position = Vector2( 3, 50 )
 points = PoolVector2Array( 273, -543, 273, -15 )
 
-[node name="Laser6" parent="Objects" index="15" instance=ExtResource( 5 )]
+[node name="Laser6" parent="Objects" index="19" groups=["HorizontalEnvironment"] instance=ExtResource( 5 )]
 position = Vector2( -200, 50 )
-points = PoolVector2Array( -23, -545, -24, -15 )
+points = PoolVector2Array( -32, -546, -32, -10 )
 
-[node name="Coil9" parent="Objects" index="16" instance=ExtResource( 6 )]
+[node name="Coil9" parent="Objects" index="20" instance=ExtResource( 6 )]
 position = Vector2( 468, -260 )
+laser_num = [ "8", "7" ]
+neighbors = [ "10", "11" ]
 
-[node name="Coil10" parent="Objects" index="17" instance=ExtResource( 6 )]
-position = Vector2( 716, -260 )
+[node name="Coil10" parent="Objects" index="21" instance=ExtResource( 6 )]
+position = Vector2( 720, -256 )
 
-[node name="Coil11" parent="Objects" index="18" instance=ExtResource( 6 )]
+[node name="Coil11" parent="Objects" index="22" instance=ExtResource( 6 )]
 position = Vector2( -480, -259 )
 
-[node name="Coil12" parent="Objects" index="19" instance=ExtResource( 6 )]
-position = Vector2( 472, 115 )
+[node name="Coil12" parent="Objects" index="23" instance=ExtResource( 6 )]
+position = Vector2( 478, 249 )
+laser_num = [ "9", "10" ]
+neighbors = [ "6", "13" ]
 
-[node name="Laser7" parent="Objects" index="20" instance=ExtResource( 5 )]
-position = Vector2( 3, -500 )
-points = PoolVector2Array( -467, 156, 477, 156 )
+[node name="Coil13" parent="Objects" index="24" instance=ExtResource( 6 )]
+position = Vector2( 677, 366 )
+laser_num = [ "10" ]
+neighbors = [ "12" ]
 
-[node name="Laser8" parent="Objects" index="21" instance=ExtResource( 5 )]
-position = Vector2( 3, -300 )
-points = PoolVector2Array( 733, -44, 485, -44 )
+[node name="Laser7" parent="Objects" index="25" groups=["VerticalEnvironment"] instance=ExtResource( 5 )]
+position = Vector2( 2, -252 )
+points = PoolVector2Array( -466, -92, 478, -92 )
+
+[node name="Laser8" parent="Objects" index="26" groups=["VerticalEnvironment"] instance=ExtResource( 5 )]
+position = Vector2( 0, -248 )
+points = PoolVector2Array( 736, -96, 480, -96 )
+
+[node name="Laser9" parent="Objects" index="27" groups=["VerticalEnvironment"] instance=ExtResource( 5 )]
+position = Vector2( -256, 248 )
+points = PoolVector2Array( 752, -80, 536, -208 )
+
+[node name="Laser10" parent="Objects" index="28" groups=["VerticalEnvironment"] instance=ExtResource( 5 )]
+position = Vector2( -40, 374 )
+points = PoolVector2Array( 728, -94, 536, -208 )
 
 [node name="WetSuitEvent" parent="Events" index="0" instance=ExtResource( 3 )]
 script = ExtResource( 4 )
