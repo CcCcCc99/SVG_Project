@@ -23,6 +23,7 @@ func _ready():
 	player = get_parent().get_parent().get_parent().player
 	$WingsAnimator.play("Wings")
 	initial_body_pos = $Body.position
+	$Body.material = $AnimatedSprite.material
 
 func _physics_process(delta):
 	._physics_process(delta)
@@ -145,6 +146,9 @@ func _end_effect():
 	for eb in energy_array:
 		if is_instance_valid(eb):
 			eb.queue_free()
+	for fe in fly_effects:
+		if is_instance_valid(fe):
+			fe.end_effect()
 	._end_effect()
 
 func _end_flies():
