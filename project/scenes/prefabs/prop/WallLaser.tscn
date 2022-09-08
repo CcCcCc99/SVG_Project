@@ -6,7 +6,7 @@
 
 [sub_resource type="SegmentShape2D" id=2]
 
-[node name="WallLaser" type="Line2D"]
+[node name="WallLaser" type="Line2D" groups=["Environment"]]
 position = Vector2( 3, 5 )
 points = PoolVector2Array( 0, 0, 100, 100 )
 width = 7.0

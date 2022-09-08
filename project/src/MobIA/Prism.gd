@@ -40,5 +40,7 @@ func _on_Cooldown_timeout():
 
 
 func _on_hit(body):
-	if body.is_in_group(enemy):
+	if body.is_in_group("Hitbox"):
+		body = body.get_character()
+	if body.is_in_group("Character") and body != self:
 		body.take_damage(laser_dmg)

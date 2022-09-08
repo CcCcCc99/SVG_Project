@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Rooms/RoomGenericSciFi.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/prefabs/prop/objects/WetSuitStand.tscn" type="PackedScene" id=2]
@@ -7,35 +7,36 @@
 [ext_resource path="res://scenes/prefabs/prop/WallLaser.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/prefabs/prop/Coil.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/prefabs/prop/CoilLever.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/prefabs/mob/Prism.tscn" type="PackedScene" id=8]
 
 [node name="Room" instance=ExtResource( 1 )]
 right_room = 3
 
-[node name="Node2D" type="Node2D" parent="." index="1"]
+[node name="Cables" type="Node2D" parent="." index="1"]
 z_index = -1
 
-[node name="CableSolution" type="Line2D" parent="Node2D" index="0"]
+[node name="CableSolution" type="Line2D" parent="Cables" index="0"]
 z_index = -2
 points = PoolVector2Array( 672, -368, 672, -24, 112, -24, 112, -224, -88, -224, -88, -136, -624, -136 )
 default_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 
-[node name="CableDoor1" type="Line2D" parent="Node2D" index="1"]
+[node name="CableDoor1" type="Line2D" parent="Cables" index="1"]
 position = Vector2( -631.346, 0 )
 z_index = -2
 points = PoolVector2Array( 1111.35, 248, 271.346, 248, 271.346, -272, 807.346, -272, 807.346, -184, 479.346, -184, 479.346, 8, 1039.35, 8 )
 default_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 
-[node name="CableDoor2" type="Line2D" parent="Node2D" index="2"]
+[node name="CableDoor2" type="Line2D" parent="Cables" index="2"]
 z_index = -2
 points = PoolVector2Array( 480, -264, 584, -264, 584, 336, -112, 336, -112, -40, -664, -40, -664, 256 )
 default_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 
-[node name="CableTrap1" type="Line2D" parent="Node2D" index="3"]
+[node name="CableTrap1" type="Line2D" parent="Cables" index="3"]
 z_index = -2
 points = PoolVector2Array( 384, -128, 16, -128, 16, -376, -312, -376, -312, 184, 216, 184, 216, -400, 264, -400 )
 default_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 
-[node name="CableTrap2" type="Line2D" parent="Node2D" index="4"]
+[node name="CableTrap2" type="Line2D" parent="Cables" index="4"]
 z_index = -2
 points = PoolVector2Array( -248, -408, -160, -408, -160, -312, 344, -312, 344, 368, -504, 368, -504, -80 )
 default_color = Color( 0.203922, 0.203922, 0.203922, 1 )
@@ -115,7 +116,7 @@ position = Vector2( 262, -407 )
 laser_num = [ "5" ]
 neighbors = [ "6" ]
 
-[node name="Laser4" parent="Objects" index="17" instance=ExtResource( 5 )]
+[node name="Laser4" parent="Objects" index="17" groups=["VerticalEnvironment"] instance=ExtResource( 5 )]
 position = Vector2( 0, 128 )
 points = PoolVector2Array( -232, -90, 280, -90 )
 
@@ -163,6 +164,8 @@ points = PoolVector2Array( 752, -80, 536, -208 )
 [node name="Laser10" parent="Objects" index="28" groups=["VerticalEnvironment"] instance=ExtResource( 5 )]
 position = Vector2( -40, 374 )
 points = PoolVector2Array( 728, -94, 536, -208 )
+
+[node name="Prism" parent="Objects" index="29" instance=ExtResource( 8 )]
 
 [node name="WetSuitEvent" parent="Events" index="0" instance=ExtResource( 3 )]
 script = ExtResource( 4 )

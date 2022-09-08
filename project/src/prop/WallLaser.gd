@@ -9,6 +9,10 @@ var player: Character
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var groups = get_groups()
+	for g in groups:
+		$StaticBody.add_to_group(g)
+	print(name, $StaticBody.get_groups())
 	player = get_parent().get_node("Player")
 	$StaticBody/CollisionShape2D.shape = $StaticBody/CollisionShape2D.shape.duplicate()
 	$Area2D/CollisionShape2D.shape = $Area2D/CollisionShape2D.shape.duplicate()
