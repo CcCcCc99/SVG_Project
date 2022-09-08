@@ -41,15 +41,15 @@ position = Vector2( 530, -372 )
 laser_num = [ "3" ]
 neighbors = [ "3" ]
 
-[node name="Laser1" parent="Objects" index="4" instance=ExtResource( 7 )]
+[node name="Laser1" parent="Objects" index="4" groups=["VerticalEnvironment"] instance=ExtResource( 7 )]
 position = Vector2( 3, -187.013 )
 points = PoolVector2Array( -579, -84, 541, -84 )
 
-[node name="Laser2" parent="Objects" index="5" instance=ExtResource( 7 )]
+[node name="Laser2" parent="Objects" index="5" groups=["HorizontalEnvironment"] instance=ExtResource( 7 )]
 position = Vector2( 3, -190 )
 points = PoolVector2Array( -579, -85, -579, -267 )
 
-[node name="Laser3" parent="Objects" index="6" instance=ExtResource( 7 )]
+[node name="Laser3" parent="Objects" index="6" groups=["HorizontalEnvironment"] instance=ExtResource( 7 )]
 position = Vector2( 3, -190 )
 points = PoolVector2Array( 541, -79, 541, -267 )
 
