@@ -4,6 +4,7 @@ var initial_body_pos: Vector2
 export var energy_ball: PackedScene
 export var fly: PackedScene
 export var fly_number: int
+var fly_effects: Array
 
 var count: int = 0
 var energy_array: Array
@@ -64,14 +65,9 @@ func _spawn_fly():
 	else:
 		f.set_direction(Vector2.LEFT)
 	f.target = player
-	# generate audio for the flies
-	var audio = AudioStreamPlayer.new()
-	audio.set_stream(load("res://assets/audio/Laser 1.mp3"))
-	audio.set_volume_db(-17.5)
-	audio.set_pitch_scale(1.5)
-	audio.play()
-	f.add_child(audio)
 	get_parent().add_child(f)
+	f.connect("is_dead", self, "_end_flies")
+	fly_effects.push_back(get_node("/root/AudioManager").add_effect("res://assets/audio/Laser 1.mp3", -17.5, 1.5, true))
 
 func _on_AttackTimer_timeout():
 	if in_rage:
@@ -134,3 +130,9 @@ func _end_effect():
 		if is_instance_valid(eb):
 			eb.queue_free()
 	._end_effect()
+
+func _end_flies():
+	var front = fly_effects.front()
+	if front != null:
+		front.end_effect()
+		fly_effects.pop_front()

@@ -14,6 +14,7 @@ func _on_ObjectStand_body_entered(body):
 		if is_instance_valid(object) and not body.has_node("FlyingDiamond"):
 			body.add_child(object.instance())
 		emit_signal("object_collected")
+		get_node("/root/AudioManager").add_effect("res://assets/audio/win sound 1-2.wav", 0.0, 1.0, false)
 
 func remove_object():
 	has_object = false
