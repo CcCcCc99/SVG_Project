@@ -110,7 +110,7 @@ func _on_TriggerAttack_enemy_spotted(body):
 		first_spot = true
 
 func rage():
-	speed *= 2.3
+	speed *= 2
 	modulate = Color.red
 	in_rage = true
 
@@ -124,6 +124,8 @@ func _spawn_energy():
 		get_parent().add_child(eb)
 
 func _shoot(i: int):
+	if energy_array.empty():
+		return
 	if is_instance_valid(energy_array[i]):
 		var dir = energy_array[i].position.direction_to(player.position)
 		energy_array[i].set_direction(dir)
