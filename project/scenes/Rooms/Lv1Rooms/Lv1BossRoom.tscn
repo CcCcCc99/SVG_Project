@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/prefabs/prop/WallLaser.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Rooms/RoomGenericSciFi.tscn" type="PackedScene" id=2]
@@ -12,9 +12,6 @@
 [ext_resource path="res://scenes/Event.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/prefabs/traps/Bomb.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/decorations/scrivaniapc2.png" type="Texture" id=12]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 116, 66.5 )
 
 [node name="Room" instance=ExtResource( 2 )]
 bottom_room = 5
@@ -85,63 +82,131 @@ coil_num = [ "3", "4" ]
 position = Vector2( 1010, 65 )
 coil_num = [ "4", "3" ]
 
-[node name="Obstacle" type="StaticBody2D" parent="Objects" index="12" groups=["Environment"]]
-position = Vector2( 550, 24 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Objects/Obstacle" index="0"]
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 7 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Obstacle" index="1"]
-position = Vector2( 23, 25.5 )
-shape = SubResource( 1 )
-
-[node name="Obstacle2" type="StaticBody2D" parent="Objects" index="13" groups=["Environment"]]
-position = Vector2( 358, 19 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Objects/Obstacle2" index="0"]
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 7 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Obstacle2" index="1"]
-position = Vector2( 23, 25.5 )
-shape = SubResource( 1 )
-
-[node name="Obstacle5" type="StaticBody2D" parent="Objects" index="14" groups=["Environment"]]
-position = Vector2( -569, 62 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Objects/Obstacle5" index="0"]
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 7 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Obstacle5" index="1"]
-position = Vector2( 23, 25.5 )
-shape = SubResource( 1 )
-
-[node name="Obstacle4" type="StaticBody2D" parent="Objects" index="15" groups=["Environment"]]
-position = Vector2( -760, 58 )
+[node name="Obstacle4" type="Node2D" parent="Objects" index="12"]
+position = Vector2( -574, 96 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="Objects/Obstacle4" index="0"]
+position = Vector2( 0, -45 )
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 7 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Obstacle4" index="1"]
-position = Vector2( 23, 25.5 )
-shape = SubResource( 1 )
+[node name="CollisionVertivals" type="StaticBody2D" parent="Objects/Obstacle4" index="1" groups=["Environment", "VerticalEnvironment"]]
+position = Vector2( 0, -45 )
+scale = Vector2( 0.6, 0.6 )
 
-[node name="Obstacle6" type="StaticBody2D" parent="Objects" index="16" groups=["Environment"]]
+[node name="Top" type="CollisionPolygon2D" parent="Objects/Obstacle4/CollisionVertivals" index="0"]
+polygon = PoolVector2Array( -160, 110, -88.3333, 76.6667, 231.667, 68.3333, 230, 88.3333 )
+
+[node name="Bottom" type="CollisionPolygon2D" parent="Objects/Obstacle4/CollisionVertivals" index="1"]
+polygon = PoolVector2Array( -160, 155, -143.333, 155, -141.667, 176.667, -95, 175, -88.3333, 156.667, 91.6667, 161.667, 91.6667, 175, 133.333, 175, 140, 151.667, 158.333, 153.333, 193.333, 118.333, -145, 136.667 )
+
+[node name="CollisionHorizontals" type="StaticBody2D" parent="Objects/Obstacle4" index="2" groups=["Environment", "HorizontalEnvironment"]]
+position = Vector2( 0, -45 )
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Left" type="CollisionPolygon2D" parent="Objects/Obstacle4/CollisionHorizontals" index="0"]
+polygon = PoolVector2Array( -160, 156.667, -156.667, 108.333, -138.333, 103.333, -146.667, 153.333 )
+
+[node name="Right" type="CollisionPolygon2D" parent="Objects/Obstacle4/CollisionHorizontals" index="1"]
+polygon = PoolVector2Array( 150, 153.333, 231.667, 70, 231.667, 90, 218.333, 98.3333, 215, 121.667, 191.667, 123.333 )
+
+[node name="Obstacle5" type="Node2D" parent="Objects" index="13"]
+position = Vector2( -771, 94 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Objects/Obstacle5" index="0"]
+position = Vector2( 0, -45 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 7 )
+
+[node name="CollisionVertivals" type="StaticBody2D" parent="Objects/Obstacle5" index="1" groups=["Environment", "VerticalEnvironment"]]
+position = Vector2( 0, -45 )
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Top" type="CollisionPolygon2D" parent="Objects/Obstacle5/CollisionVertivals" index="0"]
+polygon = PoolVector2Array( -160, 110, -88.3333, 76.6667, 231.667, 68.3333, 230, 88.3333 )
+
+[node name="Bottom" type="CollisionPolygon2D" parent="Objects/Obstacle5/CollisionVertivals" index="1"]
+polygon = PoolVector2Array( -160, 155, -143.333, 155, -141.667, 176.667, -95, 175, -88.3333, 156.667, 91.6667, 161.667, 91.6667, 175, 133.333, 175, 140, 151.667, 158.333, 153.333, 193.333, 118.333, -145, 136.667 )
+
+[node name="CollisionHorizontals" type="StaticBody2D" parent="Objects/Obstacle5" index="2" groups=["Environment", "HorizontalEnvironment"]]
+position = Vector2( 0, -45 )
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Left" type="CollisionPolygon2D" parent="Objects/Obstacle5/CollisionHorizontals" index="0"]
+polygon = PoolVector2Array( -160, 156.667, -156.667, 108.333, -138.333, 103.333, -146.667, 153.333 )
+
+[node name="Right" type="CollisionPolygon2D" parent="Objects/Obstacle5/CollisionHorizontals" index="1"]
+polygon = PoolVector2Array( 150, 153.333, 231.667, 70, 231.667, 90, 218.333, 98.3333, 215, 121.667, 191.667, 123.333 )
+
+[node name="Obstacle7" type="Node2D" parent="Objects" index="14"]
+position = Vector2( 361, 95 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Objects/Obstacle7" index="0"]
+position = Vector2( 0, -45 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 7 )
+
+[node name="CollisionVertivals" type="StaticBody2D" parent="Objects/Obstacle7" index="1" groups=["Environment", "VerticalEnvironment"]]
+position = Vector2( 0, -45 )
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Top" type="CollisionPolygon2D" parent="Objects/Obstacle7/CollisionVertivals" index="0"]
+polygon = PoolVector2Array( -160, 110, -88.3333, 76.6667, 231.667, 68.3333, 230, 88.3333 )
+
+[node name="Bottom" type="CollisionPolygon2D" parent="Objects/Obstacle7/CollisionVertivals" index="1"]
+polygon = PoolVector2Array( -160, 155, -143.333, 155, -141.667, 176.667, -95, 175, -88.3333, 156.667, 91.6667, 161.667, 91.6667, 175, 133.333, 175, 140, 151.667, 158.333, 153.333, 193.333, 118.333, -145, 136.667 )
+
+[node name="CollisionHorizontals" type="StaticBody2D" parent="Objects/Obstacle7" index="2" groups=["Environment", "HorizontalEnvironment"]]
+position = Vector2( 0, -45 )
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Left" type="CollisionPolygon2D" parent="Objects/Obstacle7/CollisionHorizontals" index="0"]
+polygon = PoolVector2Array( -160, 156.667, -156.667, 108.333, -138.333, 103.333, -146.667, 153.333 )
+
+[node name="Right" type="CollisionPolygon2D" parent="Objects/Obstacle7/CollisionHorizontals" index="1"]
+polygon = PoolVector2Array( 150, 153.333, 231.667, 70, 231.667, 90, 218.333, 98.3333, 215, 121.667, 191.667, 123.333 )
+
+[node name="Obstacle8" type="Node2D" parent="Objects" index="15"]
+position = Vector2( 561, 97 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Objects/Obstacle8" index="0"]
+position = Vector2( 0, -45 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 7 )
+
+[node name="CollisionVertivals" type="StaticBody2D" parent="Objects/Obstacle8" index="1" groups=["Environment", "VerticalEnvironment"]]
+position = Vector2( 0, -45 )
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Top" type="CollisionPolygon2D" parent="Objects/Obstacle8/CollisionVertivals" index="0"]
+polygon = PoolVector2Array( -160, 110, -88.3333, 76.6667, 231.667, 68.3333, 230, 88.3333 )
+
+[node name="Bottom" type="CollisionPolygon2D" parent="Objects/Obstacle8/CollisionVertivals" index="1"]
+polygon = PoolVector2Array( -160, 155, -143.333, 155, -141.667, 176.667, -95, 175, -88.3333, 156.667, 91.6667, 161.667, 91.6667, 175, 133.333, 175, 140, 151.667, 158.333, 153.333, 193.333, 118.333, -145, 136.667 )
+
+[node name="CollisionHorizontals" type="StaticBody2D" parent="Objects/Obstacle8" index="2" groups=["Environment", "HorizontalEnvironment"]]
+position = Vector2( 0, -45 )
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Left" type="CollisionPolygon2D" parent="Objects/Obstacle8/CollisionHorizontals" index="0"]
+polygon = PoolVector2Array( -160, 156.667, -156.667, 108.333, -138.333, 103.333, -146.667, 153.333 )
+
+[node name="Right" type="CollisionPolygon2D" parent="Objects/Obstacle8/CollisionHorizontals" index="1"]
+polygon = PoolVector2Array( 150, 153.333, 231.667, 70, 231.667, 90, 218.333, 98.3333, 215, 121.667, 191.667, 123.333 )
+
+[node name="Obstacle6" type="Node2D" parent="Objects" index="16"]
 position = Vector2( 236, -612 )
 __meta__ = {
 "_edit_group_": true
@@ -151,9 +216,23 @@ __meta__ = {
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 6 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Obstacle6" index="1"]
-position = Vector2( 23, 25.5 )
-shape = SubResource( 1 )
+[node name="CollisionVertivals" type="StaticBody2D" parent="Objects/Obstacle6" index="1" groups=["Environment", "VerticalEnvironment"]]
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Top" type="CollisionPolygon2D" parent="Objects/Obstacle6/CollisionVertivals" index="0"]
+polygon = PoolVector2Array( -35, 16.6667, -90, 26.6667, -130, 51.6667, -153.333, 70, -78.3333, 65, 3.33334, 73.3334, 93.3333, 81.6667, 76.6667, 45, 18.3333, 28.3334 )
+
+[node name="Bottom" type="CollisionPolygon2D" parent="Objects/Obstacle6/CollisionVertivals" index="1"]
+polygon = PoolVector2Array( -156.667, 121.667, -111.667, 108.333, 38.3333, 103.333, 73.3333, 126.667, 31.6667, 145, -53.3333, 160, -125, 148.333 )
+
+[node name="CollisionHorizontals" type="StaticBody2D" parent="Objects/Obstacle6" index="2" groups=["Environment", "HorizontalEnvironment"]]
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Left" type="CollisionPolygon2D" parent="Objects/Obstacle6/CollisionHorizontals" index="0"]
+polygon = PoolVector2Array( 110, 50, 98.3333, 88.3334, 146.667, 108.333, 113.333, 133.333, 115, 156.667, 91.6667, 171.667, 63.3333, 173.333, 50, 185, 23.3333, 171.667, 10, 168.333, -6.66666, 168.333, -16.6667, 135, 76.6667, 140, 73.3333, 88.3334, 78.3333, 48.3334 )
+
+[node name="Right" type="CollisionPolygon2D" parent="Objects/Obstacle6/CollisionHorizontals" index="1"]
+polygon = PoolVector2Array( -133.333, 48.3334, -183.333, 73.3334, -156.667, 125, -133.333, 146.667 )
 
 [node name="BombSpawner" parent="Objects" index="17" instance=ExtResource( 4 )]
 position = Vector2( -1062, -551 )
@@ -161,7 +240,7 @@ rotation = 3.14159
 scale = Vector2( 0.8, -0.8 )
 
 [node name="Bomb" parent="Objects" index="18" instance=ExtResource( 11 )]
-position = Vector2( 216, 132 )
+position = Vector2( 216, 153 )
 
 [node name="Bomb2" parent="Objects" index="19" instance=ExtResource( 11 )]
 position = Vector2( -1207, -159 )

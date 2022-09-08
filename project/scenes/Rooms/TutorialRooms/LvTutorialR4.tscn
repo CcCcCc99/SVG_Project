@@ -64,6 +64,6 @@ texture = ExtResource( 6 )
 
 [node name="Pietrabosstutorial2" type="Sprite" parent="." index="15"]
 position = Vector2( -116, -429 )
-scale = Vector2( 0.3, 0.3 )
+scale = Vector2( -0.3, 0.3 )
 z_index = -1
 texture = ExtResource( 11 )

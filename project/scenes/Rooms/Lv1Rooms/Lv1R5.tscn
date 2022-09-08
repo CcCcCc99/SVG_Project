@@ -138,6 +138,7 @@ points = PoolVector2Array( 274, -137, 322, -137, 322, -300, 472, -300 )
 default_color = Color( 0.482353, 0.482353, 0.482353, 1 )
 
 [node name="GreenLine" type="Line2D" parent="Objects" index="17"]
+z_index = -1
 points = PoolVector2Array( 657, 334, 657, 386, -84, 386, -83, -378, -475, -378, -474, 286 )
 default_color = Color( 0.482353, 0.482353, 0.482353, 1 )
 
