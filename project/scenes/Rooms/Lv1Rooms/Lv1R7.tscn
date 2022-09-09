@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/Rooms/RoomGenericSciFi.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/prefabs/prop/objects/WetSuitStand.tscn" type="PackedScene" id=2]
@@ -8,6 +8,18 @@
 [ext_resource path="res://scenes/prefabs/prop/Coil.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/prefabs/prop/CoilLever.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/prefabs/mob/Prism.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/prefabs/prop/Lever.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/sprites/prism/antenna1.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/prism/antenna2.png" type="Texture" id=11]
+[ext_resource path="res://src/MobIA/antenna.gd" type="Script" id=12]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.5
+} ]
 
 [node name="Room" instance=ExtResource( 1 )]
 right_room = 3
@@ -167,9 +179,25 @@ points = PoolVector2Array( 728, -94, 536, -208 )
 
 [node name="Prism" parent="Objects" index="29" instance=ExtResource( 8 )]
 
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="Objects/Prism" index="9"]
+position = Vector2( -109, -165 )
+z_index = -1
+frames = SubResource( 1 )
+script = ExtResource( 12 )
+
+[node name="Lever" parent="Objects" index="30" instance=ExtResource( 9 )]
+position = Vector2( 114, -363 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="Objects/Lever" index="2"]
+position = Vector2( -121, 46 )
+z_index = -1
+frames = SubResource( 1 )
+playing = true
+
 [node name="WetSuitEvent" parent="Events" index="0" instance=ExtResource( 3 )]
 script = ExtResource( 4 )
 activated = true
 stand_name = "WetSuitStand"
 
 [connection signal="object_collected" from="Objects/WetSuitStand" to="Events/WetSuitEvent" method="activate"]
+[connection signal="used" from="Objects/Lever" to="Objects/Prism" method="take_damage" binds= [ 1 ]]
