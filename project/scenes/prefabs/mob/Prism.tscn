@@ -9,6 +9,9 @@
 [ext_resource path="res://assets/sprites/prism/PrismIcon.png" type="Texture" id=7]
 [ext_resource path="res://src/utility/Hitbox.gd" type="Script" id=8]
 
+[sub_resource type="CircleShape2D" id=9]
+radius = 44.0454
+
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 49, 76.5 )
 
@@ -44,9 +47,6 @@ length = 1060.0
 radius = 66.1806
 height = 67.6389
 
-[sub_resource type="CircleShape2D" id=9]
-radius = 44.0454
-
 [node name="Prism" instance=ExtResource( 2 )]
 script = ExtResource( 5 )
 CORPSE = ExtResource( 6 )
@@ -56,7 +56,10 @@ can_fly = true
 icon = ExtResource( 7 )
 raycast = ExtResource( 4 )
 
-[node name="BodyChecker" parent="." index="0"]
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource( 9 )
+
+[node name="BodyChecker" parent="." index="1"]
 collision_layer = 2
 collision_mask = 63
 
@@ -65,7 +68,7 @@ position = Vector2( 0.999999, -29.5 )
 rotation = 3.14159
 shape = SubResource( 5 )
 
-[node name="AnimatedSprite" parent="." index="1"]
+[node name="AnimatedSprite" parent="." index="2"]
 material = SubResource( 8 )
 position = Vector2( -53.603, -193.596 )
 scale = Vector2( 0.6, 0.6 )
@@ -101,11 +104,8 @@ script = ExtResource( 8 )
 position = Vector2( -3, -183 )
 shape = SubResource( 3 )
 
-[node name="Shadow" parent="." index="6"]
+[node name="Shadow" parent="." index="7"]
 scale = Vector2( 0.3, 0.3 )
-
-[node name="CollisionShape2D" parent="." index="7"]
-shape = SubResource( 9 )
 
 [connection signal="area_entered" from="AttackMode" to="." method="_on_hit"]
 [connection signal="body_entered" from="AttackMode" to="." method="_on_hit"]

@@ -10,7 +10,7 @@
 [ext_resource path="res://scenes/prefabs/prop/Lever.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/prop/Levers/LeverLine.gd" type="Script" id=9]
 [ext_resource path="res://scenes/prefabs/prop/Sink.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/prefabs/prop/Poof.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/prefabs/prop/PortalReward.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/decorations/targhettabossliv1.png" type="Texture" id=12]
 
 [node name="Room" instance=ExtResource( 1 )]
@@ -26,18 +26,16 @@ texture = ExtResource( 12 )
 [node name="CollisionUp" parent="CollisionsVerticals" index="0"]
 polygon = PoolVector2Array( -960, -541, -780, -391, -59, -434, -81, -514, 77, -514, 68, -434, 724, -391, 961, -539, 143.771, -539.851 )
 
-[node name="SpiderBot" parent="Objects" index="0" groups=["Character"] instance=ExtResource( 2 )]
+[node name="SpiderBot" parent="Objects" index="0" instance=ExtResource( 2 )]
 position = Vector2( -633, -431 )
 collision_layer = 2
 collision_mask = 63
-POOF = ExtResource( 11 )
 
-[node name="SpiderBot2" parent="Objects" index="1" groups=["Character"] instance=ExtResource( 2 )]
+[node name="SpiderBot2" parent="Objects" index="1" instance=ExtResource( 2 )]
 position = Vector2( 616, 429 )
 scale = Vector2( 1, -1 )
 collision_layer = 2
 collision_mask = 63
-POOF = ExtResource( 11 )
 
 [node name="FluidContainerGreen" parent="Objects" index="2" instance=ExtResource( 3 )]
 position = Vector2( 665, 349 )
@@ -132,7 +130,7 @@ levergreenname = "Green1"
 
 [node name="Green1Line" type="Line2D" parent="Objects" index="15"]
 z_index = -1
-points = PoolVector2Array( -680, -72, -680, 77, 61, 77, 60, -352, 525, -352 )
+points = PoolVector2Array( -680, -72, -680, 80, 56, 80, 56, -352, 525, -352 )
 default_color = Color( 0.482353, 0.482353, 0.482353, 1 )
 
 [node name="Pink1Line" type="Line2D" parent="Objects" index="16"]
@@ -142,13 +140,19 @@ default_color = Color( 0.482353, 0.482353, 0.482353, 1 )
 
 [node name="GreenLine" type="Line2D" parent="Objects" index="17"]
 z_index = -1
-points = PoolVector2Array( 657, 334, 657, 386, -84, 386, -83, -378, -475, -378, -474, 286 )
+points = PoolVector2Array( 656, 336, 656, 392, -80, 392, -80, -384, -472, -384, -472, 288 )
 default_color = Color( 0.482353, 0.482353, 0.482353, 1 )
 
 [node name="PinkLine" type="Line2D" parent="Objects" index="18"]
 z_index = -1
-points = PoolVector2Array( -778, -287, -550, -288, -549, 139, 212, 140, 211, 366, -318, 366, -315, 289 )
+points = PoolVector2Array( -776, -288, -544, -288, -544, 144, 208, 144, 208, 320, -312, 320, -315, 289 )
 default_color = Color( 0.482353, 0.482353, 0.482353, 1 )
+
+[node name="PortalReward" parent="Objects" index="19" instance=ExtResource( 11 )]
+visible = false
+position = Vector2( -212, -80 )
+number_of_hearts = 0
+number_of_mana = 2
 
 [connection signal="used" from="Objects/LeverGreen" to="Objects/Sink" method="_on_Lever_used"]
 [connection signal="used" from="Objects/LeverGreen1" to="Objects/Sink1" method="_on_Lever_used"]

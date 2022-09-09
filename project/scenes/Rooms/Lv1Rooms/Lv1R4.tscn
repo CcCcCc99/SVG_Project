@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/prefabs/mob/Taz.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Rooms/RoomGenericSciFi.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/prefabs/prop/Poof.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/prefabs/prop/PortalReward.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/decorations/crepa1.png" type="Texture" id=4]
 [ext_resource path="res://assets/decorations/crepa2.png" type="Texture" id=5]
 
@@ -10,17 +10,11 @@
 right_room = 5
 bottom_room = 3
 
-[node name="Taz" parent="Objects" index="0" groups=["Character"] instance=ExtResource( 1 )]
+[node name="Taz" parent="Objects" index="0" instance=ExtResource( 1 )]
 position = Vector2( -548, -158 )
-collision_layer = 3
-collision_mask = 3
-POOF = ExtResource( 3 )
 
-[node name="Taz2" parent="Objects" index="1" groups=["Character"] instance=ExtResource( 1 )]
+[node name="Taz2" parent="Objects" index="1" instance=ExtResource( 1 )]
 position = Vector2( 544, 254 )
-collision_layer = 3
-collision_mask = 3
-POOF = ExtResource( 3 )
 direction = Vector2( -1, 2.3 )
 
 [node name="crepa2" type="StaticBody2D" parent="Objects" index="2" groups=["Environment"]]
@@ -60,3 +54,7 @@ position = Vector2( 731, 120 )
 rotation = -3.14159
 scale = Vector2( 1, -1 )
 polygon = PoolVector2Array( 622, -241, 657, -179, 652, -131, 682, -87, 662, -37, 697, 27, 725, 20, 763, 42, 801, 23, 866, 64, 871, 35, 838, 4, 858, -4, 854, -48, 824, -79, 829, -134, 782, -142, 749, -188, 708, -189, 707, -212, 671, -201, 620, -243 )
+
+[node name="PortalReward" parent="Objects" index="4" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 0, -298 )

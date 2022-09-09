@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/menu/poof_menu_pausa.png" type="Texture" id=8]
 [ext_resource path="res://assets/hud/fullhp.png" type="Texture" id=9]
 [ext_resource path="res://assets/hud/cuoreVuoto.png" type="Texture" id=10]
-[ext_resource path="res://DynamicFontHand.tres" type="DynamicFont" id=11]
+[ext_resource path="res://assets/DynamicFontHand.tres" type="DynamicFont" id=11]
 
 [node name="ResolutionPopup" type="CenterContainer"]
 anchor_left = 0.5
