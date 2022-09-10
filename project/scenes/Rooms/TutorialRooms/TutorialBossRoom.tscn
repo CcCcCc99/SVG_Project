@@ -30,12 +30,12 @@ crack = ExtResource( 6 )
 max_cracks = 3
 
 [node name="BatSpawner1" parent="Objects" index="0" instance=ExtResource( 2 )]
-position = Vector2( 858.857, 511.224 )
+position = Vector2( 861, 612 )
 flipx = false
 flipy = false
 
 [node name="BatSpawner2" parent="Objects" index="1" instance=ExtResource( 2 )]
-position = Vector2( -978.069, 463.98 )
+position = Vector2( -978, 572 )
 flipx = false
 flipy = false
 

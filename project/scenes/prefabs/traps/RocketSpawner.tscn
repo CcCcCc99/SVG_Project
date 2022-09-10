@@ -4,20 +4,26 @@
 [ext_resource path="res://src/traps/BatSpawner.gd" type="Script" id=2]
 [ext_resource path="res://assets/sprites/prop/spawner.png" type="Texture" id=3]
 
-[node name="RocketSpawner" type="Sprite"]
-rotation = 3.14159
-scale = Vector2( 0.4, 0.4 )
+[node name="RocketSpawner" type="Node2D"]
+rotation = 1.5708
 z_index = -1
-texture = ExtResource( 3 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 bat = ExtResource( 1 )
-flipx = true
-flipy = true
+active = true
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
 autostart = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -60, 13 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 3 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( -130, 0 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

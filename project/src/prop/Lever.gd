@@ -4,6 +4,7 @@ class_name Lever
 export var is_on: bool = false
 
 signal used
+signal staus_changed(status)
 
 func _ready():
 	update_grafic()
@@ -23,6 +24,7 @@ func _on_Lever_body_entered(body):
 	else:
 		_deactivate()
 	emit_signal("used")
+	emit_signal("staus_changed", is_on)
 
 func _activate():
 	pass

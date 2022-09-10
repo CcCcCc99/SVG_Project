@@ -22,7 +22,7 @@ position = Vector2( 585, 302 )
 number_of_mana = 2
 
 [node name="BatSpawner" parent="Objects" index="2" instance=ExtResource( 4 )]
-position = Vector2( -681, 354 )
+position = Vector2( -664, 454 )
 flipx = false
 flipy = false
 
