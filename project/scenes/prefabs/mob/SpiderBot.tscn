@@ -70,6 +70,7 @@ position = Vector2( -3, -40 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 6 )
 animation = "walk"
+frame = 1
 playing = true
 
 [node name="Cooldown" parent="." index="3"]

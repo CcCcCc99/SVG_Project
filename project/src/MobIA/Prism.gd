@@ -30,7 +30,7 @@ func _laser_attack():
 	$AttackMode.show()
 	$AnimatedSprite.hide()
 	$AttackMode/RayCast2D.play_laser()
-	$AttackMode.rotation += 0.07
+	$AttackMode.rotation += 0.05
 	if $AttackMode.rotation >= 2*PI:
 		ia_state = WALK
 		$AttackMode.rotation = 0
