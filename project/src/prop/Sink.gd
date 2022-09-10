@@ -41,5 +41,14 @@ func _on_Lever_used():
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Character"):
-		if pink and green:
+		if pink and green and not body.is_in_group("Head"):
 			body.take_damage(1)
+
+
+func _on_TickDamageTimer_timeout():
+	if pink and green:
+		var areas = $Area2D.get_overlapping_areas()
+		var bodies = $Area2D.get_overlapping_bodies()
+		bodies.append_array(areas)
+		for body in bodies:
+			_on_Area2D_body_entered(body)

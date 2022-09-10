@@ -36,7 +36,7 @@ animations = [ {
 extents = Vector2( 103.5, 40 )
 
 [sub_resource type="CircleShape2D" id=5]
-radius = 151.686
+radius = 179.701
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -85,10 +85,16 @@ shape = SubResource( 5 )
 [node name="Smoke" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 17, -85 )
-scale = Vector2( 0.65, 0.65 )
+scale = Vector2( 0.75, 0.75 )
+z_index = 2
 frames = SubResource( 4 )
 animation = "fumo"
-frame = 3
+frame = 1
 playing = true
 
+[node name="TickDamageTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="TickDamageTimer" to="." method="_on_TickDamageTimer_timeout"]
