@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=2]
 
-[sub_resource type="Shader" id=7]
+[sub_resource type="Shader" id=10]
 code = "shader_type canvas_item;
 
 uniform vec4 flash_color: hint_color = vec4(1.0);
@@ -13,6 +13,6 @@ void fragment() {
 }"
 
 [resource]
-shader = SubResource( 7 )
+shader = SubResource( 10 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0

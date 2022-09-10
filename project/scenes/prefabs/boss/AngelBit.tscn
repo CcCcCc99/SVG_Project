@@ -16,7 +16,7 @@ radius = 45.0
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 49, 76.5 )
 
-[sub_resource type="Shader" id=7]
+[sub_resource type="Shader" id=10]
 code = "shader_type canvas_item;
 
 uniform vec4 flash_color: hint_color = vec4(1.0);
@@ -28,8 +28,8 @@ void fragment() {
 	COLOR = color;
 }"
 
-[sub_resource type="ShaderMaterial" id=8]
-shader = SubResource( 7 )
+[sub_resource type="ShaderMaterial" id=11]
+shader = SubResource( 10 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
 
@@ -112,7 +112,7 @@ script = ExtResource( 8 )
 texture = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Body" index="1"]
-material = SubResource( 8 )
+material = SubResource( 11 )
 frames = SubResource( 1 )
 animation = "idle"
 

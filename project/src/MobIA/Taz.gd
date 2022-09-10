@@ -22,6 +22,7 @@ func _ready():
 	if direction.x > 0:
 		scale.x *= -1
 		flip = true
+	$FallenMode.material = $AnimatedSprite.material
 
 func get_direction() -> Vector2:
 	var dir
@@ -75,6 +76,7 @@ func _fall():
 	contact_damage = 0
 	$AnimatedSprite.hide()
 	$Shadow.hide()
+	$HitBox/Body.disabled = true
 	$FallenMode.show()
 	$FallenShadow.show()
 	$Fall_AnimationPlayer.play("FallBack")
@@ -90,6 +92,7 @@ func _get_up():
 	$AnimatedSprite.animation = "idle"
 	$AnimatedSprite.show()
 	$Shadow.show()
+	$HitBox/Body.disabled = false
 	$FallenMode.hide()
 	$FallenShadow.hide()
 	$TriggerAttack/Raycast.disabled = false

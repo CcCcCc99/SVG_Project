@@ -23,7 +23,8 @@ func _ready():
 	player = get_parent().get_parent().get_parent().player
 	$WingsAnimator.play("Wings")
 	initial_body_pos = $Body.position
-	$Body.material = $AnimatedSprite.material
+	$Body/AnimatedSprite.material = $AnimatedSprite.material
+	$Body/Wings.material = $AnimatedSprite.material
 
 func _physics_process(delta):
 	._physics_process(delta)
