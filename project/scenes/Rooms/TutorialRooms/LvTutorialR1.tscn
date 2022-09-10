@@ -25,6 +25,7 @@ number_of_mana = 2
 position = Vector2( -664, 454 )
 flipx = false
 flipy = false
+active = true
 
 [node name="Liane1" type="Sprite" parent="." index="5"]
 position = Vector2( -627, 449 )

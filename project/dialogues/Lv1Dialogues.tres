@@ -7,6 +7,7 @@ script = ExtResource( 1 )
 syntax_version = 2
 raw_text = "~ Lab
 
+do set_assistant_anim(\"talking\")
 Helena: Siamo arrivati al Laboratorio, finalmente.
 {{saved_state.name}}: (seleziona risposta)
 - Bene, possiamo risolvere questa storia.
@@ -15,53 +16,64 @@ Helena: Mi piace questo entusiasmo, stai attento ai robot impazziti e agli acidi
 {{saved_state.name}}: (seleziona risposta)
 - Cos'è un robot?
 - Cos'è un rubinetto?
+do finished_dialogue()
+do set_assistant_anim(\"default\")
 
 ~ WetSuit
 
+do set_assistant_anim(\"talking\")
 {{saved_state.name}}: Che strano indumento.
 Helena: Sì, ha degli strani materiali.
 Helena: Hans lo ha trovato ma nessuno ha capito a cosa serve.
 {{saved_state.name}}: (seleziona risposta)
 - Dovremmo provarlo
 - Chi è Hans?
+do set_assistant_anim(\"default\")
 
 ~ Pond
 
+do set_assistant_anim(\"talking\")
 Helena: Questo non c'era prima.
 Helena: Non ho mai visto così tanta acqua tutta insieme in vita mia.
 {{saved_state.name}}: Ma come, non hai mai visto il mare o un lago?
 Helena: Cos'è il mare?
 Helena: E un lago?
 {{saved_state.name}}: Ma allora come fate a bere? Non avete neanche un pozzo?
-Helena: Noi sintetizziamo l'acqua con un molecolarizzatore ogni volta che serve. A cosa serve un pozzo.
+Helena: Noi sintetizziamo l'acqua con un molecolarizzatore ogni volta che serve. A cosa serve un pozzo?
 {{saved_state.name}}: A conservare l'acqua.
 Helena: A cosa serve conservare l'acqua?
 {{saved_state.name}}: ...
+do finished_dialogue()
+do set_assistant_anim(\"default\")
 
 ~ Enter_bossfight
 
+do set_assistant_anim(\"shocked\")
 Helena: OH NO! Il macchinario è andato distrutto!
 {{saved_state.name}}: (seleziona risposta)
 - non si può riparare?
 - ...
 Helena: Essendo composto da componenti unici realizzati con materiali di altre dimensioni è difficile ripararlo in questa situazione ...
 Helena: E ora come posso rimediare?
+do finished_dialogue()
 
-~ End_bossfight
+~ Boss
 
-Helena: ho localizzato i pezzi mancanti, sono in altre dimensioni, mi aiuterai vero?
+do set_assistant_anim(\"talking\")
+Helena: Ho localizzato i pezzi mancanti, sono in altre dimensioni, mi aiuterai vero?
 {{saved_state.name}}: (seleziona risposta)
 - Sì certo!
-- Preferirei evitare
-Helena: ok andiamo!
+- Preferirei evitare.
+Helena: Ok andiamo!
+do set_assistant_anim(\"default\")
 "
 errors = [  ]
 titles = {
-"End_bossfight": "44",
-"Enter_bossfight": "35",
+"Boss": "54",
+"Enter_bossfight": "43",
 "Lab": "2",
-"Pond": "22",
-"WetSuit": "13"
+"Pond": "27",
+"WetSuit": "16"
 }
 lines = {
 "0": {
@@ -69,12 +81,50 @@ lines = {
 "text": "Lab",
 "type": "title"
 },
+"10": {
+"next_id": "11",
+"next_id_after": "11",
+"replacements": [  ],
+"text": "Cos'è un rubinetto?",
+"translation_key": "Cos'è un rubinetto?",
+"type": "response"
+},
 "11": {
-"next_id": "13",
+"mutation": {
+"args": [  ],
+"function": "finished_dialogue"
+},
+"next_id": "12",
+"type": "mutation"
+},
+"12": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "default"
+} ] ],
+"function": "set_assistant_anim"
+},
+"next_id": "end",
+"type": "mutation"
+},
+"14": {
+"next_id": "16",
 "text": "WetSuit",
 "type": "title"
 },
-"13": {
+"16": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "talking"
+} ] ],
+"function": "set_assistant_anim"
+},
+"next_id": "17",
+"type": "mutation"
+},
+"17": {
 "character": "{{saved_state.name}}",
 "character_replacements": [ {
 "expression": [ {
@@ -89,7 +139,7 @@ lines = {
 "value_in_text": "{{saved_state.name}}"
 } ],
 "inline_mutations": [  ],
-"next_id": "14",
+"next_id": "18",
 "pauses": {
 },
 "replacements": [  ],
@@ -99,11 +149,11 @@ lines = {
 "translation_key": "Che strano indumento.",
 "type": "dialogue"
 },
-"14": {
+"18": {
 "character": "Helena",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "15",
+"next_id": "19",
 "pauses": {
 },
 "replacements": [  ],
@@ -113,11 +163,11 @@ lines = {
 "translation_key": "Sì, ha degli strani materiali.",
 "type": "dialogue"
 },
-"15": {
+"19": {
 "character": "Helena",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "16",
+"next_id": "20",
 "pauses": {
 },
 "replacements": [  ],
@@ -127,7 +177,18 @@ lines = {
 "translation_key": "Hans lo ha trovato ma nessuno ha capito a cosa serve.",
 "type": "dialogue"
 },
-"16": {
+"2": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "talking"
+} ] ],
+"function": "set_assistant_anim"
+},
+"next_id": "3",
+"type": "mutation"
+},
+"20": {
 "character": "{{saved_state.name}}",
 "character_replacements": [ {
 "expression": [ {
@@ -142,7 +203,7 @@ lines = {
 "value_in_text": "{{saved_state.name}}"
 } ],
 "inline_mutations": [  ],
-"next_id": "17",
+"next_id": "21",
 "pauses": {
 },
 "replacements": [  ],
@@ -152,147 +213,49 @@ lines = {
 "translation_key": "(seleziona risposta)",
 "type": "dialogue"
 },
-"17": {
-"next_id": "end",
-"next_id_after": "end",
+"21": {
+"next_id": "23",
+"next_id_after": "23",
 "replacements": [  ],
-"responses": PoolStringArray( "17", "18" ),
+"responses": PoolStringArray( "21", "22" ),
 "text": "Dovremmo provarlo",
 "translation_key": "Dovremmo provarlo",
 "type": "response"
 },
-"18": {
-"next_id": "end",
-"next_id_after": "end",
+"22": {
+"next_id": "23",
+"next_id_after": "23",
 "replacements": [  ],
 "text": "Chi è Hans?",
 "translation_key": "Chi è Hans?",
 "type": "response"
 },
-"2": {
-"character": "Helena",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "3",
-"pauses": {
+"23": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "default"
+} ] ],
+"function": "set_assistant_anim"
 },
-"replacements": [  ],
-"speeds": [  ],
-"text": "Siamo arrivati al Laboratorio, finalmente.",
-"time": null,
-"translation_key": "Siamo arrivati al Laboratorio, finalmente.",
-"type": "dialogue"
+"next_id": "end",
+"type": "mutation"
 },
-"20": {
-"next_id": "22",
+"25": {
+"next_id": "27",
 "text": "Pond",
 "type": "title"
 },
-"22": {
-"character": "Helena",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "23",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Questo non c'era prima.",
-"time": null,
-"translation_key": "Questo non c'era prima.",
-"type": "dialogue"
-},
-"23": {
-"character": "Helena",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "24",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Non ho mai visto così tanta acqua tutta insieme in vita mia.",
-"time": null,
-"translation_key": "Non ho mai visto così tanta acqua tutta insieme in vita mia.",
-"type": "dialogue"
-},
-"24": {
-"character": "{{saved_state.name}}",
-"character_replacements": [ {
-"expression": [ {
-"type": "variable",
-"value": "saved_state"
-}, {
-"type": "dot"
-}, {
-"type": "variable",
-"value": "name"
-} ],
-"value_in_text": "{{saved_state.name}}"
-} ],
-"inline_mutations": [  ],
-"next_id": "25",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Ma come, non hai mai visto il mare o un lago?",
-"time": null,
-"translation_key": "Ma come, non hai mai visto il mare o un lago?",
-"type": "dialogue"
-},
-"25": {
-"character": "Helena",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "26",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Cos'è il mare?",
-"time": null,
-"translation_key": "Cos'è il mare?",
-"type": "dialogue"
-},
-"26": {
-"character": "Helena",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "27",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "E un lago?",
-"time": null,
-"translation_key": "E un lago?",
-"type": "dialogue"
-},
 "27": {
-"character": "{{saved_state.name}}",
-"character_replacements": [ {
-"expression": [ {
-"type": "variable",
-"value": "saved_state"
-}, {
-"type": "dot"
-}, {
-"type": "variable",
-"value": "name"
-} ],
-"value_in_text": "{{saved_state.name}}"
-} ],
-"inline_mutations": [  ],
-"next_id": "28",
-"pauses": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "talking"
+} ] ],
+"function": "set_assistant_anim"
 },
-"replacements": [  ],
-"speeds": [  ],
-"text": "Ma allora come fate a bere? Non avete neanche un pozzo?",
-"time": null,
-"translation_key": "Ma allora come fate a bere? Non avete neanche un pozzo?",
-"type": "dialogue"
+"next_id": "28",
+"type": "mutation"
 },
 "28": {
 "character": "Helena",
@@ -303,12 +266,40 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Noi sintetizziamo l'acqua con un molecolarizzatore ogni volta che serve. A cosa serve un pozzo.",
+"text": "Questo non c'era prima.",
 "time": null,
-"translation_key": "Noi sintetizziamo l'acqua con un molecolarizzatore ogni volta che serve. A cosa serve un pozzo.",
+"translation_key": "Questo non c'era prima.",
 "type": "dialogue"
 },
 "29": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "30",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Non ho mai visto così tanta acqua tutta insieme in vita mia.",
+"time": null,
+"translation_key": "Non ho mai visto così tanta acqua tutta insieme in vita mia.",
+"type": "dialogue"
+},
+"3": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "4",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Siamo arrivati al Laboratorio, finalmente.",
+"time": null,
+"translation_key": "Siamo arrivati al Laboratorio, finalmente.",
+"type": "dialogue"
+},
+"30": {
 "character": "{{saved_state.name}}",
 "character_replacements": [ {
 "expression": [ {
@@ -323,7 +314,99 @@ lines = {
 "value_in_text": "{{saved_state.name}}"
 } ],
 "inline_mutations": [  ],
-"next_id": "30",
+"next_id": "31",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Ma come, non hai mai visto il mare o un lago?",
+"time": null,
+"translation_key": "Ma come, non hai mai visto il mare o un lago?",
+"type": "dialogue"
+},
+"31": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "32",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Cos'è il mare?",
+"time": null,
+"translation_key": "Cos'è il mare?",
+"type": "dialogue"
+},
+"32": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "33",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "E un lago?",
+"time": null,
+"translation_key": "E un lago?",
+"type": "dialogue"
+},
+"33": {
+"character": "{{saved_state.name}}",
+"character_replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "saved_state"
+}, {
+"type": "dot"
+}, {
+"type": "variable",
+"value": "name"
+} ],
+"value_in_text": "{{saved_state.name}}"
+} ],
+"inline_mutations": [  ],
+"next_id": "34",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Ma allora come fate a bere? Non avete neanche un pozzo?",
+"time": null,
+"translation_key": "Ma allora come fate a bere? Non avete neanche un pozzo?",
+"type": "dialogue"
+},
+"34": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "35",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Noi sintetizziamo l'acqua con un molecolarizzatore ogni volta che serve. A cosa serve un pozzo?",
+"time": null,
+"translation_key": "Noi sintetizziamo l'acqua con un molecolarizzatore ogni volta che serve. A cosa serve un pozzo?",
+"type": "dialogue"
+},
+"35": {
+"character": "{{saved_state.name}}",
+"character_replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "saved_state"
+}, {
+"type": "dot"
+}, {
+"type": "variable",
+"value": "name"
+} ],
+"value_in_text": "{{saved_state.name}}"
+} ],
+"inline_mutations": [  ],
+"next_id": "36",
 "pauses": {
 },
 "replacements": [  ],
@@ -333,36 +416,11 @@ lines = {
 "translation_key": "A conservare l'acqua.",
 "type": "dialogue"
 },
-"3": {
-"character": "{{saved_state.name}}",
-"character_replacements": [ {
-"expression": [ {
-"type": "variable",
-"value": "saved_state"
-}, {
-"type": "dot"
-}, {
-"type": "variable",
-"value": "name"
-} ],
-"value_in_text": "{{saved_state.name}}"
-} ],
-"inline_mutations": [  ],
-"next_id": "4",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "(seleziona risposta)",
-"time": null,
-"translation_key": "(seleziona risposta)",
-"type": "dialogue"
-},
-"30": {
+"36": {
 "character": "Helena",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "31",
+"next_id": "37",
 "pauses": {
 },
 "replacements": [  ],
@@ -372,7 +430,7 @@ lines = {
 "translation_key": "A cosa serve conservare l'acqua?",
 "type": "dialogue"
 },
-"31": {
+"37": {
 "character": "{{saved_state.name}}",
 "character_replacements": [ {
 "expression": [ {
@@ -387,7 +445,7 @@ lines = {
 "value_in_text": "{{saved_state.name}}"
 } ],
 "inline_mutations": [  ],
-"next_id": "end",
+"next_id": "38",
 "pauses": {
 },
 "replacements": [  ],
@@ -397,26 +455,26 @@ lines = {
 "translation_key": "...",
 "type": "dialogue"
 },
-"33": {
-"next_id": "35",
-"text": "Enter_bossfight",
-"type": "title"
+"38": {
+"mutation": {
+"args": [  ],
+"function": "finished_dialogue"
 },
-"35": {
-"character": "Helena",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "36",
-"pauses": {
+"next_id": "39",
+"type": "mutation"
 },
-"replacements": [  ],
-"speeds": [  ],
-"text": "OH NO! Il macchinario è andato distrutto!",
-"time": null,
-"translation_key": "OH NO! Il macchinario è andato distrutto!",
-"type": "dialogue"
+"39": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "default"
+} ] ],
+"function": "set_assistant_anim"
 },
-"36": {
+"next_id": "end",
+"type": "mutation"
+},
+"4": {
 "character": "{{saved_state.name}}",
 "character_replacements": [ {
 "expression": [ {
@@ -431,7 +489,7 @@ lines = {
 "value_in_text": "{{saved_state.name}}"
 } ],
 "inline_mutations": [  ],
-"next_id": "37",
+"next_id": "5",
 "pauses": {
 },
 "replacements": [  ],
@@ -441,64 +499,21 @@ lines = {
 "translation_key": "(seleziona risposta)",
 "type": "dialogue"
 },
-"37": {
-"next_id": "39",
-"next_id_after": "39",
-"replacements": [  ],
-"responses": PoolStringArray( "37", "38" ),
-"text": "non si può riparare?",
-"translation_key": "non si può riparare?",
-"type": "response"
-},
-"38": {
-"next_id": "39",
-"next_id_after": "39",
-"replacements": [  ],
-"text": "...",
-"translation_key": "...",
-"type": "response"
-},
-"39": {
-"character": "Helena",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "40",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Essendo composto da componenti unici realizzati con materiali di altre dimensioni è difficile ripararlo in questa situazione ...",
-"time": null,
-"translation_key": "Essendo composto da componenti unici realizzati con materiali di altre dimensioni è difficile ripararlo in questa situazione ...",
-"type": "dialogue"
-},
-"4": {
-"next_id": "6",
-"next_id_after": "6",
-"replacements": [  ],
-"responses": PoolStringArray( "4", "5" ),
-"text": "Bene, possiamo risolvere questa storia.",
-"translation_key": "Bene, possiamo risolvere questa storia.",
-"type": "response"
-},
-"40": {
-"character": "Helena",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "end",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "E ora come posso rimediare?",
-"time": null,
-"translation_key": "E ora come posso rimediare?",
-"type": "dialogue"
-},
-"42": {
-"next_id": "44",
-"text": "End_bossfight",
+"41": {
+"next_id": "43",
+"text": "Enter_bossfight",
 "type": "title"
+},
+"43": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "shocked"
+} ] ],
+"function": "set_assistant_anim"
+},
+"next_id": "44",
+"type": "mutation"
 },
 "44": {
 "character": "Helena",
@@ -509,9 +524,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "ho localizzato i pezzi mancanti, sono in altre dimensioni, mi aiuterai vero?",
+"text": "OH NO! Il macchinario è andato distrutto!",
 "time": null,
-"translation_key": "ho localizzato i pezzi mancanti, sono in altre dimensioni, mi aiuterai vero?",
+"translation_key": "OH NO! Il macchinario è andato distrutto!",
 "type": "dialogue"
 },
 "45": {
@@ -544,55 +559,94 @@ lines = {
 "next_id_after": "48",
 "replacements": [  ],
 "responses": PoolStringArray( "46", "47" ),
-"text": "Sì certo!",
-"translation_key": "Sì certo!",
+"text": "non si può riparare?",
+"translation_key": "non si può riparare?",
 "type": "response"
 },
 "47": {
 "next_id": "48",
 "next_id_after": "48",
 "replacements": [  ],
-"text": "Preferirei evitare",
-"translation_key": "Preferirei evitare",
+"text": "...",
+"translation_key": "...",
 "type": "response"
 },
 "48": {
 "character": "Helena",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "",
+"next_id": "49",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "ok andiamo!",
+"text": "Essendo composto da componenti unici realizzati con materiali di altre dimensioni è difficile ripararlo in questa situazione ...",
 "time": null,
-"translation_key": "ok andiamo!",
+"translation_key": "Essendo composto da componenti unici realizzati con materiali di altre dimensioni è difficile ripararlo in questa situazione ...",
 "type": "dialogue"
 },
-"5": {
-"next_id": "6",
-"next_id_after": "6",
-"replacements": [  ],
-"text": "Non ho mai visto un posto come questo.",
-"translation_key": "Non ho mai visto un posto come questo.",
-"type": "response"
-},
-"6": {
+"49": {
 "character": "Helena",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "7",
+"next_id": "50",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Mi piace questo entusiasmo, stai attento ai robot impazziti e agli acidi dai rubinatti.",
+"text": "E ora come posso rimediare?",
 "time": null,
-"translation_key": "Mi piace questo entusiasmo, stai attento ai robot impazziti e agli acidi dai rubinatti.",
+"translation_key": "E ora come posso rimediare?",
 "type": "dialogue"
 },
-"7": {
+"5": {
+"next_id": "7",
+"next_id_after": "7",
+"replacements": [  ],
+"responses": PoolStringArray( "5", "6" ),
+"text": "Bene, possiamo risolvere questa storia.",
+"translation_key": "Bene, possiamo risolvere questa storia.",
+"type": "response"
+},
+"50": {
+"mutation": {
+"args": [  ],
+"function": "finished_dialogue"
+},
+"next_id": "end",
+"type": "mutation"
+},
+"52": {
+"next_id": "54",
+"text": "Boss",
+"type": "title"
+},
+"54": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "talking"
+} ] ],
+"function": "set_assistant_anim"
+},
+"next_id": "55",
+"type": "mutation"
+},
+"55": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "56",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Ho localizzato i pezzi mancanti, sono in altre dimensioni, mi aiuterai vero?",
+"time": null,
+"translation_key": "Ho localizzato i pezzi mancanti, sono in altre dimensioni, mi aiuterai vero?",
+"type": "dialogue"
+},
+"56": {
 "character": "{{saved_state.name}}",
 "character_replacements": [ {
 "expression": [ {
@@ -607,7 +661,7 @@ lines = {
 "value_in_text": "{{saved_state.name}}"
 } ],
 "inline_mutations": [  ],
-"next_id": "8",
+"next_id": "57",
 "pauses": {
 },
 "replacements": [  ],
@@ -617,21 +671,102 @@ lines = {
 "translation_key": "(seleziona risposta)",
 "type": "dialogue"
 },
-"8": {
-"next_id": "end",
-"next_id_after": "end",
+"57": {
+"next_id": "59",
+"next_id_after": "59",
 "replacements": [  ],
-"responses": PoolStringArray( "8", "9" ),
-"text": "Cos'è un robot?",
-"translation_key": "Cos'è un robot?",
+"responses": PoolStringArray( "57", "58" ),
+"text": "Sì certo!",
+"translation_key": "Sì certo!",
 "type": "response"
 },
-"9": {
-"next_id": "end",
-"next_id_after": "end",
+"58": {
+"next_id": "59",
+"next_id_after": "59",
 "replacements": [  ],
-"text": "Cos'è un rubinetto?",
-"translation_key": "Cos'è un rubinetto?",
+"text": "Preferirei evitare.",
+"translation_key": "Preferirei evitare.",
+"type": "response"
+},
+"59": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "60",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Ok andiamo!",
+"time": null,
+"translation_key": "Ok andiamo!",
+"type": "dialogue"
+},
+"6": {
+"next_id": "7",
+"next_id_after": "7",
+"replacements": [  ],
+"text": "Non ho mai visto un posto come questo.",
+"translation_key": "Non ho mai visto un posto come questo.",
+"type": "response"
+},
+"60": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "default"
+} ] ],
+"function": "set_assistant_anim"
+},
+"next_id": "",
+"type": "mutation"
+},
+"7": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "8",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Mi piace questo entusiasmo, stai attento ai robot impazziti e agli acidi dai rubinatti.",
+"time": null,
+"translation_key": "Mi piace questo entusiasmo, stai attento ai robot impazziti e agli acidi dai rubinatti.",
+"type": "dialogue"
+},
+"8": {
+"character": "{{saved_state.name}}",
+"character_replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "saved_state"
+}, {
+"type": "dot"
+}, {
+"type": "variable",
+"value": "name"
+} ],
+"value_in_text": "{{saved_state.name}}"
+} ],
+"inline_mutations": [  ],
+"next_id": "9",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "(seleziona risposta)",
+"time": null,
+"translation_key": "(seleziona risposta)",
+"type": "dialogue"
+},
+"9": {
+"next_id": "11",
+"next_id_after": "11",
+"replacements": [  ],
+"responses": PoolStringArray( "9", "10" ),
+"text": "Cos'è un robot?",
+"translation_key": "Cos'è un robot?",
 "type": "response"
 }
 }

@@ -33,11 +33,13 @@ max_cracks = 3
 position = Vector2( 861, 612 )
 flipx = false
 flipy = false
+active = true
 
 [node name="BatSpawner2" parent="Objects" index="1" instance=ExtResource( 2 )]
 position = Vector2( -978, 572 )
 flipx = false
 flipy = false
+active = true
 
 [node name="GotoNextLvl" parent="Objects" index="2" instance=ExtResource( 3 )]
 to_level = 1
@@ -52,7 +54,8 @@ zoom = Vector2( 1.3, 1.3 )
 [node name="BossDefeatedEvent" parent="Events" index="0" instance=ExtResource( 7 )]
 script = ExtResource( 8 )
 auto_start = true
-boss_name = "Pong"
+file_path = "res://dialogues/TutorialDialogues.tres"
+boss_names = [ "Pong" ]
 hp_up = 2
 mp_up = 2
 slot_up = true

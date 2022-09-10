@@ -1,17 +1,43 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/player/Assistant.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/assistant/discussione.png" type="Texture" id=2]
 [ext_resource path="res://scenes/prefabs/prop/Shadow.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sprites/assistant/shockata.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/assistant/discussione2.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/assistant/radio.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "shocked",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "radio",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "talking",
+"speed": 5.0
+} ]
 
 [node name="Assistant" type="Node2D" groups=["Environment"]]
 script = ExtResource( 1 )
 max_mana = 5
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 13.3484, -80.0904 )
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
+frames = SubResource( 1 )
 
 [node name="UpBaloonPosition" type="Position2D" parent="."]
 position = Vector2( 6.46994, -240.375 )

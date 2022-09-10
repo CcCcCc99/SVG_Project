@@ -6,7 +6,6 @@
 [ext_resource path="res://scenes/prefabs/prop/doors/Door1V.tscn" type="PackedScene" id=6]
 
 [node name="Room" instance=ExtResource( 4 )]
-closed = false
 
 [node name="Sprite" parent="." index="0"]
 modulate = Color( 0.823529, 0.823529, 0.823529, 1 )

@@ -6,6 +6,7 @@
 script = ExtResource( 1 )
 syntax_version = 2
 raw_text = "~ Presentation
+do set_assistant_anim(\"talking\")
 do incapacitate()
 do close_doors()
 ???: Si svegli!
@@ -15,8 +16,7 @@ do fadein()
 do ask_name()
 
 ~ Quest
-{{saved_state.name}}: Emm ... 
-(seleziona risposta)
+{{saved_state.name}}: Emm ... (seleziona risposta)
 - Cosa succede?!
 - Dove mi trovo?
 - Chi sei tu?
@@ -40,8 +40,10 @@ do ask_name()
 - Figurati, cosa potrebbe mai succedermi.
 do back_to_normal()
 do finished_dialogue()
+do set_assistant_anim(\"default\")
 
 ~ Portals
+do set_assistant_anim(\"talking\")
 do incapacitate()
 ???: Ecco, prendi questo guanto. Potrai usarlo per generare dei portali a corto raggio.
 {{saved_state.name}}: ...
@@ -52,41 +54,48 @@ do save()
 TUTORIAL: *click sinistro del mouse per piazzare un portale*
 
 Voce da una radio: HELENA, COSA HAI COMBINATO?!
+do set_assistant_anim(\"radio\")
 Helena: IO NON HO FATTO NIENTE, È COLPA DEI ROBOT DEL LABORATORIO CHE SONO INSORTI.
 Voce da una radio: Ma tu stai bene?
 Helena: Sì, adesso risolviamo tutto. Vedrai.
+do set_assistant_anim(\"talking\")
 
 {{saved_state.name}}: Quindi ti chiami Helena.
-Helena: Sì, il mio nome è dott.essa Helena Wissenschaftler e lavoro al laboratorio <nome del laboratorio>.
+Helena: Sì, il mio nome è dott.essa Helena Wissenschaftler e lavoro al laboratorio Z.M.B.
 Helena: Noi facciamo ricerche sui portali ed i loro utilizzi.
 Helena: Considerando quello che è successo ne incontreremo molti sulla nostra strada.
 do finished_dialogue()
+do set_assistant_anim(\"default\")
 
 
 ~ Summon
+do set_assistant_anim(\"talking\")
 Helena: Adesso che il nemico è morto, possiamo usare il potere dei portali a nostro vantaggio.
 Helena: Ho creato un dispositivo che simula il comportamento del portale blu per un tempo limitato.
 Helena: Possiamo, quindi, usare l'anima di quella cosa per evocarne una copia.
 Helena: Però attenzione a non abusarne, ho una quantità di energia limitata. I miei sensori possono leggere quanta energia serve per ogni evocazione.
 TUTORIAL: *click con rotella del mouse sul cadavere per prenderne l'anima, click destro per evocare*
 Helena: Oh guarda, è apparso un portal giallo: emette diversi tipi di energia.
+do set_assistant_anim(\"default\")
 
 ~ Boss
 *L'ENERGIA DEI PORTALI CRESCE IN TE*
 do save()
+do set_assistant_anim(\"talking\")
 Helena: Visto? Lo sapevo che per te non sarebbe stato difficile.
 Helena: Questo mostro ha rilasciato molta energia morendo. Le mie tecnologie si sono potenziate ed anche tu mi sembri più in salute.
 Helena: Tutta quell'energia ha anche aperto un portale grigio, vuol dire che non porta da nessuna parte.
 Helena: Adesso creerò un interferenza che ci permetterà di usarlo, lo imposto sulla frequenza della mia dimensione.
 do activate_portal()
+do set_assistant_anim(\"default\")
 "
 errors = [  ]
 titles = {
-"Boss": "67",
-"Portals": "37",
+"Boss": "74",
+"Portals": "38",
 "Presentation": "1",
-"Quest": "10",
-"Summon": "59"
+"Quest": "11",
+"Summon": "64"
 }
 lines = {
 "0": {
@@ -96,13 +105,21 @@ lines = {
 },
 "1": {
 "mutation": {
-"args": [  ],
-"function": "incapacitate"
+"args": [ [ {
+"type": "string",
+"value": "talking"
+} ] ],
+"function": "set_assistant_anim"
 },
 "next_id": "2",
 "type": "mutation"
 },
 "10": {
+"next_id": "11",
+"text": "Quest",
+"type": "title"
+},
+"11": {
 "character": "{{saved_state.name}}",
 "character_replacements": [ {
 "expression": [ {
@@ -117,27 +134,14 @@ lines = {
 "value_in_text": "{{saved_state.name}}"
 } ],
 "inline_mutations": [  ],
-"next_id": "11",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Emm ...",
-"time": null,
-"translation_key": "Emm ...",
-"type": "dialogue"
-},
-"11": {
-"character": "",
-"inline_mutations": [  ],
 "next_id": "12",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "(seleziona risposta)",
+"text": "Emm ... (seleziona risposta)",
 "time": null,
-"translation_key": "(seleziona risposta)",
+"translation_key": "Emm ... (seleziona risposta)",
 "type": "dialogue"
 },
 "12": {
@@ -224,7 +228,7 @@ lines = {
 "2": {
 "mutation": {
 "args": [  ],
-"function": "close_doors"
+"function": "incapacitate"
 },
 "next_id": "3",
 "type": "mutation"
@@ -344,18 +348,12 @@ lines = {
 "type": "dialogue"
 },
 "3": {
-"character": "???",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "4",
-"pauses": {
+"mutation": {
+"args": [  ],
+"function": "close_doors"
 },
-"replacements": [  ],
-"speeds": [  ],
-"text": "Si svegli!",
-"time": null,
-"translation_key": "Si svegli!",
-"type": "dialogue"
+"next_id": "4",
+"type": "mutation"
 },
 "30": {
 "character": "{{saved_state.name}}",
@@ -412,60 +410,43 @@ lines = {
 "args": [  ],
 "function": "finished_dialogue"
 },
+"next_id": "35",
+"type": "mutation"
+},
+"35": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "default"
+} ] ],
+"function": "set_assistant_anim"
+},
 "next_id": "end",
 "type": "mutation"
 },
-"36": {
-"next_id": "37",
+"37": {
+"next_id": "38",
 "text": "Portals",
 "type": "title"
 },
-"37": {
+"38": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "talking"
+} ] ],
+"function": "set_assistant_anim"
+},
+"next_id": "39",
+"type": "mutation"
+},
+"39": {
 "mutation": {
 "args": [  ],
 "function": "incapacitate"
 },
-"next_id": "38",
-"type": "mutation"
-},
-"38": {
-"character": "???",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "39",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Ecco, prendi questo guanto. Potrai usarlo per generare dei portali a corto raggio.",
-"time": null,
-"translation_key": "Ecco, prendi questo guanto. Potrai usarlo per generare dei portali a corto raggio.",
-"type": "dialogue"
-},
-"39": {
-"character": "{{saved_state.name}}",
-"character_replacements": [ {
-"expression": [ {
-"type": "variable",
-"value": "saved_state"
-}, {
-"type": "dot"
-}, {
-"type": "variable",
-"value": "name"
-} ],
-"value_in_text": "{{saved_state.name}}"
-} ],
-"inline_mutations": [  ],
 "next_id": "40",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "...",
-"time": null,
-"translation_key": "...",
-"type": "dialogue"
+"type": "mutation"
 },
 "4": {
 "character": "???",
@@ -476,12 +457,26 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Mi sente? Si svegli!!!",
+"text": "Si svegli!",
 "time": null,
-"translation_key": "Mi sente? Si svegli!!!",
+"translation_key": "Si svegli!",
 "type": "dialogue"
 },
 "40": {
+"character": "???",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "41",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Ecco, prendi questo guanto. Potrai usarlo per generare dei portali a corto raggio.",
+"time": null,
+"translation_key": "Ecco, prendi questo guanto. Potrai usarlo per generare dei portali a corto raggio.",
+"type": "dialogue"
+},
+"41": {
 "character": "{{saved_state.name}}",
 "character_replacements": [ {
 "expression": [ {
@@ -496,7 +491,32 @@ lines = {
 "value_in_text": "{{saved_state.name}}"
 } ],
 "inline_mutations": [  ],
-"next_id": "41",
+"next_id": "42",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "...",
+"time": null,
+"translation_key": "...",
+"type": "dialogue"
+},
+"42": {
+"character": "{{saved_state.name}}",
+"character_replacements": [ {
+"expression": [ {
+"type": "variable",
+"value": "saved_state"
+}, {
+"type": "dot"
+}, {
+"type": "variable",
+"value": "name"
+} ],
+"value_in_text": "{{saved_state.name}}"
+} ],
+"inline_mutations": [  ],
+"next_id": "43",
 "pauses": {
 },
 "replacements": [  ],
@@ -506,60 +526,32 @@ lines = {
 "translation_key": "Ok.",
 "type": "dialogue"
 },
-"41": {
-"mutation": {
-"args": [  ],
-"function": "back_to_normal"
-},
-"next_id": "42",
-"type": "mutation"
-},
-"42": {
-"mutation": {
-"args": [  ],
-"function": "give_portal_gun"
-},
-"next_id": "43",
-"type": "mutation"
-},
 "43": {
 "mutation": {
 "args": [  ],
-"function": "save"
+"function": "back_to_normal"
 },
 "next_id": "44",
 "type": "mutation"
 },
 "44": {
-"character": "TUTORIAL",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "46",
-"pauses": {
+"mutation": {
+"args": [  ],
+"function": "give_portal_gun"
 },
-"replacements": [  ],
-"speeds": [  ],
-"text": "*click sinistro del mouse per piazzare un portale*",
-"time": null,
-"translation_key": "*click sinistro del mouse per piazzare un portale*",
-"type": "dialogue"
+"next_id": "45",
+"type": "mutation"
+},
+"45": {
+"mutation": {
+"args": [  ],
+"function": "save"
+},
+"next_id": "46",
+"type": "mutation"
 },
 "46": {
-"character": "Voce da una radio",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "47",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "HELENA, COSA HAI COMBINATO?!",
-"time": null,
-"translation_key": "HELENA, COSA HAI COMBINATO?!",
-"type": "dialogue"
-},
-"47": {
-"character": "Helena",
+"character": "TUTORIAL",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "48",
@@ -567,9 +559,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "IO NON HO FATTO NIENTE, È COLPA DEI ROBOT DEL LABORATORIO CHE SONO INSORTI.",
+"text": "*click sinistro del mouse per piazzare un portale*",
 "time": null,
-"translation_key": "IO NON HO FATTO NIENTE, È COLPA DEI ROBOT DEL LABORATORIO CHE SONO INSORTI.",
+"translation_key": "*click sinistro del mouse per piazzare un portale*",
 "type": "dialogue"
 },
 "48": {
@@ -581,16 +573,69 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
+"text": "HELENA, COSA HAI COMBINATO?!",
+"time": null,
+"translation_key": "HELENA, COSA HAI COMBINATO?!",
+"type": "dialogue"
+},
+"49": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "radio"
+} ] ],
+"function": "set_assistant_anim"
+},
+"next_id": "50",
+"type": "mutation"
+},
+"5": {
+"character": "???",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "6",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Mi sente? Si svegli!!!",
+"time": null,
+"translation_key": "Mi sente? Si svegli!!!",
+"type": "dialogue"
+},
+"50": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "51",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "IO NON HO FATTO NIENTE, È COLPA DEI ROBOT DEL LABORATORIO CHE SONO INSORTI.",
+"time": null,
+"translation_key": "IO NON HO FATTO NIENTE, È COLPA DEI ROBOT DEL LABORATORIO CHE SONO INSORTI.",
+"type": "dialogue"
+},
+"51": {
+"character": "Voce da una radio",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "52",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
 "text": "Ma tu stai bene?",
 "time": null,
 "translation_key": "Ma tu stai bene?",
 "type": "dialogue"
 },
-"49": {
+"52": {
 "character": "Helena",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "51",
+"next_id": "53",
 "pauses": {
 },
 "replacements": [  ],
@@ -600,15 +645,18 @@ lines = {
 "translation_key": "Sì, adesso risolviamo tutto. Vedrai.",
 "type": "dialogue"
 },
-"5": {
+"53": {
 "mutation": {
-"args": [  ],
-"function": "fadein"
+"args": [ [ {
+"type": "string",
+"value": "talking"
+} ] ],
+"function": "set_assistant_anim"
 },
-"next_id": "6",
+"next_id": "55",
 "type": "mutation"
 },
-"51": {
+"55": {
 "character": "{{saved_state.name}}",
 "character_replacements": [ {
 "expression": [ {
@@ -623,7 +671,7 @@ lines = {
 "value_in_text": "{{saved_state.name}}"
 } ],
 "inline_mutations": [  ],
-"next_id": "52",
+"next_id": "56",
 "pauses": {
 },
 "replacements": [  ],
@@ -633,25 +681,25 @@ lines = {
 "translation_key": "Quindi ti chiami Helena.",
 "type": "dialogue"
 },
-"52": {
+"56": {
 "character": "Helena",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "53",
+"next_id": "57",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Sì, il mio nome è dott.essa Helena Wissenschaftler e lavoro al laboratorio <nome del laboratorio>.",
+"text": "Sì, il mio nome è dott.essa Helena Wissenschaftler e lavoro al laboratorio Z.M.B.",
 "time": null,
-"translation_key": "Sì, il mio nome è dott.essa Helena Wissenschaftler e lavoro al laboratorio <nome del laboratorio>.",
+"translation_key": "Sì, il mio nome è dott.essa Helena Wissenschaftler e lavoro al laboratorio Z.M.B.",
 "type": "dialogue"
 },
-"53": {
+"57": {
 "character": "Helena",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "54",
+"next_id": "58",
 "pauses": {
 },
 "replacements": [  ],
@@ -661,11 +709,11 @@ lines = {
 "translation_key": "Noi facciamo ricerche sui portali ed i loro utilizzi.",
 "type": "dialogue"
 },
-"54": {
+"58": {
 "character": "Helena",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "55",
+"next_id": "59",
 "pauses": {
 },
 "replacements": [  ],
@@ -675,24 +723,54 @@ lines = {
 "translation_key": "Considerando quello che è successo ne incontreremo molti sulla nostra strada.",
 "type": "dialogue"
 },
-"55": {
+"59": {
 "mutation": {
 "args": [  ],
 "function": "finished_dialogue"
 },
+"next_id": "60",
+"type": "mutation"
+},
+"6": {
+"mutation": {
+"args": [  ],
+"function": "fadein"
+},
+"next_id": "7",
+"type": "mutation"
+},
+"60": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "default"
+} ] ],
+"function": "set_assistant_anim"
+},
 "next_id": "end",
 "type": "mutation"
 },
-"58": {
-"next_id": "59",
+"63": {
+"next_id": "64",
 "text": "Summon",
 "type": "title"
 },
-"59": {
+"64": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "talking"
+} ] ],
+"function": "set_assistant_anim"
+},
+"next_id": "65",
+"type": "mutation"
+},
+"65": {
 "character": "Helena",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "60",
+"next_id": "66",
 "pauses": {
 },
 "replacements": [  ],
@@ -702,25 +780,11 @@ lines = {
 "translation_key": "Adesso che il nemico è morto, possiamo usare il potere dei portali a nostro vantaggio.",
 "type": "dialogue"
 },
-"6": {
-"character": "???",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "7",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Oh bene, sei cosciente. Come ti chiami?",
-"time": null,
-"translation_key": "Oh bene, sei cosciente. Come ti chiami?",
-"type": "dialogue"
-},
-"60": {
+"66": {
 "character": "Helena",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "61",
+"next_id": "67",
 "pauses": {
 },
 "replacements": [  ],
@@ -730,11 +794,11 @@ lines = {
 "translation_key": "Ho creato un dispositivo che simula il comportamento del portale blu per un tempo limitato.",
 "type": "dialogue"
 },
-"61": {
+"67": {
 "character": "Helena",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "62",
+"next_id": "68",
 "pauses": {
 },
 "replacements": [  ],
@@ -744,11 +808,11 @@ lines = {
 "translation_key": "Possiamo, quindi, usare l'anima di quella cosa per evocarne una copia.",
 "type": "dialogue"
 },
-"62": {
+"68": {
 "character": "Helena",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "63",
+"next_id": "69",
 "pauses": {
 },
 "replacements": [  ],
@@ -758,11 +822,11 @@ lines = {
 "translation_key": "Però attenzione a non abusarne, ho una quantità di energia limitata. I miei sensori possono leggere quanta energia serve per ogni evocazione.",
 "type": "dialogue"
 },
-"63": {
+"69": {
 "character": "TUTORIAL",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "64",
+"next_id": "70",
 "pauses": {
 },
 "replacements": [  ],
@@ -772,67 +836,19 @@ lines = {
 "translation_key": "*click con rotella del mouse sul cadavere per prenderne l'anima, click destro per evocare*",
 "type": "dialogue"
 },
-"64": {
-"character": "Helena",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "end",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Oh guarda, è apparso un portal giallo: emette diversi tipi di energia.",
-"time": null,
-"translation_key": "Oh guarda, è apparso un portal giallo: emette diversi tipi di energia.",
-"type": "dialogue"
-},
-"66": {
-"next_id": "67",
-"text": "Boss",
-"type": "title"
-},
-"67": {
-"character": "",
-"inline_mutations": [  ],
-"next_id": "68",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "*L'ENERGIA DEI PORTALI CRESCE IN TE*",
-"time": null,
-"translation_key": "*L'ENERGIA DEI PORTALI CRESCE IN TE*",
-"type": "dialogue"
-},
-"68": {
-"mutation": {
-"args": [  ],
-"function": "save"
-},
-"next_id": "69",
-"type": "mutation"
-},
-"69": {
-"character": "Helena",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "70",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Visto? Lo sapevo che per te non sarebbe stato difficile.",
-"time": null,
-"translation_key": "Visto? Lo sapevo che per te non sarebbe stato difficile.",
-"type": "dialogue"
-},
 "7": {
-"mutation": {
-"args": [  ],
-"function": "ask_name"
+"character": "???",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "8",
+"pauses": {
 },
-"next_id": "end",
-"type": "mutation"
+"replacements": [  ],
+"speeds": [  ],
+"text": "Oh bene, sei cosciente. Come ti chiami?",
+"time": null,
+"translation_key": "Oh bene, sei cosciente. Come ti chiami?",
+"type": "dialogue"
 },
 "70": {
 "character": "Helena",
@@ -843,16 +859,92 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
+"text": "Oh guarda, è apparso un portal giallo: emette diversi tipi di energia.",
+"time": null,
+"translation_key": "Oh guarda, è apparso un portal giallo: emette diversi tipi di energia.",
+"type": "dialogue"
+},
+"71": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "default"
+} ] ],
+"function": "set_assistant_anim"
+},
+"next_id": "end",
+"type": "mutation"
+},
+"73": {
+"next_id": "74",
+"text": "Boss",
+"type": "title"
+},
+"74": {
+"character": "",
+"inline_mutations": [  ],
+"next_id": "75",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "*L'ENERGIA DEI PORTALI CRESCE IN TE*",
+"time": null,
+"translation_key": "*L'ENERGIA DEI PORTALI CRESCE IN TE*",
+"type": "dialogue"
+},
+"75": {
+"mutation": {
+"args": [  ],
+"function": "save"
+},
+"next_id": "76",
+"type": "mutation"
+},
+"76": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "talking"
+} ] ],
+"function": "set_assistant_anim"
+},
+"next_id": "77",
+"type": "mutation"
+},
+"77": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "78",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Visto? Lo sapevo che per te non sarebbe stato difficile.",
+"time": null,
+"translation_key": "Visto? Lo sapevo che per te non sarebbe stato difficile.",
+"type": "dialogue"
+},
+"78": {
+"character": "Helena",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "79",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
 "text": "Questo mostro ha rilasciato molta energia morendo. Le mie tecnologie si sono potenziate ed anche tu mi sembri più in salute.",
 "time": null,
 "translation_key": "Questo mostro ha rilasciato molta energia morendo. Le mie tecnologie si sono potenziate ed anche tu mi sembri più in salute.",
 "type": "dialogue"
 },
-"71": {
+"79": {
 "character": "Helena",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "72",
+"next_id": "80",
 "pauses": {
 },
 "replacements": [  ],
@@ -862,11 +954,19 @@ lines = {
 "translation_key": "Tutta quell'energia ha anche aperto un portale grigio, vuol dire che non porta da nessuna parte.",
 "type": "dialogue"
 },
-"72": {
+"8": {
+"mutation": {
+"args": [  ],
+"function": "ask_name"
+},
+"next_id": "end",
+"type": "mutation"
+},
+"80": {
 "character": "Helena",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "73",
+"next_id": "81",
 "pauses": {
 },
 "replacements": [  ],
@@ -876,17 +976,23 @@ lines = {
 "translation_key": "Adesso creerò un interferenza che ci permetterà di usarlo, lo imposto sulla frequenza della mia dimensione.",
 "type": "dialogue"
 },
-"73": {
+"81": {
 "mutation": {
 "args": [  ],
 "function": "activate_portal"
 },
-"next_id": "",
+"next_id": "82",
 "type": "mutation"
 },
-"9": {
-"next_id": "10",
-"text": "Quest",
-"type": "title"
+"82": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "default"
+} ] ],
+"function": "set_assistant_anim"
+},
+"next_id": "",
+"type": "mutation"
 }
 }
