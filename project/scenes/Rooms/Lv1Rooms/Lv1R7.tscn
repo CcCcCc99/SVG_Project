@@ -179,6 +179,7 @@ position = Vector2( -40, 374 )
 points = PoolVector2Array( 728, -94, 536, -208 )
 
 [node name="Prism" parent="Objects" index="29" instance=ExtResource( 8 )]
+position = Vector2( -40, -18 )
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="Objects/Prism" index="9"]
 position = Vector2( -109, -165 )
@@ -187,7 +188,7 @@ frames = SubResource( 1 )
 script = ExtResource( 12 )
 
 [node name="Lever" parent="Objects" index="30" instance=ExtResource( 9 )]
-position = Vector2( 114, -363 )
+position = Vector2( 133, -365 )
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="Objects/Lever" index="2"]
 position = Vector2( -121, 46 )

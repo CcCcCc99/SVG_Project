@@ -12,4 +12,3 @@ func _ready():
 func _physics_process(delta):
 	var cast: Vector2 = ray.cast_point
 	hit_shape.length = cast.length() + 70
-	print(hit_shape.length)

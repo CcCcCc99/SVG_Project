@@ -55,7 +55,6 @@ func _on_BodyChecker_body_entered(body):
 	._on_BodyChecker_body_entered(body)
 
 func _on_collision_environment():
-	print(last_env.get_groups())
 	if last_env.is_in_group("VerticalEnvironment"):
 		_bounce(false)
 	elif last_env.is_in_group("HorizontalEnvironment"):

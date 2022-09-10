@@ -216,6 +216,7 @@ fullscreen={
 
 2d_physics/layer_1="All"
 2d_physics/layer_2="Land"
+2d_physics/layer_3="PortalBracker"
 
 [physics]
 
