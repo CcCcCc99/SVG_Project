@@ -147,7 +147,6 @@ default_color = Color( 0.482353, 0.482353, 0.482353, 1 )
 [node name="PortalReward" parent="Objects" index="18" instance=ExtResource( 11 )]
 visible = false
 position = Vector2( -212, -80 )
-number_of_hearts = 0
 number_of_mana = 2
 
 [node name="RocketSpawner" parent="Objects" index="19" instance=ExtResource( 13 )]

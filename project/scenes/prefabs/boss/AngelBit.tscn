@@ -87,9 +87,12 @@ radius = 283.933
 
 [node name="AngelBit" groups=["Boss", "IgnorePortal"] instance=ExtResource( 1 )]
 position = Vector2( 920, 670 )
+collision_layer = 1
+collision_mask = 1
 script = ExtResource( 3 )
 max_hp = 8
 speed = 30000
+can_fly = true
 energy_ball = ExtResource( 5 )
 fly = ExtResource( 7 )
 fly_number = 5

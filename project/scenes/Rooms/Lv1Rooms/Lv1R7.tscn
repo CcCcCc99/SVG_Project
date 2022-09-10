@@ -194,7 +194,6 @@ position = Vector2( 133, -365 )
 position = Vector2( -121, 46 )
 z_index = -1
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="PortalReward" parent="Objects" index="31" instance=ExtResource( 13 )]

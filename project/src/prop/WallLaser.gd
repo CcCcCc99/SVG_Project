@@ -33,17 +33,19 @@ func turn_on():
 	area_laser.set_b(self.points[1])
 	segment.set_b(self.points[1] + hit_offset)
 	$PoralBracker/CollisionPolygon2D.disabled = false
+	_set_portal_bracker()
 
 func turn_off():
 	modulate = Color.transparent
 	area_laser.set_b(self.points[0])
 	segment.set_b(self.points[0] + hit_offset)
 	$PoralBracker/CollisionPolygon2D.disabled = true
+	_set_portal_bracker()
 
 func _set_portal_bracker():
 	var poly: PoolVector2Array
+	poly.append(segment.get_a())
 	poly.append(points[0])
 	poly.append(points[1])
-	poly.append(segment.get_a())
 	poly.append(segment.get_b())
 	$PoralBracker/CollisionPolygon2D.polygon = poly
