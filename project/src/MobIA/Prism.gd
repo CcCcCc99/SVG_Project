@@ -5,6 +5,9 @@ export var laser_dmg = 2
 
 export(PackedScene) var raycast
 
+func _ready():
+	$AttackMode/Icon.material = $AnimatedSprite.material
+
 func get_direction():
 	match ia_state:
 		WALK:
@@ -30,14 +33,10 @@ func _laser_attack():
 	$AttackMode.show()
 	$AnimatedSprite.hide()
 	$AttackMode/RayCast2D.play_laser()
-	$AttackMode.rotation += 0.07
+	$AttackMode.rotation += 0.05
 	if $AttackMode.rotation >= 2*PI:
 		ia_state = WALK
 		$AttackMode.rotation = 0
-
-func _on_Cooldown_timeout():
-	pass
-
 
 func _on_hit(body):
 	if body.is_in_group("Hitbox"):

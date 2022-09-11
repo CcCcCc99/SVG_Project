@@ -261,5 +261,8 @@ func ask_name():
 func save_name(name: String):
 	saved_state.name = name
 	var file = preload("res://dialogues/TutorialDialogues.tres")
-	DialogueManager.game_states = [$Room, $Room/Events/PresentationEvent, player]
+	DialogueManager.game_states = [$Room, $Room/Events/PresentationEvent, player, assistant]
 	DialogueManager.show_example_dialogue_balloon("Quest", file)
+
+func set_assistant_anim(animation: String):
+	assistant.get_node("Sprite").animation = animation

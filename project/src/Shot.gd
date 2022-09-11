@@ -29,8 +29,11 @@ func _physics_process(delta):
 
 func set_direction(dir: Vector2):
 	direction = dir.normalized()
-	scale.x = -1 if dir.x > 0 else 1
-	scale.y = -1 if dir.y > 0 else 1
+	_update_grafic()
+
+func _update_grafic():
+	scale.x = -1 if direction.x > 0 else 1
+	scale.y = -1 if direction.y > 0 else 1
 
 func _on_hit(body: Node):
 	if body.is_in_group("Environment"):
@@ -51,6 +54,7 @@ func _reset_animations():
 	scale.y = 1 if scale.y > 0 else -1
 	visible = true
 	rotation = 0
+	_update_grafic()
 
 func teleport_to(dest: Portal2D):
 	if is_instance_valid(dest):

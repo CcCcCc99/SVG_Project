@@ -1,7 +1,10 @@
-extends "res://src/Shot.gd"
+extends Shot
 
 export(PackedScene) var POOF
 var effect
+
+func _update_grafic():
+	rotate(direction.angle())
 
 func _on_Bat_area_entered(area):
 	._on_hit(area)

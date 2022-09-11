@@ -3,18 +3,24 @@ extends Node
 var is_blocked: bool = false
 
 var load_mode: bool = false
+var has_savings: bool = false
 
 var music_volume: float = 10
 var sfx_volume: float = 10
 var master_volume: float = 10
 
 var resolution: Vector2 = Vector2(1920,1080)
-var fullscreen: bool = false
+var fullscreen: bool = true
 
-const config_path = "saves/config"
-const saving_path = "saves/game"
+const config_path = "user://config"
+const saving_path = "user://game"
 
 func _ready() -> void:
+	var file = File.new()
+	if not file.file_exists(config_path):
+		_save_config()
+	file = File.new()
+	has_savings = file.file_exists(saving_path)
 	_load_config()
 	_set_config()
 
@@ -106,6 +112,7 @@ func save_game_state(state: GameState):
 	file.store_var(state.events)
 
 	file.close()
+	has_savings = true
 
 func load_game_state() -> GameState:
 	var file = File.new()

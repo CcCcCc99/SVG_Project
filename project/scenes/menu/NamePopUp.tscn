@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/menu/ita_ok.png" type="Texture" id=3]
 [ext_resource path="res://src/menu/NamePopUp.gd" type="Script" id=4]
 [ext_resource path="res://assets/menu/pointer.png" type="Texture" id=5]
-[ext_resource path="res://DynamicFontHand.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/DynamicFontHand.tres" type="DynamicFont" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 81

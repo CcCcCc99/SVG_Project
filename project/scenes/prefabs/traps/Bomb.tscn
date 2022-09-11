@@ -6,10 +6,13 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 37.0
-height = 86.0
+height = 36.0
 
-[node name="Bomb" type="Area2D" groups=["Shot"]]
+[node name="Bomb" type="Area2D" groups=["Bomb", "Shot"]]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource( 2 )
+is_shot = true
 speed = 0
 damage = 4
 POOF = ExtResource( 1 )
@@ -20,7 +23,8 @@ scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1, -86 )
+position = Vector2( -2, -59 )
 shape = SubResource( 1 )
 
+[connection signal="area_entered" from="." to="." method="_on_Bomb_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Bomb_body_entered"]

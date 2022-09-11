@@ -6,11 +6,8 @@
 [ext_resource path="res://assets/sprites/player/guanto.png" type="Texture" id=4]
 
 [node name="Portalgun" type="Node2D"]
-position = Vector2( -0.725161, -81.3505 )
+position = Vector2( -0.7, -81.351 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 distance = 150
 portal = ExtResource( 3 )
 colors = [ Color( 0.937255, 0.596078, 0.984314, 1 ), Color( 0.364706, 0.913725, 0.811765, 1 ) ]
@@ -27,7 +24,7 @@ rotation = 1.52367
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 1 )
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( -60, 0 )
+[node name="ForewardRay" type="RayCast2D" parent="."]
 enabled = true
-cast_to = Vector2( 180, 0 )
+cast_to = Vector2( 130, 0 )
+collision_mask = 4

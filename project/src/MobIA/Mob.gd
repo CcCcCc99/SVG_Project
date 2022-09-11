@@ -45,7 +45,7 @@ func _on_collision_environment():
 	pass
 
 func _on_BodyChecker_body_entered(body):
-	if body.is_in_group("Environment"):
+	if body.is_in_group("Environment") and body.name != "PoralBracker":
 		_on_collision_environment()
 	elif body.is_in_group(enemy) and not body.is_in_group("Hitbox"):
 		if body != self:

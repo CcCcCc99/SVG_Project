@@ -12,7 +12,6 @@ func _ready():
 	var groups = get_groups()
 	for g in groups:
 		$StaticBody.add_to_group(g)
-	print(name, $StaticBody.get_groups())
 	player = get_parent().get_node("Player")
 	$StaticBody/CollisionShape2D.shape = $StaticBody/CollisionShape2D.shape.duplicate()
 	$Area2D/CollisionShape2D.shape = $Area2D/CollisionShape2D.shape.duplicate()
@@ -27,13 +26,26 @@ func _set_points():
 	points[1] -= pos_offset
 	segment.set_a(self.points[0] + hit_offset)
 	segment.set_b(self.points[1] + hit_offset)
+	_set_portal_bracker()
 
 func turn_on():
 	modulate = Color.white
 	area_laser.set_b(self.points[1])
 	segment.set_b(self.points[1] + hit_offset)
+	$PoralBracker/CollisionPolygon2D.disabled = false
+	_set_portal_bracker()
 
 func turn_off():
 	modulate = Color.transparent
 	area_laser.set_b(self.points[0])
 	segment.set_b(self.points[0] + hit_offset)
+	$PoralBracker/CollisionPolygon2D.disabled = true
+	_set_portal_bracker()
+
+func _set_portal_bracker():
+	var poly: PoolVector2Array
+	poly.append(segment.get_a())
+	poly.append(points[0])
+	poly.append(points[1])
+	poly.append(segment.get_b())
+	$PoralBracker/CollisionPolygon2D.polygon = poly

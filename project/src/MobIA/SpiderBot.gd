@@ -50,8 +50,13 @@ func _on_TriggerAttack_enemy_spotted(body):
 			ia_state = ATTACK
 			$Cooldown.start()
 			target = body.global_position
+			$DummyWeb.show()
+			$Tween.interpolate_property($DummyWeb, "scale", Vector2(0.1,0.1), Vector2(1,1), 1, Tween.TRANS_LINEAR)
+			$Tween.interpolate_property($DummyWeb, "global_position", global_position, target, 1, Tween.TRANS_LINEAR)
+			$Tween.start()
 
 func _on_Cooldown_timeout():
+	$DummyWeb.hide()
 	_spit_web(target)
 	get_node("/root/AudioManager").add_effect("res://assets/audio/43133811_cartoon-whip-light-crack-whoosh-01.mp3", 0.0, 1.5, false)
 	ia_state = WALK
