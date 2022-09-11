@@ -21,3 +21,7 @@ func checkcoil(coil: String, line: String):
 	else:
 		get_parent().get_node(coil).animation = "on"
 	get_parent().get_node(line).checkline()
+
+func update_coil(status: bool):
+	is_on = status
+	update_grafic()

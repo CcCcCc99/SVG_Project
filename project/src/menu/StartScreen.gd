@@ -20,6 +20,8 @@ func _on_NewGameButton_pressed():
 	get_tree().change_scene("res://Main.tscn")
 
 func _on_LoadGameButton_pressed():
+	if not DefaultLoad.has_savings:
+		return
 	get_node("/root/DefaultLoad").load_mode = true
 	get_tree().change_scene("res://Main.tscn")
 

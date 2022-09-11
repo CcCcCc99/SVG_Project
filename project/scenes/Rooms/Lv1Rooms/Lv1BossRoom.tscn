@@ -310,3 +310,7 @@ mp_up = 1
 slot_up = true
 
 [connection signal="completed" from="." to="Events/BossDefeatedEvent" method="activate"]
+[connection signal="staus_changed" from="Objects/CoilLever1" to="Objects/CoilLever2" method="update_coil"]
+[connection signal="staus_changed" from="Objects/CoilLever2" to="Objects/CoilLever1" method="update_coil"]
+[connection signal="staus_changed" from="Objects/CoilLever3" to="Objects/CoilLever4" method="update_coil"]
+[connection signal="staus_changed" from="Objects/CoilLever4" to="Objects/CoilLever3" method="update_coil"]

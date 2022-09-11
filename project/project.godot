@@ -106,6 +106,7 @@ _global_script_class_icons={
 
 config/name="SVG_Project"
 run/main_scene="res://scenes/menu/StartScreen.tscn"
+config/use_custom_user_dir=true
 boot_splash/image="res://assets/logo6.png"
 boot_splash/bg_color=Color( 0.117647, 0.117647, 0.117647, 1 )
 config/icon="res://icon.png"
