@@ -7,7 +7,6 @@
 z_index = -1
 script = ExtResource( 2 )
 expand_rate = 0.03
-aoe_damage = 2
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
