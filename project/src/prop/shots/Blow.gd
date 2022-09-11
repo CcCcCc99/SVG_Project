@@ -9,7 +9,7 @@ func _ready():
 
 func _process(delta):
 	if not pushed_objs.empty():
-		var push_speed = speed + 1000
+		var push_speed = speed + 2000
 		var characters = pushed_objs.keys()
 		for c in characters:
 			if is_instance_valid(c):
