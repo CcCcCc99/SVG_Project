@@ -43,7 +43,7 @@ position = Vector2( 665, 349 )
 [node name="FluidContainerPink" parent="Objects" index="3" instance=ExtResource( 4 )]
 position = Vector2( -777, -262 )
 
-[node name="crepa" type="StaticBody2D" parent="Objects" index="4" groups=["Environment"]]
+[node name="crepa" type="StaticBody2D" parent="Objects" index="4" groups=["Environment", "Hole", "IgnoreRaycast"]]
 position = Vector2( 510, -13 )
 z_index = -2
 collision_layer = 2
@@ -59,7 +59,7 @@ texture = ExtResource( 5 )
 position = Vector2( 241, -129 )
 polygon = PoolVector2Array( -5, 2, -12, -73, -60, -81, -76, -44, -103, -65, -118, -66, -149, -89, -189, -56, -244, -78, -240, -52, -269, -39, -301, -48, -341, -21, -379, -35, -406, -24, -408, -10, -374, 16, -421, 55, -445, 31, -461, 73, -469, 127, -457, 128, -450, 179, -380, 204, -363, 237, -415, 212, -429, 262, -378, 297, -379, 319, -333, 328, -319, 341, -263, 263, -237, 332, -186, 331, -169, 353, -131, 338, -100, 359, -65, 342, -41, 377, -13, 366, -9, 324, -31, 302, -32, 248, -68, 243, -88, 214, -135, 227, -154, 192, -172, 187, -186, 202, -178, 258, -206, 253, -219, 196, -260, 199, -258, 155, -313, 118, -293, 82, -245, 91, -214, 55, -171, 82, -130, 86, -119, 82, -133, 45, -108, 26, -74, 59, -39, -3, -13, 2 )
 
-[node name="crepa2" type="StaticBody2D" parent="Objects" index="5" groups=["Environment"]]
+[node name="crepa2" type="StaticBody2D" parent="Objects" index="5" groups=["Environment", "Hole", "IgnoreRaycast"]]
 position = Vector2( -356, -195 )
 z_index = -2
 collision_layer = 2

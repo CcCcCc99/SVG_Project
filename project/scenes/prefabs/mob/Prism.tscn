@@ -55,6 +55,7 @@ max_hp = 1
 speed = 5000
 can_fly = true
 icon = ExtResource( 7 )
+laser_dmg = 3
 raycast = ExtResource( 4 )
 
 [node name="CollisionShape2D" parent="." index="0"]

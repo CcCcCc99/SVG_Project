@@ -19,7 +19,7 @@ position = Vector2( 120, 355 )
 position = Vector2( 544, 254 )
 direction = Vector2( -1, 2.3 )
 
-[node name="crepa2" type="StaticBody2D" parent="Objects" index="2" groups=["Environment"]]
+[node name="crepa2" type="StaticBody2D" parent="Objects" index="2" groups=["Environment", "Hole", "IgnoreRaycast"]]
 position = Vector2( -590, 201 )
 scale = Vector2( -1, 1 )
 z_index = -1
@@ -37,7 +37,7 @@ texture = ExtResource( 4 )
 position = Vector2( -712, 179 )
 polygon = PoolVector2Array( 671, -223, 689, -239, 700, -258, 759, -271, 781, -271, 770, -252, 765, -239, 784, -235, 786, -216, 803, -208, 795, -181, 765, -182, 746, -152, 714, -158, 698, -185, 678, -181 )
 
-[node name="crepa5" type="StaticBody2D" parent="Objects" index="3" groups=["Environment"]]
+[node name="crepa5" type="StaticBody2D" parent="Objects" index="3" groups=["Environment", "Hole", "IgnoreRaycast"]]
 position = Vector2( -165, -82 )
 rotation = -1.02974
 scale = Vector2( -1, 1 )
@@ -56,7 +56,7 @@ texture = ExtResource( 4 )
 position = Vector2( -712, 179 )
 polygon = PoolVector2Array( 671, -223, 689, -239, 700, -258, 759, -271, 781, -271, 770, -252, 765, -239, 784, -235, 786, -216, 803, -208, 795, -181, 765, -182, 746, -152, 714, -158, 698, -185, 678, -181 )
 
-[node name="crepa4" type="StaticBody2D" parent="Objects" index="4" groups=["Environment"]]
+[node name="crepa4" type="StaticBody2D" parent="Objects" index="4" groups=["Environment", "Hole", "IgnoreRaycast"]]
 position = Vector2( -654, -158 )
 rotation = -1.58999
 scale = Vector2( -1, 1 )
@@ -75,7 +75,7 @@ texture = ExtResource( 4 )
 position = Vector2( -712, 179 )
 polygon = PoolVector2Array( 671, -223, 689, -239, 700, -258, 759, -271, 781, -271, 770, -252, 765, -239, 784, -235, 786, -216, 803, -208, 795, -181, 765, -182, 746, -152, 714, -158, 698, -185, 678, -181 )
 
-[node name="crepa3" type="StaticBody2D" parent="Objects" index="5" groups=["Environment"]]
+[node name="crepa3" type="StaticBody2D" parent="Objects" index="5" groups=["Environment", "Hole", "IgnoreRaycast"]]
 position = Vector2( -281, 174 )
 scale = Vector2( 1, 1.097 )
 z_index = -1
@@ -96,7 +96,7 @@ rotation = -3.14159
 scale = Vector2( 1, -1 )
 polygon = PoolVector2Array( 622, -241, 657, -179, 652, -131, 682, -87, 662, -37, 697, 27, 725, 20, 763, 42, 801, 23, 866, 64, 871, 35, 838, 4, 858, -4, 854, -48, 824, -79, 829, -134, 782, -142, 749, -188, 708, -189, 707, -212, 671, -201, 620, -243 )
 
-[node name="crepa7" type="StaticBody2D" parent="Objects" index="6" groups=["Environment"]]
+[node name="crepa7" type="StaticBody2D" parent="Objects" index="6" groups=["Environment", "Hole", "IgnoreRaycast"]]
 position = Vector2( 501, -11 )
 rotation = 1.63363
 z_index = -1
@@ -117,7 +117,7 @@ rotation = -3.14159
 scale = Vector2( 1, -1 )
 polygon = PoolVector2Array( 622, -241, 657, -179, 652, -131, 682, -87, 662, -37, 697, 27, 725, 20, 763, 42, 801, 23, 866, 64, 871, 35, 838, 4, 858, -4, 854, -48, 824, -79, 829, -134, 782, -142, 749, -188, 708, -189, 707, -212, 671, -201, 620, -243 )
 
-[node name="crepa6" type="StaticBody2D" parent="Objects" index="7" groups=["Environment"]]
+[node name="crepa6" type="StaticBody2D" parent="Objects" index="7" groups=["Environment", "Hole", "IgnoreRaycast"]]
 position = Vector2( -131, -262 )
 rotation = 1.58999
 z_index = -1
