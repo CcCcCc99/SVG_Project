@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/menu/ita_esci.png" type="Texture" id=4]
 [ext_resource path="res://assets/menu/pointer.png" type="Texture" id=5]
 [ext_resource path="res://assets/menu/ita_nuovapartita.png" type="Texture" id=6]
-[ext_resource path="res://assets/menu/sfondo_menu3.png" type="Texture" id=7]
+[ext_resource path="res://assets/menu/nuovomenu.png" type="Texture" id=7]
 
 [node name="StartScreen" type="CenterContainer"]
 anchor_left = 0.5

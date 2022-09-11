@@ -11,6 +11,10 @@ var lf
 func _ready():
 	lf = $LittleFriend
 
+func _process(delta):
+	if position.distance_to(lf.position) > 2000:
+		lf.position = Vector2(0, 0)
+
 func get_direction():
 	match ia_state:
 		WALK:

@@ -677,6 +677,8 @@ func apply_operation(operator: String, first_value, second_value):
 
 # Check if a dialogue line contains meaninful information
 func is_valid(line: Line) -> bool:
+	if not is_instance_valid(line):
+		return false
 	if line.type == Constants.TYPE_DIALOGUE and line.dialogue == "":
 		return false
 	if line.type == Constants.TYPE_MUTATION and line.mutation == null:

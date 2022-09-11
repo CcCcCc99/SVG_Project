@@ -19,7 +19,10 @@ func get_direction():
 
 func _on_collision_environment():
 	direction.x *= -1
+	flip = not flip
 	scale.x *= -1
+	if original_scale != null:
+		original_scale.y *= -1
 	ia_state = ATTACK
 	get_node("/root/AudioManager").add_effect("res://assets/audio/39725687_laser-scan-01.mp3", 12.5, 2.5, false)
 

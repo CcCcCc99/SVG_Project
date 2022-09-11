@@ -49,13 +49,15 @@ func _input(event):
 	if Input.is_action_just_pressed("pause_toggle"):
 		if not is_in_pause:
 			is_in_pause = true
+			var volume = get_node("/root/AudioManager").actual_volume
+			get_node("/root/AudioManager").set_volume_music(volume - 10)
 			get_tree().paused = true
 			pause_screen = load("res://scenes/menu/PauseScreen.tscn").instance()
-			get_node("/root/AudioManager").add_music("res://assets/audio/fato_shadow_-_in_my_dreams.ogg", -5.0, 1.0)
 			$HUD.add_child(pause_screen)
 		else:
 			resume()
-			get_node("/root/AudioManager").resume_music()
+			var volume = get_node("/root/AudioManager").previous_volume
+			get_node("/root/AudioManager").set_volume_music(volume)
 
 func resume():
 	is_in_pause = false
