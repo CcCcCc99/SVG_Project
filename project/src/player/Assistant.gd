@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 var summons: Array = [null, null, null, null, null, null]
 var summoned_mobs: Array
@@ -12,9 +12,16 @@ signal mana_changed(old_mana, new_mana)
 var slot_number: int setget set_slot_number, get_slot_number
 var action_bar setget set_actionbar
 
+var is_inspecting: bool = false
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Input.is_action_just_pressed("summon") and is_instance_valid(summons[action_bar.current()]) and mana >= summons[action_bar.current()].mana_cost:
+# warning-ignore:unused_argument
+func _input(event):
+	var can_summon: bool = event.is_action_pressed("summon")
+	can_summon = can_summon and is_instance_valid(summons[action_bar.current()])
+	can_summon = can_summon and mana >= summons[action_bar.current()].mana_cost
+	can_summon = can_summon and not is_inspecting
+	if  can_summon:
 		var spawned = summons[action_bar.current()].spawn(
 			get_parent(),
 			get_global_mouse_position())
@@ -23,6 +30,13 @@ func _process(delta):
 			summoned_mobs.append(summons[action_bar.current()])
 			set_mana(mana - summons[action_bar.current()].mana_cost)
 		update_grafics()
+
+# warning-ignore:unused_argument
+func _physics_process(delta):
+	if state == SCALEDOWN:
+		_scale_down()
+	elif state == SCALEUP:
+		_scale_up()
 
 func update_grafics():
 	var g_array = action_bar.get_grafic_array()
@@ -82,3 +96,63 @@ func set_slot_number(num: int):
 
 func get_slot_number():
 	return action_bar.slot_number
+
+############################################
+
+# Manage teleport
+
+enum {NORMAL, SCALEUP, SCALEDOWN}
+var state = NORMAL
+var original_scale
+var destination = null
+var i = 0
+
+func _reset_animations():
+	scale = original_scale
+	visible = true
+	rotation = 0
+
+func teleport_to(dest: Portal2D):
+	if original_scale != null:
+		if original_scale != scale:
+			return
+	if is_instance_valid(dest):
+		original_scale = scale
+		destination = dest.position
+		start_scaling_down()
+
+func _teleport():
+	position = destination
+	start_scaling_up()
+
+func _scale_up():
+	if scale < Vector2(1,1):
+		scale *= 1.3
+		rotation = sin(i)
+		i += 0.5
+	else:
+		#emit_signal("scaled_up")
+		_reset_animations()
+		state = NORMAL
+
+func _scale_down():
+	if scale > Vector2(0.1,0.1):
+		scale *= 0.7
+		rotation = sin(i)
+		i += 0.5
+	else:
+		_teleport()
+
+func start_scaling_down():
+	state = SCALEDOWN
+
+func start_scaling_up():
+	state = SCALEUP
+
+func back_to_normal():
+	state = NORMAL
+
+
+func _on_Assistant_area_entered(area):
+	if area.is_in_group("Portal"):
+		area._on_Portal_body_entered(self)
