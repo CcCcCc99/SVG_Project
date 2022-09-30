@@ -1,6 +1,6 @@
 # Dimensions Break
 
-![logo dimensions break](./project/assets/dimensionsbreak.png)
+[![logo dimensions break](./project/assets/dimensionsbreak_download.png)](https://github.com/CcCcCc99/SVG_Project/releases/tag/Demo2)
 
 Gioco sviluppato dal team Keep Playing per l'esame di sviluppo di videogiochi.
 
