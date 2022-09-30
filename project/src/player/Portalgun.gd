@@ -56,7 +56,7 @@ func _spawn_portal(direction: Vector2):
 	
 	if is_instance_valid(previous_portal):
 		for area in previous_portal.get_overlapping_areas():
-			if area.is_in_group("Shot"):
+			if area.is_in_group("Shot") or area.is_in_group("Assistant"):
 				previous_portal._on_Portal_body_entered(area)
 		for body in previous_portal.get_overlapping_bodies():
 			previous_portal._on_Portal_body_entered(body)

@@ -8,7 +8,7 @@ signal finished()
 
 const Line = preload("res://addons/dialogue_manager/dialogue_line.gd")
 
-export var skip_action: String = "ui_cancel"
+export var skip_action: String = "ui_accept"
 export var seconds_per_step: float = 0.02
 
 

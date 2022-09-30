@@ -74,7 +74,7 @@ Helena: Adesso che il nemico è morto, possiamo usare il potere dei portali a no
 Helena: Ho creato un dispositivo che simula il comportamento del portale blu per un tempo limitato.
 Helena: Possiamo, quindi, usare l'anima di quella cosa per evocarne una copia.
 Helena: Però attenzione a non abusarne, ho una quantità di energia limitata. I miei sensori possono leggere quanta energia serve per ogni evocazione.
-TUTORIAL: *click con rotella del mouse sul cadavere per prenderne l'anima, click destro per evocare*
+TUTORIAL: *click destro sul cadavere per prenderne l'anima, click destro per evocare*
 Helena: Oh guarda, è apparso un portal giallo: emette diversi tipi di energia.
 do set_assistant_anim(\"default\")
 
@@ -831,9 +831,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "*click con rotella del mouse sul cadavere per prenderne l'anima, click destro per evocare*",
+"text": "*click destro sul cadavere per prenderne l'anima, click destro per evocare*",
 "time": null,
-"translation_key": "*click con rotella del mouse sul cadavere per prenderne l'anima, click destro per evocare*",
+"translation_key": "*click destro sul cadavere per prenderne l'anima, click destro per evocare*",
 "type": "dialogue"
 },
 "7": {

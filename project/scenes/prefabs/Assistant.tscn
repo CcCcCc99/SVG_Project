@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/player/Assistant.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/assistant/discussione.png" type="Texture" id=2]
@@ -14,11 +14,6 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "shocked",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "radio",
@@ -28,9 +23,17 @@ animations = [ {
 "loop": true,
 "name": "talking",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "shocked",
+"speed": 5.0
 } ]
 
-[node name="Assistant" type="Node2D" groups=["Environment"]]
+[sub_resource type="CircleShape2D" id=2]
+radius = 39.0128
+
+[node name="Assistant" type="Area2D" groups=["Assistant"]]
 script = ExtResource( 1 )
 max_mana = 5
 
@@ -51,3 +54,9 @@ position = Vector2( 80.6349, -76.8552 )
 [node name="Shadow" parent="." instance=ExtResource( 3 )]
 position = Vector2( -1.00001, 10 )
 scale = Vector2( 0.264844, 0.307813 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -9 )
+shape = SubResource( 2 )
+
+[connection signal="area_entered" from="." to="." method="_on_Assistant_area_entered"]

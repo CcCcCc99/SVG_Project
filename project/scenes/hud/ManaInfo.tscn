@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/TheNautigal-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/hud/info_frame.png" type="Texture" id=2]
 [ext_resource path="res://assets/hud/info_backgrond.png" type="Texture" id=3]
 [ext_resource path="res://src/hud/ManaInfo.gd" type="Script" id=4]
+[ext_resource path="res://assets/hud/fullmana.png" type="Texture" id=5]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
@@ -43,3 +44,10 @@ margin_top = 5.99316
 margin_right = 118.568
 margin_bottom = 54.9932
 custom_fonts/font = SubResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 94.0
+margin_top = -29.0
+margin_right = 158.0
+margin_bottom = 35.0
+texture = ExtResource( 5 )
