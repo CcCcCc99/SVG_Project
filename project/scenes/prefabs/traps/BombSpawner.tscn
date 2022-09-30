@@ -19,6 +19,7 @@ radius = 80.0098
 [node name="BombSpawner" type="AnimatedSprite" groups=["Environment"]]
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 script = ExtResource( 3 )
 bomb = ExtResource( 4 )
@@ -38,6 +39,9 @@ polygon = PoolVector2Array( -27.0833, 66.6667, -20.8333, 2.08333, 304.167, -4.16
 
 [node name="Bottom" type="CollisionPolygon2D" parent="CollisionVertivals"]
 polygon = PoolVector2Array( -195.833, 191.667, -172.917, 210.417, -72.9167, 220.833, 58.3333, 218.75, 137.5, 295.833, 295.833, 295.833, 295.833, 235.417, 47.9167, 183.333 )
+
+[node name="Center" type="CollisionPolygon2D" parent="CollisionVertivals"]
+polygon = PoolVector2Array( -241.667, 110.417, 41.6667, 75, 58.3333, 195.833, -189.583, 200 )
 
 [node name="CollisionHorizontals" type="StaticBody2D" parent="." groups=["Environment", "HorizontalEnvironment", "IgnorePortal"]]
 scale = Vector2( 0.6, 0.6 )
