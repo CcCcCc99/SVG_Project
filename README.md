@@ -14,8 +14,6 @@ Il è gioco realizzato in Godot Engine e tutti gli asset grafici sono stati dise
 
 È stata completata solo una demo comprendente il tutorial ed il primo livello, che funge da incipit della trama e dimostrazione delle meccaniche.
 
-La demo è disponibile [qui](https://github.com/CcCcCc99/SVG_Project/releases/tag/Demo2):
-- [download Linux](/CcCcCc99/SVG_Project/releases/latest/download/DimensionsBreak-Linux-v0.1.2.zip)
-- [download Windows](/CcCcCc99/SVG_Project/releases/latest/download/DimensionsBreak-Windows-v0.1.2.zip)
+La demo è disponibile [qui](https://github.com/CcCcCc99/SVG_Project/releases/tag/Demo2).
 
 Il gioco nella forma completa è descritto nel [documento di game design](./GDD.pdf).
