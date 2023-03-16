@@ -4,13 +4,14 @@ class_name Room2D
 var num_enemies: int
 
 onready var door_container: Node2D = get_node("Doors")
+onready var rewarder: Node2D = get_node("Objects/StandardReward")
 
 export var closed: bool = false
 
-export var left_room: int = -1
-export var right_room: int = -1
-export var top_room: int = -1
-export var bottom_room: int = -1
+export var left_room: int = -2
+export var right_room: int = -2
+export var top_room: int = -2
+export var bottom_room: int = -2
 
 var pos: MapPosition
 

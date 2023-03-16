@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/Room.gd" type="Script" id=1]
+[ext_resource path="res://scenes/prefabs/prop/PortalReward.tscn" type="PackedScene" id=2]
 
 [node name="Room" type="Node2D"]
 pause_mode = 1
@@ -17,6 +18,11 @@ z_index = -3
 [node name="CollisionsHorizontals" type="StaticBody2D" parent="." groups=["Environment", "HorizontalEnvironment"]]
 
 [node name="Objects" type="YSort" parent="."]
+
+[node name="StandardReward" parent="Objects" instance=ExtResource( 2 )]
+visible = false
+number_of_hearts = 0
+number_of_mana = 0
 
 [node name="Events" type="Node" parent="."]
 
