@@ -116,7 +116,7 @@ config/icon="res://Icon.png"
 DefaultLoad="*res://src/default_load.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 AudioManager="*res://src/audio_manager.gd"
-Roomstojson="*res://ICON_src/roomstojson.gd"
+Roomstofile="*res://ICON_src/roomstofile.gd"
 
 [display]
 

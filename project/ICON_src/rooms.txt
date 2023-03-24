@@ -1,0 +1,10 @@
+NewRoom1.tscn -1 -2 -2 -1
+NewRoom2.tscn -1 -1 -1 -1
+NewRoom3.tscn -2 -1 -1 -1
+NewRoom4.tscn -1 -1 -2 -1
+NewRoom5.tscn -1 -2 -1 -1
+NewRoom6.tscn -1 -1 -1 -1
+NewRoom7.tscn -1 -1 -2 -1
+NewRoom8.tscn -1 -1 -1 -1
+NewRoom9.tscn -1 -2 -1 -1
+
