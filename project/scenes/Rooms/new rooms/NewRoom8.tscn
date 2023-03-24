@@ -1,0 +1,152 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/prefabs/mob/Drake.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Rooms/RoomGenericTutorial.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/prefabs/prop/PortalReward.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/decorations/crepa1.png" type="Texture" id=4]
+[ext_resource path="res://assets/decorations/crepa2.png" type="Texture" id=5]
+[ext_resource path="res://scenes/prefabs/traps/BatSpawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/prefabs/prop/LeverVariant.tscn" type="PackedScene" id=7]
+
+[node name="Room2" instance=ExtResource( 2 )]
+left_room = -1
+right_room = -1
+top_room = -1
+bottom_room = -1
+
+[node name="crepa2" type="StaticBody2D" parent="Objects" index="0" groups=["Environment", "Hole", "IgnoreRaycast"]]
+position = Vector2( -590, 201 )
+scale = Vector2( -1, 1 )
+z_index = -1
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Crepa3" type="Sprite" parent="Objects/crepa2" index="0"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Objects/crepa2" index="1"]
+position = Vector2( -712, 179 )
+polygon = PoolVector2Array( 671, -223, 689, -239, 700, -258, 759, -271, 781, -271, 770, -252, 765, -239, 784, -235, 786, -216, 803, -208, 795, -181, 765, -182, 746, -152, 714, -158, 698, -185, 678, -181 )
+
+[node name="crepa5" type="StaticBody2D" parent="Objects" index="1" groups=["Environment", "Hole", "IgnoreRaycast"]]
+position = Vector2( -165, -82 )
+rotation = -1.02974
+scale = Vector2( -1, 1 )
+z_index = -1
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Crepa3" type="Sprite" parent="Objects/crepa5" index="0"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Objects/crepa5" index="1"]
+position = Vector2( -712, 179 )
+polygon = PoolVector2Array( 671, -223, 689, -239, 700, -258, 759, -271, 781, -271, 770, -252, 765, -239, 784, -235, 786, -216, 803, -208, 795, -181, 765, -182, 746, -152, 714, -158, 698, -185, 678, -181 )
+
+[node name="crepa4" type="StaticBody2D" parent="Objects" index="2" groups=["Environment", "Hole", "IgnoreRaycast"]]
+position = Vector2( -654, -158 )
+rotation = -1.58999
+scale = Vector2( -1, 1 )
+z_index = -1
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Crepa3" type="Sprite" parent="Objects/crepa4" index="0"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Objects/crepa4" index="1"]
+position = Vector2( -712, 179 )
+polygon = PoolVector2Array( 671, -223, 689, -239, 700, -258, 759, -271, 781, -271, 770, -252, 765, -239, 784, -235, 786, -216, 803, -208, 795, -181, 765, -182, 746, -152, 714, -158, 698, -185, 678, -181 )
+
+[node name="crepa3" type="StaticBody2D" parent="Objects" index="3" groups=["Environment", "Hole", "IgnoreRaycast"]]
+position = Vector2( -281, 174 )
+scale = Vector2( 1, 1.097 )
+z_index = -1
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Crepa2" type="Sprite" parent="Objects/crepa3" index="0"]
+rotation = -3.14159
+scale = Vector2( 0.574, -0.74 )
+texture = ExtResource( 5 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Objects/crepa3" index="1"]
+position = Vector2( 731, 120 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+polygon = PoolVector2Array( 622, -241, 657, -179, 652, -131, 682, -87, 662, -37, 697, 27, 725, 20, 763, 42, 801, 23, 866, 64, 871, 35, 838, 4, 858, -4, 854, -48, 824, -79, 829, -134, 782, -142, 749, -188, 708, -189, 707, -212, 671, -201, 620, -243 )
+
+[node name="crepa7" type="StaticBody2D" parent="Objects" index="4" groups=["Environment", "Hole", "IgnoreRaycast"]]
+position = Vector2( 501, -11 )
+rotation = 1.63363
+z_index = -1
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Crepa2" type="Sprite" parent="Objects/crepa7" index="0"]
+rotation = -3.14159
+scale = Vector2( 0.574, -0.74 )
+texture = ExtResource( 5 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Objects/crepa7" index="1"]
+position = Vector2( 731, 120 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+polygon = PoolVector2Array( 622, -241, 657, -179, 652, -131, 682, -87, 662, -37, 697, 27, 725, 20, 763, 42, 801, 23, 866, 64, 871, 35, 838, 4, 858, -4, 854, -48, 824, -79, 829, -134, 782, -142, 749, -188, 708, -189, 707, -212, 671, -201, 620, -243 )
+
+[node name="crepa6" type="StaticBody2D" parent="Objects" index="5" groups=["Environment", "Hole", "IgnoreRaycast"]]
+position = Vector2( -131, -262 )
+rotation = 1.58999
+z_index = -1
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Crepa2" type="Sprite" parent="Objects/crepa6" index="0"]
+rotation = -3.14159
+scale = Vector2( 0.574, -0.74 )
+texture = ExtResource( 5 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Objects/crepa6" index="1"]
+position = Vector2( 731, 120 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+polygon = PoolVector2Array( 622, -241, 657, -179, 652, -131, 682, -87, 662, -37, 697, 27, 725, 20, 763, 42, 801, 23, 866, 64, 871, 35, 838, 4, 858, -4, 854, -48, 824, -79, 829, -134, 782, -142, 749, -188, 708, -189, 707, -212, 671, -201, 620, -243 )
+
+[node name="PortalReward" parent="Objects" index="6" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 0, -298 )
+
+[node name="RocketSpawner" parent="Objects" index="7" instance=ExtResource( 6 )]
+position = Vector2( -375, 485 )
+
+[node name="RocketSpawner2" parent="Objects" index="8" instance=ExtResource( 6 )]
+position = Vector2( 857, -201 )
+
+[node name="Lever" parent="Objects" index="9" instance=ExtResource( 7 )]
+
+[node name="Drake" parent="Objects" index="11" instance=ExtResource( 1 )]
+position = Vector2( 216, 343 )
+
+[node name="Drake2" parent="Objects" index="12" instance=ExtResource( 1 )]
+position = Vector2( 575, 191 )

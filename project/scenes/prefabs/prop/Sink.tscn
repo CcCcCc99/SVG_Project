@@ -21,14 +21,14 @@ animations = [ {
 "name": "green",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 3 ) ],
-"loop": false,
-"name": "pink",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": false,
 "name": "mix",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": false,
+"name": "pink",
 "speed": 1.0
 } ]
 
@@ -89,7 +89,7 @@ scale = Vector2( 0.75, 0.75 )
 z_index = 2
 frames = SubResource( 4 )
 animation = "fumo"
-frame = 1
+frame = 3
 playing = true
 
 [node name="TickDamageTimer" type="Timer" parent="."]

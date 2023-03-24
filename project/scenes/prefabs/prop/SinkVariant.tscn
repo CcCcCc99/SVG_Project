@@ -1,0 +1,105 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/sprites/prop/verde.png" type="Texture" id=1]
+[ext_resource path="res://src/prop/Sink.gd" type="Script" id=2]
+[ext_resource path="res://assets/sprites/prop/fumiacidi2.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/prop/fumiacidi1.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/prop/vuoto.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/prop/rosa.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/prop/fumiacidi3.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/prop/mix.png" type="Texture" id=8]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "empty",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "green",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "mix",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "pink",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 111.75, 40 )
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 179.701
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "fumo",
+"speed": 5.0
+} ]
+
+[node name="Sink" type="Node2D" groups=["Environment"]]
+position = Vector2( 142, -191 )
+script = ExtResource( 2 )
+leverpinkname = "Pink"
+levergreenname = "Green"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 20, -121 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 6 )
+animation = "empty"
+
+[node name="CollisionVertivals" type="StaticBody2D" parent="." groups=["Environment", "VerticalEnvironment"]]
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Top" type="CollisionPolygon2D" parent="CollisionVertivals"]
+position = Vector2( -15, 28.3333 )
+polygon = PoolVector2Array( -86.6667, -211.667, 160, -188.333, 114, -132, -79, -147 )
+
+[node name="Bottom" type="CollisionShape2D" parent="CollisionVertivals"]
+position = Vector2( 23.3333, -88.3333 )
+rotation = 0.102974
+shape = SubResource( 2 )
+
+[node name="CollisionHorizontals" type="StaticBody2D" parent="." groups=["Environment", "HorizontalEnvironment"]]
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Right" type="CollisionPolygon2D" parent="CollisionHorizontals"]
+scale = Vector2( 1.66667, 1.66667 )
+polygon = PoolVector2Array( 66, -71, 63, -26, 82, -29, 101, -47.9999, 107, -94.9998, 88, -96 )
+
+[node name="Left" type="CollisionPolygon2D" parent="CollisionHorizontals"]
+polygon = PoolVector2Array( -101.667, -185, -118.333, -150, -111.667, -66.6667, -86.6667, -65 )
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 14.5, -84.5 )
+shape = SubResource( 5 )
+
+[node name="Smoke" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 17, -85 )
+scale = Vector2( 0.75, 0.75 )
+z_index = 2
+frames = SubResource( 4 )
+animation = "fumo"
+frame = 2
+playing = true
+
+[node name="TickDamageTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="TickDamageTimer" to="." method="_on_TickDamageTimer_timeout"]

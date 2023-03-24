@@ -1,0 +1,174 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://assets/sprites/drake/arrabbiato5.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/drake/vola2.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/drake/arrabbiato1.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Mob.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sprites/drake/arrabbiato3.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/drake/caduto.png" type="Texture" id=6]
+[ext_resource path="res://scenes/prefabs/prop/Shadow.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/MobIA/Taz.gd" type="Script" id=8]
+[ext_resource path="res://scenes/corps/DrakeCorpse.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/sprites/taz/tazIcon.png" type="Texture" id=10]
+[ext_resource path="res://src/utility/TriggerAttack.gd" type="Script" id=11]
+[ext_resource path="res://src/utility/Hitbox.gd" type="Script" id=12]
+[ext_resource path="res://assets/sprites/drake/arrabbiato2.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/drake/vola1.png" type="Texture" id=14]
+[ext_resource path="res://assets/sprites/drake/vola4.png" type="Texture" id=15]
+[ext_resource path="res://assets/sprites/drake/vola5.png" type="Texture" id=16]
+[ext_resource path="res://assets/sprites/drake/arrabbiato4.png" type="Texture" id=17]
+[ext_resource path="res://assets/sprites/drake/vola3.png" type="Texture" id=18]
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 45.0111
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 49, 76.5 )
+
+[sub_resource type="Shader" id=12]
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color: hint_color = vec4(1.0);
+uniform float flash_modifier: hint_range(0.0, 1.0) = 0.0;
+
+void fragment() {
+	vec4 color = texture(TEXTURE,UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=13]
+shader = SubResource( 12 )
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 0.0
+
+[sub_resource type="SpriteFrames" id=14]
+animations = [ {
+"frames": [ ExtResource( 14 ), ExtResource( 2 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 13 ), ExtResource( 5 ), ExtResource( 17 ), ExtResource( 1 ), ExtResource( 17 ), ExtResource( 5 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "spin",
+"speed": 24.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 66.1806
+height = 153.566
+
+[sub_resource type="RayShape2D" id=5]
+length = 800.0
+
+[sub_resource type="Animation" id=9]
+resource_name = "FallBack"
+tracks/0/type = "value"
+tracks/0/path = NodePath("FallenMode:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 65, -170 ), Vector2( 65, -220 ), Vector2( 65, -120 ), Vector2( 65, -160 ), Vector2( 65, -120 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("FallenMode:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 17, -120 ) ]
+}
+
+[node name="Drake" instance=ExtResource( 4 )]
+script = ExtResource( 8 )
+CORPSE = ExtResource( 9 )
+max_hp = 7
+speed = 5000
+can_fly = true
+flip = false
+contact_damage = 1
+icon = ExtResource( 10 )
+is_summoned = false
+direction = Vector2( 1.5, 2 )
+knock_back = 5.0
+attack_dmg = 3
+attack_speed = 14000.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyChecker" index="0"]
+position = Vector2( 0.999999, -29.5 )
+rotation = 3.14159
+shape = SubResource( 2 )
+
+[node name="AnimatedSprite" parent="." index="2"]
+material = SubResource( 13 )
+position = Vector2( -10.041, -137.724 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 14 )
+animation = "spin"
+playing = true
+
+[node name="FallenMode" type="Sprite" parent="." index="3"]
+visible = false
+position = Vector2( 17, -120 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 6 )
+
+[node name="Cooldown" parent="." index="4"]
+wait_time = 5.0
+one_shot = true
+
+[node name="HitBox" type="Area2D" parent="." index="6" groups=["Character", "Hitbox", "Mob"]]
+collision_layer = 2
+collision_mask = 63
+script = ExtResource( 12 )
+
+[node name="Body" type="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2( -16, -172 )
+rotation = 1.63886
+shape = SubResource( 4 )
+
+[node name="Shadow" parent="." index="7"]
+position = Vector2( -9.99999, 0 )
+scale = Vector2( 0.640625, 0.3 )
+
+[node name="FallenShadow" parent="." index="8" instance=ExtResource( 7 )]
+position = Vector2( 40, 0 )
+scale = Vector2( 0.328125, 0.48 )
+
+[node name="TriggerAttack" type="Area2D" parent="." index="10"]
+position = Vector2( -87, -218 )
+rotation = 1.5708
+collision_layer = 2
+collision_mask = 3
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Raycast" type="CollisionShape2D" parent="TriggerAttack" index="0"]
+shape = SubResource( 5 )
+
+[node name="Fall_AnimationPlayer" type="AnimationPlayer" parent="." index="11"]
+anims/FallBack = SubResource( 9 )
+anims/RESET = SubResource( 10 )
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
+[connection signal="area_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
+[connection signal="body_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
+[connection signal="enemy_spotted" from="TriggerAttack" to="." method="_on_TriggerAttack_enemy_spotted"]

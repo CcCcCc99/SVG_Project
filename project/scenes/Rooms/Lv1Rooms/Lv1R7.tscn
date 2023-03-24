@@ -180,6 +180,9 @@ points = PoolVector2Array( 728, -94, 536, -208 )
 
 [node name="Prism" parent="Objects" index="29" instance=ExtResource( 8 )]
 position = Vector2( -40, -18 )
+flip = false
+contact_damage = 1
+is_summoned = false
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="Objects/Prism" index="9"]
 position = Vector2( -109, -165 )
@@ -194,6 +197,7 @@ position = Vector2( 133, -365 )
 position = Vector2( -121, 46 )
 z_index = -1
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="PortalReward" parent="Objects" index="31" instance=ExtResource( 13 )]

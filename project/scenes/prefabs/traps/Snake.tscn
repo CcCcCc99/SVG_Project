@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/sprites/prop/SnakeAttack.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/prop/SnakeIdle.png" type="Texture" id=2]
+[ext_resource path="res://src/traps/Plant.gd" type="Script" id=7]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "eat",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 53, 63.5 )
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 89.0225
+
+[node name="Snake" type="Area2D"]
+z_index = 1
+script = ExtResource( 7 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 40, -76 )
+scale = Vector2( 1.2, 1.2 )
+frames = SubResource( 3 )
+animation = "idle"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 68, 107.5 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -17, -12 )
+shape = SubResource( 4 )
+
+[connection signal="area_entered" from="." to="." method="_on_detect"]
+[connection signal="body_entered" from="." to="." method="_on_detect"]
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -6,7 +6,7 @@
 [ext_resource path="res://scenes/Rooms/Lv1Rooms/Lv1R1.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Rooms/Lv1Rooms/Lv1R2.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Rooms/Lv1Rooms/Lv1R8.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/Rooms/Lv1Rooms/Lv1R4.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Rooms/new rooms/NewRoom8.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Rooms/Lv1Rooms/Lv1BossRoom.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Rooms/Lv1Rooms/Lv1R7.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/Rooms/Lv1Rooms/Lv1R0.tscn" type="PackedScene" id=10]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Corpse.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/sprites/beholder/mortobh.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 48.9999
+height = 66.0003
+
+[node name="BeholderCorpse" instance=ExtResource( 1 )]
+summon = "res://scenes/prefabs/mob/Beholder.tscn"
+cost = 3
+
+[node name="Shadow" parent="." index="0"]
+visible = true
+position = Vector2( -4, -9.12756 )
+scale = Vector2( 0.515625, 0.458932 )
+
+[node name="Sprite" parent="." index="1"]
+position = Vector2( -30.011, -130.981 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2( -1, -42 )
+rotation = 1.5708
+shape = SubResource( 1 )

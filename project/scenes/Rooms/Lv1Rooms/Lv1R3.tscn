@@ -10,6 +10,7 @@
 left_room = 7
 right_room = 2
 top_room = 4
+bottom_room = -1
 
 [node name="Taz" parent="Objects" index="0" instance=ExtResource( 4 )]
 position = Vector2( -635, -31 )

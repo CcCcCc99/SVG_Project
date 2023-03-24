@@ -16,10 +16,15 @@ top_room = 4
 
 [node name="Blower" parent="Objects" index="0" instance=ExtResource( 2 )]
 position = Vector2( 554.583, 273.874 )
+flip = false
+contact_damage = 1
+is_summoned = false
 
 [node name="Tortoise" parent="Objects" index="1" instance=ExtResource( 3 )]
 position = Vector2( -556.989, -114.621 )
 flip = true
+contact_damage = 1
+is_summoned = false
 shot_direction = Vector2( 1, 2 )
 
 [node name="ErbaACaso5" type="Sprite" parent="." index="5"]

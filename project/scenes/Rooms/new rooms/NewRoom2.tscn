@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/prefabs/traps/Snake.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/prefabs/mob/Drake.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Rooms/RoomGenericTutorial.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sprites/prop/uovadidrago.png" type="Texture" id=4]
+[ext_resource path="res://assets/decorations/liane1.png" type="Texture" id=5]
+[ext_resource path="res://assets/decorations/liane2.png" type="Texture" id=6]
+
+[node name="Room" instance=ExtResource( 3 )]
+left_room = -1
+right_room = -1
+top_room = -1
+bottom_room = -1
+
+[node name="Snake2" parent="Objects" index="0" instance=ExtResource( 1 )]
+position = Vector2( -441, -273 )
+rotation = 0.219911
+scale = Vector2( 1, 1 )
+
+[node name="Snake" parent="Objects/Snake2" index="5" instance=ExtResource( 1 )]
+position = Vector2( 1072.27, -277.594 )
+
+[node name="Eggs" type="Sprite" parent="Objects" index="1"]
+position = Vector2( 645, 331 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 4 )
+
+[node name="Drake" parent="Objects" index="3" instance=ExtResource( 2 )]
+position = Vector2( 385, 227 )
+
+[node name="Snake" parent="Objects" index="4" instance=ExtResource( 1 )]
+position = Vector2( -685, -315 )
+rotation = -0.218166
+
+[node name="Liane1" type="Sprite" parent="." index="7"]
+position = Vector2( -770, 641 )
+rotation = 3.49589
+texture = ExtResource( 5 )
+
+[node name="Liane2" type="Sprite" parent="Liane1" index="0"]
+position = Vector2( -1421.24, 495.877 )
+rotation = -0.546288
+texture = ExtResource( 6 )

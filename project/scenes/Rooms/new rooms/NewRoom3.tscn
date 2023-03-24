@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/prefabs/mob/Blower.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/prefabs/prop/PortalReward.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Rooms/RoomGenericTutorial.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/prefabs/traps/Plant.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Event.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/events/SummonDialogueEvent.gd" type="Script" id=6]
+[ext_resource path="res://assets/decorations/liane3.png" type="Texture" id=7]
+[ext_resource path="res://assets/decorations/erba_a_caso_5.png" type="Texture" id=8]
+[ext_resource path="res://assets/decorations/liane2.png" type="Texture" id=9]
+[ext_resource path="res://assets/decorations/erba_a_caso.png" type="Texture" id=10]
+[ext_resource path="res://assets/decorations/liane1.png" type="Texture" id=11]
+
+[node name="Room" instance=ExtResource( 3 )]
+right_room = -1
+top_room = -1
+bottom_room = -1
+
+[node name="Blower" parent="Objects" index="0" instance=ExtResource( 1 )]
+position = Vector2( 307.328, -115.512 )
+flip = false
+contact_damage = 1
+is_summoned = false
+
+[node name="Plant" parent="Objects" index="1" instance=ExtResource( 4 )]
+position = Vector2( -597, 112 )
+
+[node name="Plant2" parent="Objects" index="2" instance=ExtResource( 4 )]
+position = Vector2( -571.751, -149.779 )
+rotation = 0.165916
+
+[node name="Plant3" parent="Objects" index="3" instance=ExtResource( 4 )]
+position = Vector2( -557, 185 )
+rotation = -1.46782
+scale = Vector2( 0.8, 0.8 )
+
+[node name="Plant4" parent="Objects" index="4" instance=ExtResource( 4 )]
+position = Vector2( -595.951, -199.76 )
+rotation = 1.4979
+scale = Vector2( 0.8, 0.8 )
+
+[node name="PortalReward" parent="Objects" index="5" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 523, -304 )
+number_of_mana = 0
+
+[node name="Liane1" type="Sprite" parent="." index="5"]
+position = Vector2( 901, 331 )
+rotation = 1.79769
+scale = Vector2( 1, 0.637798 )
+texture = ExtResource( 11 )
+
+[node name="Liane2" type="Sprite" parent="." index="6"]
+position = Vector2( -654, -421 )
+rotation = -0.15708
+scale = Vector2( 1, 0.628516 )
+z_index = 3
+texture = ExtResource( 9 )
+
+[node name="Liane3" type="Sprite" parent="." index="7"]
+position = Vector2( 938, -357 )
+rotation = 1.4015
+scale = Vector2( 1, 0.641069 )
+texture = ExtResource( 7 )
+
+[node name="ErbaACaso" type="Sprite" parent="." index="8"]
+position = Vector2( -582, -150 )
+rotation = 0.165806
+z_index = 2
+texture = ExtResource( 10 )
+
+[node name="ErbaACaso5" type="Sprite" parent="." index="9"]
+position = Vector2( -639, 252 )
+scale = Vector2( 1.3, 1.3 )
+z_index = 3
+texture = ExtResource( 8 )
+
+[node name="ErbaACaso6" type="Sprite" parent="." index="10"]
+position = Vector2( -637, -261 )
+scale = Vector2( 1.3, 1.3 )
+z_index = 3
+texture = ExtResource( 8 )
+
+[node name="SummonDialogueEvent" parent="Events" index="0" instance=ExtResource( 5 )]
+script = ExtResource( 6 )
+
+[connection signal="completed" from="." to="Events/SummonDialogueEvent" method="activate"]

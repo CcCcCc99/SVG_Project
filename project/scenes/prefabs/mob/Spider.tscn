@@ -1,0 +1,129 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://assets/sprites/spiderbot/walk1.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/spiderbot/attack.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/spiderbot/walk2.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Mob.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/MobIA/SpiderBot.gd" type="Script" id=5]
+[ext_resource path="res://src/utility/TriggerAttack.gd" type="Script" id=6]
+[ext_resource path="res://scenes/corps/SpiderBotCorpse.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/prefabs/prop/Web.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/utility/Hitbox.gd" type="Script" id=9]
+[ext_resource path="res://assets/sprites/spiderbot/ragnatela.png" type="Texture" id=10]
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 44.0114
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color: hint_color = vec4(1.0);
+uniform float flash_modifier: hint_range(0.0, 1.0) = 0.0;
+
+void fragment() {
+	vec4 color = texture(TEXTURE,UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 7 )
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 0.0
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "attack",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+} ]
+
+[sub_resource type="RayShape2D" id=2]
+length = 400.0
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 45.0666
+
+[node name="Spider" groups=["BombTarget"] instance=ExtResource( 4 )]
+script = ExtResource( 5 )
+CORPSE = ExtResource( 7 )
+max_hp = 1
+speed = 4000
+flip = false
+contact_damage = 1
+icon = null
+is_summoned = false
+web = ExtResource( 8 )
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2( -6, -53 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyChecker" index="0"]
+position = Vector2( -8, -48 )
+shape = SubResource( 4 )
+
+[node name="AnimatedSprite" parent="." index="2"]
+material = SubResource( 5 )
+position = Vector2( -3, -40 )
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 9 )
+animation = "walk"
+frame = 1
+playing = true
+
+[node name="Cooldown" parent="." index="3"]
+one_shot = true
+
+[node name="Shadow" parent="." index="5"]
+position = Vector2( -6, -45 )
+scale = Vector2( 0.3, 0.5 )
+
+[node name="TriggerAttack" type="Area2D" parent="." index="7"]
+position = Vector2( 1, 23 )
+rotation = 1.5708
+collision_layer = 2
+collision_mask = 3
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Raycast" type="CollisionShape2D" parent="TriggerAttack" index="0"]
+rotation = -1.5708
+shape = SubResource( 2 )
+
+[node name="HitBox" type="Area2D" parent="." index="8" groups=["BombTarget", "Character", "Hitbox", "Mob"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource( 9 )
+
+[node name="Body" type="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2( -4, -50 )
+shape = SubResource( 8 )
+
+[node name="Tween" type="Tween" parent="." index="9"]
+
+[node name="DummyWeb" type="Node2D" parent="." index="10"]
+visible = false
+position = Vector2( 1, 23 )
+scale = Vector2( 0.1, 0.1 )
+z_index = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="DummyWeb" index="0"]
+position = Vector2( 18, -1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 10 )
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
+[connection signal="area_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
+[connection signal="body_entered" from="TriggerAttack" to="TriggerAttack" method="_on_TriggerAttack_body_entered"]
+[connection signal="enemy_spotted" from="TriggerAttack" to="." method="_on_TriggerAttack_enemy_spotted"]

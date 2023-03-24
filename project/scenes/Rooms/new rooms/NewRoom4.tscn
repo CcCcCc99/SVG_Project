@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/prefabs/mob/Tortoise.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/decorations/liane1.png" type="Texture" id=2]
+[ext_resource path="res://assets/decorations/erba_a_caso_5.png" type="Texture" id=3]
+[ext_resource path="res://assets/decorations/erba_a_caso_3.png" type="Texture" id=4]
+[ext_resource path="res://scenes/prefabs/prop/PortalReward.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/decorations/liane3.png" type="Texture" id=6]
+[ext_resource path="res://scenes/Rooms/RoomGenericTutorial.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/prefabs/traps/BatSpawner.tscn" type="PackedScene" id=8]
+
+[node name="Room" instance=ExtResource( 7 )]
+left_room = -1
+right_room = -1
+bottom_room = -1
+
+[node name="Tortoise" parent="Objects" index="0" instance=ExtResource( 1 )]
+position = Vector2( 415, 205 )
+flip = false
+contact_damage = 1
+is_summoned = false
+
+[node name="PortalReward" parent="Objects" index="1" instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 585, 302 )
+number_of_mana = 2
+
+[node name="BatSpawner" parent="Objects" index="2" instance=ExtResource( 8 )]
+position = Vector2( -664, 454 )
+flipx = false
+flipy = false
+active = true
+
+[node name="Liane1" type="Sprite" parent="." index="5"]
+position = Vector2( -627, 449 )
+scale = Vector2( 1, 0.4 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="Liane3" type="Sprite" parent="." index="6"]
+position = Vector2( 598, -343 )
+scale = Vector2( 1, 0.8 )
+texture = ExtResource( 6 )
+
+[node name="ErbaACaso3" type="Sprite" parent="." index="7"]
+position = Vector2( -171, -291 )
+rotation = 1.5708
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="ErbaACaso5" type="Sprite" parent="." index="8"]
+position = Vector2( 196, -293 )
+rotation = 1.5708
+z_index = -1
+texture = ExtResource( 3 )

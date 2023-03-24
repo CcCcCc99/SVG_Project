@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/prefabs/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/prefabs/prop/Lever.tscn" type="PackedScene" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://scenes/prefabs/prop/decorations/FluidContainerGreen.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/prefabs/prop/decorations/FluidContainerPink.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/prop/Levers/LeverLine.gd" type="Script" id=7]
+[ext_resource path="res://scenes/prefabs/mob/Drake.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/prefabs/mob/Beholder.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/prefabs/prop/decorations/Column.tscn" type="PackedScene" id=10]
 
 [node name="Room" instance=ExtResource( 3 )]
 closed = false
@@ -51,6 +54,15 @@ script = ExtResource( 7 )
 on_color = Color( 0.588235, 0.976471, 0.862745, 1 )
 off_color = Color( 0.482353, 0.482353, 0.482353, 1 )
 line_name = "Green"
+
+[node name="Beholder" parent="Objects" index="10" instance=ExtResource( 9 )]
+position = Vector2( -578, 68 )
+
+[node name="Drake" parent="Objects" index="11" instance=ExtResource( 8 )]
+position = Vector2( 320, -94 )
+
+[node name="Column" parent="Objects" index="12" instance=ExtResource( 10 )]
+position = Vector2( -298, 188 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="6"]
 current = true

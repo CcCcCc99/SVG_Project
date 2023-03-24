@@ -92,8 +92,12 @@ CORPSE = ExtResource( 9 )
 max_hp = 7
 speed = 5000
 can_fly = true
+flip = false
+contact_damage = 1
 icon = ExtResource( 10 )
+is_summoned = false
 direction = Vector2( 1.5, 2 )
+knock_back = 5.0
 attack_dmg = 3
 attack_speed = 14000.0
 
